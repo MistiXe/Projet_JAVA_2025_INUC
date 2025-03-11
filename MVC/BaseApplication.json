@@ -1,7 +1,27 @@
+[
+
 {
     "id":0,
     "Nom": "Patrick",
     "Prénom": "Lopez",
     "Age": 15,
     "Listes d'affaires": []
-}
+},
+
+    {
+        "id":0,
+        "Nom": "Alexis",
+        "Prénom": "Segré",
+        "Age": 20,
+        "Listes d'affaires": []
+    },
+
+    {
+        "id":2,
+        "Nom": "Léo",
+        "Prénom": "Ajas",
+        "Age": 19,
+        "Listes d'affaires": []
+    }
+
+    ]

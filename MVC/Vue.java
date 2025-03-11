@@ -1,55 +1,38 @@
+package INUC2025.MVC;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
-public class Vue {
-    public static void main(String[] args) {
-        // Liste de personnes
-        List<Personne> personnes = new ArrayList<>();
+public class Vue extends JFrame {
+    private JTable table;
+    private PersonneTableModel tableModel;
 
-        try {
-            // Lecture du fichier CSV
-            BufferedReader reader = new BufferedReader(new FileReader("personnes.json"));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 4) {
-                    String nom = parts[0].trim();
-                    String prenom = parts[1].trim();
-                    int age = Integer.parseInt(parts[2].trim());
-
-                    // Extraire les affaires (les autres éléments du CSV après l'âge)
-                    List<String> affaires = new ArrayList<>();
-                    for (int i = 3; i < parts.length; i++) {
-                        affaires.add(parts[i].trim());
-                    }
-
-                    Personne personne = new Personne(nom, prenom, age, affaires);
-                    personnes.add(personne);
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Conversion de la liste en tableau pour le modèle de la JTable
-        Personne[] personnesArray = personnes.toArray(new Personne[0]);
-
-        // Création du modèle de table
-        PersonneTableModel model = new PersonneTableModel(personnesArray);
-
-        // Création de la JTable
-        JTable table = new JTable(model);
-
-        // Création de la fenêtre et ajout de la JTable
-        JFrame frame = new JFrame("Liste des Personnes");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
-        JScrollPane scrollPane = new JScrollPane(table);
-        frame.add(scrollPane, BorderLayout.CENTER);
-        frame.setVisible(true);
+    public Vue(List<Personne> personnes) {
+        setTitle("Liste des Personnes");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        tableModel = new PersonneTableModel(List.of(personnes.toArray(new Personne[0])));
+        table = new JTable(tableModel);
+        add(new JScrollPane(table), BorderLayout.CENTER);
+        this.setVisible(true);
     }
+
+    public static void main(String[] args) {
+        List<Personne> personnes = JsonReader.lirePersonnesDepuisJson("src/INUC2025/MVC/BaseApplication.json");
+        if (personnes != null) {
+            new Vue(personnes);
+        } else {
+            System.out.println("Erreur lors du chargement du fichier JSON.");
+        }
+    }
+
+
+
 }

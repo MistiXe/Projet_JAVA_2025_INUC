@@ -1,17 +1,20 @@
+package INUC2025.MVC;
+
 import javax.swing.table.AbstractTableModel;
+import java.util.List;
 
 public class PersonneTableModel extends AbstractTableModel {
 
-    private Personne[] personnes;
-    private String[] colonnes = {"Nom", "Prénom", "Âge", "Affaires"};
+    private List<Personne> personnes;
+    private final String[] colonnes = {"id", "Nom", "Prénom", "Âge", "Affaires"};
 
-    public PersonneTableModel(Personne[] personnes) {
+    public PersonneTableModel(List<Personne> personnes) {
         this.personnes = personnes;
     }
 
     @Override
     public int getRowCount() {
-        return personnes.length;
+        return (personnes != null) ? personnes.size() : 0;
     }
 
     @Override
@@ -21,24 +24,28 @@ public class PersonneTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Personne personne = personnes[rowIndex];
+        if (personnes == null || rowIndex >= personnes.size()) {
+            return null;
+        }
+
+        Personne personne = personnes.get(rowIndex);
         switch (columnIndex) {
-            case 0: 
-                return personne.getNom();
-            case 1: 
-                return personne.getPrenom();
-            case 2: 
-                return personne.getAge();
-            case 3: 
-                // Retourne une chaîne des affaires séparées par des virgules
-                return String.join(", ", personne.getListes_d_affaires());
-            default: 
-                return null;
+            case 0: return personne.getId();
+            case 1: return personne.getNom();
+            case 2: return personne.getPrénom();
+            case 3: return personne.getAge();
+            case 4: return String.join(", ", personne.getListes_d_affaires());
+            default: return null;
         }
     }
 
     @Override
     public String getColumnName(int column) {
         return colonnes[column];
+    }
+
+    public void setPersonnes(List<Personne> nouvellesPersonnes) {
+        this.personnes = nouvellesPersonnes;
+        fireTableDataChanged(); // Rafraîchir la table
     }
 }
