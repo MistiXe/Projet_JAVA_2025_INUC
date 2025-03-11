@@ -10,7 +10,7 @@ public class Personne {
     public String getNom() { return Nom; }
     public void setNom(String nom) { Nom = nom; }
 
-    public String getPrénom() { return Prénom; }
+    public String getPrenom() { return Prénom; }
     public void setPrénom(String prénom) { Prénom = prénom; }
 
     public int getAge() { return Age; }

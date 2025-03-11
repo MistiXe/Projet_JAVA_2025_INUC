@@ -23,11 +23,17 @@ public class PersonneTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Personne personne = personnes[rowIndex];
         switch (columnIndex) {
-            case 0: return personne.getNom();
-            case 1: return personne.getPrénom();
-            case 2: return personne.getAge();
-            case 3: return personne.getListes_d_affaires().toString();
-            default: return null;
+            case 0: 
+                return personne.getNom();
+            case 1: 
+                return personne.getPrenom();
+            case 2: 
+                return personne.getAge();
+            case 3: 
+                // Retourne une chaîne des affaires séparées par des virgules
+                return String.join(", ", personne.getListes_d_affaires());
+            default: 
+                return null;
         }
     }
 
