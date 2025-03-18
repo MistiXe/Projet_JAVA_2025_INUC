@@ -1,53 +1,51 @@
 package com.example.demo;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class JsonHandlerCase {
-    private static final String RESOURCE_PATH = "/com/example/demo/liste_affaires.json";
-    private static final String FILE_PATH = System.getProperty("user.home") + "/liste_affaires.json";
+    private static final String RESOURCE_PATH = "/com/example/demo/liste_affaires.json"; // Chemin dans les ressources
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    // Copier le fichier JSON de resources vers un endroit modifiable s'il n'existe pas encore
-    private static void copyResourceToFile() {
-        File file = new File(FILE_PATH);
-        if (!file.exists()) {
-            try (InputStream inputStream = JsonHandlerCase.class.getResourceAsStream(RESOURCE_PATH)) {
-                if (inputStream == null) {
-                    throw new IllegalArgumentException("Fichier JSON introuvable dans les ressources : " + RESOURCE_PATH);
-                }
-                Files.copy(inputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("Fichier JSON copié dans : " + FILE_PATH);
-            } catch (IOException e) {
-                e.printStackTrace();
+    static {
+        // Enregistrement du module JavaTimeModule pour gérer LocalDate
+        objectMapper.registerModule(new JavaTimeModule());
+        // Désactivation de la fonctionnalité d'écriture des dates sous forme de timestamps
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+    }
+
+    // Lire les affaires depuis le fichier JSON dans les ressources
+    public static List<Affaires> readPersonsFromJson() {
+        try (InputStream inputStream = JsonHandlerCase.class.getResourceAsStream(RESOURCE_PATH)) {
+            if (inputStream == null) {
+                throw new IllegalArgumentException("Fichier JSON introuvable dans les ressources : " + RESOURCE_PATH);
             }
-        }
-    }
-
-    // Lire les personnes depuis le fichier JSON copié
-    public static List<Personne> readPersonsFromJson() {
-        copyResourceToFile(); // Assure que le fichier existe avant de lire
-        try (InputStream inputStream = new FileInputStream(FILE_PATH)) {
-            return objectMapper.readValue(inputStream, new TypeReference<List<Personne>>() {});
+            System.out.println("Lecture du fichier JSON depuis les ressources : " + RESOURCE_PATH);
+            List<Affaires> affairesList = objectMapper.readValue(inputStream, new TypeReference<List<Affaires>>() {});
+            System.out.println("Données lues : " + affairesList);
+            return affairesList;
         } catch (IOException e) {
+            System.err.println("Erreur lors de la lecture du fichier JSON : " + e.getMessage());
             e.printStackTrace();
-            return List.of();
+            return List.of();  // Retourne une liste vide en cas d'erreur
         }
     }
 
-    // Écrire les mises à jour dans le fichier JSON copié
-    public static void writePersonsToJson(List<Personne> persons) {
+    // Écrire les mises à jour dans un fichier JSON externe
+    public static void writePersonsToJson(List<Affaires> affaires) {
         try {
-            File file = new File(FILE_PATH);
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, persons);
-            System.out.println("Données sauvegardées dans : " + FILE_PATH);
-            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(persons);
+            // Spécification d'un fichier externe pour l'écriture
+            File file = new File("liste_affaires.json");
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, affaires);
+            System.out.println("Données sauvegardées dans : " + file.getPath());
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(affaires);
             System.out.println("Contenu actuel du JSON :\n" + json);
         } catch (IOException e) {
+            System.err.println("Erreur lors de l'écriture dans le fichier JSON : " + e.getMessage());
             e.printStackTrace();
         }
     }

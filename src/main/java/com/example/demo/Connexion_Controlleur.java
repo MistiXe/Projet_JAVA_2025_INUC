@@ -24,6 +24,8 @@ public class Connexion_Controlleur {
 
     @FXML
     public void initialize() {
+        user.setText("user1");
+        pass.setText("password123");
         connexion.setOnAction(event -> login());
     }
 

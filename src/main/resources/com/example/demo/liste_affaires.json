@@ -1,13 +1,13 @@
 [
-
-  {
-    "nom": "Léo",
-    "prenom" : "Ajas",
-    "age" : 19,
-    "fiche" :  true
-  }
-
-
-
-
-]
+    {
+      "prenom": "Jean",
+      "etatAffaire": "DANGER",
+      "date": "2025-03-18"
+    },
+    {
+      "prenom": "Marie",
+      "etatAffaire": "FINI",
+      "date": "2025-03-19"
+    }
+  ]
+  

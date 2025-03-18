@@ -12,21 +12,19 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Menu_Controlleur {
-    @FXML private TableView<Personne> tableView;
-    @FXML private TableColumn<Personne, String> columnPrenom;
-    @FXML private TableColumn<Personne, String> columnNom;
-    @FXML private TableColumn<Personne, Integer> columnAge;
-    @FXML private TableColumn<Personne, Boolean> columnFiche;
+    @FXML private TableView<Affaires> tableView;
+    @FXML private TableColumn<Affaires, String> columnPrenom;
+    @FXML private TableColumn<Affaires, String> columnDate;
+    @FXML private TableColumn<Affaires, Boolean> columnFiche;
 
-    @FXML
-    private Label labelNom;
     @FXML
     private Label labelPrenom;
     @FXML
-    private Label labelAge;
+    private Label labelDate;
     @FXML
     private Label labelFiche;
     @FXML
@@ -36,60 +34,56 @@ public class Menu_Controlleur {
     @FXML
     private Button btnSupprimer;
 
-    private final ObservableList<Personne> personList = FXCollections.observableArrayList();
+    private final ObservableList<Affaires> personList = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
         // Lier les colonnes aux attributs de Person
         columnPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        columnNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        columnAge.setCellValueFactory(new PropertyValueFactory<>("age"));
-        columnFiche.setCellValueFactory(new PropertyValueFactory<>("fiche"));
+        columnFiche.setCellValueFactory(new PropertyValueFactory<>("etatAffaire"));
 
-
+        // Formater la date dans la colonne
+        columnDate.setCellValueFactory(param -> {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            return new javafx.beans.property.SimpleStringProperty(param.getValue().getDate().format(formatter));
+        });
 
         // Charger les données du JSON
-        List<Personne> persons = JsonHandlerCase.readPersonsFromJson();
+        List<Affaires> persons = JsonHandlerCase.readPersonsFromJson();
         if (persons != null) {
             personList.addAll(persons);
         }
         tableView.setItems(personList);
 
-        // Action pour voir les données a droite
-
+        // Action pour voir les données à droite
         tableView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> afficherDetailsPersonne(newValue)
         );
-        if(!personList.isEmpty()){
-            btnSupprimer.setOnAction(e->supprimerPersonne(personList.get(tableView.getSelectionModel().getSelectedIndex())));
+
+        if (!personList.isEmpty()) {
+            btnSupprimer.setOnAction(e -> supprimerPersonne(personList.get(tableView.getSelectionModel().getSelectedIndex())));
         }
-
-
-
     }
 
-    // Ajouter une nouvelle personne (ex: via un bouton)
-    public void addPerson(Personne person) {
+    // Ajouter une nouvelle affaire (ex: via un bouton)
+    public void addPerson(Affaires person) {
         personList.add(person);
         JsonHandlerCase.writePersonsToJson(personList);
     }
 
-    private void afficherDetailsPersonne(Personne personne) {
+    private void afficherDetailsPersonne(Affaires personne) {
         if (personne != null) {
-            labelNom.setText(personne.getNom());
             labelPrenom.setText(personne.getPrenom());
-            labelAge.setText(String.valueOf(personne.getAge()));
-            labelFiche.setText(String.valueOf(personne.isFiche()));
+            labelDate.setText(personne.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            labelFiche.setText(personne.getEtatAffaire().toString()); // Affichez le statut de l'affaire ici
         } else {
-            labelNom.setText("");
             labelPrenom.setText("");
-            labelAge.setText("");
+            labelDate.setText("");
             labelFiche.setText("");
         }
     }
 
-
-    public void supprimerPersonne(Personne personne) {
+    public void supprimerPersonne(Affaires personne) {
         if (personne != null) {
             personList.remove(personne);
             JsonHandlerCase.writePersonsToJson(personList);
@@ -105,7 +99,7 @@ public class Menu_Controlleur {
             controller.setPersonList(personList);
 
             Stage stage = new Stage();
-            stage.setTitle("Ajouter une personne");
+            stage.setTitle("Ajouter une affaire");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
             stage.showAndWait();
@@ -117,7 +111,7 @@ public class Menu_Controlleur {
     }
 
     public void ouvrirFenetreModification() {
-        Personne selectedPerson = tableView.getSelectionModel().getSelectedItem();
+        Affaires selectedPerson = tableView.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/ajouter_view.fxml"));
@@ -128,7 +122,7 @@ public class Menu_Controlleur {
                 controller.setPersonneAModifier(selectedPerson);
 
                 Stage stage = new Stage();
-                stage.setTitle("Modifier une personne");
+                stage.setTitle("Modifier une affaire");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
@@ -139,10 +133,4 @@ public class Menu_Controlleur {
             }
         }
     }
-
-
-
-
-
-
 }
