@@ -55,7 +55,7 @@ public class Ajouter_Controlleur {
                 personneAModifier.setAge(age);
                 personneAModifier.setFiche(fiche);
             }
-            JsonHandler.writePersonsToJson(personList); // Met à jour le JSON
+            JsonHandlerCase.writePersonsToJson(personList); // Met à jour le JSON
             fermerFenetre();
         }
     }
