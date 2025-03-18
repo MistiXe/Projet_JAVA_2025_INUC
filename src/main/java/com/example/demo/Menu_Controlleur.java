@@ -49,7 +49,7 @@ public class Menu_Controlleur {
 
 
         // Charger les données du JSON
-        List<Personne> persons = JsonHandler.readPersonsFromJson();
+        List<Personne> persons = JsonHandlerCase.readPersonsFromJson();
         if (persons != null) {
             personList.addAll(persons);
         }
@@ -71,7 +71,7 @@ public class Menu_Controlleur {
     // Ajouter une nouvelle personne (ex: via un bouton)
     public void addPerson(Personne person) {
         personList.add(person);
-        JsonHandler.writePersonsToJson(personList);
+        JsonHandlerCase.writePersonsToJson(personList);
     }
 
     private void afficherDetailsPersonne(Personne personne) {
@@ -92,7 +92,7 @@ public class Menu_Controlleur {
     public void supprimerPersonne(Personne personne) {
         if (personne != null) {
             personList.remove(personne);
-            JsonHandler.writePersonsToJson(personList);
+            JsonHandlerCase.writePersonsToJson(personList);
         }
     }
 

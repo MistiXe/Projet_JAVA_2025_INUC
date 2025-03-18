@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class MenuMain extends Application {
 
     private Stage primaryStage;
-    private VBox rootLayout; // Remplace BorderPane par VBox
+    private AnchorPane rootLayout; // Remplace BorderPane par VBox
 
     @Override
     public void start(Stage primaryStage) {
@@ -28,9 +28,9 @@ public class MenuMain extends Application {
      */
     public void initRootLayout() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/hello-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/connexion_view.fxml"));
 
-            rootLayout = (VBox) loader.load();
+            rootLayout = (AnchorPane) loader.load();
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);

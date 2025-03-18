@@ -7,16 +7,16 @@ import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 
-public class JsonHandler {
-    private static final String RESOURCE_PATH = "/com/example/demo/bdd.json";
-    private static final String FILE_PATH = System.getProperty("user.home") + "/bdd.json";
+public class JsonHandlerCase {
+    private static final String RESOURCE_PATH = "/com/example/demo/liste_affaires.json";
+    private static final String FILE_PATH = System.getProperty("user.home") + "/liste_affaires.json";
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     // Copier le fichier JSON de resources vers un endroit modifiable s'il n'existe pas encore
     private static void copyResourceToFile() {
         File file = new File(FILE_PATH);
         if (!file.exists()) {
-            try (InputStream inputStream = JsonHandler.class.getResourceAsStream(RESOURCE_PATH)) {
+            try (InputStream inputStream = JsonHandlerCase.class.getResourceAsStream(RESOURCE_PATH)) {
                 if (inputStream == null) {
                     throw new IllegalArgumentException("Fichier JSON introuvable dans les ressources : " + RESOURCE_PATH);
                 }

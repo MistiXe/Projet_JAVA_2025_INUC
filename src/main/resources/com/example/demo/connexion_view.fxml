@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Avatar?>
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import com.gluonhq.charm.glisten.control.TextField?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Connexion_Controlleur">
+    <children>
+        <PasswordField fx:id="pass" layoutX="224.0" layoutY="192.0" promptText="Password" />
+        <TextField fx:id="user" floatText=" Username" layoutX="224.0" layoutY="145.0" prefHeight="27.0" prefWidth="151.0" />
+        <RadioButton layoutX="242.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Save Login" />
+        <Button fx:id="connexion" layoutX="261.0" layoutY="290.0" mnemonicParsing="false" text="Connexion" />
+        <Label  layoutX="226.0" layoutY="91.0" text="Se Connecter">
+            <font>
+                <Font size="25.0" />
+            </font>
+        </Label>
+        <Hyperlink layoutX="227.0" layoutY="218.0" text="Créer un compte" />
+    </children>
+</AnchorPane>
