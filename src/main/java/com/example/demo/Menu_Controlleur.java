@@ -41,7 +41,7 @@ public class Menu_Controlleur {
         // Lier les colonnes aux attributs de Person
         columnPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         columnFiche.setCellValueFactory(new PropertyValueFactory<>("etatAffaire"));
-
+        columnFiche.setText("Etat");
         // Formater la date dans la colonne
         columnDate.setCellValueFactory(param -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

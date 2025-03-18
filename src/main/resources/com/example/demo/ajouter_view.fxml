@@ -22,17 +22,13 @@
         <RowConstraints maxHeight="342.6666603088379" minHeight="10.0" prefHeight="175.66665140787762" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label text="Nom : ">
-            <font>
-                <Font size="23.0" />
-            </font>
-        </Label>
+
         <Label text="Prénom : " GridPane.rowIndex="1">
             <font>
                 <Font size="23.0" />
             </font>
         </Label>
-        <Label text="Age : " GridPane.rowIndex="2">
+        <Label text="Date : " GridPane.rowIndex="2">
             <font>
                 <Font size="23.0" />
             </font>
@@ -42,9 +38,9 @@
                 <Font size="23.0" />
             </font>
         </Label>
-        <TextField fx:id="nomField" prefHeight="24.0" prefWidth="300.0" GridPane.columnIndex="1" />
+
         <TextField fx:id="prenomField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <TextField fx:id="ageField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField fx:id="dateField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <TextField fx:id="ficheField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
         <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <buttons>
