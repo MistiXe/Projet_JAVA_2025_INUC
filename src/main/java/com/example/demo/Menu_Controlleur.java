@@ -104,7 +104,7 @@ public class Menu_Controlleur {
             Parent root = loader.load();
 
             Ajouter_Controlleur controller = loader.getController();
-            controller.setPersonList(personList);
+            controller.setPersonList(listeAffaires);
 
             Stage stage = new Stage();
             stage.setTitle("Ajouter une affaire");

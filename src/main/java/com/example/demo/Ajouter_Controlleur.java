@@ -1,8 +1,7 @@
 package com.example.demo;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -17,15 +16,23 @@ public class Ajouter_Controlleur {
     @FXML private TextField ficheField;
     @FXML private Button btnAjouter;
 
+    @FXML private DatePicker datePicker;
+    @FXML private TextField lieuField;
+    @FXML private TextField typeField;
+    @FXML private ComboBox<Affaire.Status> statusComboBox;
+    @FXML private Spinner<Integer> graviteSpinner;
+
     private List<Personne> personList;
     private List<Affaire> listeAffaire;
     private Personne personneAModifier;
 
+    private Affaire affaireAModifier;
+
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     // Définir la liste des affaires
-    public void setPersonList(List<Personne> personList) {
-        this.personList = personList;
+    public void setPersonList(List<Affaire> listeAffaire) {
+        this.listeAffaire = listeAffaire;
     }
 
     // Définir la personne à modifier (si applicable)
@@ -41,37 +48,45 @@ public class Ajouter_Controlleur {
 
     @FXML
     private void ajouterPersonne() {
-        String prenom = prenomField.getText().trim();
-        if (prenom.isEmpty()) {
-            System.err.println("Le prénom ne peut pas être vide !");
+        String lieu = lieuField.getText().trim();
+        if (lieu.isEmpty()) {
+            showAlert("Erreur de champ", "Le champ 'lieu' ne peut pas être vide !");
             return;
         }
 
-        LocalDate date;
-        try {
-            date = LocalDate.parse(dateField.getText().trim(), DATE_FORMATTER);
-        } catch (DateTimeParseException e) {
-            System.err.println("Erreur de format de date. Veuillez entrer une date au format 'yyyy-MM-dd'.");
+        String type = typeField.getText().trim();
+        if (type.isEmpty()) {
+            showAlert("Erreur de champ", "Le champ 'type' ne peut pas être vide !");
             return;
         }
 
-        EtatAffaire fiche;
-        try {
-            fiche = EtatAffaire.valueOf(ficheField.getText().trim().toUpperCase());
-        } catch (IllegalArgumentException e) {
-            System.err.println("État de l'affaire invalide. Exemples : 'EN_COURS', 'FERMEE'.");
-            return;
-        }
+        Affaire.Status status = statusComboBox.getValue();
+        int gravite = graviteSpinner.getValue();
 
-        if (personneAModifier == null) {
-            // Mode Ajout
-            Personne nouvelleAffaire = new Personne(prenom, date, fiche);
-            personList.add(nouvelleAffaire);
+        LocalDate date = datePicker.getValue();
+        if (date != null) {
+            System.out.println("Date sélectionnée : " + date);
         } else {
-            // Mode Modification
-            personneAModifier.setPrenom(prenom);
-            personneAModifier.setDate(date);
-            personneAModifier.setEtatAffaire(fiche);
+            showAlert("Erreur de date", "Aucune date sélectionné");
+        }
+//        try {
+//            date = LocalDate.parse(datePicker.getText().trim(), DATE_FORMATTER);
+//        } catch (DateTimeParseException e) {
+//            showAlert("Erreur de format de date", "Veuillez entrer une date au format 'yyyy-MM-dd'");
+//            return;
+//        }
+
+        if (affaireAModifier == null) {
+            // Mode Ajout
+            Affaire nouvelleAffaire = new Affaire(date, lieu, type, status, gravite);
+            listeAffaire.add(nouvelleAffaire);
+        } else {
+            // Mode Modifications
+            affaireAModifier.setLieu(lieu);
+            affaireAModifier.setDate(date);
+            affaireAModifier.setType(type);
+            affaireAModifier.setStatus(status);
+            affaireAModifier.setGravite(gravite);
         }
 
         // Sauvegarde des données mises à jour
@@ -83,5 +98,13 @@ public class Ajouter_Controlleur {
     private void fermerFenetre() {
         Stage stage = (Stage) btnAjouter.getScene().getWindow();
         stage.close();
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

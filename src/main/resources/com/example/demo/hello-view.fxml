@@ -119,10 +119,6 @@
                     <TableColumn fx:id="columnLieu" reorderable="false" text="Lieu" />
                     <TableColumn fx:id="columnType" prefWidth="97.0" reorderable="false" text="Type de Crime" />
                     <TableColumn fx:id="columnStatus" prefWidth="63.0" reorderable="false" text="Statut" />
-
-<!--                    <TableColumn fx:id="columnPrenom" text="Prénom" />-->
-<!--                    <TableColumn fx:id="columnDate" text="Date" />-->
-<!--                    <TableColumn fx:id="columnFiche" text="etataffaire" />-->
                 </columns>
             </TableView>
 
