@@ -1,13 +1,9 @@
 [
     {
-      "prenom": "Jean",
-      "etatAffaire": "DANGER",
-      "date": "2025-03-18"
-    },
-    {
-      "prenom": "Marie",
-      "etatAffaire": "FINI",
-      "date": "2025-03-19"
+      "date": "2025-03-18",
+      "lieu": "Skibidi avenue",
+      "type": "Meurtre de tv man",
+      "status": "SUSPENDUE"
     }
-  ]
+]
   

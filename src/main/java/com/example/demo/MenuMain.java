@@ -18,7 +18,7 @@ public class MenuMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Criminel");
+        this.primaryStage.setTitle("Login");
 
         initRootLayout();
     }

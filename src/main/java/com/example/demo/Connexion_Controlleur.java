@@ -41,7 +41,7 @@ public class Connexion_Controlleur {
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
-                stage.setTitle("Menu");
+                stage.setTitle("Crim'INUC");
                 stage.show();
                 Stage currentStage = (Stage) connexion.getScene().getWindow();
                 currentStage.close();

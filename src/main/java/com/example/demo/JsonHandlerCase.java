@@ -25,14 +25,14 @@ public class JsonHandlerCase {
      * Lecture des affaires depuis un fichier JSON dans les ressources.
      * @return Liste d'Affaires ou une liste vide en cas d'erreur.
      */
-    public static List<Affaires> readPersonsFromJson() {
+    public static List<Affaire> readPersonsFromJson() {
         try (InputStream inputStream = JsonHandlerCase.class.getResourceAsStream(RESOURCE_PATH)) {
             if (inputStream == null) {
                 System.err.println("Fichier JSON introuvable dans les ressources : " + RESOURCE_PATH);
                 return List.of();
             }
             System.out.println("Lecture du fichier JSON depuis les ressources : " + RESOURCE_PATH);
-            return objectMapper.readValue(inputStream, new TypeReference<List<Affaires>>() {});
+            return objectMapper.readValue(inputStream, new TypeReference<List<Affaire>>() {});
         } catch (IOException e) {
             System.err.println("Erreur lors de la lecture du fichier JSON : " + e.getMessage());
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class JsonHandlerCase {
      * Écriture de la liste des affaires dans un fichier externe.
      * @param affaires Liste des affaires à sauvegarder.
      */
-    public static void writePersonsToJson(List<Affaires> affaires) {
+    public static void writePersonsToJson(List<Affaire> affaires) {
         try {
             // Vérifier si le fichier existe, sinon le créer
             if (!Files.exists(Paths.get(OUTPUT_FILE))) {
