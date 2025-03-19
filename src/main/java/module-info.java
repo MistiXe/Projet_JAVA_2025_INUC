@@ -7,6 +7,8 @@ module com.example.demo {
     requires com.fasterxml.jackson.databind;
     requires com.gluonhq.charm.glisten;
     requires jbcrypt;
+    requires com.fasterxml.jackson.annotation;
+    requires javafx.controls;
 
 
     opens com.example.demo to javafx.fxml;
