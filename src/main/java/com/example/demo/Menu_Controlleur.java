@@ -16,10 +16,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Menu_Controlleur {
-    @FXML private TableView<Affaires> tableView;
-    @FXML private TableColumn<Affaires, String> columnPrenom;
-    @FXML private TableColumn<Affaires, String> columnDate;
-    @FXML private TableColumn<Affaires, Boolean> columnFiche;
+//    @FXML private TableView<Personne> tableView;
+//    @FXML private TableColumn<Personne, String> columnPrenom;
+//    @FXML private TableColumn<Personne, String> columnDate;
+//    @FXML private TableColumn<Personne, Boolean> columnFiche;
+
+    @FXML private TableView<Affaire> tableView;
+    @FXML private TableColumn<Affaire, String> columnDate;
+    @FXML private TableColumn<Affaire, String> columnLieu;
+    @FXML private TableColumn<Affaire, String> columnType;
+    @FXML private TableColumn<Affaire, Boolean> columnStatus;
 
     @FXML
     private Label labelPrenom;
@@ -34,14 +40,15 @@ public class Menu_Controlleur {
     @FXML
     private Button btnSupprimer;
 
-    private final ObservableList<Affaires> personList = FXCollections.observableArrayList();
+    private final ObservableList<Personne> personList = FXCollections.observableArrayList();
+    private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
         // Lier les colonnes aux attributs de Person
-        columnPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        columnFiche.setCellValueFactory(new PropertyValueFactory<>("etatAffaire"));
-        columnFiche.setText("Etat");
+        columnLieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
+        columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         // Formater la date dans la colonne
         columnDate.setCellValueFactory(param -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -49,29 +56,30 @@ public class Menu_Controlleur {
         });
 
         // Charger les données du JSON
-        List<Affaires> persons = JsonHandlerCase.readPersonsFromJson();
-        if (persons != null) {
-            personList.addAll(persons);
+        List<Affaire> affaires = JsonHandlerCase.readPersonsFromJson();
+        if (affaires != null) {
+            listeAffaires.addAll(affaires);
         }
-        tableView.setItems(personList);
+        tableView.setItems(listeAffaires);
 
-        // Action pour voir les données à droite
-        tableView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> afficherDetailsPersonne(newValue)
-        );
+//        // Action pour voir les données à droite
+//        tableView.getSelectionModel().selectedItemProperty().addListener(
+//                (observable, oldValue, newValue) -> afficherDetailsPersonne(newValue)
+//        );
 
-        if (!personList.isEmpty()) {
-            btnSupprimer.setOnAction(e -> supprimerPersonne(personList.get(tableView.getSelectionModel().getSelectedIndex())));
+        // S'il n'y a plus d'affaire judiciaire
+        if (!listeAffaires.isEmpty()) {
+            btnSupprimer.setOnAction(e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
         }
     }
 
     // Ajouter une nouvelle affaire (ex: via un bouton)
-    public void addPerson(Affaires person) {
-        personList.add(person);
-        JsonHandlerCase.writePersonsToJson(personList);
+    public void addPerson(Affaire affaire) {
+        listeAffaires.add(affaire);
+        JsonHandlerCase.writePersonsToJson(listeAffaires);
     }
 
-    private void afficherDetailsPersonne(Affaires personne) {
+    private void afficherDetailsPersonne(Personne personne) {
         if (personne != null) {
             labelPrenom.setText(personne.getPrenom());
             labelDate.setText(personne.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
@@ -83,10 +91,10 @@ public class Menu_Controlleur {
         }
     }
 
-    public void supprimerPersonne(Affaires personne) {
-        if (personne != null) {
-            personList.remove(personne);
-            JsonHandlerCase.writePersonsToJson(personList);
+    public void supprimerAffaire(Affaire affaire) {
+        if (affaire != null) {
+            listeAffaires.remove(affaire);
+            JsonHandlerCase.writePersonsToJson(listeAffaires);
         }
     }
 
@@ -110,27 +118,27 @@ public class Menu_Controlleur {
         }
     }
 
-    public void ouvrirFenetreModification() {
-        Affaires selectedPerson = tableView.getSelectionModel().getSelectedItem();
-        if (selectedPerson != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/ajouter_view.fxml"));
-                Parent root = loader.load();
-
-                Ajouter_Controlleur controller = loader.getController();
-                controller.setPersonList(personList);
-                controller.setPersonneAModifier(selectedPerson);
-
-                Stage stage = new Stage();
-                stage.setTitle("Modifier une affaire");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setScene(new Scene(root));
-                stage.showAndWait();
-
-                tableView.refresh();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    public void ouvrirFenetreModification() {
+//        Personne selectedPerson = tableView.getSelectionModel().getSelectedItem();
+//        if (selectedPerson != null) {
+//            try {
+//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/ajouter_view.fxml"));
+//                Parent root = loader.load();
+//
+//                Ajouter_Controlleur controller = loader.getController();
+//                controller.setPersonList(personList);
+//                controller.setPersonneAModifier(selectedPerson);
+//
+//                Stage stage = new Stage();
+//                stage.setTitle("Modifier une affaire");
+//                stage.initModality(Modality.APPLICATION_MODAL);
+//                stage.setScene(new Scene(root));
+//                stage.showAndWait();
+//
+//                tableView.refresh();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }

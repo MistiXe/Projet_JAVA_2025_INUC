@@ -17,18 +17,19 @@ public class Ajouter_Controlleur {
     @FXML private TextField ficheField;
     @FXML private Button btnAjouter;
 
-    private List<Affaires> personList;
-    private Affaires personneAModifier;
+    private List<Personne> personList;
+    private List<Affaire> listeAffaire;
+    private Personne personneAModifier;
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     // Définir la liste des affaires
-    public void setPersonList(List<Affaires> personList) {
+    public void setPersonList(List<Personne> personList) {
         this.personList = personList;
     }
 
     // Définir la personne à modifier (si applicable)
-    public void setPersonneAModifier(Affaires personne) {
+    public void setPersonneAModifier(Personne personne) {
         this.personneAModifier = personne;
         if (personne != null) {
             prenomField.setText(personne.getPrenom());
@@ -64,7 +65,7 @@ public class Ajouter_Controlleur {
 
         if (personneAModifier == null) {
             // Mode Ajout
-            Affaires nouvelleAffaire = new Affaires(prenom, date, fiche);
+            Personne nouvelleAffaire = new Personne(prenom, date, fiche);
             personList.add(nouvelleAffaire);
         } else {
             // Mode Modification
@@ -74,7 +75,7 @@ public class Ajouter_Controlleur {
         }
 
         // Sauvegarde des données mises à jour
-        JsonHandlerCase.writePersonsToJson(personList);
+        JsonHandlerCase.writePersonsToJson(listeAffaire);
         fermerFenetre();
     }
 
