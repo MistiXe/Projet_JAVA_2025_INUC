@@ -1,52 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.demo.Ajouter_Controlleur">
-    <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints maxHeight="211.33334350585938" minHeight="0.0" prefHeight="52.33332824707031" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="267.0" minHeight="0.0" prefHeight="56.66664886474609" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="342.6666603088379" minHeight="0.0" prefHeight="54.333323160807296" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="342.6666603088379" minHeight="10.0" prefHeight="71.66668192545575" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="342.6666603088379" minHeight="10.0" prefHeight="175.66665140787762" vgrow="SOMETIMES" />
-    </rowConstraints>
-    <children>
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.Ajouter_Controlleur">
 
-        <Label text="Prénom : " GridPane.rowIndex="1">
-            <font>
-                <Font size="23.0" />
-            </font>
-        </Label>
-        <Label text="Date : " GridPane.rowIndex="2">
-            <font>
-                <Font size="23.0" />
-            </font>
-        </Label>
-        <Label text="Fiché : " GridPane.rowIndex="3">
-            <font>
-                <Font size="23.0" />
-            </font>
-        </Label>
+    <Label text="Ajouter une Affaire" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
 
-        <TextField fx:id="prenomField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <TextField fx:id="dateField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <TextField fx:id="ficheField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-            <buttons>
-                <Button fx:id="btnAjouter" mnemonicParsing="false" prefHeight="33.0" text="Ajouter" onAction="#ajouterPersonne" />
-                <Button fx:id="btnAnnuler" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" text="Annuler" onAction="#fermerFenetre" />
-            </buttons>
-        </ButtonBar>
-    </children>
-</GridPane>
+    <Label text="Date de l'affaire :" />
+    <DatePicker fx:id="datePicker" />
+
+    <Label text="Lieu de l'affaire :" />
+    <TextField fx:id="lieuField" promptText="Entrez le lieu" />
+
+    <Label text="Type d'affaire :" />
+    <TextField fx:id="typeField" promptText="Ex: Vol, Homicide, Fraude" />
+
+    <Label text="Statut de l'affaire :" />
+    <ComboBox fx:id="statusComboBox" />
+
+    <Label text="Gravité de l'affaire (1 à 10) :" />
+    <Spinner fx:id="graviteSpinner" min="1" max="10" initialValue="5"/>
+
+    <Button text="Ajouter" fx:id="btnAjouter" onAction="#ajouterPersonne" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+
+</VBox>
