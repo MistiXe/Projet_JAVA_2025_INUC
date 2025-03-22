@@ -10,7 +10,6 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class Ajouter_Controlleur {
-
     @FXML private TextField prenomField;
     @FXML private TextField dateField;
     @FXML private TextField ficheField;
@@ -29,6 +28,10 @@ public class Ajouter_Controlleur {
 
     private Affaire affaireAModifier;
 
+    @FXML
+    public void initialize() {
+        statusComboBox.getItems().setAll(Affaire.Status.values());
+    }
 
     // Définir la liste des affaires
     public void setPersonList(List<Affaire> listeAffaire) {
@@ -39,9 +42,11 @@ public class Ajouter_Controlleur {
     public void setAffaireAModifier(Affaire affaire) {
         this.affaireAModifier = affaire;
 
+        datePicker.setValue(affaire.getDate());
         lieuField.setText(affaire.getLieu());
         typeField.setText(affaire.getType());
         statusComboBox.setValue(affaire.getStatus());
+        graviteSpinner.getValueFactory().setValue(affaire.getGravite());
         btnAjouter.setText("Modifier");  // Change le bouton pour indiquer modification
         ajouterViewTitle.setText("Modifier une affaire");
     }

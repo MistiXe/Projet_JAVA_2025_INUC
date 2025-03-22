@@ -40,12 +40,11 @@ public class Menu_Controlleur {
     @FXML
     private Button btnSupprimer;
 
-    private final ObservableList<Personne> personList = FXCollections.observableArrayList();
     private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
-        // Lier les colonnes aux attributs de Person
+        // Lier les colonnes aux attributs de Affaire
         columnLieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
         columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
         columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));

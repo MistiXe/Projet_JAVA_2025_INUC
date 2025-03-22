@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="758.0" prefWidth="646.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Menu_Controlleur">
+<BorderPane prefHeight="759.0" prefWidth="913.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Menu_Controlleur">
 
     <!-- Barre de recherche avancée + filtre de dates -->
     <top>
@@ -57,7 +57,7 @@
          </SplitPane>
          <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 10 -10 10 -10;">
             <children>
-               <MenuBar id="header" prefHeight="64.0" prefWidth="646.0">
+               <MenuBar id="header" prefHeight="28.0" prefWidth="1018.0">
                  <menus>
                      <Menu text="Fichier">
                          <MenuItem fx:id="openFile" text="Ouvrir" />
@@ -145,8 +145,8 @@
 
                 <ButtonBar layoutX="159.0" layoutY="316.0" prefHeight="45.0" prefWidth="271.0">
                     <buttons>
-                        <Button fx:id="btnAjouter" mnemonicParsing="false" text="Ajouter" onAction="#ajouterFenetre" />
-                        <Button fx:id="btnModifier" mnemonicParsing="false" text="Modifier" onAction="#ouvrirFenetreModification" />
+                        <Button fx:id="btnAjouter" mnemonicParsing="false" onAction="#ajouterFenetre" text="Ajouter" />
+                        <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#ouvrirFenetreModification" text="Modifier" />
                         <Button fx:id="btnSupprimer" mnemonicParsing="false" text="Supprimer" />
                     </buttons>
                 </ButtonBar>
