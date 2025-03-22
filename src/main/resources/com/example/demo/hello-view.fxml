@@ -60,7 +60,7 @@
                <Insets bottom="-10.0" left="-10.0" right="-10.0" top="-10.0" />
             </VBox.margin>
          </SplitPane>
-         <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 10 -10 10 -10;">
+
             <children>
                <MenuBar id="header" prefHeight="64.0" prefWidth="646.0">
                  <menus>
@@ -91,20 +91,12 @@
                  </menus>
                </MenuBar>
             </children>
-         </HBox>
-            <HBox spacing="10" style="-fx-padding: 10;">
+            <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10;">
                 <TextField fx:id="searchField" promptText="Rechercher une affaire..." />
                 <Button fx:id="searchButton" text="Rechercher" />
-            </HBox>
-
-            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
                 <DatePicker fx:id="dateDebut" promptText="Date début" />
+                <DatePicker fx:id="dateFin1" promptText="Date fin" />
             </HBox>
-         <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="56.0" spacing="10" style="-fx-padding: 10;">
-            <children>
-               <DatePicker fx:id="dateFin1" promptText="Date fin" />
-            </children>
-         </HBox>
         </VBox>
     </top>
 
