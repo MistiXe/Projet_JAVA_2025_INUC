@@ -8,10 +8,16 @@
     import javafx.print.PrinterJob;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
+    import javafx.scene.chart.BarChart;
+    import javafx.scene.chart.XYChart;
     import javafx.scene.control.*;
     import javafx.scene.control.cell.PropertyValueFactory;
     import javafx.scene.image.Image;
     import javafx.scene.image.ImageView;
+    import javafx.scene.layout.Pane;
+    import javafx.scene.paint.Color;
+    import javafx.scene.shape.Circle;
+    import javafx.scene.shape.Line;
     import javafx.stage.Modality;
     import javafx.stage.Stage;
     import org.apache.pdfbox.pdmodel.PDDocument;
@@ -21,6 +27,7 @@
     
     import java.io.IOException;
     import java.time.format.DateTimeFormatter;
+    import java.util.ArrayList;
     import java.util.List;
     
     
@@ -31,7 +38,7 @@
     //    @FXML private TableColumn<Personne, String> columnPrenom;
     //    @FXML private TableColumn<Personne, String> columnDate;
     //    @FXML private TableColumn<Personne, Boolean> columnFiche;
-    
+        @FXML private BarChart<String, Number> barChart;
         @FXML private TableView<Affaire> tableView;
         @FXML private TableColumn<Affaire, String> columnDate;
         @FXML private TableColumn<Affaire, String> columnLieu;
@@ -53,6 +60,8 @@
         private Button btnModifier;
         @FXML
         private Button btnSupprimer;
+
+        @FXML private Pane graphContainer;
     
         private final ObservableList<Personne> personList = FXCollections.observableArrayList();
         private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
@@ -254,6 +263,25 @@
                 }
             }
         }
+
+        @FXML
+        public void genererGraphique() {
+            barChart.getData().clear(); // Nettoyer le graphique existant
+
+            // Création des données
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            series.setName("Affaires par type de crime");
+
+            // Ajouter des données fictives (remplace par des données de ta base)
+            series.getData().add(new XYChart.Data<>("Vol", 10));
+            series.getData().add(new XYChart.Data<>("Fraude", 7));
+            series.getData().add(new XYChart.Data<>("Homicide", 4));
+            series.getData().add(new XYChart.Data<>("Cybercrime", 6));
+
+            // Ajouter la série au graphique
+            barChart.getData().add(series);
+        }
+
 
 
 

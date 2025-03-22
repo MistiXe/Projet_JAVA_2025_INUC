@@ -7,6 +7,9 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
 <BorderPane prefHeight="758.0" prefWidth="646.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Menu_Controlleur">
 
     <!-- Barre de recherche avancée + filtre de dates -->
@@ -165,7 +168,15 @@
             <Tab text="Analyse des Liens">
                 <VBox spacing="10" style="-fx-padding: 10;">
                     <Text text="Graphique des connexions" />
-                    <Button fx:id="generateGraphButton" text="Générer le graphe" />
+                    <Button fx:id="generateGraphButton" text="Générer le graphe"  onAction="#genererGraphique"/>
+                    <BarChart fx:id="barChart" title="Répartition des affaires" prefWidth="500" prefHeight="400">
+                        <xAxis>
+                            <CategoryAxis label="Types de crimes" />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Nombre d'affaires" />
+                        </yAxis>
+                    </BarChart>
                 </VBox>
             </Tab>
             <Tab text="Collaboration">
