@@ -5,6 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <BorderPane prefHeight="758.0" prefWidth="646.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Menu_Controlleur">
 
     <!-- Barre de recherche avancée + filtre de dates -->
@@ -70,9 +72,11 @@
                          <MenuItem fx:id="addCase" text="Ajouter" />
                          <MenuItem fx:id="editCase" text="Modifier" />
                          <MenuItem fx:id="deleteCase" text="Supprimer" />
-                     </Menu>
+                         <SeparatorMenuItem />
+                             <MenuItem fx:id="convertPDF" text="Convertir en PDF" onAction="#convertirEnPDF">
 
-                     <Menu text="Analyse">
+
+                             </MenuItem>
                          <MenuItem fx:id="generateGraph" text="Générer un graphe des connexions" />
                      </Menu>
 

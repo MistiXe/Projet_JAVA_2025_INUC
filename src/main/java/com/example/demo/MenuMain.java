@@ -28,7 +28,7 @@ public class MenuMain extends Application {
      */
     public void initRootLayout() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/connexion_view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("connexion_view.fxml"));
 
             rootLayout = (AnchorPane) loader.load();
 
