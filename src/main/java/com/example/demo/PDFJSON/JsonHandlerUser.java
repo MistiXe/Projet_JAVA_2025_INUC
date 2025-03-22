@@ -1,6 +1,6 @@
     package com.example.demo.PDFJSON;
 
-    import com.example.demo.Utilisateur;
+    import com.example.demo.Patrons.Utilisateur;
     import com.fasterxml.jackson.databind.ObjectMapper;
 
     import java.io.InputStream;

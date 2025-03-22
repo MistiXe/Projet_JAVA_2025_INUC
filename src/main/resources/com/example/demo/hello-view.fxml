@@ -10,7 +10,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
-<BorderPane prefHeight="758.0" prefWidth="646.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Menu_Controlleur">
+<BorderPane prefHeight="758.0" prefWidth="646.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controlleur.Menu_Controlleur">
 
     <!-- Barre de recherche avancée + filtre de dates -->
     <top>

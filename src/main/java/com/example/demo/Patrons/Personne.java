@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.example.demo.Patrons;
 
 import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Personne {

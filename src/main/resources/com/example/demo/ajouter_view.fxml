@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.Ajouter_Controlleur">
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.Controlleur.Ajouter_Controlleur">
 
     <Label text="Ajouter une Affaire" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
 
