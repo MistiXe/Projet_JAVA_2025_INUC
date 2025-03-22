@@ -26,6 +26,7 @@ public class Menu_Controlleur {
     @FXML private TableColumn<Affaire, String> columnLieu;
     @FXML private TableColumn<Affaire, String> columnType;
     @FXML private TableColumn<Affaire, Boolean> columnStatus;
+    @FXML private TableColumn<Affaire, Integer> columnGravite;
 
     @FXML
     private Label labelPrenom;
@@ -48,6 +49,7 @@ public class Menu_Controlleur {
         columnLieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
         columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
         columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        columnGravite.setCellValueFactory(new PropertyValueFactory<>("gravite"));
         // Formater la date dans la colonne
         columnDate.setCellValueFactory(param -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

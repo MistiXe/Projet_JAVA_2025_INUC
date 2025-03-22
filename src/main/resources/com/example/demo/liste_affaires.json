@@ -3,7 +3,8 @@
       "date": "2025-03-18",
       "lieu": "Skibidi avenue",
       "type": "Meurtre de tv man",
-      "status": "SUSPENDUE"
+      "status": "SUSPENDUE",
+      "gravite": 5
     }
 ]
   
