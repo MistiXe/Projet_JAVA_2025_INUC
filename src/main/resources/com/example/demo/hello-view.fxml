@@ -146,7 +146,7 @@
                 <ButtonBar layoutX="159.0" layoutY="316.0" prefHeight="45.0" prefWidth="271.0">
                     <buttons>
                         <Button fx:id="btnAjouter" mnemonicParsing="false" text="Ajouter" onAction="#ajouterFenetre" />
-<!--                        <Button fx:id="btnModifier" mnemonicParsing="false" text="Modifier" onAction="#ouvrirFenetreModification" />-->
+                        <Button fx:id="btnModifier" mnemonicParsing="false" text="Modifier" onAction="#ouvrirFenetreModification" />
                         <Button fx:id="btnSupprimer" mnemonicParsing="false" text="Supprimer" />
                     </buttons>
                 </ButtonBar>

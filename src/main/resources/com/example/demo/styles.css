@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.root {
+    -fx-font-family: 'Rubik';
+    -fx-font-weight: 400;
+}
+
 #header {
     -fx-background-color: #cccccc;
 }

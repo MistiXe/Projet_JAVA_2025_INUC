@@ -15,6 +15,7 @@ public class Ajouter_Controlleur {
     @FXML private TextField dateField;
     @FXML private TextField ficheField;
     @FXML private Button btnAjouter;
+    @FXML private Label ajouterViewTitle;
 
     @FXML private DatePicker datePicker;
     @FXML private TextField lieuField;
@@ -28,22 +29,21 @@ public class Ajouter_Controlleur {
 
     private Affaire affaireAModifier;
 
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     // Définir la liste des affaires
     public void setPersonList(List<Affaire> listeAffaire) {
         this.listeAffaire = listeAffaire;
     }
 
-    // Définir la personne à modifier (si applicable)
-    public void setPersonneAModifier(Personne personne) {
-        this.personneAModifier = personne;
-        if (personne != null) {
-            prenomField.setText(personne.getPrenom());
-            dateField.setText(personne.getDate().format(DATE_FORMATTER)); // Formatage en texte
-            ficheField.setText(personne.getEtatAffaire().toString());  // Affichage de l'état
-            btnAjouter.setText("Modifier");  // Change le bouton pour indiquer modification
-        }
+    // Définir l'affaire à modifier
+    public void setAffaireAModifier(Affaire affaire) {
+        this.affaireAModifier = affaire;
+
+        lieuField.setText(affaire.getLieu());
+        typeField.setText(affaire.getType());
+        statusComboBox.setValue(affaire.getStatus());
+        btnAjouter.setText("Modifier");  // Change le bouton pour indiquer modification
+        ajouterViewTitle.setText("Modifier une affaire");
     }
 
     @FXML
@@ -69,12 +69,6 @@ public class Ajouter_Controlleur {
         } else {
             showAlert("Erreur de date", "Aucune date sélectionné");
         }
-//        try {
-//            date = LocalDate.parse(datePicker.getText().trim(), DATE_FORMATTER);
-//        } catch (DateTimeParseException e) {
-//            showAlert("Erreur de format de date", "Veuillez entrer une date au format 'yyyy-MM-dd'");
-//            return;
-//        }
 
         if (affaireAModifier == null) {
             // Mode Ajout

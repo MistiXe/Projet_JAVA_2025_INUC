@@ -67,7 +67,7 @@ public class Menu_Controlleur {
 //                (observable, oldValue, newValue) -> afficherDetailsPersonne(newValue)
 //        );
 
-        // S'il n'y a plus d'affaire judiciaire
+        // S'il y a des affaires judiciaires
         if (!listeAffaires.isEmpty()) {
             btnSupprimer.setOnAction(e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
         }
@@ -118,27 +118,27 @@ public class Menu_Controlleur {
         }
     }
 
-//    public void ouvrirFenetreModification() {
-//        Personne selectedPerson = tableView.getSelectionModel().getSelectedItem();
-//        if (selectedPerson != null) {
-//            try {
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/ajouter_view.fxml"));
-//                Parent root = loader.load();
-//
-//                Ajouter_Controlleur controller = loader.getController();
-//                controller.setPersonList(personList);
-//                controller.setPersonneAModifier(selectedPerson);
-//
-//                Stage stage = new Stage();
-//                stage.setTitle("Modifier une affaire");
-//                stage.initModality(Modality.APPLICATION_MODAL);
-//                stage.setScene(new Scene(root));
-//                stage.showAndWait();
-//
-//                tableView.refresh();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+    public void ouvrirFenetreModification() {
+        Affaire selectedAffaire = tableView.getSelectionModel().getSelectedItem();
+        if (selectedAffaire != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/ajouter_view.fxml"));
+                Parent root = loader.load();
+
+                Ajouter_Controlleur controller = loader.getController();
+                controller.setPersonList(listeAffaires);
+                controller.setAffaireAModifier(selectedAffaire);
+
+                Stage stage = new Stage();
+                stage.setTitle("Modification - affaire " + selectedAffaire.getDate().toString());
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+
+                tableView.refresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
