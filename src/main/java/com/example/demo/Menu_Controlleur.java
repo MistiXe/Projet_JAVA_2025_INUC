@@ -5,6 +5,7 @@
     import javafx.collections.ObservableList;
     import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
+    import javafx.print.PrinterJob;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
     import javafx.scene.control.*;
@@ -38,6 +39,7 @@
         @FXML private TableColumn<Affaire, Boolean> columnStatus;
     
         @FXML private MenuItem convertPDF;
+        @FXML private MenuItem printTable;
     
         @FXML
         private Label labelPrenom;
@@ -65,6 +67,11 @@
             pdfIcon.setFitWidth(16);
             pdfIcon.setFitHeight(16);
             convertPDF.setGraphic(pdfIcon);
+
+            ImageView printIcon = new ImageView(new Image(getClass().getResourceAsStream("/com/example/demo/imprimante.png")));
+            printIcon.setFitWidth(16);
+            printIcon.setFitHeight(16);
+            printTable.setGraphic(printIcon);
 
 
             // Lier les colonnes aux attributs de Person
@@ -213,7 +220,7 @@
                     contentStream.close();
 
                     // Sauvegarde du PDF
-                    String cheminSortie = "compte_rendu_affaire.pdf";
+                    String cheminSortie = "compte_rendu_affaire " + affaireSelectionnee.getDate() + ".pdf";
                     document.save(cheminSortie);
                     document.close();
 
@@ -226,6 +233,28 @@
                 showAlert("Alerte", "Veuillez sélectionner une affaire avant de convertir en PDF.");
             }
         }
+
+
+
+        @FXML private Button btnImprimer;
+
+        @FXML
+        private void imprimerTable() {
+            PrinterJob job = PrinterJob.createPrinterJob();
+            if (job != null) {
+                boolean proceed = job.showPrintDialog(tableView.getScene().getWindow()); // Ouvre la boîte de dialogue d'impression
+                if (proceed) {
+                    boolean success = job.printPage(tableView);
+                    if (success) {
+                        job.endJob();
+                        showAlert("Succès", "Impression terminée avec succès !");
+                    } else {
+                        showAlert("Erreur", "Erreur lors de l'impression.");
+                    }
+                }
+            }
+        }
+
 
 
         private void showAlert(String titre, String message) {
