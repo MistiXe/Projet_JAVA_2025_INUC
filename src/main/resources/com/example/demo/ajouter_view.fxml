@@ -6,28 +6,24 @@
 
 <BorderPane prefHeight="443.0" prefWidth="299.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Ajouter_Controlleur">
    <center>
-      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-         
-                <Label text="Date de l'affaire :" />
-             <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="261.0" />
-         
-                <Label text="Lieu de l'affaire :" />
-             <TextField fx:id="lieuField" promptText="Entrez le lieu" />
-         
-                <Label text="Type d'affaire :" />
-             <TextField fx:id="typeField" promptText="Ex: Vol, Homicide, Fraude" />
-         
-                <Label text="Statut de l'affaire :" />
-             <ComboBox fx:id="statusComboBox" prefHeight="33.0" prefWidth="264.0" />
-         
-                <Label text="Gravité de l'affaire (1 à 10) :" />
-             <Spinner fx:id="graviteSpinner" editable="true" initialValue="1" max="10" min="1" prefHeight="25.0" prefWidth="269.0" />
-         </children>
-      </VBox>
+       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+           <Label text="Date de l'affaire :"/>
+           <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="261.0"/>
+
+           <Label text="Lieu de l'affaire :"/>
+           <TextField fx:id="lieuField" promptText="Entrez le lieu"/>
+
+           <Label text="Type d'affaire :"/>
+           <TextField fx:id="typeField" promptText="Ex: Vol, Homicide, Fraude"/>
+
+           <Label text="Statut de l'affaire :"/>
+           <ComboBox fx:id="statusComboBox" prefHeight="33.0" prefWidth="264.0"/>
+
+           <Label text="Gravité de l'affaire (1 à 10) :"/>
+           <Spinner fx:id="graviteSpinner" editable="true" initialValue="1" max="10" min="1" prefHeight="25.0" prefWidth="269.0"/>
+       </VBox>
    </center>
    <top>
-   
        <Label fx:id="ajouterViewTitle" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Ajouter une affaire" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="30.0" />
@@ -35,8 +31,7 @@
       </Label>
    </top>
    <bottom>
-   
-          <Button fx:id="btnAjouter" onAction="#ajouterPersonne" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Ajouter" BorderPane.alignment="CENTER">
+       <Button fx:id="btnAjouter" onAction="#ajouterPersonne" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Ajouter" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </padding>

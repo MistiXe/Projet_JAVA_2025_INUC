@@ -5,14 +5,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class Ajouter_Controlleur {
-    @FXML private TextField prenomField;
-    @FXML private TextField dateField;
-    @FXML private TextField ficheField;
     @FXML private Button btnAjouter;
     @FXML private Label ajouterViewTitle;
 
@@ -22,10 +17,7 @@ public class Ajouter_Controlleur {
     @FXML private ComboBox<Affaire.Status> statusComboBox;
     @FXML private Spinner<Integer> graviteSpinner;
 
-    private List<Personne> personList;
     private List<Affaire> listeAffaire;
-    private Personne personneAModifier;
-
     private Affaire affaireAModifier;
 
     @FXML
@@ -56,6 +48,7 @@ public class Ajouter_Controlleur {
         String lieu = lieuField.getText().trim();
         if (lieu.isEmpty()) {
             showAlert("Erreur de champ", "Le champ 'lieu' ne peut pas être vide !");
+
             return;
         }
 

@@ -16,11 +16,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Menu_Controlleur {
-//    @FXML private TableView<Personne> tableView;
-//    @FXML private TableColumn<Personne, String> columnPrenom;
-//    @FXML private TableColumn<Personne, String> columnDate;
-//    @FXML private TableColumn<Personne, Boolean> columnFiche;
-
     @FXML private TableView<Affaire> tableView;
     @FXML private TableColumn<Affaire, String> columnDate;
     @FXML private TableColumn<Affaire, String> columnLieu;
@@ -28,16 +23,6 @@ public class Menu_Controlleur {
     @FXML private TableColumn<Affaire, Boolean> columnStatus;
     @FXML private TableColumn<Affaire, Integer> columnGravite;
 
-    @FXML
-    private Label labelPrenom;
-    @FXML
-    private Label labelDate;
-    @FXML
-    private Label labelFiche;
-    @FXML
-    private Button btnAjouter;
-    @FXML
-    private Button btnModifier;
     @FXML
     private Button btnSupprimer;
 
@@ -74,23 +59,18 @@ public class Menu_Controlleur {
         }
     }
 
-    // Ajouter une nouvelle affaire (ex: via un bouton)
-    public void addPerson(Affaire affaire) {
-        listeAffaires.add(affaire);
-        JsonHandlerCase.writePersonsToJson(listeAffaires);
-    }
 
-    private void afficherDetailsPersonne(Personne personne) {
-        if (personne != null) {
-            labelPrenom.setText(personne.getPrenom());
-            labelDate.setText(personne.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            labelFiche.setText(personne.getEtatAffaire().toString()); // Affichez le statut de l'affaire ici
-        } else {
-            labelPrenom.setText("");
-            labelDate.setText("");
-            labelFiche.setText("");
-        }
-    }
+//    private void afficherDetailsPersonne(Personne personne) {
+//        if (personne != null) {
+//            labelPrenom.setText(personne.getPrenom());
+//            labelDate.setText(personne.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+//            labelFiche.setText(personne.getEtatAffaire().toString()); // Affichez le statut de l'affaire ici
+//        } else {
+//            labelPrenom.setText("");
+//            labelDate.setText("");
+//            labelFiche.setText("");
+//        }
+//    }
 
     public void supprimerAffaire(Affaire affaire) {
         if (affaire != null) {

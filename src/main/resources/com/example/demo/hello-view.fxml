@@ -10,80 +10,70 @@
     <!-- Barre de recherche avancée + filtre de dates -->
     <top>
         <VBox prefHeight="78.0" prefWidth="646.0" style="-fx-padding: 10;">
-         <SplitPane id="header" dividerPositions="0.5" prefHeight="47.0" prefWidth="301.0">
-            <items>
-               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <Text fill="#ff1515" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
+            <SplitPane id="header" dividerPositions="0.5" prefHeight="47.0" prefWidth="301.0">
+                <opaqueInsets>
+                    <Insets/>
+                </opaqueInsets>
+                <VBox.margin>
+                    <Insets bottom="-10.0" left="-10.0" right="-10.0" top="-10.0"/>
+                </VBox.margin>
+                <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                    <padding>
+                        <Insets left="10.0"/>
+                    </padding>
+                    <Text fill="#ff1515" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
                         <font>
-                           <Font name="Poppins Black" size="31.0" />
+                            <Font name="Poppins Black" size="31.0"/>
                         </font>
                         <HBox.margin>
-                           <Insets />
+                            <Insets/>
                         </HBox.margin>
-                     </Text>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="inuc" textOrigin="CENTER">
+                    </Text>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="inuc" textOrigin="CENTER">
                         <font>
-                           <Font name="Poppins Black" size="18.0" />
+                            <Font name="Poppins Black" size="18.0"/>
                         </font>
                         <HBox.margin>
-                           <Insets top="20.0" />
+                            <Insets top="20.0"/>
                         </HBox.margin>
-                     </Text>
-                  </children>
-                  <padding>
-                     <Insets left="10.0" />
-                  </padding>
-               </HBox>
-               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <Text fill="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="v0.2.1">
+                    </Text>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                    <padding>
+                        <Insets right="10.0"/>
+                    </padding>
+                    <Text fill="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="v0.2.1">
                         <font>
-                           <Font name="Poppins Regular" size="13.0" />
+                            <Font name="Poppins Regular" size="13.0"/>
                         </font>
-                     </Text>
-                  </children>
-                  <padding>
-                     <Insets right="10.0" />
-                  </padding>
-               </HBox>
-            </items>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <VBox.margin>
-               <Insets bottom="-10.0" left="-10.0" right="-10.0" top="-10.0" />
-            </VBox.margin>
-         </SplitPane>
-         <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 10 -10 10 -10;">
-            <children>
-               <MenuBar id="header" prefHeight="28.0" prefWidth="1018.0">
-                 <menus>
-                     <Menu text="Fichier">
-                         <MenuItem fx:id="openFile" text="Ouvrir" />
-                         <MenuItem fx:id="saveFile" text="Enregistrer" />
-                         <SeparatorMenuItem />
-                         <MenuItem fx:id="exitApp" text="Quitter" />
-                     </Menu>
+                    </Text>
+                </HBox>
+            </SplitPane>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 10 -10 10 -10;">
+                <MenuBar id="header" prefHeight="28.0" prefWidth="1018.0">
+                    <Menu text="Fichier">
+                        <MenuItem fx:id="openFile" text="Ouvrir"/>
+                        <MenuItem fx:id="saveFile" text="Enregistrer"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem fx:id="exitApp" text="Quitter"/>
+                    </Menu>
 
-                     <Menu text="Affaires">
-                         <MenuItem fx:id="addCase" text="Ajouter" />
-                         <MenuItem fx:id="editCase" text="Modifier" />
-                         <MenuItem fx:id="deleteCase" text="Supprimer" />
-                     </Menu>
+                    <Menu text="Affaires">
+                        <MenuItem fx:id="addCase" text="Ajouter"/>
+                        <MenuItem fx:id="editCase" text="Modifier"/>
+                        <MenuItem fx:id="deleteCase" text="Supprimer"/>
+                    </Menu>
 
-                     <Menu text="Analyse">
-                         <MenuItem fx:id="generateGraph" text="Générer un graphe des connexions" />
-                     </Menu>
+                    <Menu text="Analyse">
+                        <MenuItem fx:id="generateGraph" text="Générer un graphe des connexions"/>
+                    </Menu>
 
-                     <Menu text="Aide">
-                         <MenuItem fx:id="aboutApp" text="À propos" />
-                         <MenuItem fx:id="helpSupport" text="Support" />
-                     </Menu>
-                 </menus>
-               </MenuBar>
-            </children>
-         </HBox>
+                    <Menu text="Aide">
+                        <MenuItem fx:id="aboutApp" text="À propos"/>
+                        <MenuItem fx:id="helpSupport" text="Support"/>
+                    </Menu>
+                </MenuBar>
+            </HBox>
             <HBox spacing="10" style="-fx-padding: 10;">
                 <TextField fx:id="searchField" promptText="Rechercher une affaire..." />
                 <Button fx:id="searchButton" text="Rechercher" />
@@ -92,27 +82,15 @@
             <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
                 <DatePicker fx:id="dateDebut" promptText="Date début" />
             </HBox>
-         <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="56.0" spacing="10" style="-fx-padding: 10;">
-            <children>
-               <DatePicker fx:id="dateFin1" promptText="Date fin" />
-            </children>
-         </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="56.0" spacing="10" style="-fx-padding: 10;">
+                <DatePicker fx:id="dateFin1" promptText="Date fin"/>
+            </HBox>
         </VBox>
     </top>
 
     <center>
-        <SplitPane dividerPositions="0.5" orientation="HORIZONTAL">
+        <SplitPane dividerPositions="0.5">
             <!-- Liste des affaires -->
-<!--            <TableView fx:id="tableView" layoutY="-1.0" prefHeight="375.0" prefWidth="187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">-->
-<!--                <columns>-->
-<!--                    <TableColumn fx:id="columnPrenom" text="Prénom" />-->
-<!--                    <TableColumn fx:id="columnDate" text="Date" />-->
-<!--                    <TableColumn fx:id="columnFiche" text="etataffaire" />-->
-<!--                </columns>-->
-<!--                <columnResizePolicy>-->
-<!--                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />-->
-<!--                </columnResizePolicy>-->
-<!--            </TableView>-->
             <TableView fx:id="tableView">
                 <columns>
                     <TableColumn fx:id="columnDate" reorderable="false" text="Date" />
@@ -134,16 +112,6 @@
 <!--                <Label fx:id="detailCrimeType" />-->
 <!--                <Label text="Statut:" />-->
 <!--                <Label fx:id="detailStatus" />-->
-
-<!--                <Label prefHeight="25.0" prefWidth="53.0" text="Prénom :" GridPane.rowIndex="1" />-->
-<!--                <Label text="Age :" GridPane.rowIndex="2" />-->
-<!--                <Label text="Fiché : " GridPane.rowIndex="3" />-->
-
-<!--                &lt;!&ndash; Labels pour afficher les infos &ndash;&gt;-->
-<!--                <Label fx:id="labelPrenom" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />-->
-<!--                <Label fx:id="labelDate" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />-->
-<!--                <Label fx:id="labelFiche" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />-->
-
                 <ButtonBar layoutX="159.0" layoutY="316.0" prefHeight="45.0" prefWidth="271.0">
                     <buttons>
                         <Button fx:id="btnAjouter" mnemonicParsing="false" onAction="#ajouterFenetre" text="Ajouter" />
@@ -170,7 +138,6 @@
                     <Button fx:id="publishCommentButton" text="Publier" />
                 </VBox>
             </Tab>
-
         </TabPane>
     </bottom>
 </BorderPane>

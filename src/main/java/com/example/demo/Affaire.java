@@ -18,7 +18,7 @@ public class Affaire {
         SUSPENDUE,
         CLOTUREE,
         REOUVERTE
-    };
+    }
     public Status status;
     private int gravite;
 
