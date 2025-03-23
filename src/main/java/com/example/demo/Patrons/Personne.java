@@ -1,11 +1,11 @@
-package com.example.demo;
+package com.example.demo.Patrons;
 
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Personne {
     private String prenom;
