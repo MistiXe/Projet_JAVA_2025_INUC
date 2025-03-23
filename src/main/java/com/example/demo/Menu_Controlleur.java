@@ -23,8 +23,7 @@ public class Menu_Controlleur {
     @FXML private TableColumn<Affaire, Boolean> columnStatus;
     @FXML private TableColumn<Affaire, Integer> columnGravite;
 
-    @FXML
-    private Button btnSupprimer;
+    @FXML private Button btnSupprimer;
 
     private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
 
@@ -42,7 +41,7 @@ public class Menu_Controlleur {
         });
 
         // Charger les données du JSON
-        List<Affaire> affaires = JsonHandlerCase.readPersonsFromJson();
+        List<Affaire> affaires = JsonHandlerCase.readCasesFromJson();
         if (affaires != null) {
             listeAffaires.addAll(affaires);
         }
@@ -85,7 +84,7 @@ public class Menu_Controlleur {
             Parent root = loader.load();
 
             Ajouter_Controlleur controller = loader.getController();
-            controller.setPersonList(listeAffaires);
+            controller.setAffaireList(listeAffaires);
 
             Stage stage = new Stage();
             stage.setTitle("Ajouter une affaire");
@@ -107,7 +106,7 @@ public class Menu_Controlleur {
                 Parent root = loader.load();
 
                 Ajouter_Controlleur controller = loader.getController();
-                controller.setPersonList(listeAffaires);
+                controller.setAffaireList(listeAffaires);
                 controller.setAffaireAModifier(selectedAffaire);
 
                 Stage stage = new Stage();

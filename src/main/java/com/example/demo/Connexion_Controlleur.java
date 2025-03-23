@@ -9,15 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 
 public class Connexion_Controlleur {
-
-
     @FXML private TextField user;
     @FXML private PasswordField pass;
     @FXML private Button connexion;
@@ -45,10 +42,6 @@ public class Connexion_Controlleur {
                 stage.show();
                 Stage currentStage = (Stage) connexion.getScene().getWindow();
                 currentStage.close();
-
-
-
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -64,5 +57,4 @@ public class Connexion_Controlleur {
         alert.setContentText(content);
         alert.showAndWait();
     }
-
 }

@@ -26,7 +26,7 @@ public class Ajouter_Controlleur {
     }
 
     // Définir la liste des affaires
-    public void setPersonList(List<Affaire> listeAffaire) {
+    public void setAffaireList(List<Affaire> listeAffaire) {
         this.listeAffaire = listeAffaire;
     }
 
