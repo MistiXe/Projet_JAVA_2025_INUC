@@ -1,4 +1,4 @@
-package com.example.demo.PDFJSON;
+package com.example.demo.Patrons;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,7 +18,7 @@ public class Affaire {
         SUSPENDUE,
         CLOTUREE,
         REOUVERTE
-    };
+    }
     public Status status;
     private int gravite;
 

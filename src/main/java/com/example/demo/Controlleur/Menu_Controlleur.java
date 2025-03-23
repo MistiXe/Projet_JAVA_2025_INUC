@@ -1,8 +1,7 @@
     package com.example.demo.Controlleur;
-    
-    import com.example.demo.PDFJSON.Affaire;
+
+    import com.example.demo.Patrons.Affaire;
     import com.example.demo.PDFJSON.JsonHandlerCase;
-    import com.example.demo.Patrons.Personne;
     import javafx.collections.FXCollections;
     import javafx.collections.ObservableList;
     import javafx.fxml.FXML;
@@ -23,53 +22,33 @@
     import org.apache.pdfbox.pdmodel.PDPage;
     import org.apache.pdfbox.pdmodel.PDPageContentStream;
     import org.apache.pdfbox.pdmodel.font.PDType1Font;
-    
+
     import java.io.IOException;
     import java.time.format.DateTimeFormatter;
     import java.util.List;
-    
-    
-    
-    
+
+
+
+
     public class Menu_Controlleur {
-    //    @FXML private TableView<Personne> tableView;
-    //    @FXML private TableColumn<Personne, String> columnPrenom;
-    //    @FXML private TableColumn<Personne, String> columnDate;
-    //    @FXML private TableColumn<Personne, Boolean> columnFiche;
         @FXML private BarChart<String, Number> barChart;
         @FXML private TableView<Affaire> tableView;
         @FXML private TableColumn<Affaire, String> columnDate;
         @FXML private TableColumn<Affaire, String> columnLieu;
         @FXML private TableColumn<Affaire, String> columnType;
         @FXML private TableColumn<Affaire, Boolean> columnStatus;
-    
+        @FXML private TableColumn<Affaire, Integer> columnGravite;
+
         @FXML private MenuItem convertPDF;
         @FXML private MenuItem printTable;
-    
-        @FXML
-        private Label labelPrenom;
-        @FXML
-        private Label labelDate;
-        @FXML
-        private Label labelFiche;
-        @FXML
-        private Button btnAjouter;
-        @FXML
-        private Button btnModifier;
-        @FXML
-        private Button btnSupprimer;
-
         @FXML private Pane graphContainer;
-    
-        private final ObservableList<Personne> personList = FXCollections.observableArrayList();
+
+        @FXML private Button btnSupprimer;
+
         private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
     
         @FXML
         private void initialize() {
-
-
-
-
             ImageView pdfIcon = new ImageView(new Image(getClass().getResourceAsStream("/com/example/demo/format-de-fichier-pdf.png")));
             pdfIcon.setFitWidth(16);
             pdfIcon.setFitHeight(16);
@@ -85,6 +64,7 @@
             columnLieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
             columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
             columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+            columnGravite.setCellValueFactory(new PropertyValueFactory<>("gravite"));
             // Formater la date dans la colonne
             columnDate.setCellValueFactory(param -> {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -92,7 +72,7 @@
             });
     
             // Charger les données du JSON
-            List<Affaire> affaires = JsonHandlerCase.readPersonsFromJson();
+            List<Affaire> affaires = JsonHandlerCase.readCasesFromJson();
             if (affaires != null) {
                 listeAffaires.addAll(affaires);
             }
@@ -102,31 +82,26 @@
     //        tableView.getSelectionModel().selectedItemProperty().addListener(
     //                (observable, oldValue, newValue) -> afficherDetailsPersonne(newValue)
     //        );
-    
-            // S'il n'y a plus d'affaire judiciaire
+
+            // S'il y a des affaires judiciaires
             if (!listeAffaires.isEmpty()) {
                 btnSupprimer.setOnAction(e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
             }
         }
-    
-        // Ajouter une nouvelle affaire (ex: via un bouton)
-        public void addPerson(Affaire affaire) {
-            listeAffaires.add(affaire);
-            JsonHandlerCase.writePersonsToJson(listeAffaires);
-        }
-    
-        private void afficherDetailsPersonne(Personne personne) {
-            if (personne != null) {
-                labelPrenom.setText(personne.getPrenom());
-                labelDate.setText(personne.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-                labelFiche.setText(personne.getEtatAffaire().toString()); // Affichez le statut de l'affaire ici
-            } else {
-                labelPrenom.setText("");
-                labelDate.setText("");
-                labelFiche.setText("");
-            }
-        }
-    
+
+
+//        private void afficherDetailsPersonne(Personne personne) {
+//            if (personne != null) {
+//                labelPrenom.setText(personne.getPrenom());
+//                labelDate.setText(personne.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+//                labelFiche.setText(personne.getEtatAffaire().toString()); // Affichez le statut de l'affaire ici
+//            } else {
+//                labelPrenom.setText("");
+//                labelDate.setText("");
+//                labelFiche.setText("");
+//            }
+//        }
+
         public void supprimerAffaire(Affaire affaire) {
             if (affaire != null) {
                 listeAffaires.remove(affaire);
@@ -140,7 +115,7 @@
                 Parent root = loader.load();
     
                 Ajouter_Controlleur controller = loader.getController();
-                controller.setPersonList(listeAffaires);
+                controller.setAffaireList(listeAffaires);
     
                 Stage stage = new Stage();
                 stage.setTitle("Ajouter une affaire");
@@ -290,27 +265,28 @@
             alert.setContentText(message);
             alert.showAndWait();
         }
-    //    public void ouvrirFenetreModification() {
-    //        Personne selectedPerson = tableView.getSelectionModel().getSelectedItem();
-    //        if (selectedPerson != null) {
-    //            try {
-    //                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/ajouter_view.fxml"));
-    //                Parent root = loader.load();
-    //
-    //                Ajouter_Controlleur controller = loader.getController();
-    //                controller.setPersonList(personList);
-    //                controller.setPersonneAModifier(selectedPerson);
-    //
-    //                Stage stage = new Stage();
-    //                stage.setTitle("Modifier une affaire");
-    //                stage.initModality(Modality.APPLICATION_MODAL);
-    //                stage.setScene(new Scene(root));
-    //                stage.showAndWait();
-    //
-    //                tableView.refresh();
-    //            } catch (IOException e) {
-    //                e.printStackTrace();
-    //            }
-    //        }
-    //    }
+
+        public void ouvrirFenetreModification() {
+            Affaire selectedAffaire = tableView.getSelectionModel().getSelectedItem();
+            if (selectedAffaire != null) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/ajouter_view.fxml"));
+                    Parent root = loader.load();
+
+                    Ajouter_Controlleur controller = loader.getController();
+                    controller.setAffaireList(listeAffaires);
+                    controller.setAffaireAModifier(selectedAffaire);
+
+                    Stage stage = new Stage();
+                    stage.setTitle("Modification - affaire " + selectedAffaire.getDate().toString());
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.setScene(new Scene(root));
+                    stage.showAndWait();
+
+                    tableView.refresh();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }

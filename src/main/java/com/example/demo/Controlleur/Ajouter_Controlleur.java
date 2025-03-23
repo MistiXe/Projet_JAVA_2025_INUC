@@ -1,22 +1,17 @@
 package com.example.demo.Controlleur;
 
-import com.example.demo.PDFJSON.Affaire;
+import com.example.demo.Patrons.Affaire;
 import com.example.demo.PDFJSON.JsonHandlerCase;
-import com.example.demo.Patrons.Personne;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Ajouter_Controlleur {
-
-    @FXML private TextField prenomField;
-    @FXML private TextField dateField;
-    @FXML private TextField ficheField;
     @FXML private Button btnAjouter;
+    @FXML private Label ajouterViewTitle;
 
     @FXML private DatePicker datePicker;
     @FXML private TextField lieuField;
@@ -24,28 +19,31 @@ public class Ajouter_Controlleur {
     @FXML private ComboBox<Affaire.Status> statusComboBox;
     @FXML private Spinner<Integer> graviteSpinner;
 
-    private List<Personne> personList;
     private List<Affaire> listeAffaire;
-    private Personne personneAModifier;
-
     private Affaire affaireAModifier;
 
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    @FXML
+    public void initialize() {
+        statusComboBox.getItems().setAll(Affaire.Status.values());
+    }
 
     // Définir la liste des affaires
-    public void setPersonList(List<Affaire> listeAffaire) {
+    public void setAffaireList(List<Affaire> listeAffaire) {
         this.listeAffaire = listeAffaire;
     }
 
-    // Définir la personne à modifier (si applicable)
-    public void setPersonneAModifier(Personne personne) {
-        this.personneAModifier = personne;
-        if (personne != null) {
-            prenomField.setText(personne.getPrenom());
-            dateField.setText(personne.getDate().format(DATE_FORMATTER)); // Formatage en texte
-            ficheField.setText(personne.getEtatAffaire().toString());  // Affichage de l'état
-            btnAjouter.setText("Modifier");  // Change le bouton pour indiquer modification
-        }
+    // Définir l'affaire à modifier
+    public void setAffaireAModifier(Affaire affaire) {
+        this.affaireAModifier = affaire;
+
+        datePicker.setValue(affaire.getDate());
+        lieuField.setText(affaire.getLieu());
+        typeField.setText(affaire.getType());
+        statusComboBox.setValue(affaire.getStatus());
+        graviteSpinner.getValueFactory().setValue(affaire.getGravite());
+        btnAjouter.setText("Modifier");  // Change le bouton pour indiquer modification
+        ajouterViewTitle.setText("Modifier une affaire");
     }
 
     @FXML
@@ -53,6 +51,7 @@ public class Ajouter_Controlleur {
         String lieu = lieuField.getText().trim();
         if (lieu.isEmpty()) {
             showAlert("Erreur de champ", "Le champ 'lieu' ne peut pas être vide !");
+
             return;
         }
 
@@ -71,12 +70,6 @@ public class Ajouter_Controlleur {
         } else {
             showAlert("Erreur de date", "Aucune date sélectionné");
         }
-//        try {
-//            date = LocalDate.parse(datePicker.getText().trim(), DATE_FORMATTER);
-//        } catch (DateTimeParseException e) {
-//            showAlert("Erreur de format de date", "Veuillez entrer une date au format 'yyyy-MM-dd'");
-//            return;
-//        }
 
         if (affaireAModifier == null) {
             // Mode Ajout

@@ -16,8 +16,6 @@ import java.io.IOException;
 
 
 public class Connexion_Controlleur {
-
-
     @FXML private TextField user;
     @FXML private PasswordField pass;
     @FXML private Button connexion;
@@ -55,13 +53,12 @@ public class Connexion_Controlleur {
                 // Fermer la fenêtre actuelle
                 Stage currentStage = (Stage) connexion.getScene().getWindow();
                 currentStage.close();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
 
-
-    } else {
+        else {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Identifiants incorrects.");
         }
     }
@@ -73,5 +70,4 @@ public class Connexion_Controlleur {
         alert.setContentText(content);
         alert.showAndWait();
     }
-
 }

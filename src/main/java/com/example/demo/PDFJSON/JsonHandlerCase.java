@@ -1,5 +1,6 @@
 package com.example.demo.PDFJSON;
 
+import com.example.demo.Patrons.Affaire;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -25,7 +26,7 @@ public class JsonHandlerCase {
      * Lecture des affaires depuis un fichier JSON dans les ressources.
      * @return Liste d'Affaires ou une liste vide en cas d'erreur.
      */
-    public static List<Affaire> readPersonsFromJson() {
+    public static List<Affaire> readCasesFromJson() {
         try (InputStream inputStream = JsonHandlerCase.class.getResourceAsStream(RESOURCE_PATH)) {
             if (inputStream == null) {
                 System.err.println("Fichier JSON introuvable dans les ressources : " + RESOURCE_PATH);
