@@ -13,23 +13,32 @@
 <BorderPane prefHeight="758.0" prefWidth="900.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controlleur.Menu_Controlleur">
     <top>
         <VBox prefHeight="78.0" prefWidth="646.0" style="-fx-padding: 10;">
-            <SplitPane dividerPositions="0.5" prefHeight="47.0" prefWidth="301.0">
+            <SplitPane id="header" dividerPositions="0.5" prefHeight="47.0" prefWidth="301.0">
                 <opaqueInsets>
                     <Insets/>
                 </opaqueInsets>
+                <VBox.margin>
+                    <Insets bottom="-10.0" left="-10.0" right="-10.0" top="-10.0"/>
+                </VBox.margin>
                 <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                     <padding>
                         <Insets left="10.0"/>
                     </padding>
-                    <Text fill="#ff1515" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
+                    <Text id="logo" fill="#ff1515" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
                         <font>
                             <Font size="31.0"/>
                         </font>
+                        <HBox.margin>
+                            <Insets/>
+                        </HBox.margin>
                     </Text>
-                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="inuc" textOrigin="CENTER">
+                    <Text id="logo" strokeType="OUTSIDE" strokeWidth="0.0" text="inuc" textOrigin="CENTER">
                         <font>
                             <Font size="18.0"/>
                         </font>
+                        <HBox.margin>
+                            <Insets top="20.0"/>
+                        </HBox.margin>
                     </Text>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
@@ -43,24 +52,30 @@
                     </Text>
                 </HBox>
             </SplitPane>
-            <HBox style="-fx-padding: 10 -10 10 -10;">
-                <MenuBar>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 10 -10 10 -10;">
+                <MenuBar id="header" prefHeight="28.0" prefWidth="1018.0">
                     <Menu text="Fichier">
                         <MenuItem fx:id="openFile" text="Ouvrir"/>
                         <MenuItem fx:id="saveFile" text="Enregistrer"/>
                         <SeparatorMenuItem/>
                         <MenuItem fx:id="exitApp" text="Quitter"/>
                     </Menu>
+
                     <Menu text="Affaires">
                         <MenuItem fx:id="addCase" text="Ajouter"/>
                         <MenuItem fx:id="editCase" text="Modifier"/>
                         <MenuItem fx:id="deleteCase" text="Supprimer"/>
                         <MenuItem fx:id="printTable" text="Imprimer" onAction="#imprimerTable"/>
-                        <SeparatorMenuItem/>
-                        <MenuItem fx:id="convertPDF" text="Convertir en PDF" onAction="#convertirEnPDF"/>
-                        <MenuItem fx:id="generateGraph" text="Générer un graphe des connexions" onAction="#toggleGraphique"/>
-                        <MenuItem fx:id="collab" text="Collaborations" onAction="#toggleCollaboration"/>
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="convertPDF" text="Convertir en PDF" onAction="#convertirEnPDF">
                     </Menu>
+
+                    <Menu text="Fenêtre">
+                        <MenuItem fx:id="generateGraph" text="Graphe des connexions" onAction="#toggleGraphique" />
+                        <MenuItem fx:id="collab" text="Collaborations" onAction="#toggleCollaboration" />
+                    </Menu>
+
+
                     <Menu text="Aide">
                         <MenuItem fx:id="aboutApp" text="À propos"/>
                         <MenuItem fx:id="helpSupport" text="Support"/>
