@@ -4,15 +4,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
-<BorderPane prefHeight="758.0" prefWidth="646.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controlleur.Menu_Controlleur">
 
-    <!-- Barre de recherche avancée + filtre de dates -->
+<BorderPane prefHeight="758.0" prefWidth="900.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controlleur.Menu_Controlleur">
     <top>
         <VBox prefHeight="78.0" prefWidth="646.0" style="-fx-padding: 10;">
             <SplitPane id="header" dividerPositions="0.5" prefHeight="47.0" prefWidth="301.0">
@@ -70,12 +68,12 @@
                         <MenuItem fx:id="printTable" text="Imprimer" onAction="#imprimerTable"/>
                         <SeparatorMenuItem />
                         <MenuItem fx:id="convertPDF" text="Convertir en PDF" onAction="#convertirEnPDF">
-
-
-                        </MenuItem>
-                        <MenuItem fx:id="generateGraph" text="Générer un graphe des connexions" />
                     </Menu>
 
+                    <Menu text="Fenêtre">
+                        <MenuItem fx:id="generateGraph" text="Graphe des connexions" onAction="#toggleGraphique" />
+                        <MenuItem fx:id="collab" text="Collaborations" onAction="#toggleCollaboration" />
+                    </Menu>
 
 
                     <Menu text="Aide">
@@ -84,76 +82,59 @@
                     </Menu>
                 </MenuBar>
             </HBox>
-            <HBox spacing="10" style="-fx-padding: 10;">
-                <TextField fx:id="searchField" promptText="Rechercher une affaire..." />
-                <Button fx:id="searchButton" text="Rechercher" />
-            </HBox>
-
-            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
-                <DatePicker fx:id="dateDebut" promptText="Date début" />
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="56.0" spacing="10" style="-fx-padding: 10;">
+            <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10;">
+                <TextField fx:id="searchField" promptText="Rechercher une affaire..."/>
+                <DatePicker fx:id="dateDebut" promptText="Date début"/>
                 <DatePicker fx:id="dateFin1" promptText="Date fin"/>
+                <Button fx:id="searchButton" text="Rechercher"/>
             </HBox>
         </VBox>
     </top>
 
     <center>
         <SplitPane dividerPositions="0.5">
-            <!-- Liste des affaires -->
             <TableView fx:id="tableView">
                 <columns>
-                    <TableColumn fx:id="columnDate" reorderable="false" text="Date" />
-                    <TableColumn fx:id="columnLieu" reorderable="false" text="Lieu" />
-                    <TableColumn fx:id="columnType" prefWidth="97.0" reorderable="false" text="Type de Crime" />
-                    <TableColumn fx:id="columnStatus" prefWidth="63.0" reorderable="false" text="Statut" />
-                    <TableColumn fx:id="columnGravite" prefWidth="63.0" reorderable="false" text="Gravité" />
+                    <TableColumn fx:id="columnDate" text="Date"/>
+                    <TableColumn fx:id="columnLieu" text="Lieu"/>
+                    <TableColumn fx:id="columnType" text="Type de Crime"/>
+                    <TableColumn fx:id="columnStatus" text="Statut"/>
+                    <TableColumn fx:id="columnGravite" text="Gravité"/>
                 </columns>
             </TableView>
-
-            <!-- Détails de l'affaire sélectionnée -->
             <VBox spacing="10" style="-fx-padding: 10;">
-                <Text style="-fx-font-size: 16; -fx-font-weight: bold;" text="Détails de l'affaire" />
-<!--                <Label text="Date:" />-->
-<!--                <Label fx:id="detailDate" />-->
-<!--                <Label text="Lieu:" />-->
-<!--                <Label fx:id="detailLocation" />-->
-<!--                <Label text="Type de Crime:" />-->
-<!--                <Label fx:id="detailCrimeType" />-->
-<!--                <Label text="Statut:" />-->
-<!--                <Label fx:id="detailStatus" />-->
-                <ButtonBar layoutX="159.0" layoutY="316.0" prefHeight="45.0" prefWidth="271.0">
+                <Text style="-fx-font-size: 16; -fx-font-weight: bold;" text="Détails de l'affaire"/>
+                <ButtonBar>
                     <buttons>
-                        <Button fx:id="btnAjouter" mnemonicParsing="false" onAction="#ajouterFenetre" text="Ajouter" />
-                        <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#ouvrirFenetreModification" text="Modifier" />
-                        <Button fx:id="btnSupprimer" mnemonicParsing="false" text="Supprimer" />
+                        <Button fx:id="btnAjouter" onAction="#ajouterFenetre" text="Ajouter"/>
+                        <Button fx:id="btnModifier" onAction="#ouvrirFenetreModification" text="Modifier"/>
+                        <Button fx:id="btnSupprimer" text="Supprimer"/>
                     </buttons>
                 </ButtonBar>
             </VBox>
         </SplitPane>
     </center>
 
-    <!-- Section d'analyse et de collaboration -->
     <bottom>
-        <TabPane>
+        <TabPane fx:id="tabPane" managed ="false" visible="false" maxHeight="400">
             <Tab text="Analyse des Liens">
                 <VBox spacing="10" style="-fx-padding: 10;">
-                    <Text text="Graphique des connexions" />
-                    <Button fx:id="generateGraphButton" text="Générer le graphe"  onAction="#genererGraphique"/>
+                    <Text text="Graphique des connexions"/>
+                    <Button fx:id="generateGraphButton" text="Générer le graphe" onAction="#genererGraphique"/>
                     <BarChart fx:id="barChart" title="Répartition des affaires" prefWidth="500" prefHeight="400">
                         <xAxis>
-                            <CategoryAxis label="Types de crimes" />
+                            <CategoryAxis label="Types de crimes"/>
                         </xAxis>
                         <yAxis>
-                            <NumberAxis label="Nombre d'affaires" />
+                            <NumberAxis label="Nombre d'affaires"/>
                         </yAxis>
                     </BarChart>
                 </VBox>
             </Tab>
             <Tab text="Collaboration">
                 <VBox spacing="10" style="-fx-padding: 10;">
-                    <TextArea fx:id="commentsArea" promptText="Ajouter un commentaire..." />
-                    <Button fx:id="publishCommentButton" text="Publier" />
+                    <TextArea fx:id="commentsArea" promptText="Ajouter un commentaire..."/>
+                    <Button fx:id="publishCommentButton" text="Publier"/>
                 </VBox>
             </Tab>
         </TabPane>
