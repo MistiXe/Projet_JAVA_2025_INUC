@@ -67,7 +67,7 @@
                         <MenuItem fx:id="deleteCase" text="Supprimer"/>
                         <MenuItem fx:id="printTable" text="Imprimer" onAction="#imprimerTable"/>
                         <SeparatorMenuItem />
-                        <MenuItem fx:id="convertPDF" text="Convertir en PDF" onAction="#convertirEnPDF">
+                        <MenuItem fx:id="convertPDF" text="Convertir en PDF" onAction="#convertirEnPDF"/>
                     </Menu>
 
                     <Menu text="Fenêtre">
