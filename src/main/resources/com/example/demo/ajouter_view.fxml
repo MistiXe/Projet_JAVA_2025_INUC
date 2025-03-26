@@ -21,9 +21,6 @@
 
            <Label text="Gravité de l'affaire (1 à 10) :"/>
            <Spinner fx:id="graviteSpinner" editable="true" initialValue="1" max="10" min="1" prefHeight="25.0" prefWidth="269.0"/>
-
-           <Label text="Description de l'affaire :"/>
-           <TextArea fx:id="descriptionArea" promptText="Entrez la description ici" wrapText="true" prefHeight="100.0" prefWidth="269.0"/>
        </VBox>
    </center>
    <top>
