@@ -1,28 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@font-face {
+    -fx-font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf');
+}
 
+@font-face {
+    -fx-font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf');
+}
 
-#logo {
-    -fx-font-family: 'Poppins Black', sans-serif;
-    -fx-font-style: normal;
+@font-face {
+    -fx-font-family: 'Poppins-Black';
+    src: url('fonts/Poppins-Black.ttf');
 }
 
 .root {
-    -fx-font-family: 'Rubik';
-    -fx-font-weight: 400;
+    -fx-font-family: 'Poppins';
+    -fx-background-color: #e3e3e3;
+}
+
+
+#logo {
+    -fx-font-family: 'Poppins Black';
 }
 
 #header {
-    -fx-background-color: #cccccc;
+    -fx-background-color: #cdcdcd;
 }
 
-/*.split-pane {*/
-/*    -fx-padding: 0;*/
-/*    -fx-border-width: 0;*/
-/*}*/
+MenuBar {
+    -fx-background-color: transparent;
+}
+
+.labelDetail {
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+}
+
+.bleu {
+    -fx-background-color: #4a90e2;
+}
+
+.violet {
+    -fx-background-color: #9b59b6;
+}
+
+.vert {
+    -fx-background-color: #2ecc71;
+}
+
+.rouge {
+    -fx-background-color: #e74c3c;
+}
+
+.orange {
+    -fx-background-color: #f39c12;
+}
+
+.bleu-clair {
+    -fx-background-color: #3498db;
+}
+
+.rouge-foncé {
+    -fx-background-color: #c0392b;
+}
+
+#vboxDetailAffaire {
+    -fx-padding: 20px;
+    -fx-background-radius: 20px;
+}
 
 .split-pane:horizontal > .split-pane-divider,
 .split-pane:vertical > .split-pane-divider {
     -fx-padding: 0;
     -fx-background-color: #7070f6;
     -fx-border-width: 0;
+}
+
+Button {
+    -fx-font-family: 'Poppins Bold';
+    -fx-font-size: 13px;
+    -fx-padding: 10px 20px 10px 20px;
+    -fx-background-radius: 20px;
+    -fx-background-color: #a8a8a8;
 }
