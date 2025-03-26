@@ -43,6 +43,7 @@ public class Ajouter_Controlleur {
         statusComboBox.setValue(affaire.getStatus());
         graviteSpinner.getValueFactory().setValue(affaire.getGravite());
         btnAjouter.setText("Modifier");  // Change le bouton pour indiquer modification
+        btnAjouter.getStyleClass().clear();
         ajouterViewTitle.setText("Modifier une affaire");
     }
 

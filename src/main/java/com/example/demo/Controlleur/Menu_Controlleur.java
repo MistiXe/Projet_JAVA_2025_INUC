@@ -44,6 +44,9 @@ public class Menu_Controlleur {
     private TableColumn<Affaire, Integer> columnGravite;
 
     @FXML
+    private TextArea detailDescription;
+
+    @FXML
     private MenuItem convertPDF;
     @FXML
     private MenuItem printTable;
@@ -94,10 +97,10 @@ public class Menu_Controlleur {
         }
         tableView.setItems(listeAffaires);
 
-        // // Action pour voir les données à droite
-        // tableView.getSelectionModel().selectedItemProperty().addListener(
-        // (observable, oldValue, newValue) -> afficherDetailsPersonne(newValue)
-        // );
+         // Action pour voir les données à droite
+         tableView.getSelectionModel().selectedItemProperty().addListener(
+         (observable, oldValue, newValue) -> afficherDetailsPersonne(newValue)
+         );
 
         // S'il y a des affaires judiciaires
         if (!listeAffaires.isEmpty()) {
@@ -106,18 +109,10 @@ public class Menu_Controlleur {
         }
     }
 
-    // private void afficherDetailsPersonne(Personne personne) {
-    // if (personne != null) {
-    // labelPrenom.setText(personne.getPrenom());
-    // labelDate.setText(personne.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-    // labelFiche.setText(personne.getEtatAffaire().toString()); // Affichez le
-    // statut de l'affaire ici
-    // } else {
-    // labelPrenom.setText("");
-    // labelDate.setText("");
-    // labelFiche.setText("");
-    // }
-    // }
+     private void afficherDetailsPersonne(Affaire affaire) {
+        System.out.println("afficherDetailsPersonne " + affaire.getDescription());
+        detailDescription.setText(affaire.getDescription());
+     }
 
     public void supprimerAffaire(Affaire affaire) {
         if (affaire != null) {

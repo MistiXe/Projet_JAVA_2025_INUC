@@ -185,10 +185,41 @@
 /* ------------------------------------------------------------- */
 /* ------------------ DETAILS DE L'AFFAIRE --------------------- */
 /* ------------------------------------------------------------- */
+#affaireTitreDetail {
+    -fx-font-size: 16;
+    -fx-font-family: 'Poppins Bold';
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: black;
+}
+
 .labelDetail {
+    -fx-font-family: 'Poppins Bold';
     -fx-padding: 10px;
     -fx-background-radius: 10px;
 }
+
+
+.detail-text-zone {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-border-width: 0;
+    -fx-text-fill: black;
+    -fx-padding: 0 0 10px 0;
+}
+
+.detail-text-zone .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.detail-text-zone .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.detail-text-zone .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
 /* ------------------------------------------------------------- */
 /* ------------------------------------------------------------- */
 
@@ -229,6 +260,8 @@
     -fx-border-width: 4px;
     -fx-border-color: #000000;
 }
+/* -------------------------------------------------- */
+/* -------------------------------------------------- */
 
 
 
@@ -265,7 +298,7 @@
     -fx-background-color: #3498db;
 }
 
-.rouge-foncé {
+.rouge-fonce {
     -fx-background-color: #c0392b;
 }
 
