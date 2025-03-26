@@ -8,10 +8,13 @@
 
 <BorderPane prefHeight="758.0" prefWidth="900.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controlleur.Menu_Controlleur">
     <top>
-        <VBox id="header" spacing="10">
+        <VBox id="header">
             <HBox alignment="CENTER_LEFT" style="-fx-padding: 10;">
                 <Text id="logo" fill="#ff1515" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
                     <font><Font size="35.0" /></font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
                 </Text>
                 <Text id="logo" strokeType="OUTSIDE" strokeWidth="0.0" text="inuc" textOrigin="CENTER">
                     <font><Font size="18.0" /></font>
@@ -22,6 +25,9 @@
                 <Pane HBox.hgrow="ALWAYS" />
                 <Text fill="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="v0.2.1">
                     <font><Font size="13.0" /></font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
                 </Text>
             </HBox>
 
@@ -37,7 +43,6 @@
                     <MenuItem fx:id="editCase" text="Modifier" />
                     <MenuItem fx:id="deleteCase" text="Supprimer" />
                     <MenuItem fx:id="printTable" onAction="#imprimerTable" text="Imprimer" />
-                    <SeparatorMenuItem />
                     <MenuItem fx:id="convertPDF" onAction="#convertirEnPDF" text="Convertir en PDF" />
                 </Menu>
                 <Menu text="Fenêtre">
@@ -64,7 +69,7 @@
 
             <SplitPane dividerPositions="0.333">
                 <!-- Liste des affaires -->
-                <VBox spacing="10" VBox.vgrow="ALWAYS">
+                <VBox VBox.vgrow="ALWAYS">
                     <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
                         <columns>
                             <TableColumn fx:id="columnDate" reorderable="false" text="Date" />
@@ -75,15 +80,15 @@
                         </columns>
                     </TableView>
 
-                    <HBox alignment="CENTER" spacing="10" style="-fx-padding: 10px;">
-                        <Button styleClass="vert" fx:id="btnAjouter" onAction="#ajouterFenetre" text="Ajouter" />
+                    <HBox alignment="CENTER" spacing="10" style="-fx-padding: 10px; -fx-background-color: #e3e3e3;">
+                        <Button fx:id="btnAjouter" onAction="#ajouterFenetre" styleClass="vert" text="Ajouter" />
                         <Button fx:id="btnModifier" onAction="#ouvrirFenetreModification" text="Modifier" />
-                        <Button styleClass="rouge" fx:id="btnSupprimer" text="Supprimer" />
+                        <Button fx:id="btnSupprimer" styleClass="rouge" text="Supprimer" />
                     </HBox>
                 </VBox>
 
                 <!-- Détails des affaires -->
-                <VBox spacing="10" VBox.vgrow="ALWAYS" style="-fx-padding: 20px;">
+                <VBox spacing="10" style="-fx-padding: 20px;" VBox.vgrow="ALWAYS">
                     <Text style="-fx-font-size: 16; -fx-font-weight: bold;" text="Détails de l'affaire sélectionnée" />
 
                     <Label text="Description :" />

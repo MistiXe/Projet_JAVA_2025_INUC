@@ -18,7 +18,9 @@
     -fx-background-color: #e3e3e3;
 }
 
-
+/* ---------------------------------------------- */
+/* ------------------- HEADER ------------------- */
+/* ---------------------------------------------- */
 #logo {
     -fx-font-family: 'Poppins Black';
 }
@@ -27,15 +29,186 @@
     -fx-background-color: #cdcdcd;
 }
 
-MenuBar {
+
+/* Style de base pour la MenuBar */
+.menu-bar {
+    -fx-background-color: transparent;
+
+}
+
+/* Style des menus (items principaux) */
+.menu {
     -fx-background-color: transparent;
 }
 
+/* Style au survol */
+.menu:hover {
+    -fx-background-color: #1a35ff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+/* Style quand le menu est ouvert */
+.menu:showing {
+    -fx-background-color: #0021d6;
+    -fx-background-radius: 13px 13px 0px 0px;
+    -fx-border-radius: 13px 13px 0px 0px;
+}
+
+.context-menu {
+    -fx-border-radius: 0px 13px 13px 13px;
+    -fx-background-radius: 0px 13px 13px 13px;
+    -fx-border-color: white;
+}
+
+.menu-item {
+    -fx-padding: 5px 10px;
+    -fx-background-insets: 2px 5px; /* Ajustement crucial */
+}
+
+.menu-item:focused {
+    -fx-background-color: #92acff;
+    -fx-border-radius: 13px ;
+    -fx-background-radius: 13px;
+}
+
+/* Correction pour le séparateur */
+.separator-menu-item .line {
+    -fx-border-color: derive(white, 20%);
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 3px 0;
+}
+
+/* ---------------------------------------------- */
+/* ---------------------------------------------- */
+
+
+
+/* --------------------------------------------------- */
+/* ------------------- TABLE VIEW -------------------- */
+/* --------------------------------------------------- */
+.table-view {
+    -fx-background-color: #e3e3e3;
+    -fx-background-radius: 0 20px 0 0;  /* Arrondi des coins extérieurs */
+    -fx-border-width: 5px 5px 0 0;
+    -fx-border-radius: 0 20px 0 0;      /* Arrondi de la bordure */
+    -fx-border-color: #e3e3e3;
+    -fx-padding: 3px;
+}
+
+/* Style de l'en-tête des colonnes */
+.table-view .column-header-background {
+    -fx-background-radius: 0 20px 0 0; /* Seulement les coins supérieurs arrondis */
+    -fx-background-color: #e3e3e3; /* couleur de fond unie, sans dégradé */
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent; /* important pour éviter le sur-stylage */
+    /*-fx-border-color: #e3e3e3;*/
+    -fx-border-width: 0 0 1px 0; /* bordure uniquement en bas */
+}
+
+/* Texte des en-têtes */
+.table-view .column-header .label {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* couleur du texte */
+}
+
+
+/* Scrollbar verticale */
+.table-view .scroll-bar:vertical {
+    -fx-pref-width: 8px;
+    -fx-background-color: transparent;
+}
+
+/* Scrollbar horizontale */
+.table-view .scroll-bar:horizontal {
+    -fx-pref-height: 8px;
+    -fx-background-color: transparent;
+}
+
+/* Le curseur de la scroll bar */
+.table-view .thumb {
+    -fx-background-color: #888;
+    -fx-background-radius: 4;
+}
+
+/* La piste sur laquelle glisse le curseur */
+.table-view .track {
+    -fx-background-color: #e3e3e3;
+}
+
+/* Supprime les flèches (increment/decrement buttons) de toutes les scrollbars */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-shape: "";  /* supprime la forme fléchée */
+    -fx-opacity: 0; /* cache complètement */
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: #e3e3e3;
+}
+
+.table-view .corner {
+    -fx-background-color: #e3e3e3;
+}
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+
+
+
+/* ------------------------------------------------------------- */
+/* ------------------ DETAILS DE L'AFFAIRE --------------------- */
+/* ------------------------------------------------------------- */
 .labelDetail {
     -fx-padding: 10px;
     -fx-background-radius: 10px;
 }
 
+#vboxDetailAffaire {
+    -fx-padding: 20px;
+    -fx-background-radius: 20px;
+}
+/* ------------------------------------------------------------- */
+/* ------------------------------------------------------------- */
+
+
+/* Supprime toutes les bordures parasites */
+.split-pane {
+    -fx-border-width: 0px;
+    -fx-padding: 0px;
+    -fx-border-color: transparent;
+}
+
+.split-pane:horizontal > .split-pane-divider,
+.split-pane:vertical > .split-pane-divider {
+    -fx-padding: 5px;
+    -fx-border-width: 5px;
+    -fx-background-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------------------------- */
+/* --------------------- GENERAL --------------------- */
+/* --------------------------------------------------- */
 .bleu {
     -fx-background-color: #4a90e2;
 }
@@ -64,18 +237,6 @@ MenuBar {
     -fx-background-color: #c0392b;
 }
 
-#vboxDetailAffaire {
-    -fx-padding: 20px;
-    -fx-background-radius: 20px;
-}
-
-.split-pane:horizontal > .split-pane-divider,
-.split-pane:vertical > .split-pane-divider {
-    -fx-padding: 0;
-    -fx-background-color: #7070f6;
-    -fx-border-width: 0;
-}
-
 Button {
     -fx-font-family: 'Poppins Bold';
     -fx-font-size: 13px;
@@ -83,3 +244,5 @@ Button {
     -fx-background-radius: 20px;
     -fx-background-color: #a8a8a8;
 }
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
