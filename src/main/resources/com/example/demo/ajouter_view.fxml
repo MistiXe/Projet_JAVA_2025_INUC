@@ -11,10 +11,10 @@
            <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="261.0"/>
 
            <Label text="Lieu de l'affaire :"/>
-           <TextField fx:id="lieuField" promptText="Entrez le lieu"/>
+           <TextField styleClass="ajouter-text-field" fx:id="lieuField" promptText="Entrez le lieu"/>
 
            <Label text="Type d'affaire :"/>
-           <TextField fx:id="typeField" promptText="Ex: Vol, Homicide, Fraude"/>
+           <TextField styleClass="ajouter-text-field" fx:id="typeField" promptText="Ex: Vol, Homicide, Fraude"/>
 
            <Label text="Statut de l'affaire :"/>
            <ComboBox fx:id="statusComboBox" prefHeight="33.0" prefWidth="264.0"/>
@@ -31,7 +31,7 @@
       </Label>
    </top>
    <bottom>
-       <Button fx:id="btnAjouter" onAction="#ajouterPersonne" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Ajouter" BorderPane.alignment="CENTER">
+       <Button fx:id="btnAjouter" onAction="#ajouterPersonne" styleClass="vert" text="Ajouter" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </padding>
