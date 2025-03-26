@@ -1,0 +1,31 @@
+package com.example.demo.Patrons;
+
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+
+public class Description {
+    private String statut;
+    private String texte;
+
+    public Description(String statut, String texte) {
+        this.statut = statut;
+        this.texte = texte;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    public String getTexte() {
+        return texte;
+    }
+
+    public void setTexte(String texte) {
+        this.texte = texte;
+    }
+}

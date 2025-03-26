@@ -1,6 +1,7 @@
 package com.example.demo.Controlleur;
 
 import com.example.demo.Patrons.Affaire;
+import com.example.demo.Patrons.Description;
 import com.example.demo.PDFJSON.JsonHandlerCase;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,28 +13,25 @@ import java.util.List;
 public class Ajouter_Controlleur {
     @FXML private Button btnAjouter;
     @FXML private Label ajouterViewTitle;
-
     @FXML private DatePicker datePicker;
     @FXML private TextField lieuField;
     @FXML private TextField typeField;
     @FXML private ComboBox<Affaire.Status> statusComboBox;
     @FXML private Spinner<Integer> graviteSpinner;
+    @FXML private TextArea descriptionArea;
 
     private List<Affaire> listeAffaire;
     private Affaire affaireAModifier;
-
 
     @FXML
     public void initialize() {
         statusComboBox.getItems().setAll(Affaire.Status.values());
     }
 
-    // Définir la liste des affaires
     public void setAffaireList(List<Affaire> listeAffaire) {
         this.listeAffaire = listeAffaire;
     }
 
-    // Définir l'affaire à modifier
     public void setAffaireAModifier(Affaire affaire) {
         this.affaireAModifier = affaire;
 
@@ -42,7 +40,8 @@ public class Ajouter_Controlleur {
         typeField.setText(affaire.getType());
         statusComboBox.setValue(affaire.getStatus());
         graviteSpinner.getValueFactory().setValue(affaire.getGravite());
-        btnAjouter.setText("Modifier");  // Change le bouton pour indiquer modification
+        descriptionArea.setText(affaire.getDescription().getCommentaire());
+        btnAjouter.setText("Modifier");
         ajouterViewTitle.setText("Modifier une affaire");
     }
 
@@ -51,7 +50,6 @@ public class Ajouter_Controlleur {
         String lieu = lieuField.getText().trim();
         if (lieu.isEmpty()) {
             showAlert("Erreur de champ", "Le champ 'lieu' ne peut pas être vide !");
-
             return;
         }
 
@@ -63,28 +61,26 @@ public class Ajouter_Controlleur {
 
         Affaire.Status status = statusComboBox.getValue();
         int gravite = graviteSpinner.getValue();
+        String commentaire = descriptionArea.getText().trim();
 
         LocalDate date = datePicker.getValue();
-        if (date != null) {
-            System.out.println("Date sélectionnée : " + date);
-        } else {
-            showAlert("Erreur de date", "Aucune date sélectionné");
+        if (date == null) {
+            showAlert("Erreur de date", "Aucune date sélectionnée");
+            return;
         }
 
         if (affaireAModifier == null) {
-            // Mode Ajout
-            Affaire nouvelleAffaire = new Affaire(date, lieu, type, status, gravite);
+            Affaire nouvelleAffaire = new Affaire(date, lieu, type, status, gravite, new Description(status, commentaire));
             listeAffaire.add(nouvelleAffaire);
         } else {
-            // Mode Modifications
             affaireAModifier.setLieu(lieu);
             affaireAModifier.setDate(date);
             affaireAModifier.setType(type);
             affaireAModifier.setStatus(status);
             affaireAModifier.setGravite(gravite);
+            affaireAModifier.getDescription().setCommentaire(commentaire);
         }
 
-        // Sauvegarde des données mises à jour
         JsonHandlerCase.writePersonsToJson(listeAffaire);
         fermerFenetre();
     }
