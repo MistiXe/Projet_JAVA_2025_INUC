@@ -88,30 +88,35 @@
                 </VBox>
 
                 <!-- Détails des affaires -->
-                <VBox spacing="10" style="-fx-padding: 10px 20px 20px 10px;" VBox.vgrow="ALWAYS">
-                    <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
+                    <VBox spacing="10" style="-fx-padding: 10px 20px 20px 10px;">
+                        <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />
 
-                    <Label styleClass="labelDetail, bleu" text="Description" />
-                    <TextArea styleClass="detail-text-zone" fx:id="detailDescription" editable="false" wrapText="true" />
+                        <Label styleClass="labelDetail, bleu" text="Description" />
+                        <TextArea fx:id="detailDescription"
+                                  wrapText="true"
+                                  VBox.vgrow="ALWAYS"
+                                  styleClass="detail-text-zone"/>
 
-                    <Label styleClass="labelDetail, violet" text="État d’avancement" />
-                    <TextField styleClass="detail-text-zone" fx:id="detailEtat" editable="false" />
+                        <Label styleClass="labelDetail, violet" text="État d’avancement" />
+                        <TextField styleClass="detail-text-zone" fx:id="detailEtat" editable="false" />
 
-                    <Label styleClass="labelDetail, vert" text="Enquêteurs assignés" />
-                    <ListView fx:id="detailEnqueteurs" prefHeight="60" />
+                        <Label styleClass="labelDetail, vert" text="Enquêteurs assignés" />
+                        <ListView fx:id="detailEnqueteurs" prefHeight="60" />
 
-                    <Label styleClass="labelDetail, rouge" text="Suspects associés" />
-                    <ListView fx:id="detailSuspects" prefHeight="60" />
+                        <Label styleClass="labelDetail, rouge" text="Suspects associés" />
+                        <ListView fx:id="detailSuspects" prefHeight="60" />
 
-                    <Label styleClass="labelDetail, orange" text="Témoins associés" />
-                    <ListView fx:id="detailTemoins" prefHeight="60" />
+                        <Label styleClass="labelDetail, orange" text="Témoins associés" />
+                        <ListView fx:id="detailTemoins" prefHeight="60" />
 
-                    <Label styleClass="labelDetail, bleu-clair" text="Preuves associées" />
-                    <ListView fx:id="detailPreuves" prefHeight="60" />
+                        <Label styleClass="labelDetail, bleu-clair" text="Preuves associées" />
+                        <ListView fx:id="detailPreuves" prefHeight="60" />
 
-                    <Label styleClass="labelDetail, rouge-fonce" text="Correspondance suspect/affaire" />
-                    <TextArea styleClass="detail-text-zone" fx:id="detailCorrespondance" editable="false" wrapText="true" />
-                </VBox>
+                        <Label styleClass="labelDetail, rouge-fonce" text="Correspondance suspect/affaire" />
+                        <TextArea styleClass="detail-text-zone" fx:id="detailCorrespondance" editable="false" wrapText="true" />
+                    </VBox>
+                </ScrollPane>
             </SplitPane>
         </VBox>
     </center>

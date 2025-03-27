@@ -2,6 +2,7 @@ package com.example.demo.Controlleur;
 
 import com.example.demo.Patrons.Affaire;
 import com.example.demo.PDFJSON.JsonHandlerCase;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -27,41 +29,29 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+
 public class Menu_Controlleur {
-    @FXML
-    private BarChart<String, Number> barChart;
-    @FXML
-    private TableView<Affaire> tableView;
-    @FXML
-    private TableColumn<Affaire, String> columnDate;
-    @FXML
-    private TableColumn<Affaire, String> columnLieu;
-    @FXML
-    private TableColumn<Affaire, String> columnType;
-    @FXML
-    private TableColumn<Affaire, Boolean> columnStatus;
-    @FXML
-    private TableColumn<Affaire, Integer> columnGravite;
+    private Affaire currentAffaire;
 
-    @FXML
-    private TextArea detailDescription;
+    @FXML private BarChart<String, Number> barChart;
+    @FXML private TableView<Affaire> tableView;
+    @FXML private TableColumn<Affaire, String> columnDate;
+    @FXML private TableColumn<Affaire, String> columnLieu;
+    @FXML private TableColumn<Affaire, String> columnType;
+    @FXML private TableColumn<Affaire, Boolean> columnStatus;
+    @FXML private TableColumn<Affaire, Integer> columnGravite;
 
-    @FXML
-    private MenuItem convertPDF;
-    @FXML
-    private MenuItem printTable;
-    @FXML
-    private Pane graphContainer;
+    @FXML private TextArea detailDescription;
 
-    @FXML
-    private Button btnSupprimer;
+    @FXML private MenuItem convertPDF;
+    @FXML private MenuItem printTable;
+    @FXML private Pane graphContainer;
 
-    @FXML
-    private TabPane tabPane;
-    @FXML
-    private Tab tabGraph;
-    @FXML
-    private Tab tabCollab;
+    @FXML private Button btnSupprimer;
+
+    @FXML private TabPane tabPane;
+    @FXML private Tab tabGraph;
+    @FXML private Tab tabCollab;
 
     private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
 
@@ -90,6 +80,34 @@ public class Menu_Controlleur {
             return new javafx.beans.property.SimpleStringProperty(param.getValue().getDate().format(formatter));
         });
 
+
+        // Écouteur pour ajuster la hauteur
+        detailDescription.textProperty().addListener((obs, oldText, newText) -> {
+            detailDescription.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        });
+
+
+
+        // Écouteur direct avec gestion d'erreurs
+        detailDescription.textProperty().addListener((obs, oldText, newText) -> {
+            if (currentAffaire != null && !newText.equals(oldText)) {
+                currentAffaire.setDescription(newText);
+
+                new Thread(() -> {
+                    try {
+                        JsonHandlerCase.writePersonsToJson(listeAffaires);
+                    } catch (Exception e) {
+                        Platform.runLater(() ->
+                                showAlert("Erreur", "Échec sauvegarde : " + e.getMessage())
+                        );
+                    }
+                }).start();
+            }
+        });
+
+
+
+
         // Charger les données du JSON
         List<Affaire> affaires = JsonHandlerCase.readCasesFromJson();
         if (affaires != null) {
@@ -102,7 +120,7 @@ public class Menu_Controlleur {
          (observable, oldValue, newValue) -> afficherDetailsPersonne(newValue)
          );
 
-        // S'il y a des affaires judiciaires
+         // S'il y a des affaires judiciaires
         if (!listeAffaires.isEmpty()) {
             btnSupprimer.setOnAction(
                     e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
@@ -110,8 +128,15 @@ public class Menu_Controlleur {
     }
 
      private void afficherDetailsPersonne(Affaire affaire) {
-        System.out.println("afficherDetailsPersonne " + affaire.getDescription());
-        detailDescription.setText(affaire.getDescription());
+        currentAffaire = affaire;
+
+        if (affaire.getDescription() != null) {
+            detailDescription.setText(affaire.getDescription());
+        }
+        else {
+            detailDescription.setText("");
+            detailDescription.setPromptText("Aucune description disponible pour cette affaire.");
+        }
      }
 
     public void supprimerAffaire(Affaire affaire) {
