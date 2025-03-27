@@ -21,6 +21,7 @@ public class Affaire {
     }
     public Status status;
     private int gravite;
+    private String description;
 
     public Affaire() {}
 
@@ -41,6 +42,7 @@ public class Affaire {
     public String getType() { return type; }
     public Status getStatus() { return status; }
     public int getGravite() { return gravite; }
+    public String getDescription() { return description; }
 
     public void setDate(LocalDate date) {
         this.date = date;
@@ -49,4 +51,5 @@ public class Affaire {
     public void setType(String type) {  this.type = type; }
     public void setStatus(Status status) { this.status = status; }
     public void setGravite(int gravite) { this.gravite = gravite; }
+    public void setDescription(String description) { this.description = description; }
 }
