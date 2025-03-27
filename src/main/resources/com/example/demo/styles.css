@@ -155,25 +155,6 @@
     -fx-background-color: #e3e3e3;
 }
 
-/* Supprime les flèches (increment/decrement buttons) de toutes les scrollbars */
-.scroll-bar .increment-button,
-.scroll-bar .decrement-button {
-    -fx-padding: 0;
-    -fx-background-color: transparent;
-    -fx-shape: "";  /* supprime la forme fléchée */
-    -fx-opacity: 0; /* cache complètement */
-    -fx-min-width: 0;
-    -fx-pref-width: 0;
-    -fx-max-width: 0;
-    -fx-min-height: 0;
-    -fx-pref-height: 0;
-    -fx-max-height: 0;
-}
-
-.scroll-pane > .corner {
-    -fx-background-color: #e3e3e3;
-}
-
 .table-view .corner {
     -fx-background-color: #e3e3e3;
 }
@@ -185,10 +166,62 @@
 /* ------------------------------------------------------------- */
 /* ------------------ DETAILS DE L'AFFAIRE --------------------- */
 /* ------------------------------------------------------------- */
+.scroll-pane {
+    -fx-background-color: white; /* Remplacer le rouge par transparent */
+    -fx-background: white; /* Double protection */
+}
+
+
+/* Le curseur de la scroll bar du scroll pane */
+.scroll-pane .thumb {
+    -fx-background-color: #888;
+    -fx-background-radius: 4;
+}
+
+/* La piste sur laquelle glisse le curseur */
+.scroll-pane .track {
+    -fx-background-color: white;
+}
+
+.scroll-pane .corner {
+    -fx-background-color: white;
+}
+
+#affaireTitreDetail {
+    -fx-font-size: 16;
+    -fx-font-family: 'Poppins Bold';
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: black;
+}
+
 .labelDetail {
+    -fx-font-family: 'Poppins Bold';
     -fx-padding: 10px;
     -fx-background-radius: 10px;
 }
+
+
+.detail-text-zone {
+    -fx-background-color: transparent;
+    /*-fx-control-inner-background: transparent;*/  /* Empêche l'affichage d'un promptText */
+    -fx-border-width: 0;
+    -fx-text-fill: black;
+    -fx-padding: 0 0 10px -7px;
+}
+
+.detail-text-zone .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.detail-text-zone .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.detail-text-zone .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
 /* ------------------------------------------------------------- */
 /* ------------------------------------------------------------- */
 
@@ -229,6 +262,8 @@
     -fx-border-width: 4px;
     -fx-border-color: #000000;
 }
+/* -------------------------------------------------- */
+/* -------------------------------------------------- */
 
 
 
@@ -265,8 +300,12 @@
     -fx-background-color: #3498db;
 }
 
-.rouge-foncé {
+.rouge-fonce {
     -fx-background-color: #c0392b;
+}
+
+.greyed-out-text {
+    -fx-text-fill: #bababa;
 }
 
 Button {
@@ -414,6 +453,26 @@ Button {
 /* Pour le focus (optionnel) */
 #graviteSpinner:focused {
     -fx-background-color: #e0e0e0; /* Légère variation quand focus */
+}
+
+
+/* Supprime les flèches (increment/decrement buttons) de toutes les scrollbars */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-shape: "";  /* supprime la forme fléchée */
+    -fx-opacity: 0; /* cache complètement */
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: #e3e3e3;
 }
 /* --------------------------------------------------- */
 /* --------------------------------------------------- */
