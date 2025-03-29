@@ -42,6 +42,7 @@ public class Menu_Controlleur {
     @FXML private TableColumn<Affaire, Integer> columnGravite;
 
     @FXML private TextArea detailDescription;
+    @FXML private TextArea detailEtat;
 
     @FXML private MenuItem convertPDF;
     @FXML private MenuItem printTable;
@@ -117,8 +118,10 @@ public class Menu_Controlleur {
 
          // Action pour voir les données à droite
          tableView.getSelectionModel().selectedItemProperty().addListener(
-         (observable, oldValue, newValue) -> afficherDetailsPersonne(newValue)
-         );
+            (observable, oldValue, newValue) -> {
+                afficherDetailsPersonne(newValue);
+                afficherDetailsEtat(newValue);
+            });
 
          // S'il y a des affaires judiciaires
         if (!listeAffaires.isEmpty()) {
@@ -127,7 +130,7 @@ public class Menu_Controlleur {
         }
     }
 
-     private void afficherDetailsPersonne(Affaire affaire) {
+     private void afficherDetailsPersonne(Affaire affaire) { // afficher la desc écrite
         currentAffaire = affaire;
 
         if (affaire.getDescription() != null) {
@@ -136,6 +139,18 @@ public class Menu_Controlleur {
         else {
             detailDescription.setText("");
             detailDescription.setPromptText("Aucune description disponible pour cette affaire.");
+        }
+     }
+
+     private void afficherDetailsEtat(Affaire affaire) { // afficher etat dans la desc 
+        currentAffaire = affaire;
+
+        if (affaire.getStatus() != null) {
+            detailEtat.setText("l'affaire est actuellement statués comme : "+affaire.getStatus()); //"" obligé pour le type String
+        }
+        else {
+            detailEtat.setText("");
+            detailEtat.setPromptText("Aucun état n'est renseigné pour cette affaire. ");
         }
      }
 
