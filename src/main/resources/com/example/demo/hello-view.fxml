@@ -114,16 +114,16 @@
                         <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />
 
                         <Label styleClass="labelDetail, bleu" text="Description" />
-                        <TextArea fx:id="detailDescription" editable="false" prefHeight="63.0" prefWidth="700.0" styleClass="detail-text-zone" wrapText="true" />
+                        <TextArea fx:id="detailDescription" prefHeight="63.0" prefWidth="700.0" editable="false" styleClass="detail-text-zone" wrapText="true" />
 
                         <Label styleClass="labelDetail, violet" text="État d’avancement" />
-                        <TextArea fx:id="detailEtat" editable="false" prefHeight="54.0" prefWidth="700.0" styleClass="detail-text-zone" />
+                        <TextArea fx:id="detailEtat" prefHeight="54.0" prefWidth="700.0" editable="false" styleClass="detail-text-zone" />
 
                         <Label styleClass="labelDetail, vert" text="Enquêteurs assignés" />
-                        <TextArea fx:id="detailEtat1" editable="false" prefHeight="54.0" prefWidth="700.0" Text="A FINIR" styleClass="detail-text-zone" />
+                        <ListView fx:id="detailEnqueteurs" prefHeight="60" />
 
                         <Label styleClass="labelDetail, rouge" text="Suspects associés" />
-                        <TextArea fx:id="detailEtat11" editable="false" prefHeight="54.0" prefWidth="700.0" Text="A FINIR" styleClass="detail-text-zone" />
+                        <ListView fx:id="detailSuspects" prefHeight="60" />
 
                         <Label styleClass="labelDetail, orange" text="Témoins associés" />
                         <ListView fx:id="detailTemoins" prefHeight="60" />
