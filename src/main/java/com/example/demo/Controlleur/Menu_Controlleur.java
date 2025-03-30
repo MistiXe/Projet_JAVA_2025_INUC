@@ -44,6 +44,9 @@ public class Menu_Controlleur {
     @FXML private TextArea detailDescription;
     @FXML private TextArea detailEtat;
 
+    @FXML private ListView<String> detailEnqueteurs;
+    @FXML private ObservableList<String> enqueteursList = FXCollections.observableArrayList();
+
     @FXML private MenuItem convertPDF;
     @FXML private MenuItem printTable;
     @FXML private Pane graphContainer;
@@ -128,7 +131,28 @@ public class Menu_Controlleur {
             btnSupprimer.setOnAction(
                     e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
         }
+    
+            // Permettre la sélection d'une ligne dans le TableView
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+        // Lier la ListView à la liste observable
+        detailEnqueteurs.setItems(enqueteursList);
+
+        // Mettre à jour la ListView lorsque l'utilisateur sélectionne une affaire
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                afficherEnqueteurs(newSelection);
+            } else {
+                enqueteursList.clear(); // Si aucune affaire n'est sélectionnée
+            }
+        });
+    
     }
+
+    private void afficherEnqueteurs(Affaire affaire) { //POUR LSITE ENQUETEURS
+        enqueteursList.setAll(affaire.getEnqueteurs());
+    }
+    
 
      private void afficherDetailsPersonne(Affaire affaire) { // afficher la desc écrite
         currentAffaire = affaire;
