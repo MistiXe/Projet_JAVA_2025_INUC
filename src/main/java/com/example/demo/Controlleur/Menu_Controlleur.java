@@ -45,7 +45,9 @@ public class Menu_Controlleur {
     @FXML private TextArea detailEtat;
 
     @FXML private ListView<String> detailEnqueteurs;
+    @FXML private ListView<String> detailSuspects;
     @FXML private ObservableList<String> enqueteursList = FXCollections.observableArrayList();
+    @FXML private ObservableList<String> suspectsList = FXCollections.observableArrayList();
 
     @FXML private MenuItem convertPDF;
     @FXML private MenuItem printTable;
@@ -124,6 +126,8 @@ public class Menu_Controlleur {
             (observable, oldValue, newValue) -> {
                 afficherDetailsPersonne(newValue);
                 afficherDetailsEtat(newValue);
+                afficherEnqueteurs(newValue);
+                afficherSuspects(newValue);
             });
 
          // S'il y a des affaires judiciaires
@@ -137,11 +141,13 @@ public class Menu_Controlleur {
 
         // Lier la ListView à la liste observable
         detailEnqueteurs.setItems(enqueteursList);
+        detailSuspects.setItems(suspectsList);
 
         // Mettre à jour la ListView lorsque l'utilisateur sélectionne une affaire
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 afficherEnqueteurs(newSelection);
+                afficherSuspects(newSelection);
             } else {
                 enqueteursList.clear(); // Si aucune affaire n'est sélectionnée
             }
@@ -149,8 +155,20 @@ public class Menu_Controlleur {
     
     }
 
-    private void afficherEnqueteurs(Affaire affaire) { //POUR LSITE ENQUETEURS
-        enqueteursList.setAll(affaire.getEnqueteurs());
+    private void afficherEnqueteurs(Affaire affaire) {
+        if (affaire != null) {
+            enqueteursList.setAll(affaire.getEnqueteurs());
+        } else {
+            enqueteursList.clear();
+        }
+    }
+
+    private void afficherSuspects(Affaire affaire) {
+        if (affaire != null) {
+            suspectsList.setAll(affaire.getSuspects());
+        } else {
+            suspectsList.clear();
+        }
     }
     
 

@@ -24,9 +24,11 @@ public class Affaire {
     private int gravite;
     private String description;
     private List<String> enqueteurs;
+    private List<String> suspects;
 
     public Affaire() {
         this.enqueteurs = new ArrayList<>();
+        this.suspects = new ArrayList<>();
     }
 
     // Constructeur
@@ -38,6 +40,7 @@ public class Affaire {
         this.status = status;
         this.gravite = gravite;
         this.enqueteurs = new ArrayList<>();
+        this.suspects = new ArrayList<>();
     }
 
     public LocalDate getDate() {
@@ -49,6 +52,7 @@ public class Affaire {
     public int getGravite() { return gravite; }
     public String getDescription() { return description; }
     public List<String> getEnqueteurs() { return enqueteurs; }
+    public List<String> getSuspects() { return suspects; }
 
     public void setDate(LocalDate date) {
         this.date = date;
@@ -59,6 +63,7 @@ public class Affaire {
     public void setGravite(int gravite) { this.gravite = gravite; }
     public void setDescription(String description) { this.description = description; }
     public void setEnqueteurs(List<String> enqueteurs) { this.enqueteurs = enqueteurs; }
+    public void setSuspects(List<String> suspects) { this.suspects = suspects; }
 
     public void ajouterEnqueteur(String enqueteur) {
         this.enqueteurs.add(enqueteur);
@@ -66,5 +71,13 @@ public class Affaire {
 
     public void supprimerEnqueteur(String enqueteur) {
         this.enqueteurs.remove(enqueteur);
+    }
+
+    public void ajouterSuspect(String suspect) {
+        this.suspects.add(suspect);
+    }
+
+    public void supprimerSuspect(String suspect) {
+        this.suspects.remove(suspect);
     }
 }
