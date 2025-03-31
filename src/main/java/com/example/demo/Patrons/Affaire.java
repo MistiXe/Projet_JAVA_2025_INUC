@@ -25,10 +25,12 @@ public class Affaire {
     private String description;
     private List<String> enqueteurs;
     private List<String> suspects;
+    private List<String> temoins;
 
     public Affaire() {
         this.enqueteurs = new ArrayList<>();
         this.suspects = new ArrayList<>();
+        this.temoins = new ArrayList<>();
     }
 
     // Constructeur
@@ -41,6 +43,7 @@ public class Affaire {
         this.gravite = gravite;
         this.enqueteurs = new ArrayList<>();
         this.suspects = new ArrayList<>();
+        this.temoins = new ArrayList<>();
     }
 
     public LocalDate getDate() {
@@ -53,6 +56,7 @@ public class Affaire {
     public String getDescription() { return description; }
     public List<String> getEnqueteurs() { return enqueteurs; }
     public List<String> getSuspects() { return suspects; }
+    public List<String> getTemoins() { return temoins; }
 
     public void setDate(LocalDate date) {
         this.date = date;
@@ -64,6 +68,8 @@ public class Affaire {
     public void setDescription(String description) { this.description = description; }
     public void setEnqueteurs(List<String> enqueteurs) { this.enqueteurs = enqueteurs; }
     public void setSuspects(List<String> suspects) { this.suspects = suspects; }
+    public void setTemoins(List<String> temoins) { this.temoins = temoins; }
+    
 
     public void ajouterEnqueteur(String enqueteur) {
         this.enqueteurs.add(enqueteur);
@@ -80,4 +86,13 @@ public class Affaire {
     public void supprimerSuspect(String suspect) {
         this.suspects.remove(suspect);
     }
+
+    public void ajouterTemoin(String temoin) {
+        this.temoins.add(temoin);
+    }
+
+    public void supprimerTemoin(String temoin) {
+        this.temoins.remove(temoin);
+    }
+
 }

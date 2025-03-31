@@ -46,8 +46,10 @@ public class Menu_Controlleur {
 
     @FXML private ListView<String> detailEnqueteurs;
     @FXML private ListView<String> detailSuspects;
+    @FXML private ListView<String> detailTemoins;
     @FXML private ObservableList<String> enqueteursList = FXCollections.observableArrayList();
     @FXML private ObservableList<String> suspectsList = FXCollections.observableArrayList();
+    @FXML private ObservableList<String> temoinsList = FXCollections.observableArrayList();
 
     @FXML private MenuItem convertPDF;
     @FXML private MenuItem printTable;
@@ -128,6 +130,7 @@ public class Menu_Controlleur {
                 afficherDetailsEtat(newValue);
                 afficherEnqueteurs(newValue);
                 afficherSuspects(newValue);
+                afficherTémoins(newValue);
             });
 
          // S'il y a des affaires judiciaires
@@ -142,14 +145,18 @@ public class Menu_Controlleur {
         // Lier la ListView à la liste observable
         detailEnqueteurs.setItems(enqueteursList);
         detailSuspects.setItems(suspectsList);
+        detailTemoins.setItems(temoinsList);
 
         // Mettre à jour la ListView lorsque l'utilisateur sélectionne une affaire
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 afficherEnqueteurs(newSelection);
                 afficherSuspects(newSelection);
+                afficherTémoins(newSelection);
             } else {
                 enqueteursList.clear(); // Si aucune affaire n'est sélectionnée
+                suspectsList.clear();
+                temoinsList.clear();
             }
         });
     
@@ -171,6 +178,14 @@ public class Menu_Controlleur {
         }
     }
     
+    private void afficherTémoins(Affaire affaire) {
+        if (affaire != null) {
+            temoinsList.setAll(affaire.getTemoins());
+        } else {
+            temoinsList.clear();
+        }
+    }
+
 
      private void afficherDetailsPersonne(Affaire affaire) { // afficher la desc écrite
         currentAffaire = affaire;

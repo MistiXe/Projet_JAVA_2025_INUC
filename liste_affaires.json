@@ -6,7 +6,8 @@
   "gravite" : 8,
   "description" : "Une personne a été arrêtée pour avoir escroqué plusieurs personnes âgées en leur vendant de faux produits de santé.",
   "enqueteurs" : [ "Jean Dupont", "Marie Curie", "Laurent allen", "Barry white", "Baroze" ],
-  "suspects" : [ "Claude Monet" ]
+  "suspects" : [ "Claude Monet" ],
+  "temoins" : [ "Isabelle Roche", "Benjamin Dubois", "Jules Mercier", "David Lambert" ]
 }, {
   "date" : "2023-06-18",
   "lieu" : "30 Avenue de l'Opéra, Paris",
@@ -15,7 +16,8 @@
   "gravite" : 4,
   "description" : "Un vol de bijoux a eu lieu dans une bijouterie de luxe en plein jour. Test ",
   "enqueteurs" : [ "Paul Durand", "Sophie Martin" ],
-  "suspects" : [ "Marie Curie" ]
+  "suspects" : [ "Marie Curie" ],
+  "temoins" : [ "Emma Girard" ]
 }, {
   "date" : "2023-07-09",
   "lieu" : "10 Rue de la Paix, Paris",
@@ -24,7 +26,8 @@
   "gravite" : 6,
   "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus.\nLorem Ipsum Lorem IpsumLorem IpsumLorem Ipsum",
   "enqueteurs" : [ "Luc Morel", "Isabelle Bernard" ],
-  "suspects" : [ "Marie Curie", "Sophie Germain" ]
+  "suspects" : [ "Marie Curie", "Sophie Germain" ],
+  "temoins" : [ "Karine Dupont", "Jules Mercier", "Emma Girard", "Louis Bertrand" ]
 }, {
   "date" : "2023-08-25",
   "lieu" : "17 Boulevard Haussmann, Paris",
@@ -33,7 +36,8 @@
   "gravite" : 1,
   "description" : "Une fraude mineure a été découverte dans une petite entreprise locale.",
   "enqueteurs" : [ "Pierre Lefevre", "Elodie Garnier" ],
-  "suspects" : [ "Albert Einstein", "Simone de Beauvoir" ]
+  "suspects" : [ "Albert Einstein", "Simone de Beauvoir" ],
+  "temoins" : [ "Hugo Fontaine" ]
 }, {
   "date" : "2023-09-14",
   "lieu" : "25 Rue du Faubourg Saint-Honoré, Paris",
@@ -42,7 +46,8 @@
   "gravite" : 9,
   "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves.",
   "enqueteurs" : [ "Nicolas Roux", "Julie Laurent" ],
-  "suspects" : [ "Simone de Beauvoir", "Albert Einstein", "Louis Pasteur" ]
+  "suspects" : [ "Simone de Beauvoir", "Albert Einstein", "Louis Pasteur" ],
+  "temoins" : [ "Benjamin Dubois", "François Martin" ]
 }, {
   "date" : "2023-10-02",
   "lieu" : "7 Rue de la Boétie, Paris",
@@ -51,7 +56,8 @@
   "gravite" : 3,
   "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti.",
   "enqueteurs" : [ "Alexandre Dubois", "Camille Petit" ],
-  "suspects" : [ "Sophie Germain", "Blaise Pascal" ]
+  "suspects" : [ "Sophie Germain", "Blaise Pascal" ],
+  "temoins" : [ "François Martin" ]
 }, {
   "date" : "2023-11-22",
   "lieu" : "19 Rue de la Verrerie, Paris",
@@ -60,7 +66,8 @@
   "gravite" : 7,
   "description" : "Un vol de voiture a été signalé dans un parking souterrain.",
   "enqueteurs" : [ "Antoine Lambert", "Emma Richard" ],
-  "suspects" : [ "Jean Dupont", "Louis Pasteur", "Blaise Pascal", "Claude Monet" ]
+  "suspects" : [ "Jean Dupont", "Louis Pasteur", "Blaise Pascal", "Claude Monet" ],
+  "temoins" : [ "Benjamin Dubois", "Alice Morel", "Gabrielle Leroy" ]
 }, {
   "date" : "2023-12-11",
   "lieu" : "2 Rue des Francs Bourgeois, Paris",
@@ -69,7 +76,8 @@
   "gravite" : 2,
   "description" : "Une altercation mineure entre deux individus a été classée sans suite.",
   "enqueteurs" : [ "Laurent Girard", "Manon Robert" ],
-  "suspects" : [ "Blaise Pascal", "Victor Hugo" ]
+  "suspects" : [ "Blaise Pascal", "Victor Hugo" ],
+  "temoins" : [ "Emma Girard", "Alice Morel", "Louis Bertrand", "Jules Mercier" ]
 }, {
   "date" : "2022-01-07",
   "lieu" : "14 Rue de Turenne, Paris",
@@ -78,7 +86,8 @@
   "gravite" : 5,
   "description" : "Une fraude à la carte bancaire a été détectée et transférée au parquet.",
   "enqueteurs" : [ "Vincent Moreau", "Charlotte David" ],
-  "suspects" : [ "Jean Dupont", "Albert Einstein", "Sophie Germain" ]
+  "suspects" : [ "Jean Dupont", "Albert Einstein", "Sophie Germain" ],
+  "temoins" : [ "Hugo Fontaine", "Charlotte Lefevre" ]
 }, {
   "date" : "2022-02-28",
   "lieu" : "21 Rue de Bretagne, Paris",
@@ -87,7 +96,8 @@
   "gravite" : 8,
   "description" : "Un acte de violence a eu lieu dans un bar, l'instruction est en cours.",
   "enqueteurs" : [ "Benoît Leroy", "Clara Bertrand" ],
-  "suspects" : [ "Simone de Beauvoir", "Marie Curie", "René Descartes" ]
+  "suspects" : [ "Simone de Beauvoir", "Marie Curie", "René Descartes" ],
+  "temoins" : [ "Karine Dupont", "Emma Girard", "Benjamin Dubois", "Jules Mercier" ]
 }, {
   "date" : "2022-03-19",
   "lieu" : "9 Rue Charlot, Paris",
@@ -96,7 +106,8 @@
   "gravite" : 4,
   "description" : "Une escroquerie immobilière a été renvoyée devant le tribunal.",
   "enqueteurs" : [ "Jean Dupont", "Marie Curie" ],
-  "suspects" : [ "Claude Monet" ]
+  "suspects" : [ "Claude Monet" ],
+  "temoins" : [ "Charlotte Lefevre", "Emma Girard", "Isabelle Roche" ]
 }, {
   "date" : "2022-04-08",
   "lieu" : "16 Rue Vieille du Temple, Paris",
@@ -105,7 +116,8 @@
   "gravite" : 6,
   "description" : "Un vol de sac à main a été signalé mais l'enquête est suspendue.",
   "enqueteurs" : [ "Paul Durand", "Sophie Martin" ],
-  "suspects" : [ "René Descartes" ]
+  "suspects" : [ "René Descartes" ],
+  "temoins" : [ "Louis Bertrand", "Jules Mercier" ]
 }, {
   "date" : "2022-05-29",
   "lieu" : "3 Rue des Archives, Paris",
@@ -114,7 +126,8 @@
   "gravite" : 1,
   "description" : "Une légère altercation a été rapidement résolue et classée.",
   "enqueteurs" : [ "Luc Morel", "Isabelle Bernard" ],
-  "suspects" : [ "Claude Monet" ]
+  "suspects" : [ "Claude Monet" ],
+  "temoins" : [ "Jules Mercier", "Karine Dupont", "Benjamin Dubois" ]
 }, {
   "date" : "2022-06-17",
   "lieu" : "28 Rue du Temple, Paris",
@@ -123,7 +136,8 @@
   "gravite" : 9,
   "description" : "Une fraude complexe impliquant plusieurs victimes a été rouverte.",
   "enqueteurs" : [ "Pierre Lefevre", "Elodie Garnier" ],
-  "suspects" : [ "Simone de Beauvoir", "René Descartes", "Louis Pasteur", "Marie Curie" ]
+  "suspects" : [ "Simone de Beauvoir", "René Descartes", "Louis Pasteur", "Marie Curie" ],
+  "temoins" : [ "Isabelle Roche" ]
 }, {
   "date" : "2022-07-06",
   "lieu" : "11 Rue de Turbigo, Paris",
@@ -132,7 +146,8 @@
   "gravite" : 3,
   "description" : "Une plainte pour violence n'a pas été engagée faute de preuves.",
   "enqueteurs" : [ "Nicolas Roux", "Julie Laurent" ],
-  "suspects" : [ "Victor Hugo", "René Descartes" ]
+  "suspects" : [ "Victor Hugo", "René Descartes" ],
+  "temoins" : [ "David Lambert" ]
 }, {
   "date" : "2022-08-24",
   "lieu" : "18 Rue Étienne Marcel, Paris",
@@ -141,7 +156,8 @@
   "gravite" : 7,
   "description" : "Une escroquerie en ligne est actuellement en cours d'investigation.",
   "enqueteurs" : [ "Alexandre Dubois", "Camille Petit" ],
-  "suspects" : [ "Sophie Germain", "Claude Monet", "Albert Einstein", "Victor Hugo" ]
+  "suspects" : [ "Sophie Germain", "Claude Monet", "Albert Einstein", "Victor Hugo" ],
+  "temoins" : [ "Charlotte Lefevre", "Isabelle Roche" ]
 }, {
   "date" : "2022-09-13",
   "lieu" : "5 Rue Montorgueil, Paris",
@@ -150,7 +166,8 @@
   "gravite" : 2,
   "description" : "Un petit vol à l'étalage a été classé sans suite.",
   "enqueteurs" : [ "Antoine Lambert", "Emma Richard" ],
-  "suspects" : [ "Blaise Pascal", "Louis Pasteur", "Victor Hugo", "Claude Monet" ]
+  "suspects" : [ "Blaise Pascal", "Louis Pasteur", "Victor Hugo", "Claude Monet" ],
+  "temoins" : [ "Benjamin Dubois", "Isabelle Roche" ]
 }, {
   "date" : "2022-10-01",
   "lieu" : "23 Rue Réaumur, Paris",
@@ -159,7 +176,8 @@
   "gravite" : 5,
   "description" : "Une agression avec arme blanche a été transférée au parquet.",
   "enqueteurs" : [ "Laurent Girard", "Manon Robert" ],
-  "suspects" : [ "Jean Dupont", "Marie Curie", "René Descartes", "Claude Monet" ]
+  "suspects" : [ "Jean Dupont", "Marie Curie", "René Descartes", "Claude Monet" ],
+  "temoins" : [ "Emma Girard", "François Martin", "Charlotte Lefevre" ]
 }, {
   "date" : "2022-11-11",
   "lieu" : "Test",
@@ -168,7 +186,8 @@
   "gravite" : 7,
   "description" : "Une fraude à l'assurance est en cours d'enquête.",
   "enqueteurs" : [ "Vincent Moreau", "Charlotte David" ],
-  "suspects" : [ "Blaise Pascal", "Jean Dupont" ]
+  "suspects" : [ "Blaise Pascal", "Jean Dupont" ],
+  "temoins" : [ "Hugo Fontaine" ]
 }, {
   "date" : "2022-12-10",
   "lieu" : "30 Rue Montmartre, Paris",
@@ -177,7 +196,8 @@
   "gravite" : 4,
   "description" : "Un acte de violence domestique a été renvoyé devant le tribunal.",
   "enqueteurs" : [ "Benoît Leroy", "Clara Bertrand" ],
-  "suspects" : [ "Simone de Beauvoir", "Victor Hugo", "Jean Dupont" ]
+  "suspects" : [ "Simone de Beauvoir", "Victor Hugo", "Jean Dupont" ],
+  "temoins" : [ "Karine Dupont", "Jules Mercier", "Emma Girard", "Hugo Fontaine" ]
 }, {
   "date" : "2021-01-29",
   "lieu" : "17 Rue du Louvre, Paris",
@@ -186,7 +206,8 @@
   "gravite" : 6,
   "description" : "Une escroquerie par faux investissement a été suspendue.",
   "enqueteurs" : [ "Jean Dupont", "Marie Curie" ],
-  "suspects" : [ "Simone de Beauvoir" ]
+  "suspects" : [ "Simone de Beauvoir" ],
+  "temoins" : [ "Karine Dupont", "Gabrielle Leroy", "Alice Morel", "Benjamin Dubois" ]
 }, {
   "date" : "2021-02-18",
   "lieu" : "8 Rue Coquillière, Paris",
@@ -195,7 +216,8 @@
   "gravite" : 1,
   "description" : "Un vol de vélo a été rapidement résolu et classé.",
   "enqueteurs" : [ "Paul Durand", "Sophie Martin" ],
-  "suspects" : [ "Claude Monet" ]
+  "suspects" : [ "Claude Monet" ],
+  "temoins" : [ "Charlotte Lefevre", "Isabelle Roche", "Jules Mercier" ]
 }, {
   "date" : "2021-03-09",
   "lieu" : "25 Rue du 4 Septembre, Paris",
@@ -204,7 +226,8 @@
   "gravite" : 9,
   "description" : "Une agression grave a été rouverte pour de nouvelles investigations.",
   "enqueteurs" : [ "Luc Morel", "Isabelle Bernard" ],
-  "suspects" : [ "Louis Pasteur", "Albert Einstein", "Blaise Pascal", "Claude Monet" ]
+  "suspects" : [ "Louis Pasteur", "Albert Einstein", "Blaise Pascal", "Claude Monet" ],
+  "temoins" : [ "Jules Mercier", "Benjamin Dubois", "Louis Bertrand", "Charlotte Lefevre" ]
 }, {
   "date" : "2021-04-27",
   "lieu" : "14 Rue des Pyramides, Paris",
@@ -213,7 +236,8 @@
   "gravite" : 3,
   "description" : "Une tentative de fraude n'a pas abouti et n'a pas été engagée.",
   "enqueteurs" : [ "Pierre Lefevre", "Elodie Garnier" ],
-  "suspects" : [ "Jean Dupont" ]
+  "suspects" : [ "Jean Dupont" ],
+  "temoins" : [ "Jules Mercier", "Hugo Fontaine", "Louis Bertrand" ]
 }, {
   "date" : "2021-05-16",
   "lieu" : "21 Rue Sainte-Anne, Paris",
@@ -222,7 +246,8 @@
   "gravite" : 7,
   "description" : "Un acte de violence dans un restaurant est en cours d'enquête.",
   "enqueteurs" : [ "Nicolas Roux", "Julie Laurent" ],
-  "suspects" : [ "Simone de Beauvoir" ]
+  "suspects" : [ "Simone de Beauvoir" ],
+  "temoins" : [ "François Martin", "Jules Mercier", "Isabelle Roche" ]
 }, {
   "date" : "2021-06-05",
   "lieu" : "9 Rue de la Michodière, Paris",
@@ -231,7 +256,8 @@
   "gravite" : 2,
   "description" : "Une petite escroquerie a été classée sans suite.",
   "enqueteurs" : [ "Alexandre Dubois", "Camille Petit" ],
-  "suspects" : [ "Victor Hugo", "René Descartes", "Claude Monet", "Blaise Pascal" ]
+  "suspects" : [ "Victor Hugo", "René Descartes", "Claude Monet", "Blaise Pascal" ],
+  "temoins" : [ "Karine Dupont", "Gabrielle Leroy", "Benjamin Dubois", "David Lambert" ]
 }, {
   "date" : "2021-08-14",
   "lieu" : "3 Rue de la Chaussée d'Antin, Paris",
@@ -240,7 +266,8 @@
   "gravite" : 8,
   "description" : "Une agression avec blessures graves est en cours d'instruction.",
   "enqueteurs" : [ "Antoine Lambert", "Emma Richard" ],
-  "suspects" : [ "Claude Monet", "Albert Einstein" ]
+  "suspects" : [ "Claude Monet", "Albert Einstein" ],
+  "temoins" : [ "Jules Mercier", "David Lambert", "Alice Morel" ]
 }, {
   "date" : "2021-09-03",
   "lieu" : "TESTfdsdsf",
@@ -249,7 +276,8 @@
   "gravite" : 7,
   "description" : "Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsumfdfdfdfdfdffdfdfd\n\n\n",
   "enqueteurs" : [ "Laurent Girard", "Manon Robert" ],
-  "suspects" : [ "Jean Dupont", "Simone de Beauvoir" ]
+  "suspects" : [ "Jean Dupont", "Simone de Beauvoir" ],
+  "temoins" : [ "David Lambert", "Charlotte Lefevre", "Gabrielle Leroy" ]
 }, {
   "date" : "2021-10-22",
   "lieu" : "11 Place de l'Opéra, Paris",
@@ -258,7 +286,8 @@
   "gravite" : 6,
   "description" : "Un acte de violence a été suspendu faute de témoins.",
   "enqueteurs" : [ "Vincent Moreau", "Charlotte David" ],
-  "suspects" : [ "Sophie Germain", "Simone de Beauvoir", "Blaise Pascal" ]
+  "suspects" : [ "Sophie Germain", "Simone de Beauvoir", "Blaise Pascal" ],
+  "temoins" : [ "Emma Girard", "Benjamin Dubois", "Louis Bertrand", "Jules Mercier" ]
 }, {
   "date" : "2021-11-10",
   "lieu" : "18 Rue Auber, Paris",
@@ -267,7 +296,8 @@
   "gravite" : 1,
   "description" : "Une petite escroquerie a été rapidement résolue et classée.",
   "enqueteurs" : [ "Benoît Leroy", "Clara Bertrand" ],
-  "suspects" : [ "Simone de Beauvoir" ]
+  "suspects" : [ "Simone de Beauvoir" ],
+  "temoins" : [ "Hugo Fontaine", "Alice Morel", "David Lambert", "Benjamin Dubois" ]
 }, {
   "date" : "2021-12-30",
   "lieu" : "5 Rue Scribe, Paris",
@@ -276,7 +306,8 @@
   "gravite" : 9,
   "description" : "Un vol important a été rouvert pour de nouvelles investigations.",
   "enqueteurs" : [ "Jean Dupont", "Marie Curie" ],
-  "suspects" : [ "Sophie Germain" ]
+  "suspects" : [ "Sophie Germain" ],
+  "temoins" : [ "David Lambert", "Alice Morel" ]
 }, {
   "date" : "2015-12-31",
   "lieu" : "23 Rue Caumartin, Marseille",
@@ -285,7 +316,8 @@
   "gravite" : 8,
   "description" : null,
   "enqueteurs" : [ "Paul Durand", "Sophie Martin" ],
-  "suspects" : [ "Sophie Germain", "Blaise Pascal", "Jean Dupont" ]
+  "suspects" : [ "Sophie Germain", "Blaise Pascal", "Jean Dupont" ],
+  "temoins" : [ "Jules Mercier" ]
 }, {
   "date" : "2020-02-08",
   "lieu" : "12 Rue de Provence, Paris",
@@ -294,7 +326,8 @@
   "gravite" : 7,
   "description" : "Une fraude bancaire est actuellement en cours d'investigation.",
   "enqueteurs" : [ "Luc Morel", "Isabelle Bernard" ],
-  "suspects" : [ "Victor Hugo", "Marie Curie", "Simone de Beauvoir" ]
+  "suspects" : [ "Victor Hugo", "Marie Curie", "Simone de Beauvoir" ],
+  "temoins" : [ "Isabelle Roche", "Jules Mercier", "Gabrielle Leroy" ]
 }, {
   "date" : "2020-03-28",
   "lieu" : "30 Rue La Fayette, Paris",
@@ -303,7 +336,8 @@
   "gravite" : 2,
   "description" : "Une altercation mineure a été classée sans suite.",
   "enqueteurs" : [ "Pierre Lefevre", "Elodie Garnier" ],
-  "suspects" : [ "Albert Einstein" ]
+  "suspects" : [ "Albert Einstein" ],
+  "temoins" : [ "Benjamin Dubois" ]
 }, {
   "date" : "2020-04-17",
   "lieu" : "17 Rue du Havre, Paris",
@@ -312,7 +346,8 @@
   "gravite" : 5,
   "description" : "Une escroquerie par faux documents a été transférée au parquet.",
   "enqueteurs" : [ "Nicolas Roux", "Julie Laurent" ],
-  "suspects" : [ "Victor Hugo", "Louis Pasteur", "Marie Curie" ]
+  "suspects" : [ "Victor Hugo", "Louis Pasteur", "Marie Curie" ],
+  "temoins" : [ "Benjamin Dubois", "Charlotte Lefevre", "François Martin" ]
 }, {
   "date" : "2020-05-06",
   "lieu" : "8 Rue Tronchet, Paris",
@@ -321,7 +356,8 @@
   "gravite" : 8,
   "description" : "Un vol de bijoux est en cours d'instruction.",
   "enqueteurs" : [ "Alexandre Dubois", "Camille Petit" ],
-  "suspects" : [ "Claude Monet", "René Descartes", "Victor Hugo", "Albert Einstein" ]
+  "suspects" : [ "Claude Monet", "René Descartes", "Victor Hugo", "Albert Einstein" ],
+  "temoins" : [ "Charlotte Lefevre", "Isabelle Roche", "Emma Girard" ]
 }, {
   "date" : "2020-06-26",
   "lieu" : "25 Rue de la Pépinière, Paris",
@@ -330,7 +366,8 @@
   "gravite" : 4,
   "description" : "Une agression physique a été renvoyée devant le tribunal.",
   "enqueteurs" : [ "Antoine Lambert", "Emma Richard" ],
-  "suspects" : [ "Blaise Pascal", "René Descartes", "Albert Einstein" ]
+  "suspects" : [ "Blaise Pascal", "René Descartes", "Albert Einstein" ],
+  "temoins" : [ "Karine Dupont" ]
 }, {
   "date" : "2020-07-15",
   "lieu" : "Test",
@@ -339,7 +376,8 @@
   "gravite" : 6,
   "description" : "Une fraude mineure a été classée sans suite.",
   "enqueteurs" : [ "Laurent Girard", "Manon Robert" ],
-  "suspects" : [ "Jean Dupont", "Victor Hugo", "Albert Einstein" ]
+  "suspects" : [ "Jean Dupont", "Victor Hugo", "Albert Einstein" ],
+  "temoins" : [ "Charlotte Lefevre" ]
 }, {
   "date" : "2020-08-04",
   "lieu" : "21 Rue de Londres, Paris",
@@ -348,7 +386,8 @@
   "gravite" : 1,
   "description" : "Un acte de violence mineur a été rapidement résolu.",
   "enqueteurs" : [ "Vincent Moreau", "Charlotte David" ],
-  "suspects" : [ "Blaise Pascal", "Simone de Beauvoir", "Marie Curie", "Jean Dupont" ]
+  "suspects" : [ "Blaise Pascal", "Simone de Beauvoir", "Marie Curie", "Jean Dupont" ],
+  "temoins" : [ "Isabelle Roche" ]
 }, {
   "date" : "2020-09-23",
   "lieu" : "9 Rue d'Amsterdam, Paris",
@@ -357,7 +396,8 @@
   "gravite" : 9,
   "description" : "Une escroquerie complexe a été rouverte pour de nouvelles investigations.",
   "enqueteurs" : [ "Benoît Leroy", "Clara Bertrand" ],
-  "suspects" : [ "Albert Einstein", "Marie Curie", "Jean Dupont" ]
+  "suspects" : [ "Albert Einstein", "Marie Curie", "Jean Dupont" ],
+  "temoins" : [ "Isabelle Roche", "Louis Bertrand", "Hugo Fontaine" ]
 }, {
   "date" : "2025-03-15",
   "lieu" : "Toulouse",
@@ -366,5 +406,6 @@
   "gravite" : 3,
   "description" : null,
   "enqueteurs" : [ "Jean Dupont", "Marie Curie" ],
-  "suspects" : [ "Louis Pasteur", "Claude Monet", "Simone de Beauvoir" ]
+  "suspects" : [ "Louis Pasteur", "Claude Monet", "Simone de Beauvoir" ],
+  "temoins" : [ "François Martin" ]
 } ]

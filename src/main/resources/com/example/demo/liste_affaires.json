@@ -15,6 +15,12 @@
       ],
       "suspects": [
           "Claude Monet"
+      ],
+      "temoins": [
+          "Isabelle Roche",
+          "Benjamin Dubois",
+          "Jules Mercier",
+          "David Lambert"
       ]
   },
   {
@@ -30,6 +36,9 @@
       ],
       "suspects": [
           "Marie Curie"
+      ],
+      "temoins": [
+          "Emma Girard"
       ]
   },
   {
@@ -46,6 +55,12 @@
       "suspects": [
           "Marie Curie",
           "Sophie Germain"
+      ],
+      "temoins": [
+          "Karine Dupont",
+          "Jules Mercier",
+          "Emma Girard",
+          "Louis Bertrand"
       ]
   },
   {
@@ -62,6 +77,9 @@
       "suspects": [
           "Albert Einstein",
           "Simone de Beauvoir"
+      ],
+      "temoins": [
+          "Hugo Fontaine"
       ]
   },
   {
@@ -79,6 +97,10 @@
           "Simone de Beauvoir",
           "Albert Einstein",
           "Louis Pasteur"
+      ],
+      "temoins": [
+          "Benjamin Dubois",
+          "François Martin"
       ]
   },
   {
@@ -95,6 +117,9 @@
       "suspects": [
           "Sophie Germain",
           "Blaise Pascal"
+      ],
+      "temoins": [
+          "François Martin"
       ]
   },
   {
@@ -113,6 +138,11 @@
           "Louis Pasteur",
           "Blaise Pascal",
           "Claude Monet"
+      ],
+      "temoins": [
+          "Benjamin Dubois",
+          "Alice Morel",
+          "Gabrielle Leroy"
       ]
   },
   {
@@ -129,6 +159,12 @@
       "suspects": [
           "Blaise Pascal",
           "Victor Hugo"
+      ],
+      "temoins": [
+          "Emma Girard",
+          "Alice Morel",
+          "Louis Bertrand",
+          "Jules Mercier"
       ]
   },
   {
@@ -146,6 +182,10 @@
           "Jean Dupont",
           "Albert Einstein",
           "Sophie Germain"
+      ],
+      "temoins": [
+          "Hugo Fontaine",
+          "Charlotte Lefevre"
       ]
   },
   {
@@ -163,6 +203,12 @@
           "Simone de Beauvoir",
           "Marie Curie",
           "René Descartes"
+      ],
+      "temoins": [
+          "Karine Dupont",
+          "Emma Girard",
+          "Benjamin Dubois",
+          "Jules Mercier"
       ]
   },
   {
@@ -178,6 +224,11 @@
       ],
       "suspects": [
           "Claude Monet"
+      ],
+      "temoins": [
+          "Charlotte Lefevre",
+          "Emma Girard",
+          "Isabelle Roche"
       ]
   },
   {
@@ -193,6 +244,10 @@
       ],
       "suspects": [
           "René Descartes"
+      ],
+      "temoins": [
+          "Louis Bertrand",
+          "Jules Mercier"
       ]
   },
   {
@@ -208,6 +263,11 @@
       ],
       "suspects": [
           "Claude Monet"
+      ],
+      "temoins": [
+          "Jules Mercier",
+          "Karine Dupont",
+          "Benjamin Dubois"
       ]
   },
   {
@@ -226,6 +286,9 @@
           "René Descartes",
           "Louis Pasteur",
           "Marie Curie"
+      ],
+      "temoins": [
+          "Isabelle Roche"
       ]
   },
   {
@@ -242,6 +305,9 @@
       "suspects": [
           "Victor Hugo",
           "René Descartes"
+      ],
+      "temoins": [
+          "David Lambert"
       ]
   },
   {
@@ -260,6 +326,10 @@
           "Claude Monet",
           "Albert Einstein",
           "Victor Hugo"
+      ],
+      "temoins": [
+          "Charlotte Lefevre",
+          "Isabelle Roche"
       ]
   },
   {
@@ -278,6 +348,10 @@
           "Louis Pasteur",
           "Victor Hugo",
           "Claude Monet"
+      ],
+      "temoins": [
+          "Benjamin Dubois",
+          "Isabelle Roche"
       ]
   },
   {
@@ -296,6 +370,11 @@
           "Marie Curie",
           "René Descartes",
           "Claude Monet"
+      ],
+      "temoins": [
+          "Emma Girard",
+          "François Martin",
+          "Charlotte Lefevre"
       ]
   },
   {
@@ -312,6 +391,9 @@
       "suspects": [
           "Blaise Pascal",
           "Jean Dupont"
+      ],
+      "temoins": [
+          "Hugo Fontaine"
       ]
   },
   {
@@ -329,6 +411,12 @@
           "Simone de Beauvoir",
           "Victor Hugo",
           "Jean Dupont"
+      ],
+      "temoins": [
+          "Karine Dupont",
+          "Jules Mercier",
+          "Emma Girard",
+          "Hugo Fontaine"
       ]
   },
   {
@@ -344,6 +432,12 @@
       ],
       "suspects": [
           "Simone de Beauvoir"
+      ],
+      "temoins": [
+          "Karine Dupont",
+          "Gabrielle Leroy",
+          "Alice Morel",
+          "Benjamin Dubois"
       ]
   },
   {
@@ -359,6 +453,11 @@
       ],
       "suspects": [
           "Claude Monet"
+      ],
+      "temoins": [
+          "Charlotte Lefevre",
+          "Isabelle Roche",
+          "Jules Mercier"
       ]
   },
   {
@@ -377,6 +476,12 @@
           "Albert Einstein",
           "Blaise Pascal",
           "Claude Monet"
+      ],
+      "temoins": [
+          "Jules Mercier",
+          "Benjamin Dubois",
+          "Louis Bertrand",
+          "Charlotte Lefevre"
       ]
   },
   {
@@ -392,6 +497,11 @@
       ],
       "suspects": [
           "Jean Dupont"
+      ],
+      "temoins": [
+          "Jules Mercier",
+          "Hugo Fontaine",
+          "Louis Bertrand"
       ]
   },
   {
@@ -407,6 +517,11 @@
       ],
       "suspects": [
           "Simone de Beauvoir"
+      ],
+      "temoins": [
+          "François Martin",
+          "Jules Mercier",
+          "Isabelle Roche"
       ]
   },
   {
@@ -425,6 +540,12 @@
           "René Descartes",
           "Claude Monet",
           "Blaise Pascal"
+      ],
+      "temoins": [
+          "Karine Dupont",
+          "Gabrielle Leroy",
+          "Benjamin Dubois",
+          "David Lambert"
       ]
   },
   {
@@ -441,6 +562,11 @@
       "suspects": [
           "Claude Monet",
           "Albert Einstein"
+      ],
+      "temoins": [
+          "Jules Mercier",
+          "David Lambert",
+          "Alice Morel"
       ]
   },
   {
@@ -457,6 +583,11 @@
       "suspects": [
           "Jean Dupont",
           "Simone de Beauvoir"
+      ],
+      "temoins": [
+          "David Lambert",
+          "Charlotte Lefevre",
+          "Gabrielle Leroy"
       ]
   },
   {
@@ -474,6 +605,12 @@
           "Sophie Germain",
           "Simone de Beauvoir",
           "Blaise Pascal"
+      ],
+      "temoins": [
+          "Emma Girard",
+          "Benjamin Dubois",
+          "Louis Bertrand",
+          "Jules Mercier"
       ]
   },
   {
@@ -489,6 +626,12 @@
       ],
       "suspects": [
           "Simone de Beauvoir"
+      ],
+      "temoins": [
+          "Hugo Fontaine",
+          "Alice Morel",
+          "David Lambert",
+          "Benjamin Dubois"
       ]
   },
   {
@@ -504,6 +647,10 @@
       ],
       "suspects": [
           "Sophie Germain"
+      ],
+      "temoins": [
+          "David Lambert",
+          "Alice Morel"
       ]
   },
   {
@@ -521,6 +668,9 @@
           "Sophie Germain",
           "Blaise Pascal",
           "Jean Dupont"
+      ],
+      "temoins": [
+          "Jules Mercier"
       ]
   },
   {
@@ -538,6 +688,11 @@
           "Victor Hugo",
           "Marie Curie",
           "Simone de Beauvoir"
+      ],
+      "temoins": [
+          "Isabelle Roche",
+          "Jules Mercier",
+          "Gabrielle Leroy"
       ]
   },
   {
@@ -553,6 +708,9 @@
       ],
       "suspects": [
           "Albert Einstein"
+      ],
+      "temoins": [
+          "Benjamin Dubois"
       ]
   },
   {
@@ -570,6 +728,11 @@
           "Victor Hugo",
           "Louis Pasteur",
           "Marie Curie"
+      ],
+      "temoins": [
+          "Benjamin Dubois",
+          "Charlotte Lefevre",
+          "François Martin"
       ]
   },
   {
@@ -588,6 +751,11 @@
           "René Descartes",
           "Victor Hugo",
           "Albert Einstein"
+      ],
+      "temoins": [
+          "Charlotte Lefevre",
+          "Isabelle Roche",
+          "Emma Girard"
       ]
   },
   {
@@ -605,6 +773,9 @@
           "Blaise Pascal",
           "René Descartes",
           "Albert Einstein"
+      ],
+      "temoins": [
+          "Karine Dupont"
       ]
   },
   {
@@ -622,6 +793,9 @@
           "Jean Dupont",
           "Victor Hugo",
           "Albert Einstein"
+      ],
+      "temoins": [
+          "Charlotte Lefevre"
       ]
   },
   {
@@ -640,6 +814,9 @@
           "Simone de Beauvoir",
           "Marie Curie",
           "Jean Dupont"
+      ],
+      "temoins": [
+          "Isabelle Roche"
       ]
   },
   {
@@ -657,6 +834,11 @@
           "Albert Einstein",
           "Marie Curie",
           "Jean Dupont"
+      ],
+      "temoins": [
+          "Isabelle Roche",
+          "Louis Bertrand",
+          "Hugo Fontaine"
       ]
   },
   {
@@ -674,6 +856,9 @@
           "Louis Pasteur",
           "Claude Monet",
           "Simone de Beauvoir"
+      ],
+      "temoins": [
+          "François Martin"
       ]
   }
 ]
