@@ -259,16 +259,6 @@
   "suspects" : [ "Victor Hugo", "René Descartes", "Claude Monet", "Blaise Pascal" ],
   "temoins" : [ "Karine Dupont", "Gabrielle Leroy", "Benjamin Dubois", "David Lambert" ]
 }, {
-  "date" : "2021-08-14",
-  "lieu" : "3 Rue de la Chaussée d'Antin, Paris",
-  "type" : "Agression",
-  "status" : "INSTRUCTION_EN_COURS",
-  "gravite" : 8,
-  "description" : "Une agression avec blessures graves est en cours d'instruction.",
-  "enqueteurs" : [ "Antoine Lambert", "Emma Richard" ],
-  "suspects" : [ "Claude Monet", "Albert Einstein" ],
-  "temoins" : [ "Jules Mercier", "David Lambert", "Alice Morel" ]
-}, {
   "date" : "2021-09-03",
   "lieu" : "TESTfdsdsf",
   "type" : "Vol",
