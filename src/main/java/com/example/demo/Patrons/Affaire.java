@@ -36,9 +36,7 @@ public class Affaire {
     @JsonDeserialize(using = TemoignageDesirializer.class)
     private Map<Integer, List<Integer>> temoignages;
 
-    public Affaire() {}
-  
-    
+
     public Affaire() {
         this.enqueteurs = new ArrayList<>();
         this.suspects = new ArrayList<>();
@@ -62,16 +60,9 @@ public class Affaire {
     public void setDate(LocalDate date) { this.date = date; }
 
     public String getLieu() { return lieu; }
-    public void setLieu(String lieu) { this.lieu = lieu; }
-
     public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
-
     public Status getStatus() { return status; }
-    public void setStatus(Status status) { this.status = status; }
-
     public int getGravite() { return gravite; }
-    public void setGravite(int gravite) { this.gravite = gravite; }
 
     public String getDescription() { return description; }
     public List<String> getEnqueteurs() { return enqueteurs; }
