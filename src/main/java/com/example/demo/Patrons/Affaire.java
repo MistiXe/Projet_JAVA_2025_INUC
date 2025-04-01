@@ -40,15 +40,17 @@ public class Affaire {
     private List<String> enqueteurs;
     private List<String> suspects;
     private List<String> temoins;
+    private List<String> preuves;
 
-    // Map d'ID de témoin (clé) et liste des personnes témoignant pour eux
-    
-    private Map<Integer, List<Integer>> temoignages = new HashMap<>();
+    // Map d'ID d'affaire à une liste d'ID de témoins (relation clé étrangère)
+    @JsonDeserialize(using = TemoignageDesirializer.class)
+    private Map<Integer, List<Integer>> temoignages;
 
     public Affaire() {
         this.enqueteurs = new ArrayList<>();
         this.suspects = new ArrayList<>();
         this.temoins = new ArrayList<>();
+        this.preuves = new ArrayList<>();
     }
 
     // Constructeur
@@ -61,6 +63,7 @@ public class Affaire {
         this.enqueteurs = new ArrayList<>();
         this.suspects = new ArrayList<>();
         this.temoins = new ArrayList<>();
+        this.preuves = new ArrayList<>();
     }
 
     // Getters et Setters
@@ -90,9 +93,24 @@ public class Affaire {
     
     public List<String> getTemoins() { return temoins; }
     public void setTemoins(List<String> temoins) { this.temoins = temoins; }
+  
+    public List<String> getPreuves() { return preuves; }
+    public void setPreuves(List<String> preuves) { this.preuves = preuves; } 
     
     public Map<Integer, List<Integer>> getTemoignages() { return temoignages; }
     public void setTemoignages(Map<Integer, List<Integer>> temoignages) { this.temoignages = temoignages; }
+  
+    public void ajouterEnqueteur(String enqueteur) { this.enqueteurs.add(enqueteur); }
+    public void supprimerEnqueteur(String enqueteur) { this.enqueteurs.remove(enqueteur);  }
+
+    public void ajouterSuspect(String suspect) { this.suspects.add(suspect); }
+    public void supprimerSuspect(String suspect) { this.suspects.remove(suspect); }
+
+    public void ajouterTemoin(String temoin) { this.temoins.add(temoin); }
+    public void supprimerTemoin(String temoin) { this.temoins.remove(temoin); }
+
+    public void ajouterPreuves(String preuves) { this.preuves.add(preuves); }
+    public void supprimerPreuves(String preuves) { this.preuves.remove(preuves); }
 
 
     public boolean validerTemoignages(List<Personne> personnesConnues) {
