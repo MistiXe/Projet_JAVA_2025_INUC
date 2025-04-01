@@ -32,10 +32,10 @@ public class Affaire {
     private List<String> enqueteurs;
     private List<String> suspects;
     private List<String> temoins;
+
     // Map d'ID d'affaire à une liste d'ID de témoins (relation clé étrangère)
     @JsonDeserialize(using = TemoignageDesirializer.class)
     private Map<Integer, List<Integer>> temoignages;
-
 
     public Affaire() {
         this.enqueteurs = new ArrayList<>();
@@ -58,7 +58,6 @@ public class Affaire {
     // Getters et Setters
     public LocalDate getDate() { return date; }
     public void setDate(LocalDate date) { this.date = date; }
-
     public String getLieu() { return lieu; }
     public String getType() { return type; }
     public Status getStatus() { return status; }
@@ -88,27 +87,12 @@ public class Affaire {
     public void setTemoins(List<String> temoins) { this.temoins = temoins; }
     
 
-    public void ajouterEnqueteur(String enqueteur) {
-        this.enqueteurs.add(enqueteur);
-    }
+    public void ajouterEnqueteur(String enqueteur) { this.enqueteurs.add(enqueteur); }
+    public void supprimerEnqueteur(String enqueteur) { this.enqueteurs.remove(enqueteur);  }
 
-    public void supprimerEnqueteur(String enqueteur) {
-        this.enqueteurs.remove(enqueteur);
-    }
+    public void ajouterSuspect(String suspect) { this.suspects.add(suspect); }
+    public void supprimerSuspect(String suspect) { this.suspects.remove(suspect); }
 
-    public void ajouterSuspect(String suspect) {
-        this.suspects.add(suspect);
-    }
-
-    public void supprimerSuspect(String suspect) {
-        this.suspects.remove(suspect);
-    }
-
-    public void ajouterTemoin(String temoin) {
-        this.temoins.add(temoin);
-    }
-
-    public void supprimerTemoin(String temoin) {
-        this.temoins.remove(temoin);
-    }
+    public void ajouterTemoin(String temoin) { this.temoins.add(temoin); }
+    public void supprimerTemoin(String temoin) { this.temoins.remove(temoin); }
 }
