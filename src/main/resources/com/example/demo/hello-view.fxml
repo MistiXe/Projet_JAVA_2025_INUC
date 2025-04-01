@@ -114,7 +114,7 @@
                         <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />
 
                         <Label styleClass="labelDetail, bleu" text="Description" />
-                        <TextArea fx:id="detailDescription" prefHeight="63.0" prefWidth="700.0" editable="false" styleClass="detail-text-zone" wrapText="true" />
+                        <TextArea fx:id="detailDescription" prefHeight="63.0" prefWidth="700.0" styleClass="detail-text-zone" wrapText="true" />
 
                         <Label styleClass="labelDetail, violet" text="État d’avancement" />
                         <TextArea fx:id="detailEtat" prefHeight="54.0" prefWidth="700.0" editable="false" styleClass="detail-text-zone" />
