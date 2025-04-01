@@ -82,7 +82,7 @@
 /* ---------------------------------------------- */
 /* ---------------------------------------------- */
 
-#searchField {
+.searchField {
     -fx-padding: 10px 10px 10px 20px;
     -fx-background-color: white;
     -fx-background-radius: 20px;
@@ -93,7 +93,7 @@
     -fx-border-color: #ffffff;
 }
 
-#searchField:focused {
+.searchField:focused {
     -fx-border-width: 4px;
     -fx-border-color: #4a60ff;
 }
@@ -354,7 +354,7 @@ Button {
 
 
 /* Style de base du ComboBox (transparent, sans bordure) */
-#statusComboBox {
+.combo-box {
     -fx-background-color: white;
     -fx-border-color: transparent; /* Désactive toute bordure */
     -fx-background-radius: 20px;
@@ -364,12 +364,12 @@ Button {
 }
 
 /* Style au survol (léger surlignage gris) */
-#statusComboBox:hover {
+.combo-box:hover {
     -fx-background-color: #d3d3d3;
 }
 
 /* Style quand ouvert (transparent) */
-#statusComboBox:pressed, #statusComboBox:showing {
+.combo-box:pressed, .combo-box:showing {
     -fx-background-color: #bcbcbc;
     -fx-background-radius: 20px 20px 0 0;
 }
@@ -407,7 +407,7 @@ Button {
 
 
 /* Style de base du Spinner - Fond clair */
-#graviteSpinner {
+.spinner {
     -fx-background-color: #f5f5f5; /* Fond gris clair */
     -fx-border-color: transparent;
     -fx-background-radius: 20px;
@@ -416,7 +416,7 @@ Button {
 }
 
 /* Champ texte éditable */
-#graviteSpinner .text-field {
+.spinner .text-field {
     -fx-background-color: #f5f5f5;
     -fx-border-color: transparent;
     -fx-padding: 5px 10px;
@@ -424,34 +424,34 @@ Button {
 }
 
 /* Boutons flèches */
-#graviteSpinner .increment-arrow-button,
-#graviteSpinner .decrement-arrow-button {
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-padding: 5px;
 }
 
 /* Flèches (sombre pour contraste) */
-#graviteSpinner .increment-arrow,
-#graviteSpinner .decrement-arrow {
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
     -fx-background-color: #333333;
     -fx-shape: "M 0 -3.5 v 7 l 4 -3.5 z";
 }
 
 /* Effets d'interaction */
-#graviteSpinner .increment-arrow-button:hover,
-#graviteSpinner .decrement-arrow-button:hover {
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
     -fx-background-color: rgba(0, 0, 0, 0.1); /* Survol gris très léger */
     -fx-background-radius: 13px;
 }
 
-#graviteSpinner .increment-arrow-button:pressed,
-#graviteSpinner .decrement-arrow-button:pressed {
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
     -fx-background-color: rgba(0, 0, 0, 0.2); /* Appui plus visible */
 }
 
 /* Pour le focus (optionnel) */
-#graviteSpinner:focused {
+.spinner:focused {
     -fx-background-color: #e0e0e0; /* Légère variation quand focus */
 }
 
