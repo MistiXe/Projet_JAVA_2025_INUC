@@ -32,24 +32,20 @@ public class JsonHandlerCase {
         if (Files.exists(Paths.get(OUTPUT_FILE))) {
             // Si le fichier existe, lire depuis ce fichier
             try (InputStream inputStream = new FileInputStream(OUTPUT_FILE)) {
-                System.out.println("Lecture du fichier JSON depuis : " + OUTPUT_FILE);
                 affaires = objectMapper.readValue(inputStream, new TypeReference<List<Affaire>>() {});
             } catch (IOException e) {
-                System.err.println("Erreur lors de la lecture du fichier JSON externe : " + e.getMessage());
                 affaires = List.of();
             }
         } else {
             // Sinon, lire depuis les ressources (version par défaut)
             try (InputStream inputStream = JsonHandlerCase.class.getResourceAsStream(RESOURCE_PATH)) {
                 if (inputStream == null) {
-                    System.err.println("Fichier JSON introuvable dans les ressources : " + RESOURCE_PATH);
                     affaires = List.of();
                 } else {
-                    System.out.println("Lecture du fichier JSON depuis les ressources : " + RESOURCE_PATH);
+                   
                     affaires = objectMapper.readValue(inputStream, new TypeReference<List<Affaire>>() {});
                 }
             } catch (IOException e) {
-                System.err.println("Erreur lors de la lecture du fichier JSON : " + e.getMessage());
                 affaires = List.of();
             }
         }
@@ -69,14 +65,14 @@ public class JsonHandlerCase {
 
             // Écriture dans le fichier
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(OUTPUT_FILE), affaires);
-            System.out.println("Données sauvegardées dans : " + OUTPUT_FILE);
+    
 
             // Affichage du contenu JSON dans la console (utile pour le débogage)
             String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(affaires);
-            System.out.println("Contenu du fichier JSON :\n" + json);
+            
 
         } catch (IOException e) {
-            System.err.println("Erreur lors de l'écriture dans le fichier JSON : " + e.getMessage());
+            
             e.printStackTrace();
         }
     }
