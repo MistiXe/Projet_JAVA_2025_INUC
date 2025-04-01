@@ -12,13 +12,28 @@ public class Affaire {
     private LocalDate date;
     private String lieu;
     private String type;
-
     public enum Status {
-        NON_ENGAGEE, EN_COURS, CLASSEE_SANS_SUITE, TRANSFEREE_AU_PARQUET,
-        INSTRUCTION_EN_COURS, RENVOYEE_DEVANT_TRIBUNAL, SUSPENDUE,
-        CLOTUREE, REOUVERTE
-    }
+        NON_ENGAGEE("Non engagée"),
+        EN_COURS("En cours"),
+        CLASSEE_SANS_SUITE("Classée sans suite"),
+        TRANSFEREE_AU_PARQUET("Transférée au parquet"),
+        INSTRUCTION_EN_COURS("Instruction en cours"),
+        RENVOYEE_DEVANT_TRIBUNAL("Renvoyée devant tribunal"),
+        SUSPENDUE("Suspendue"),
+        CLOTUREE("Clôturée"),
+        REOUVERTE("Rouverte");
+    
+        private final String statusString;
+    
+        Status(String status) {
+            statusString = status;
+        }
 
+        @Override
+        public String toString() {
+            return statusString;
+        }
+    }
     private Status status;
     private int gravite;
     private String description;
@@ -108,6 +123,4 @@ public class Affaire {
         System.out.println("Validation des témoignages réussie !");
         return true;
     }
-    
-    
 }
