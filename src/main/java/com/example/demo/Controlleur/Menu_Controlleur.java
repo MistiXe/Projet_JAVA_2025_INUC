@@ -42,6 +42,14 @@ public class Menu_Controlleur {
     @FXML private TableColumn<Affaire, Integer> columnGravite;
 
     @FXML private TextArea detailDescription;
+    @FXML private TextArea detailEtat;
+
+    @FXML private ListView<String> detailEnqueteurs;
+    @FXML private ListView<String> detailSuspects;
+    @FXML private ListView<String> detailTemoins;
+    @FXML private ObservableList<String> enqueteursList = FXCollections.observableArrayList();
+    @FXML private ObservableList<String> suspectsList = FXCollections.observableArrayList();
+    @FXML private ObservableList<String> temoinsList = FXCollections.observableArrayList();
 
     @FXML private MenuItem convertPDF;
     @FXML private MenuItem printTable;
@@ -117,17 +125,69 @@ public class Menu_Controlleur {
 
          // Action pour voir les données à droite
          tableView.getSelectionModel().selectedItemProperty().addListener(
-         (observable, oldValue, newValue) -> afficherDetailsPersonne(newValue)
-         );
+            (observable, oldValue, newValue) -> {
+                afficherDetailsPersonne(newValue);
+                afficherDetailsEtat(newValue);
+                afficherEnqueteurs(newValue);
+                afficherSuspects(newValue);
+                afficherTémoins(newValue);
+            });
 
          // S'il y a des affaires judiciaires
         if (!listeAffaires.isEmpty()) {
             btnSupprimer.setOnAction(
                     e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
         }
+    
+            // Permettre la sélection d'une ligne dans le TableView
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+        // Lier la ListView à la liste observable
+        detailEnqueteurs.setItems(enqueteursList);
+        detailSuspects.setItems(suspectsList);
+        detailTemoins.setItems(temoinsList);
+
+        // Mettre à jour la ListView lorsque l'utilisateur sélectionne une affaire
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                afficherEnqueteurs(newSelection);
+                afficherSuspects(newSelection);
+                afficherTémoins(newSelection);
+            } else {
+                enqueteursList.clear(); // Si aucune affaire n'est sélectionnée
+                suspectsList.clear();
+                temoinsList.clear();
+            }
+        });
+    
     }
 
-     private void afficherDetailsPersonne(Affaire affaire) {
+    private void afficherEnqueteurs(Affaire affaire) {
+        if (affaire != null) {
+            enqueteursList.setAll(affaire.getEnqueteurs());
+        } else {
+            enqueteursList.clear();
+        }
+    }
+
+    private void afficherSuspects(Affaire affaire) {
+        if (affaire != null) {
+            suspectsList.setAll(affaire.getSuspects());
+        } else {
+            suspectsList.clear();
+        }
+    }
+    
+    private void afficherTémoins(Affaire affaire) {
+        if (affaire != null) {
+            temoinsList.setAll(affaire.getTemoins());
+        } else {
+            temoinsList.clear();
+        }
+    }
+
+
+     private void afficherDetailsPersonne(Affaire affaire) { // afficher la desc écrite
         currentAffaire = affaire;
 
         if (affaire.getDescription() != null) {
@@ -136,6 +196,18 @@ public class Menu_Controlleur {
         else {
             detailDescription.setText("");
             detailDescription.setPromptText("Aucune description disponible pour cette affaire.");
+        }
+     }
+
+     private void afficherDetailsEtat(Affaire affaire) { // afficher etat dans la desc 
+        currentAffaire = affaire;
+
+        if (affaire.getStatus() != null) {
+            detailEtat.setText("l'affaire est actuellement statués comme : "+affaire.getStatus()); //"" obligé pour le type String
+        }
+        else {
+            detailEtat.setText("");
+            detailEtat.setPromptText("Aucun état n'est renseigné pour cette affaire. ");
         }
      }
 
