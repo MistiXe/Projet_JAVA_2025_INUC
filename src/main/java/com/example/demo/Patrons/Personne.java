@@ -13,6 +13,7 @@ public class Personne {
     private int id;
     private String prenom;
     private String nom;
+    private int age;
     private HashSet<String> adresses = new HashSet<>();
     private String email;
     private long telephone;
@@ -30,51 +31,28 @@ public class Personne {
 
     private StatutLegal statutLegal;
     private HashSet<LocalDate> dateArrestation = new HashSet<>();
-    private Map<String, Integer> condamnations;
-    private Map<String, List<String>> reseauxSociaux;
+    private Map<String, Integer> condamnations = new HashMap<>();
+    private Map<String, List<String>> reseauxSociaux = new HashMap<>();
     private HashSet<String> pseudonymes = new HashSet<>();
-    private Map<Personne, String> listeLiens;
-    private Map<Affaire, String> listeAffaires;
+    private Map<Personne, String> listeLiens = new HashMap<>();
+    private Map<Affaire, String> listeAffaires = new HashMap<>();
     private String descriptionPhysique;
     private String photoUrl;
     private String derniereLocalisation;
     private LocalDate dateDerniereActivite;
     private String notes;
 
-    // Gestion des témoignages (clé : id du témoin, valeur : liste des id des témoins)
+    // Gestion des témoignages (clé : ID du témoin, valeur : liste des ID des témoins)
     private Map<Integer, List<Integer>> temoignages = new HashMap<>();
 
     // Constructeurs
     public Personne() {}
 
-    public Personne(int id, String prenom, String nom) {
+    public Personne(int id, String prenom, String nom, int age) {
         this.id = id;
         this.prenom = prenom;
         this.nom = nom;
-    }
-
-    public Personne(int id, String prenom, String nom, String adresse, String email, long telephone, LocalDate dateNaissance,
-                    String lieuNaissance, String genre, String nationalite) {
-        this(id, prenom, nom);
-        this.adresses.add(adresse);
-        this.email = email;
-        this.telephone = telephone;
-        this.dateNaissance = dateNaissance;
-        this.lieuNaissance = lieuNaissance;
-        this.genre = genre;
-        this.nationalite = nationalite;
-    }
-
-    public Personne(int id, String prenom, String nom, HashSet<String> adresses, String email, long telephone, LocalDate dateNaissance,
-                    String lieuNaissance, String genre, String nationalite) {
-        this(id, prenom, nom);
-        this.adresses = adresses;
-        this.email = email;
-        this.telephone = telephone;
-        this.dateNaissance = dateNaissance;
-        this.lieuNaissance = lieuNaissance;
-        this.genre = genre;
-        this.nationalite = nationalite;
+        this.age = age;
     }
 
     // Gestion des témoignages
@@ -84,18 +62,20 @@ public class Personne {
         temoignages.put(temoin.getId(), temoignes.stream().map(Personne::getId).toList());
     }
 
+    // Vérification de l'existence d'une personne dans une liste donnée
+    public static boolean existeDansListe(int idPersonne, List<Personne> personnes) {
+        return personnes.stream().anyMatch(p -> p.getId() == idPersonne);
+    }
+
     // Getters et Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
-
+    
     public String getPrenom() { return prenom; }
     public void setPrenom(String prenom) { this.prenom = prenom; }
 
     public String getNom() { return nom; }
     public void setNom(String nom) { this.nom = nom; }
-
-    public HashSet<String> getAdresses() { return adresses; }
-    public void setAdresses(HashSet<String> adresses) { this.adresses = adresses; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
@@ -121,8 +101,23 @@ public class Personne {
     public StatutLegal getStatutLegal() { return statutLegal; }
     public void setStatutLegal(StatutLegal statutLegal) { this.statutLegal = statutLegal; }
 
-    public HashSet<LocalDate> getDateArrestation() { return dateArrestation; }
-    public void setDateArrestation(HashSet<LocalDate> dateArrestation) { this.dateArrestation = dateArrestation; }
+    public String getDescriptionPhysique() { return descriptionPhysique; }
+    public void setDescriptionPhysique(String descriptionPhysique) { this.descriptionPhysique = descriptionPhysique; }
+
+    public String getPhotoUrl() { return photoUrl; }
+    public void setPhotoUrl(String photoUrl) { this.photoUrl = photoUrl; }
+
+    public String getDerniereLocalisation() { return derniereLocalisation; }
+    public void setDerniereLocalisation(String derniereLocalisation) { this.derniereLocalisation = derniereLocalisation; }
+
+    public LocalDate getDateDerniereActivite() { return dateDerniereActivite; }
+    public void setDateDerniereActivite(LocalDate dateDerniereActivite) { this.dateDerniereActivite = dateDerniereActivite; }
+
+    public String getNotes() { return notes; }
+    public void setNotes(String notes) { this.notes = notes; }
+
+    public HashSet<String> getAdresses() { return adresses; }
+    public void setAdresses(HashSet<String> adresses) { this.adresses = adresses; }
 
     public Map<String, Integer> getCondamnations() { return condamnations; }
     public void setCondamnations(Map<String, Integer> condamnations) { this.condamnations = condamnations; }
@@ -139,18 +134,12 @@ public class Personne {
     public Map<Affaire, String> getListeAffaires() { return listeAffaires; }
     public void setListeAffaires(Map<Affaire, String> listeAffaires) { this.listeAffaires = listeAffaires; }
 
-    public String getDescriptionPhysique() { return descriptionPhysique; }
-    public void setDescriptionPhysique(String descriptionPhysique) { this.descriptionPhysique = descriptionPhysique; }
+    public int getAge() {
+        return age;
+    }
 
-    public String getPhotoUrl() { return photoUrl; }
-    public void setPhotoUrl(String photoUrl) { this.photoUrl = photoUrl; }
-
-    public String getDerniereLocalisation() { return derniereLocalisation; }
-    public void setDerniereLocalisation(String derniereLocalisation) { this.derniereLocalisation = derniereLocalisation; }
-
-    public LocalDate getDateDerniereActivite() { return dateDerniereActivite; }
-    public void setDateDerniereActivite(LocalDate dateDerniereActivite) { this.dateDerniereActivite = dateDerniereActivite; }
-
-    public String getNotes() { return notes; }
-    public void setNotes(String notes) { this.notes = notes; }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
 }

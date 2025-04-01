@@ -1,7 +1,10 @@
 package com.example.demo.Controlleur;
 
 import com.example.demo.Patrons.Affaire;
+import com.example.demo.Patrons.Personne;
 import com.example.demo.PDFJSON.JsonHandlerCase;
+import com.example.demo.PDFJSON.JsonHandlerPersonne;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +31,8 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 
 public class Menu_Controlleur {
@@ -131,6 +136,9 @@ public class Menu_Controlleur {
                 afficherEnqueteurs(newValue);
                 afficherSuspects(newValue);
                 afficherTémoins(newValue);
+
+
+
             });
 
          // S'il y a des affaires judiciaires
@@ -153,6 +161,13 @@ public class Menu_Controlleur {
                 afficherEnqueteurs(newSelection);
                 afficherSuspects(newSelection);
                 afficherTémoins(newSelection);
+        
+               // Charger les personnes connues à partir du JSON
+                List<Personne> personnesConnues = JsonHandlerPersonne.readPersonsFromJson();
+        
+                // Afficher les témoins de l'affaire sélectionnée
+                afficherTemoignage(newSelection.getTemoignages(), personnesConnues);
+               
             } else {
                 enqueteursList.clear(); // Si aucune affaire n'est sélectionnée
                 suspectsList.clear();
@@ -437,5 +452,53 @@ public class Menu_Controlleur {
             afficherCollaboration();
         }
     }
+
+    private Personne trouverPersonneParId(int id, List<Personne> personnesConnues) {
+    for (Personne p : personnesConnues) {
+        if (p.getId() == id) {
+            return p;
+        }
+    }
+    return null; // Retourne null si la personne n'est pas trouvée
+}
+
+private void afficherDetailsPersonnes(List<Integer> ids, List<Personne> personnesConnues) {
+    for (int id : ids) {
+        Personne personne = trouverPersonneParId(id, personnesConnues);
+        if (personne != null) {
+            System.out.println("Nom : " + personne.getNom() + ", Prénom : " + personne.getPrenom() + ", Âge : " + personne.getAge());
+        } else {
+            System.out.println("Personne avec l'ID " + id + " non trouvée !");
+        }
+    }
+}
+
+
+private void afficherTemoignage(Map<Integer, List<Integer>> temoignages, List<Personne> personnesConnues) {
+    // Rechercher dans les témoignages pour la clé 245
+    List<Integer> temoinsIds = temoignages.get(245); // La clé 245 est l'ID du témoin
+
+    if (temoinsIds != null) {
+        // Pour chaque ID dans la liste des témoins associés
+        for (Integer temoinsId : temoinsIds) {
+            // Chercher la personne dans la liste des personnes connues par son ID
+            personnesConnues.stream()
+                .filter(personne -> personne.getId() == temoinsId)
+                .findFirst()
+                .ifPresent(personne -> {
+                    // Afficher le nom et prénom de la personne
+                    System.out.println("Nom: " + personne.getNom() + ", Prénom: " + personne.getPrenom());
+                });
+        }
+    } else {
+        System.out.println("Aucun témoin trouvé pour l'ID 245.");
+    }
+}
+
+
+
+
+
+
 
 }
