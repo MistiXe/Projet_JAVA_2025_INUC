@@ -462,38 +462,36 @@ public class Menu_Controlleur {
     return null; // Retourne null si la personne n'est pas trouvée
 }
 
-private void afficherDetailsPersonnes(List<Integer> ids, List<Personne> personnesConnues) {
-    for (int id : ids) {
-        Personne personne = trouverPersonneParId(id, personnesConnues);
-        if (personne != null) {
-            System.out.println("Nom : " + personne.getNom() + ", Prénom : " + personne.getPrenom() + ", Âge : " + personne.getAge());
-        } else {
-            System.out.println("Personne avec l'ID " + id + " non trouvée !");
-        }
-    }
-}
+
 
 
 private void afficherTemoignage(Map<Integer, List<Integer>> temoignages, List<Personne> personnesConnues) {
-    // Rechercher dans les témoignages pour la clé 245
-    List<Integer> temoinsIds = temoignages.get(245); // La clé 245 est l'ID du témoin
+    temoinsList.clear(); // Nettoyer la liste avant d'ajouter de nouveaux éléments
 
-    if (temoinsIds != null) {
-        // Pour chaque ID dans la liste des témoins associés
-        for (Integer temoinsId : temoinsIds) {
-            // Chercher la personne dans la liste des personnes connues par son ID
-            personnesConnues.stream()
-                .filter(personne -> personne.getId() == temoinsId)
-                .findFirst()
-                .ifPresent(personne -> {
-                    // Afficher le nom et prénom de la personne
-                    System.out.println("Nom: " + personne.getNom() + ", Prénom: " + personne.getPrenom());
-                });
+    // Vérifier si la map des témoignages existe
+    if (temoignages != null) {
+        for (Map.Entry<Integer, List<Integer>> entry : temoignages.entrySet()) {
+            Integer idPersonne = entry.getKey();
+            List<Integer> temoinsIds = entry.getValue();
+
+            // Chercher le nom de la personne qui a des témoins
+            Personne personneTemoignee = trouverPersonneParId(idPersonne, personnesConnues);
+            String nomTemoignee = (personneTemoignee != null) ? personneTemoignee.getNom() + " " + personneTemoignee.getPrenom() : "Inconnu";
+
+            // Afficher chaque témoin lié
+            for (Integer temoinsId : temoinsIds) {
+                Personne temoin = trouverPersonneParId(temoinsId, personnesConnues);
+                if (temoin != null) {
+                    String texteAffichage = nomTemoignee + " a pour témoin : " + temoin.getNom() + " " + temoin.getPrenom() +  " qui a " + temoin.getAge() + " ans.";
+                    temoinsList.add(texteAffichage);
+                }
+            }
         }
     } else {
-        System.out.println("Aucun témoin trouvé pour l'ID 245.");
+        System.out.println("Aucun témoignage disponible.");
     }
 }
+
 
 
 
