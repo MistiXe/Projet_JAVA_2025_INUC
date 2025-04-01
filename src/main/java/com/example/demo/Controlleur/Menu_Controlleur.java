@@ -47,9 +47,12 @@ public class Menu_Controlleur {
     @FXML private ListView<String> detailEnqueteurs;
     @FXML private ListView<String> detailSuspects;
     @FXML private ListView<String> detailTemoins;
+    @FXML private ListView<String> detailPreuves;
+    
     @FXML private ObservableList<String> enqueteursList = FXCollections.observableArrayList();
     @FXML private ObservableList<String> suspectsList = FXCollections.observableArrayList();
     @FXML private ObservableList<String> temoinsList = FXCollections.observableArrayList();
+    @FXML private ObservableList<String> preuvesList = FXCollections.observableArrayList();
 
     @FXML private MenuItem convertPDF;
     @FXML private MenuItem printTable;
@@ -131,6 +134,7 @@ public class Menu_Controlleur {
                 afficherEnqueteurs(newValue);
                 afficherSuspects(newValue);
                 afficherTémoins(newValue);
+                afficherPreuves(newValue);
             });
 
          // S'il y a des affaires judiciaires
@@ -146,6 +150,7 @@ public class Menu_Controlleur {
         detailEnqueteurs.setItems(enqueteursList);
         detailSuspects.setItems(suspectsList);
         detailTemoins.setItems(temoinsList);
+        detailPreuves.setItems(preuvesList);
 
         // Mettre à jour la ListView lorsque l'utilisateur sélectionne une affaire
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -153,10 +158,12 @@ public class Menu_Controlleur {
                 afficherEnqueteurs(newSelection);
                 afficherSuspects(newSelection);
                 afficherTémoins(newSelection);
+                afficherPreuves(newSelection);
             } else {
                 enqueteursList.clear(); // Si aucune affaire n'est sélectionnée
                 suspectsList.clear();
                 temoinsList.clear();
+                preuvesList.clear();
             }
         });
     
@@ -183,6 +190,14 @@ public class Menu_Controlleur {
             temoinsList.setAll(affaire.getTemoins());
         } else {
             temoinsList.clear();
+        }
+    }
+
+    private void afficherPreuves(Affaire affaire) {
+        if (affaire != null) {
+            preuvesList.setAll(affaire.getPreuves());
+        } else {
+            preuvesList.clear();
         }
     }
 

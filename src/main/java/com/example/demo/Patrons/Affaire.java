@@ -32,6 +32,7 @@ public class Affaire {
     private List<String> enqueteurs;
     private List<String> suspects;
     private List<String> temoins;
+    private List<String> preuves;
 
     // Map d'ID d'affaire à une liste d'ID de témoins (relation clé étrangère)
     @JsonDeserialize(using = TemoignageDesirializer.class)
@@ -41,6 +42,7 @@ public class Affaire {
         this.enqueteurs = new ArrayList<>();
         this.suspects = new ArrayList<>();
         this.temoins = new ArrayList<>();
+        this.preuves = new ArrayList<>();
     }
 
     // Constructeur
@@ -53,6 +55,7 @@ public class Affaire {
         this.enqueteurs = new ArrayList<>();
         this.suspects = new ArrayList<>();
         this.temoins = new ArrayList<>();
+        this.preuves = new ArrayList<>();
     }
 
     // Getters et Setters
@@ -67,6 +70,7 @@ public class Affaire {
     public List<String> getEnqueteurs() { return enqueteurs; }
     public List<String> getSuspects() { return suspects; }
     public List<String> getTemoins() { return temoins; }
+    public List<String> getPreuves() { return preuves; }
 
     // Getter et Setter pour temoignages (Map d'IDs)
     public Map<Integer, List<Integer>> getTemoignages() { return temoignages; }
@@ -95,4 +99,7 @@ public class Affaire {
 
     public void ajouterTemoin(String temoin) { this.temoins.add(temoin); }
     public void supprimerTemoin(String temoin) { this.temoins.remove(temoin); }
+
+    public void ajouterPreuves(String preuves) { this.preuves.add(preuves); }
+    public void supprimerPreuves(String preuves) { this.preuves.remove(preuves); }
 }
