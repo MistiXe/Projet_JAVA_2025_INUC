@@ -1,15 +1,481 @@
-#header {
-    -fx-background-color: #cccccc;
+@font-face {
+    -fx-font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf');
 }
 
-/*.split-pane {*/
-/*    -fx-padding: 0;*/
-/*    -fx-border-width: 0;*/
-/*}*/
+@font-face {
+    -fx-font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf');
+}
 
+@font-face {
+    -fx-font-family: 'Poppins-Black';
+    src: url('fonts/Poppins-Black.ttf');
+}
+
+.root {
+    -fx-font-family: 'Poppins';
+    -fx-background-color: #e3e3e3;
+}
+
+/* ---------------------------------------------- */
+/* ------------------- HEADER ------------------- */
+/* ---------------------------------------------- */
+#logo {
+    -fx-font-family: 'Poppins Black';
+}
+
+#header {
+    -fx-background-color: #cdcdcd;
+}
+
+
+/* Style de base pour la MenuBar */
+.menu-bar {
+    -fx-background-color: transparent;
+
+}
+
+/* Style des menus (items principaux) */
+.menu {
+    -fx-background-color: transparent;
+}
+
+/* Style au survol */
+.menu:hover {
+    -fx-background-color: #1a35ff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+/* Style quand le menu est ouvert */
+.menu:showing {
+    -fx-background-color: #0021d6;
+    -fx-background-radius: 13px 13px 0px 0px;
+    -fx-border-radius: 13px 13px 0px 0px;
+}
+
+.context-menu {
+    -fx-border-radius: 0px 13px 13px 13px;
+    -fx-background-radius: 0px 13px 13px 13px;
+    -fx-border-color: white;
+}
+
+.menu-item {
+    -fx-padding: 5px 10px;
+    -fx-background-insets: 2px 5px; /* Ajustement crucial */
+}
+
+.menu-item:focused {
+    -fx-background-color: #92acff;
+    -fx-border-radius: 13px ;
+    -fx-background-radius: 13px;
+}
+
+/* Correction pour le séparateur */
+.separator-menu-item .line {
+    -fx-border-color: derive(white, 20%);
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 3px 0;
+}
+
+/* ---------------------------------------------- */
+/* ---------------------------------------------- */
+
+#searchField {
+    -fx-padding: 10px 10px 10px 20px;
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 18px;
+    -fx-effect: none;
+
+    -fx-border-width: 4px;
+    -fx-border-color: #ffffff;
+}
+
+#searchField:focused {
+    -fx-border-width: 4px;
+    -fx-border-color: #4a60ff;
+}
+
+
+/* --------------------------------------------------- */
+/* ------------------- TABLE VIEW -------------------- */
+/* --------------------------------------------------- */
+.table-view {
+    -fx-background-color: #e3e3e3;
+    -fx-background-radius: 0 20px 0 0;  /* Arrondi des coins extérieurs */
+    -fx-border-width: 5px 5px 0 0;
+    -fx-border-radius: 0 20px 0 0;      /* Arrondi de la bordure */
+    -fx-border-color: #e3e3e3;
+    -fx-padding: 3px;
+}
+
+/* Style de l'en-tête des colonnes */
+.table-view .column-header-background {
+    -fx-background-radius: 0 20px 0 0; /* Seulement les coins supérieurs arrondis */
+    -fx-background-color: #e3e3e3; /* couleur de fond unie, sans dégradé */
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent; /* important pour éviter le sur-stylage */
+    /*-fx-border-color: #e3e3e3;*/
+    -fx-border-width: 0 0 1px 0; /* bordure uniquement en bas */
+}
+
+/* Texte des en-têtes */
+.table-view .column-header .label {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* couleur du texte */
+}
+
+
+/* Scrollbar verticale */
+.table-view .scroll-bar:vertical {
+    -fx-pref-width: 8px;
+    -fx-background-color: transparent;
+}
+
+/* Scrollbar horizontale */
+.table-view .scroll-bar:horizontal {
+    -fx-pref-height: 8px;
+    -fx-background-color: transparent;
+}
+
+/* Le curseur de la scroll bar */
+.table-view .thumb {
+    -fx-background-color: #888;
+    -fx-background-radius: 4;
+}
+
+/* La piste sur laquelle glisse le curseur */
+.table-view .track {
+    -fx-background-color: #e3e3e3;
+}
+
+.table-view .corner {
+    -fx-background-color: #e3e3e3;
+}
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+
+
+
+/* ------------------------------------------------------------- */
+/* ------------------ DETAILS DE L'AFFAIRE --------------------- */
+/* ------------------------------------------------------------- */
+.scroll-pane {
+    -fx-background-color: white; /* Remplacer le rouge par transparent */
+    -fx-background: white; /* Double protection */
+}
+
+
+/* Le curseur de la scroll bar du scroll pane */
+.scroll-pane .thumb {
+    -fx-background-color: #888;
+    -fx-background-radius: 4;
+}
+
+/* La piste sur laquelle glisse le curseur */
+.scroll-pane .track {
+    -fx-background-color: white;
+}
+
+.scroll-pane .corner {
+    -fx-background-color: white;
+}
+
+#affaireTitreDetail {
+    -fx-font-size: 16;
+    -fx-font-family: 'Poppins Bold';
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: black;
+}
+
+.labelDetail {
+    -fx-font-family: 'Poppins Bold';
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+}
+
+
+.detail-text-zone {
+    -fx-background-color: transparent;
+    /*-fx-control-inner-background: transparent;*/  /* Empêche l'affichage d'un promptText */
+    -fx-border-width: 0;
+    -fx-text-fill: black;
+    -fx-padding: 0 0 10px -7px;
+}
+
+.detail-text-zone .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.detail-text-zone .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.detail-text-zone .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+/* ------------------------------------------------------------- */
+/* ------------------------------------------------------------- */
+
+
+
+/* Supprime toutes les bordures parasites */
+.split-pane {
+    -fx-background-color: white;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}
+
+/* Permet de garder une épaisseur pour le diviseur, afin de l'attraper plus facilement. Mais on le rend invisible malgré tout */
 .split-pane:horizontal > .split-pane-divider,
 .split-pane:vertical > .split-pane-divider {
-    -fx-padding: 0;
-    -fx-background-color: #7070f6;
-    -fx-border-width: 0;
+    -fx-padding: 5px;
+    -fx-border-width: 5px;
+    -fx-background-color: transparent;
 }
+
+
+
+/* -------------------------------------------------- */
+/* ------------------ AJOUTER_VIEW ------------------ */
+/* -------------------------------------------------- */
+.ajouter-text-field {
+    -fx-padding: 10px;
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 8px;
+    -fx-effect: none;
+
+    -fx-border-width: 4px;
+    -fx-border-color: transparent;
+}
+
+.ajouter-text-field:focused {
+    -fx-border-width: 4px;
+    -fx-border-color: #000000;
+}
+/* -------------------------------------------------- */
+/* -------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+/* --------------------------------------------------- */
+/* --------------------- GENERAL --------------------- */
+/* --------------------------------------------------- */
+.bleu {
+    -fx-background-color: #4a90e2;
+}
+
+.violet {
+    -fx-background-color: #9b59b6;
+}
+
+.vert {
+    -fx-background-color: #2ecc71;
+}
+
+.rouge {
+    -fx-background-color: #e74c3c;
+}
+
+.orange {
+    -fx-background-color: #f39c12;
+}
+
+.bleu-clair {
+    -fx-background-color: #3498db;
+}
+
+.rouge-fonce {
+    -fx-background-color: #c0392b;
+}
+
+.greyed-out-text {
+    -fx-text-fill: #bababa;
+}
+
+Button {
+    -fx-font-family: 'Poppins Bold';
+    -fx-font-size: 13px;
+    -fx-padding: 10px 20px 10px 20px;
+    -fx-background-radius: 20px;
+    -fx-background-color: #a8a8a8;
+}
+
+.date-picker {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+    -fx-padding: 5px;
+}
+
+/* Style du champ texte interne */
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 5px;
+}
+
+/* Style du bouton */
+.date-picker .arrow-button {
+    -fx-background-color: #3498db;
+    -fx-background-radius: 0 5px 5px 0;
+}
+
+/* Style au survol */
+.date-picker .arrow-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Style du popup */
+.date-picker-popup {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}
+
+
+
+
+/* Style de base du ComboBox (transparent, sans bordure) */
+#statusComboBox {
+    -fx-background-color: white;
+    -fx-border-color: transparent; /* Désactive toute bordure */
+    -fx-background-radius: 20px;
+    -fx-padding: 5px;
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 14px;
+}
+
+/* Style au survol (léger surlignage gris) */
+#statusComboBox:hover {
+    -fx-background-color: #d3d3d3;
+}
+
+/* Style quand ouvert (transparent) */
+#statusComboBox:pressed, #statusComboBox:showing {
+    -fx-background-color: #bcbcbc;
+    -fx-background-radius: 20px 20px 0 0;
+}
+
+/* Style de la liste déroulante (arrière-plan sombre) */
+.combo-box-popup .list-view {
+    -fx-background-color: #bcbcbc;
+    -fx-background-radius: 0 0 13px 13px; /* Coins arrondis uniquement en bas */
+    -fx-border-color: transparent; /* Pas de bordure */
+    -fx-padding: 5px;
+}
+
+/* Style des éléments de la liste */
+.combo-box-popup .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+    -fx-padding: 5px;
+}
+
+/* Style au survol d'un élément (surlignage discret) */
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1); /* Gris très léger */
+    -fx-background-radius: 13px;
+}
+
+/* Style de l'élément sélectionné */
+.combo-box-popup .list-cell:filled:selected,
+.combo-box-popup .list-cell:filled:focused {
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Gris légèrement plus visible */
+    -fx-background-radius: 13px;
+}
+
+
+
+
+
+/* Style de base du Spinner - Fond clair */
+#graviteSpinner {
+    -fx-background-color: #f5f5f5; /* Fond gris clair */
+    -fx-border-color: transparent;
+    -fx-background-radius: 20px;
+    -fx-text-fill: #333333; /* Texte sombre */
+    -fx-font-size: 14px;
+}
+
+/* Champ texte éditable */
+#graviteSpinner .text-field {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: transparent;
+    -fx-padding: 5px 10px;
+    -fx-text-fill: #333333;
+}
+
+/* Boutons flèches */
+#graviteSpinner .increment-arrow-button,
+#graviteSpinner .decrement-arrow-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 5px;
+}
+
+/* Flèches (sombre pour contraste) */
+#graviteSpinner .increment-arrow,
+#graviteSpinner .decrement-arrow {
+    -fx-background-color: #333333;
+    -fx-shape: "M 0 -3.5 v 7 l 4 -3.5 z";
+}
+
+/* Effets d'interaction */
+#graviteSpinner .increment-arrow-button:hover,
+#graviteSpinner .decrement-arrow-button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1); /* Survol gris très léger */
+    -fx-background-radius: 13px;
+}
+
+#graviteSpinner .increment-arrow-button:pressed,
+#graviteSpinner .decrement-arrow-button:pressed {
+    -fx-background-color: rgba(0, 0, 0, 0.2); /* Appui plus visible */
+}
+
+/* Pour le focus (optionnel) */
+#graviteSpinner:focused {
+    -fx-background-color: #e0e0e0; /* Légère variation quand focus */
+}
+
+
+/* Supprime les flèches (increment/decrement buttons) de toutes les scrollbars */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-shape: "";  /* supprime la forme fléchée */
+    -fx-opacity: 0; /* cache complètement */
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: #e3e3e3;
+}
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+
+
+
