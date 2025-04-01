@@ -1,10 +1,16 @@
 package com.example.demo.Patrons;
 
+import com.example.demo.PDFJSON.TemoignageDesirializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Affaire {
     private LocalDate date;
     private String lieu;
@@ -20,13 +26,19 @@ public class Affaire {
         CLOTUREE,
         REOUVERTE
     }
-    public Status status;
+    private Status status;
     private int gravite;
     private String description;
     private List<String> enqueteurs;
     private List<String> suspects;
     private List<String> temoins;
+    // Map d'ID d'affaire à une liste d'ID de témoins (relation clé étrangère)
+    @JsonDeserialize(using = TemoignageDesirializer.class)
+    private Map<Integer, List<Integer>> temoignages;
 
+    public Affaire() {}
+  
+    
     public Affaire() {
         this.enqueteurs = new ArrayList<>();
         this.suspects = new ArrayList<>();
@@ -34,7 +46,6 @@ public class Affaire {
     }
 
     // Constructeur
-    @JsonIgnoreProperties(ignoreUnknown = true)
     public Affaire(LocalDate date, String lieu, String type, Status status, int gravite) {
         this.date = date;
         this.lieu = lieu;
@@ -46,21 +57,36 @@ public class Affaire {
         this.temoins = new ArrayList<>();
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
+    // Getters et Setters
+    public LocalDate getDate() { return date; }
+    public void setDate(LocalDate date) { this.date = date; }
+
     public String getLieu() { return lieu; }
+    public void setLieu(String lieu) { this.lieu = lieu; }
+
     public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
+
     public Status getStatus() { return status; }
+    public void setStatus(Status status) { this.status = status; }
+
     public int getGravite() { return gravite; }
+    public void setGravite(int gravite) { this.gravite = gravite; }
+
     public String getDescription() { return description; }
     public List<String> getEnqueteurs() { return enqueteurs; }
     public List<String> getSuspects() { return suspects; }
     public List<String> getTemoins() { return temoins; }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    // Getter et Setter pour temoignages (Map d'IDs)
+    public Map<Integer, List<Integer>> getTemoignages() { return temoignages; }
+    public void setTemoignages(Map<Integer, List<Integer>> temoignages) { this.temoignages = temoignages; }
+
+    // Méthode pour ajouter un témoin à l'affaire
+    public void ajouterTemoignage(int idAffaire, int idTemoin) {
+        temoignages.computeIfAbsent(idAffaire, k -> new ArrayList<>()).add(idTemoin);
     }
+
     public void setLieu(String lieu) {  this.lieu = lieu; }
     public void setType(String type) {  this.type = type; }
     public void setStatus(Status status) { this.status = status; }
@@ -94,5 +120,4 @@ public class Affaire {
     public void supprimerTemoin(String temoin) {
         this.temoins.remove(temoin);
     }
-
 }
