@@ -203,7 +203,7 @@ public class Menu_Controlleur {
         currentAffaire = affaire;
 
         if (affaire.getStatus() != null) {
-            detailEtat.setText("l'affaire est actuellement statués comme : "+affaire.getStatus()); //"" obligé pour le type String
+            detailEtat.setText(affaire.getStatus().toString()); //"" obligé pour le type String
         }
         else {
             detailEtat.setText("");
