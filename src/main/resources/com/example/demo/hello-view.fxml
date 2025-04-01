@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="759.0" prefWidth="1120.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controlleur.Menu_Controlleur">
+<BorderPane prefHeight="759.0" prefWidth="1120.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controlleur.Menu_Controlleur">
     <top>
         <VBox id="header">
             <HBox alignment="CENTER_LEFT" style="-fx-padding: 10;">
@@ -93,13 +114,10 @@
                         <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />
 
                         <Label styleClass="labelDetail, bleu" text="Description" />
-                        <TextArea fx:id="detailDescription"
-                                  wrapText="true"
-                                  VBox.vgrow="ALWAYS"
-                                  styleClass="detail-text-zone"/>
+                        <TextArea fx:id="detailDescription" prefHeight="63.0" prefWidth="700.0" editable="false" styleClass="detail-text-zone" wrapText="true" />
 
                         <Label styleClass="labelDetail, violet" text="État d’avancement" />
-                        <TextField styleClass="detail-text-zone" fx:id="detailEtat" editable="false" />
+                        <TextArea fx:id="detailEtat" prefHeight="54.0" prefWidth="700.0" editable="false" styleClass="detail-text-zone" />
 
                         <Label styleClass="labelDetail, vert" text="Enquêteurs assignés" />
                         <ListView fx:id="detailEnqueteurs" prefHeight="60" />
@@ -114,7 +132,7 @@
                         <ListView fx:id="detailPreuves" prefHeight="60" />
 
                         <Label styleClass="labelDetail, rouge-fonce" text="Correspondance suspect/affaire" />
-                        <TextArea styleClass="detail-text-zone" fx:id="detailCorrespondance" editable="false" wrapText="true" />
+                        <TextArea fx:id="detailCorrespondance" editable="false" styleClass="detail-text-zone" wrapText="true" />
                     </VBox>
                 </ScrollPane>
             </SplitPane>
