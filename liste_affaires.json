@@ -9,7 +9,9 @@
   "suspects" : [ "Claude Monet" ],
   "temoins" : [ "Isabelle Roche", "Benjamin Dubois", "Jules Mercier", "David Lambert" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
-  "temoignages" : null
+  "temoignages" : {
+    "245" : [ 2450 ]
+  }
 }, {
   "date" : "2023-06-18",
   "lieu" : "30 Avenue de l'Opéra, Paris",

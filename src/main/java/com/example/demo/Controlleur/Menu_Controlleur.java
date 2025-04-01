@@ -1,7 +1,10 @@
 package com.example.demo.Controlleur;
 
 import com.example.demo.Patrons.Affaire;
+import com.example.demo.Patrons.Personne;
 import com.example.demo.PDFJSON.JsonHandlerCase;
+import com.example.demo.PDFJSON.JsonHandlerPersonne;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +31,8 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 
 public class Menu_Controlleur {
@@ -159,6 +164,14 @@ public class Menu_Controlleur {
                 afficherSuspects(newSelection);
                 afficherTémoins(newSelection);
                 afficherPreuves(newSelection);
+        
+                ////// à voir car ce n'était pas dans la branche de moha de base
+                // Charger les personnes connues à partir du JSON
+                List<Personne> personnesConnues = JsonHandlerPersonne.readPersonsFromJson();
+        
+                // Afficher les témoins de l'affaire sélectionnée
+                afficherTemoignage(newSelection.getTemoignages(), personnesConnues);
+                ////////////////
             } else {
                 enqueteursList.clear(); // Si aucune affaire n'est sélectionnée
                 suspectsList.clear();
@@ -218,7 +231,7 @@ public class Menu_Controlleur {
         currentAffaire = affaire;
 
         if (affaire.getStatus() != null) {
-            detailEtat.setText("l'affaire est actuellement statués comme : "+affaire.getStatus()); //"" obligé pour le type String
+            detailEtat.setText(affaire.getStatus().toString()); //"" obligé pour le type String
         }
         else {
             detailEtat.setText("");
@@ -452,5 +465,51 @@ public class Menu_Controlleur {
             afficherCollaboration();
         }
     }
+
+    private Personne trouverPersonneParId(int id, List<Personne> personnesConnues) {
+    for (Personne p : personnesConnues) {
+        if (p.getId() == id) {
+            return p;
+        }
+    }
+    return null; // Retourne null si la personne n'est pas trouvée
+}
+
+
+
+
+private void afficherTemoignage(Map<Integer, List<Integer>> temoignages, List<Personne> personnesConnues) {
+    temoinsList.clear(); // Nettoyer la liste avant d'ajouter de nouveaux éléments
+
+    // Vérifier si la map des témoignages existe
+    if (temoignages != null) {
+        for (Map.Entry<Integer, List<Integer>> entry : temoignages.entrySet()) {
+            Integer idPersonne = entry.getKey();
+            List<Integer> temoinsIds = entry.getValue();
+
+            // Chercher le nom de la personne qui a des témoins
+            Personne personneTemoignee = trouverPersonneParId(idPersonne, personnesConnues);
+            String nomTemoignee = (personneTemoignee != null) ? personneTemoignee.getNom() + " " + personneTemoignee.getPrenom() : "Inconnu";
+
+            // Afficher chaque témoin lié
+            for (Integer temoinsId : temoinsIds) {
+                Personne temoin = trouverPersonneParId(temoinsId, personnesConnues);
+                if (temoin != null) {
+                    String texteAffichage = nomTemoignee + " a pour témoin : " + temoin.getNom() + " " + temoin.getPrenom() +  " qui a " + temoin.getAge() + " ans.";
+                    temoinsList.add(texteAffichage);
+                }
+            }
+        }
+    } else {
+        System.out.println("Aucun témoignage disponible.");
+    }
+}
+
+
+
+
+
+
+
 
 }

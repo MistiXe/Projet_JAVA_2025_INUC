@@ -1,14 +1,11 @@
 package com.example.demo.Patrons;
 
-import com.example.demo.PDFJSON.TemoignageDesirializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Affaire {
@@ -16,15 +13,26 @@ public class Affaire {
     private String lieu;
     private String type;
     public enum Status {
-        NON_ENGAGEE,
-        EN_COURS,
-        CLASSEE_SANS_SUITE,
-        TRANSFEREE_AU_PARQUET,
-        INSTRUCTION_EN_COURS,
-        RENVOYEE_DEVANT_TRIBUNAL,
-        SUSPENDUE,
-        CLOTUREE,
-        REOUVERTE
+        NON_ENGAGEE("Non engagée"),
+        EN_COURS("En cours"),
+        CLASSEE_SANS_SUITE("Classée sans suite"),
+        TRANSFEREE_AU_PARQUET("Transférée au parquet"),
+        INSTRUCTION_EN_COURS("Instruction en cours"),
+        RENVOYEE_DEVANT_TRIBUNAL("Renvoyée devant tribunal"),
+        SUSPENDUE("Suspendue"),
+        CLOTUREE("Clôturée"),
+        REOUVERTE("Rouverte");
+    
+        private final String statusString;
+    
+        Status(String status) {
+            statusString = status;
+        }
+
+        @Override
+        public String toString() {
+            return statusString;
+        }
     }
     private Status status;
     private int gravite;
@@ -61,36 +69,37 @@ public class Affaire {
     // Getters et Setters
     public LocalDate getDate() { return date; }
     public void setDate(LocalDate date) { this.date = date; }
+    
     public String getLieu() { return lieu; }
+    public void setLieu(String lieu) { this.lieu = lieu; }
+    
     public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
+    
     public Status getStatus() { return status; }
+    public void setStatus(Status status) { this.status = status; }
+    
     public int getGravite() { return gravite; }
-
+    public void setGravite(int gravite) { this.gravite = gravite; }
+    
     public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    
     public List<String> getEnqueteurs() { return enqueteurs; }
+    public void setEnqueteurs(List<String> enqueteurs) { this.enqueteurs = enqueteurs; }
+    
     public List<String> getSuspects() { return suspects; }
+    public void setSuspects(List<String> suspects) { this.suspects = suspects; }
+    
     public List<String> getTemoins() { return temoins; }
+    public void setTemoins(List<String> temoins) { this.temoins = temoins; }
+  
     public List<String> getPreuves() { return preuves; }
-
-    // Getter et Setter pour temoignages (Map d'IDs)
+    public void setPreuves(List<String> preuves) { this.preuves = preuves; } 
+    
     public Map<Integer, List<Integer>> getTemoignages() { return temoignages; }
     public void setTemoignages(Map<Integer, List<Integer>> temoignages) { this.temoignages = temoignages; }
-
-    // Méthode pour ajouter un témoin à l'affaire
-    public void ajouterTemoignage(int idAffaire, int idTemoin) {
-        temoignages.computeIfAbsent(idAffaire, k -> new ArrayList<>()).add(idTemoin);
-    }
-
-    public void setLieu(String lieu) {  this.lieu = lieu; }
-    public void setType(String type) {  this.type = type; }
-    public void setStatus(Status status) { this.status = status; }
-    public void setGravite(int gravite) { this.gravite = gravite; }
-    public void setDescription(String description) { this.description = description; }
-    public void setEnqueteurs(List<String> enqueteurs) { this.enqueteurs = enqueteurs; }
-    public void setSuspects(List<String> suspects) { this.suspects = suspects; }
-    public void setTemoins(List<String> temoins) { this.temoins = temoins; }
-    
-
+  
     public void ajouterEnqueteur(String enqueteur) { this.enqueteurs.add(enqueteur); }
     public void supprimerEnqueteur(String enqueteur) { this.enqueteurs.remove(enqueteur);  }
 
@@ -102,4 +111,34 @@ public class Affaire {
 
     public void ajouterPreuves(String preuves) { this.preuves.add(preuves); }
     public void supprimerPreuves(String preuves) { this.preuves.remove(preuves); }
+
+
+    public boolean validerTemoignages(List<Personne> personnesConnues) {
+        // Récupérer la liste des IDs des personnes existantes
+        Set<Integer> idsExistants = personnesConnues.stream()
+                .map(Personne::getId)
+                .collect(Collectors.toSet());
+    
+        // Vérifier chaque témoin et les personnes sur lesquelles ils témoignent
+        for (Map.Entry<Integer, List<Integer>> entry : temoignages.entrySet()) {
+            int idTemoin = entry.getKey();
+            
+            // Vérifier si le témoin existe
+            if (!idsExistants.contains(idTemoin)) {
+                System.out.println("Erreur : Le témoin avec l'ID " + idTemoin + " n'existe pas.");
+                return false;
+            }
+    
+            // Vérifier que toutes les personnes témoignées existent
+            for (Integer idTemoigne : entry.getValue()) {
+                if (!idsExistants.contains(idTemoigne)) {
+                    System.out.println("Erreur : La personne témoignée avec l'ID " + idTemoigne + " n'existe pas.");
+                    return false;
+                }
+            }
+        }
+    
+        System.out.println("Validation des témoignages réussie !");
+        return true;
+    }
 }
