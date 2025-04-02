@@ -10,7 +10,9 @@
   "temoins" : [ "Isabelle Roche", "Benjamin Dubois", "Jules Mercier", "David Lambert" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : {
-    "1" : [ 2, 4, 6 ]
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2 ],
+    "18" : [ 10 ]
   }
 }, {
   "date" : "2023-06-18",

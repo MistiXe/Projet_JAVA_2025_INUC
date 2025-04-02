@@ -54,6 +54,9 @@ public class Menu_Controlleur {
     @FXML private ListView<Personne> detailTemoins;
     @FXML private ListView<Personne> detailPersonneSuspectees;
     @FXML private ListView<String> detailPreuves;
+
+    private Map<Integer,List<Integer>> currentTemoigagne;
+    List<Personne> personnesConnues = JsonHandlerPersonne.readPersonsFromJson();
     
     @FXML private ObservableList<String> enqueteursList = FXCollections.observableArrayList();
     @FXML private ObservableList<String> suspectsList = FXCollections.observableArrayList();
@@ -64,6 +67,7 @@ public class Menu_Controlleur {
     @FXML private MenuItem convertPDF;
     @FXML private MenuItem printTable;
     @FXML private Pane graphContainer;
+    @FXML private Label labelSuspecteePar;
 
     @FXML private Button btnSupprimer;
 
@@ -152,6 +156,13 @@ public class Menu_Controlleur {
                 afficherPreuves(newValue);
             });
 
+        // Ce qui permet d'afficher les personnes suspectées par un témoin
+        detailTemoins.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+//                    afficherDetailsPersonne(newValue);
+                    afficherPersonneSuspectee(newValue);
+                });
+
          // S'il y a des affaires judiciaires
         if (!listeAffaires.isEmpty()) {
             btnSupprimer.setOnAction(
@@ -176,13 +187,10 @@ public class Menu_Controlleur {
 //                afficherTémoins(newSelection);
                 afficherPreuves(newSelection);
         
-                ////// à voir car ce n'était pas dans la branche de moha de base
-                // Charger les personnes connues à partir du JSON
-                List<Personne> personnesConnues = JsonHandlerPersonne.readPersonsFromJson();
-        
                 // Afficher les témoins de l'affaire sélectionnée
-                afficherTemoignage(newSelection.getTemoignages(), personnesConnues);
-                ////////////////
+                currentTemoigagne = newSelection.getTemoignages();
+
+                afficherTemoignage(currentTemoigagne);
             } else {
                 enqueteursList.clear(); // Si aucune affaire n'est sélectionnée
                 suspectsList.clear();
@@ -209,16 +217,6 @@ public class Menu_Controlleur {
             suspectsList.clear();
         }
     }
-
-
-    //Ancienne méthode de Moha, override maintenant par le dictionnaire temoigagne
-//    private void afficherTémoins(Affaire affaire) {
-//        if (affaire != null) {
-//            temoinsList.setAll(affaire.getTemoins());
-//        } else {
-//            temoinsList.clear();
-//        }
-//    }
 
     private void afficherPreuves(Affaire affaire) {
         if (affaire != null) {
@@ -482,7 +480,7 @@ public class Menu_Controlleur {
 
 
 
-    private Personne trouverPersonneParId(int id, List<Personne> personnesConnues) {
+    private Personne trouverPersonneParId(int id) {
         for (Personne p : personnesConnues) {
             if (p.getId() == id) {
                 return p;
@@ -491,9 +489,8 @@ public class Menu_Controlleur {
         return null; // Retourne null si la personne n'est pas trouvée
     }
 
-    private void afficherTemoignage(Map<Integer, List<Integer>> temoignages, List<Personne> personnesConnues) {
+    private void afficherTemoignage(Map<Integer, List<Integer>> temoignages) {
         temoinsList.clear(); // Nettoyer la liste avant d'ajouter de nouveaux éléments
-        suspecteesList.clear();
 
         // Vérifier si la map des témoignages existe
         if (temoignages != null) {
@@ -502,21 +499,44 @@ public class Menu_Controlleur {
                 List<Integer> temoinsIds = entry.getValue();
 
                 // Chercher le nom de la personne qui a des témoins
-                Personne personneTemoignee = trouverPersonneParId(idPersonne, personnesConnues);
+                Personne personneTemoignee = trouverPersonneParId(idPersonne);
 
                 temoinsList.add(personneTemoignee);
+//                labelSuspecteePar.setText(personneTemoignee)
 
-                // Afficher chaque témoin lié
-                for (Integer temoinsId : temoinsIds) {
-                    Personne suspect = trouverPersonneParId(temoinsId, personnesConnues);
-                    if (suspect != null) {
-                        suspecteesList.add(suspect);
-                    }
-                }
+
+//                // Afficher chaque témoin lié
+//                for (Integer temoinsId : temoinsIds) {
+//                    Personne suspect = trouverPersonneParId(temoinsId, personnesConnues);
+//                    if (suspect != null) {
+//                        suspecteesList.add(suspect);
+//                    }
+//                }
             }
         }
         else {
             System.out.println("Aucun témoignage disponible.");
+        }
+    }
+
+    private void afficherPersonneSuspectee(Personne temoin) {
+        suspecteesList.clear();
+
+        if (temoin != null) {
+            int temoinId = temoin.getId();
+
+            List<Integer> suspectsIds = currentTemoigagne.get(temoinId);
+
+            System.out.println(suspectsIds);
+
+            // Afficher chaque témoin lié
+            for (Integer suspectId : suspectsIds) {
+                Personne suspect = trouverPersonneParId(suspectId);
+
+                if (suspect != null) {
+                    suspecteesList.add(suspect);
+                }
+            }
         }
     }
 }
