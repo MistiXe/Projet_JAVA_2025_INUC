@@ -51,12 +51,14 @@ public class Menu_Controlleur {
 
     @FXML private ListView<String> detailEnqueteurs;
     @FXML private ListView<String> detailSuspects;
-    @FXML private ListView<String> detailTemoins;
+    @FXML private ListView<Personne> detailTemoins;
+    @FXML private ListView<Personne> detailPersonneSuspectees;
     @FXML private ListView<String> detailPreuves;
     
     @FXML private ObservableList<String> enqueteursList = FXCollections.observableArrayList();
     @FXML private ObservableList<String> suspectsList = FXCollections.observableArrayList();
-    @FXML private ObservableList<String> temoinsList = FXCollections.observableArrayList();
+    @FXML private ObservableList<Personne> temoinsList = FXCollections.observableArrayList();
+    @FXML private ObservableList<Personne> suspecteesList = FXCollections.observableArrayList();
     @FXML private ObservableList<String> preuvesList = FXCollections.observableArrayList();
 
     @FXML private MenuItem convertPDF;
@@ -121,6 +123,14 @@ public class Menu_Controlleur {
             }
         });
 
+        detailTemoins.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) { // Vérifie s'il s'agit d'un double-clic
+                Personne selectedItem = detailTemoins.getSelectionModel().getSelectedItem();
+                if (selectedItem != null) { // Vérifie qu'un élément est bien sélectionné
+                    System.out.println("Double-clic détecté sur : " + selectedItem);
+                }
+            }
+        });
 
 
 
@@ -138,7 +148,7 @@ public class Menu_Controlleur {
                 afficherDetailsEtat(newValue);
                 afficherEnqueteurs(newValue);
                 afficherSuspects(newValue);
-                afficherTémoins(newValue);
+//                afficherTémoins(newValue);
                 afficherPreuves(newValue);
             });
 
@@ -155,6 +165,7 @@ public class Menu_Controlleur {
         detailEnqueteurs.setItems(enqueteursList);
         detailSuspects.setItems(suspectsList);
         detailTemoins.setItems(temoinsList);
+        detailPersonneSuspectees.setItems(suspecteesList);
         detailPreuves.setItems(preuvesList);
 
         // Mettre à jour la ListView lorsque l'utilisateur sélectionne une affaire
@@ -162,7 +173,7 @@ public class Menu_Controlleur {
             if (newSelection != null) {
                 afficherEnqueteurs(newSelection);
                 afficherSuspects(newSelection);
-                afficherTémoins(newSelection);
+//                afficherTémoins(newSelection);
                 afficherPreuves(newSelection);
         
                 ////// à voir car ce n'était pas dans la branche de moha de base
@@ -176,6 +187,7 @@ public class Menu_Controlleur {
                 enqueteursList.clear(); // Si aucune affaire n'est sélectionnée
                 suspectsList.clear();
                 temoinsList.clear();
+                suspecteesList.clear();
                 preuvesList.clear();
             }
         });
@@ -197,14 +209,16 @@ public class Menu_Controlleur {
             suspectsList.clear();
         }
     }
-    
-    private void afficherTémoins(Affaire affaire) {
-        if (affaire != null) {
-            temoinsList.setAll(affaire.getTemoins());
-        } else {
-            temoinsList.clear();
-        }
-    }
+
+
+    //Ancienne méthode de Moha, override maintenant par le dictionnaire temoigagne
+//    private void afficherTémoins(Affaire affaire) {
+//        if (affaire != null) {
+//            temoinsList.setAll(affaire.getTemoins());
+//        } else {
+//            temoinsList.clear();
+//        }
+//    }
 
     private void afficherPreuves(Affaire affaire) {
         if (affaire != null) {
@@ -466,50 +480,43 @@ public class Menu_Controlleur {
         }
     }
 
+
+
     private Personne trouverPersonneParId(int id, List<Personne> personnesConnues) {
-    for (Personne p : personnesConnues) {
-        if (p.getId() == id) {
-            return p;
+        for (Personne p : personnesConnues) {
+            if (p.getId() == id) {
+                return p;
+            }
         }
+        return null; // Retourne null si la personne n'est pas trouvée
     }
-    return null; // Retourne null si la personne n'est pas trouvée
-}
 
+    private void afficherTemoignage(Map<Integer, List<Integer>> temoignages, List<Personne> personnesConnues) {
+        temoinsList.clear(); // Nettoyer la liste avant d'ajouter de nouveaux éléments
+        suspecteesList.clear();
 
+        // Vérifier si la map des témoignages existe
+        if (temoignages != null) {
+            for (Map.Entry<Integer, List<Integer>> entry : temoignages.entrySet()) {
+                Integer idPersonne = entry.getKey();
+                List<Integer> temoinsIds = entry.getValue();
 
+                // Chercher le nom de la personne qui a des témoins
+                Personne personneTemoignee = trouverPersonneParId(idPersonne, personnesConnues);
 
-private void afficherTemoignage(Map<Integer, List<Integer>> temoignages, List<Personne> personnesConnues) {
-    temoinsList.clear(); // Nettoyer la liste avant d'ajouter de nouveaux éléments
+                temoinsList.add(personneTemoignee);
 
-    // Vérifier si la map des témoignages existe
-    if (temoignages != null) {
-        for (Map.Entry<Integer, List<Integer>> entry : temoignages.entrySet()) {
-            Integer idPersonne = entry.getKey();
-            List<Integer> temoinsIds = entry.getValue();
-
-            // Chercher le nom de la personne qui a des témoins
-            Personne personneTemoignee = trouverPersonneParId(idPersonne, personnesConnues);
-            String nomTemoignee = (personneTemoignee != null) ? personneTemoignee.getNom() + " " + personneTemoignee.getPrenom() : "Inconnu";
-
-            // Afficher chaque témoin lié
-            for (Integer temoinsId : temoinsIds) {
-                Personne temoin = trouverPersonneParId(temoinsId, personnesConnues);
-                if (temoin != null) {
-                    String texteAffichage = nomTemoignee + " a pour témoin : " + temoin.getNom() + " " + temoin.getPrenom() +  " qui a " + temoin.getAge() + " ans.";
-                    temoinsList.add(texteAffichage);
+                // Afficher chaque témoin lié
+                for (Integer temoinsId : temoinsIds) {
+                    Personne suspect = trouverPersonneParId(temoinsId, personnesConnues);
+                    if (suspect != null) {
+                        suspecteesList.add(suspect);
+                    }
                 }
             }
         }
-    } else {
-        System.out.println("Aucun témoignage disponible.");
+        else {
+            System.out.println("Aucun témoignage disponible.");
+        }
     }
-}
-
-
-
-
-
-
-
-
 }

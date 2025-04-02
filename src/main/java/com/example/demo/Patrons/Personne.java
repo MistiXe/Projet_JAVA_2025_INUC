@@ -39,11 +39,6 @@ public class Personne {
 
     @Override
     public String toString() {
-        return "Personne{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", age=" + age +
-                '}';
+        return nom + " " + prenom;
     }
 }

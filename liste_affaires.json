@@ -10,7 +10,7 @@
   "temoins" : [ "Isabelle Roche", "Benjamin Dubois", "Jules Mercier", "David Lambert" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : {
-    "245" : [ 2450 ]
+    "1" : [ 2, 4, 6 ]
   }
 }, {
   "date" : "2023-06-18",
@@ -378,7 +378,7 @@
   "type" : "Skibidi",
   "status" : "EN_COURS",
   "gravite" : 8,
-  "description" : null,
+  "description" : "",
   "enqueteurs" : [ "Paul Durand", "Sophie Martin" ],
   "suspects" : [ "Sophie Germain", "Blaise Pascal", "Jean Dupont" ],
   "temoins" : [ "Jules Mercier" ],
