@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.PrinterJob;
@@ -66,6 +67,11 @@ public class Menu_Controlleur {
     @FXML private Tab tabGraph;
     @FXML private Tab tabCollab;
 
+    @FXML private TextField searchEnqueteurAffaire;
+    @FXML private TextField searchSuspectAffaire;
+    @FXML private TextField searchTemoinAffaire;
+    @FXML private TextField searchPersonneSuspecteeAffaire;
+
     //============================================
     // Variables d'instance
     //============================================
@@ -79,6 +85,12 @@ public class Menu_Controlleur {
     @FXML private ObservableList<Personne> temoinsList = FXCollections.observableArrayList();
     @FXML private ObservableList<Personne> suspecteesList = FXCollections.observableArrayList();
     @FXML private ObservableList<String> preuvesList = FXCollections.observableArrayList();
+
+    // Création des FilteredList pour chaque liste de personnes
+    private FilteredList<Personne> filteredEnqueteurs = new FilteredList<>(enqueteursList, p -> true);
+    private FilteredList<Personne> filteredSuspects = new FilteredList<>(suspectsList, p -> true);
+    private FilteredList<Personne> filteredTemoins = new FilteredList<>(temoinsList, p -> true);
+    private FilteredList<Personne> filteredPersonnesSuspectees = new FilteredList<>(suspecteesList, p -> true);
 
     //============================================
     // Méthodes d'initialisation
@@ -135,6 +147,12 @@ public class Menu_Controlleur {
                 }
             }
         });
+
+        // Écouteurs pour les champs de recherche dans le détail d'une affaire (suspects, témoins, enquêteurs...)
+        setupSearchFilter(searchEnqueteurAffaire, filteredEnqueteurs);
+        setupSearchFilter(searchSuspectAffaire, filteredSuspects);
+        setupSearchFilter(searchTemoinAffaire, filteredTemoins);
+        setupSearchFilter(searchPersonneSuspecteeAffaire, filteredPersonnesSuspectees);
     }
 
     private void chargerDonnees() {
@@ -149,11 +167,11 @@ public class Menu_Controlleur {
         // Mode de sélection : unique
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        // Liens entre l'ObservableList et les éléments FXML
-        detailEnqueteurs.setItems(enqueteursList);
-        detailSuspects.setItems(suspectsList);
-        detailTemoins.setItems(temoinsList);
-        detailPersonneSuspectees.setItems(suspecteesList);
+        // Liens entre les listes 'java' et les éléments FXML
+        detailEnqueteurs.setItems(filteredEnqueteurs);
+        detailSuspects.setItems(filteredSuspects);
+        detailTemoins.setItems(filteredTemoins);
+        detailPersonneSuspectees.setItems(filteredPersonnesSuspectees);
         detailPreuves.setItems(preuvesList);
 
         // Permet de supprimer une affaire de la liste des affaires
@@ -190,10 +208,9 @@ public class Menu_Controlleur {
     private void afficherEnqueteurs() {
         enqueteursList.clear();
 
-        List<Integer> enqueteursId = currentAffaire.getEnqueteurs();
-        List<Personne> enqueteurs = listIDToListPersonne(enqueteursId);
-
         if (currentAffaire != null) {
+            List<Integer> enqueteursId = currentAffaire.getEnqueteurs();
+            List<Personne> enqueteurs = listIDToListPersonne(enqueteursId);
             enqueteursList.setAll(enqueteurs);
         }
     }
@@ -201,10 +218,9 @@ public class Menu_Controlleur {
     private void afficherSuspects() {
         suspectsList.clear();
 
-        List<Integer> suspectsId = currentAffaire.getSuspects();
-        List<Personne> suspects = listIDToListPersonne(suspectsId);
-
         if (currentAffaire != null) {
+            List<Integer> suspectsId = currentAffaire.getSuspects();
+            List<Personne> suspects = listIDToListPersonne(suspectsId);
             suspectsList.setAll(suspects);
         }
     }
@@ -319,6 +335,20 @@ public class Menu_Controlleur {
         alert.showAndWait();
     }
 
+    private void setupSearchFilter(TextField searchField, FilteredList<Personne> filteredList) {
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(personne -> {
+                if (newValue == null || newValue.trim().isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase().trim();
+                String fullName = personne.getNom().toLowerCase() + " " + personne.getPrenom().toLowerCase();
+                return personne.getNom().toLowerCase().contains(lowerCaseFilter) ||
+                        personne.getPrenom().toLowerCase().contains(lowerCaseFilter) ||
+                        fullName.contains(lowerCaseFilter);
+            });
+        });
+    }
     //============================================
     // Méthodes d'action
     //============================================

@@ -448,7 +448,7 @@
   "type" : "Fraude",
   "status" : "CLOTUREE",
   "gravite" : 3,
-  "description" : null,
+  "description" : "",
   "enqueteurs" : [ 12, 34 ],
   "suspects" : [ 33, 19, 49 ],
   "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
