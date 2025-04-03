@@ -5,6 +5,7 @@ import com.example.demo.Patrons.Personne;
 import com.example.demo.PDFJSON.JsonHandlerCase;
 import com.example.demo.PDFJSON.JsonHandlerPersonne;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,7 +20,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -28,10 +28,11 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import java.io.IOException;
+import java.sql.Array;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public class Menu_Controlleur {
     //============================================
@@ -48,8 +49,8 @@ public class Menu_Controlleur {
     @FXML private TextArea detailDescription;
     @FXML private TextArea detailEtat;
 
-    @FXML private ListView<String> detailEnqueteurs;
-    @FXML private ListView<String> detailSuspects;
+    @FXML private ListView<Personne> detailEnqueteurs;
+    @FXML private ListView<Personne> detailSuspects;
     @FXML private ListView<Personne> detailTemoins;
     @FXML private ListView<Personne> detailPersonneSuspectees;
     @FXML private ListView<String> detailPreuves;
@@ -71,10 +72,10 @@ public class Menu_Controlleur {
     private Affaire currentAffaire;
     private Map<Integer,List<Integer>> currentTemoigagne;
     private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
-    List<Personne> personnesConnues = JsonHandlerPersonne.readPersonsFromJson();
+    private final List<Personne> listePersonnes = JsonHandlerPersonne.readPersonsFromJson();
 
-    @FXML private ObservableList<String> enqueteursList = FXCollections.observableArrayList();
-    @FXML private ObservableList<String> suspectsList = FXCollections.observableArrayList();
+    @FXML private ObservableList<Personne> enqueteursList = FXCollections.observableArrayList();
+    @FXML private ObservableList<Personne> suspectsList = FXCollections.observableArrayList();
     @FXML private ObservableList<Personne> temoinsList = FXCollections.observableArrayList();
     @FXML private ObservableList<Personne> suspecteesList = FXCollections.observableArrayList();
     @FXML private ObservableList<String> preuvesList = FXCollections.observableArrayList();
@@ -112,7 +113,7 @@ public class Menu_Controlleur {
         columnGravite.setCellValueFactory(new PropertyValueFactory<>("gravite"));
         columnDate.setCellValueFactory(param -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            return new javafx.beans.property.SimpleStringProperty(param.getValue().getDate().format(formatter));
+            return new SimpleStringProperty(param.getValue().getDate().format(formatter));
         });
     }
 
@@ -189,16 +190,22 @@ public class Menu_Controlleur {
     private void afficherEnqueteurs() {
         enqueteursList.clear();
 
+        List<Integer> enqueteursId = currentAffaire.getEnqueteurs();
+        List<Personne> enqueteurs = listIDToListPersonne(enqueteursId);
+
         if (currentAffaire != null) {
-            enqueteursList.setAll(currentAffaire.getEnqueteurs());
+            enqueteursList.setAll(enqueteurs);
         }
     }
 
     private void afficherSuspects() {
         suspectsList.clear();
 
+        List<Integer> suspectsId = currentAffaire.getSuspects();
+        List<Personne> suspects = listIDToListPersonne(suspectsId);
+
         if (currentAffaire != null) {
-            suspectsList.setAll(currentAffaire.getSuspects());
+            suspectsList.setAll(suspects);
         }
     }
 
@@ -282,8 +289,20 @@ public class Menu_Controlleur {
         preuvesList.clear();
     }
 
+    private List<Personne> listIDToListPersonne(List<Integer> listId) {
+        List<Personne> personnes = new ArrayList<Personne>();
+
+        for (Integer personneId : listId) {
+            Personne personne = trouverPersonneParId(personneId);
+
+            personnes.add(personne);
+        }
+
+        return personnes;
+    }
+
     private Personne trouverPersonneParId(int id) {
-        for (Personne p : personnesConnues) {
+        for (Personne p : listePersonnes) {
             if (p.getId() == id) {
                 return p;
             }

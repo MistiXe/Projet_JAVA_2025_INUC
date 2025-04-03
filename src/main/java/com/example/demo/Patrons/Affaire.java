@@ -36,8 +36,8 @@ public class Affaire {
     private Status status;
     private int gravite;
     private String description;
-    private List<String> enqueteurs;
-    private List<String> suspects;
+    private List<Integer> enqueteurs;
+    private List<Integer> suspects;
     private List<String> preuves;
     private Map<Integer, List<Integer>> temoignages = new HashMap<>();
 
@@ -67,8 +67,8 @@ public class Affaire {
     public Status getStatus() { return status; }
     public int getGravite() { return gravite; }
     public String getDescription() { return description; }
-    public List<String> getEnqueteurs() { return enqueteurs; }
-    public List<String> getSuspects() { return suspects; }
+    public List<Integer> getEnqueteurs() { return enqueteurs; }
+    public List<Integer> getSuspects() { return suspects; }
     public List<String> getPreuves() { return preuves; }
     public Map<Integer, List<Integer>> getTemoignages() { return temoignages; }
 
@@ -81,19 +81,19 @@ public class Affaire {
     public void setStatus(Status status) { this.status = status; }
     public void setGravite(int gravite) { this.gravite = gravite; }
     public void setDescription(String description) { this.description = description; }
-    public void setEnqueteurs(List<String> enqueteurs) { this.enqueteurs = enqueteurs; }
-    public void setSuspects(List<String> suspects) { this.suspects = suspects; }
+    public void setEnqueteurs(List<Integer> enqueteurs) { this.enqueteurs = enqueteurs; }
+    public void setSuspects(List<Integer> suspects) { this.suspects = suspects; }
     public void setPreuves(List<String> preuves) { this.preuves = preuves; }
     public void setTemoignages(Map<Integer, List<Integer>> temoignages) { this.temoignages = temoignages; }
 
     //============================================
     // Méthodes d'ajout/suppression
     //============================================
-    public void ajouterEnqueteur(String enqueteur) { this.enqueteurs.add(enqueteur); }
-    public void supprimerEnqueteur(String enqueteur) { this.enqueteurs.remove(enqueteur); }
+    public void ajouterEnqueteur(Integer enqueteur) { this.enqueteurs.add(enqueteur); }
+    public void supprimerEnqueteur(Integer enqueteur) { this.enqueteurs.remove(enqueteur); }
 
-    public void ajouterSuspect(String suspect) { this.suspects.add(suspect); }
-    public void supprimerSuspect(String suspect) { this.suspects.remove(suspect); }
+    public void ajouterSuspect(Integer suspect) { this.suspects.add(suspect); }
+    public void supprimerSuspect(Integer suspect) { this.suspects.remove(suspect); }
 
     public void ajouterPreuve(String preuve) { this.preuves.add(preuve); }
     public void supprimerPreuve(String preuve) { this.preuves.remove(preuve); }
