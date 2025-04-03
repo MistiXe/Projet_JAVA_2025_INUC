@@ -73,6 +73,7 @@ public class Menu_Controlleur {
     @FXML private TextField searchSuspectAffaire;
     @FXML private TextField searchTemoinAffaire;
     @FXML private TextField searchPersonneSuspecteeAffaire;
+    @FXML private TextField searchPreuvesAffaire;
 
     //============================================
     // Variables d'instance
@@ -94,6 +95,7 @@ public class Menu_Controlleur {
     private FilteredList<Personne> filteredSuspects = new FilteredList<>(suspectsList, p -> true);
     private FilteredList<Personne> filteredTemoins = new FilteredList<>(temoinsList, p -> true);
     private FilteredList<Personne> filteredPersonnesSuspectees = new FilteredList<>(suspecteesList, p -> true);
+    private FilteredList<Preuve> filteredPreuves = new FilteredList<>(preuvesList, p -> true);
 
     //============================================
     // Méthodes d'initialisation
@@ -156,6 +158,23 @@ public class Menu_Controlleur {
         setupSearchFilter(searchSuspectAffaire, filteredSuspects);
         setupSearchFilter(searchTemoinAffaire, filteredTemoins);
         setupSearchFilter(searchPersonneSuspecteeAffaire, filteredPersonnesSuspectees);
+
+        // Ajout d'un listener sur le champ de recherche
+        searchPreuvesAffaire.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredPreuves.setPredicate(preuve -> {
+                // Si le champ est vide, afficher toute la liste
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Conversion du texte en minuscule pour éviter la casse
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                // Vérification si la description contient le texte saisi
+                return preuve.getDescription().toLowerCase().contains(lowerCaseFilter);
+            });
+        });
+
     }
 
     private void chargerDonnees() {
@@ -175,7 +194,7 @@ public class Menu_Controlleur {
         detailSuspects.setItems(filteredSuspects);
         detailTemoins.setItems(filteredTemoins);
         detailPersonneSuspectees.setItems(filteredPersonnesSuspectees);
-        detailPreuves.setItems(preuvesList);
+        detailPreuves.setItems(filteredPreuves);
 
         // Permet de supprimer une affaire de la liste des affaires
         if (!listeAffaires.isEmpty()) {
