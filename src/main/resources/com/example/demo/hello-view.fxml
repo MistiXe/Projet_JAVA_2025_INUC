@@ -95,12 +95,6 @@
                 <!-- Détails des affaires -->
                 <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
                     <VBox spacing="10" style="-fx-padding: 10px 20px 20px 10px;">
-                        <Label styleClass="labelDetail, bleu" text="Description" />
-                        <TextArea fx:id="detailDescription" prefHeight="63.0" prefWidth="700.0" styleClass="detail-text-zone" wrapText="true" />
-
-                        <Label styleClass="labelDetail, violet" text="État d’avancement" />
-                        <TextArea fx:id="detailEtat" editable="false" prefHeight="54.0" prefWidth="700.0" styleClass="detail-text-zone" />
-
                         <Label styleClass="labelDetail, vert" text="Enquêteurs assignés" />
                         <ListView fx:id="detailEnqueteurs" prefHeight="60" />
 
@@ -114,7 +108,7 @@
                             </VBox>
                             <VBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
                                 <HBox alignment="CENTER_LEFT">
-                                    <Label fx:id="labelSuspecteePar"  styleClass="labelDetail, rouge" text="Personnes suspectées"/>
+                                    <Label fx:id="labelSuspecteePar" styleClass="labelDetail, rouge" text="Personnes suspectées"/>
                                 </HBox>
                                 <ListView fx:id="detailPersonneSuspectees" prefHeight="60" />
                             </VBox>
@@ -123,9 +117,17 @@
                         <Label styleClass="labelDetail, bleu-clair" text="Preuves associées" />
                         <ListView fx:id="detailPreuves" prefHeight="60" />
 
+                        <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />
+
+                        <Label styleClass="labelDetail, bleu" text="Description" />
+                        <TextArea fx:id="detailDescription" prefHeight="63.0" prefWidth="700.0" styleClass="detail-text-zone" wrapText="true" />
+
+                        <Label styleClass="labelDetail, violet" text="État d’avancement" />
+                        <TextArea fx:id="detailEtat" editable="false" prefHeight="54.0" prefWidth="700.0" styleClass="detail-text-zone" />
+
+
                         <Label styleClass="labelDetail, rouge-fonce" text="Correspondance suspect/affaire" />
                         <TextArea fx:id="detailCorrespondance" editable="false" styleClass="detail-text-zone" wrapText="true" />
-                        <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />
                     </VBox>
                 </ScrollPane>
             </SplitPane>

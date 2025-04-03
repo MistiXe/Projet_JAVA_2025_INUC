@@ -4,7 +4,6 @@ import com.example.demo.Patrons.Affaire;
 import com.example.demo.Patrons.Personne;
 import com.example.demo.PDFJSON.JsonHandlerCase;
 import com.example.demo.PDFJSON.JsonHandlerPersonne;
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,10 +33,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-
 public class Menu_Controlleur {
-    private Affaire currentAffaire;
-
+    //============================================
+    // Déclarations FXML
+    //============================================
     @FXML private BarChart<String, Number> barChart;
     @FXML private TableView<Affaire> tableView;
     @FXML private TableColumn<Affaire, String> columnDate;
@@ -55,30 +54,44 @@ public class Menu_Controlleur {
     @FXML private ListView<Personne> detailPersonneSuspectees;
     @FXML private ListView<String> detailPreuves;
 
+    @FXML private MenuItem convertPDF;
+    @FXML private MenuItem printTable;
+    @FXML private Pane graphContainer;
+    @FXML private Label labelSuspecteePar;
+    @FXML private Button btnSupprimer;
+    @FXML private Button btnImprimer;
+
+    @FXML private TabPane tabPane;
+    @FXML private Tab tabGraph;
+    @FXML private Tab tabCollab;
+
+    //============================================
+    // Variables d'instance
+    //============================================
+    private Affaire currentAffaire;
     private Map<Integer,List<Integer>> currentTemoigagne;
+    private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
     List<Personne> personnesConnues = JsonHandlerPersonne.readPersonsFromJson();
-    
+
     @FXML private ObservableList<String> enqueteursList = FXCollections.observableArrayList();
     @FXML private ObservableList<String> suspectsList = FXCollections.observableArrayList();
     @FXML private ObservableList<Personne> temoinsList = FXCollections.observableArrayList();
     @FXML private ObservableList<Personne> suspecteesList = FXCollections.observableArrayList();
     @FXML private ObservableList<String> preuvesList = FXCollections.observableArrayList();
 
-    @FXML private MenuItem convertPDF;
-    @FXML private MenuItem printTable;
-    @FXML private Pane graphContainer;
-    @FXML private Label labelSuspecteePar;
-
-    @FXML private Button btnSupprimer;
-
-    @FXML private TabPane tabPane;
-    @FXML private Tab tabGraph;
-    @FXML private Tab tabCollab;
-
-    private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
-
+    //============================================
+    // Méthodes d'initialisation
+    //============================================
     @FXML
     private void initialize() {
+        initialiserIconesMenu();
+        configurerTableView();
+        configurerEcouteurs();
+        chargerDonnees();
+        configurerSelection();
+    }
+
+    private void initialiserIconesMenu() {
         ImageView pdfIcon = new ImageView(
                 new Image(getClass().getResourceAsStream("/com/example/demo/format-de-fichier-pdf.png")));
         pdfIcon.setFitWidth(16);
@@ -90,167 +103,206 @@ public class Menu_Controlleur {
         printIcon.setFitWidth(16);
         printIcon.setFitHeight(16);
         printTable.setGraphic(printIcon);
+    }
 
-        // Lier les colonnes aux attributs de Person
+    private void configurerTableView() {
         columnLieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
         columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
         columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         columnGravite.setCellValueFactory(new PropertyValueFactory<>("gravite"));
-        // Formater la date dans la colonne
         columnDate.setCellValueFactory(param -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             return new javafx.beans.property.SimpleStringProperty(param.getValue().getDate().format(formatter));
         });
+    }
 
-
-        // Écouteur pour ajuster la hauteur
-        detailDescription.textProperty().addListener((obs, oldText, newText) -> {
-            detailDescription.setPrefHeight(Region.USE_COMPUTED_SIZE);
-        });
-
-
-
-        // Écouteur direct avec gestion d'erreurs
+    private void configurerEcouteurs() {
         detailDescription.textProperty().addListener((obs, oldText, newText) -> {
             if (currentAffaire != null && !newText.equals(oldText)) {
                 currentAffaire.setDescription(newText);
-
-                new Thread(() -> {
-                    try {
-                        JsonHandlerCase.writePersonsToJson(listeAffaires);
-                    } catch (Exception e) {
-                        Platform.runLater(() ->
-                                showAlert("Erreur", "Échec sauvegarde : " + e.getMessage())
-                        );
-                    }
-                }).start();
+                sauvegarderDonnees();
             }
         });
 
         detailTemoins.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) { // Vérifie s'il s'agit d'un double-clic
-                Personne selectedItem = detailTemoins.getSelectionModel().getSelectedItem();
-                if (selectedItem != null) { // Vérifie qu'un élément est bien sélectionné
+            Personne selectedItem = detailTemoins.getSelectionModel().getSelectedItem();
+
+            if (event.getClickCount() == 2) {
+                // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
+                if (selectedItem != null) {
                     System.out.println("Double-clic détecté sur : " + selectedItem);
                 }
             }
         });
+    }
 
-
-
-        // Charger les données du JSON
+    private void chargerDonnees() {
         List<Affaire> affaires = JsonHandlerCase.readCasesFromJson();
         if (affaires != null) {
             listeAffaires.addAll(affaires);
         }
         tableView.setItems(listeAffaires);
+    }
 
-         // Action pour voir les données à droite
-         tableView.getSelectionModel().selectedItemProperty().addListener(
-            (observable, oldValue, newValue) -> {
-                afficherDetailsPersonne(newValue);
-                afficherDetailsEtat(newValue);
-                afficherEnqueteurs(newValue);
-                afficherSuspects(newValue);
-//                afficherTémoins(newValue);
-                afficherPreuves(newValue);
-            });
-
-        // Ce qui permet d'afficher les personnes suspectées par un témoin
-        detailTemoins.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> {
-//                    afficherDetailsPersonne(newValue);
-                    afficherPersonneSuspectee(newValue);
-                });
-
-         // S'il y a des affaires judiciaires
-        if (!listeAffaires.isEmpty()) {
-            btnSupprimer.setOnAction(
-                    e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
-        }
-    
-            // Permettre la sélection d'une ligne dans le TableView
+    private void configurerSelection() {
+        // Mode de sélection : unique
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        // Lier la ListView à la liste observable
+        // Liens entre l'ObservableList et les éléments FXML
         detailEnqueteurs.setItems(enqueteursList);
         detailSuspects.setItems(suspectsList);
         detailTemoins.setItems(temoinsList);
         detailPersonneSuspectees.setItems(suspecteesList);
         detailPreuves.setItems(preuvesList);
 
-        // Mettre à jour la ListView lorsque l'utilisateur sélectionne une affaire
+        // Permet de supprimer une affaire de la liste des affaires
+        if (!listeAffaires.isEmpty()) {
+            btnSupprimer.setOnAction(e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
+        }
+
+
+        // Permet d'afficher les personnes suspectées par le témoin sélectionné
+        detailTemoins.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    afficherPersonneSuspectee(newValue);
+                });
+
+
+        // Affiche le détail de l'affaire sélectionnée
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                afficherEnqueteurs(newSelection);
-                afficherSuspects(newSelection);
-//                afficherTémoins(newSelection);
-                afficherPreuves(newSelection);
-        
-                // Afficher les témoins de l'affaire sélectionnée
-                currentTemoigagne = newSelection.getTemoignages();
+            currentAffaire = newSelection;
 
-                afficherTemoignage(currentTemoigagne);
-            } else {
-                enqueteursList.clear(); // Si aucune affaire n'est sélectionnée
-                suspectsList.clear();
-                temoinsList.clear();
-                suspecteesList.clear();
-                preuvesList.clear();
-            }
+            afficherDescription();
+            afficherDetailsEtat();
+            afficherEnqueteurs();
+            afficherSuspects();
+            afficherPreuves();
+
+            currentTemoigagne = currentAffaire.getTemoignages();
+            afficherTemoins(currentTemoigagne);
         });
-    
     }
 
-    private void afficherEnqueteurs(Affaire affaire) {
-        if (affaire != null) {
-            enqueteursList.setAll(affaire.getEnqueteurs());
+    //============================================
+    // Méthodes d'affichage
+    //============================================
+    private void afficherEnqueteurs() {
+        enqueteursList.clear();
+
+        if (currentAffaire != null) {
+            enqueteursList.setAll(currentAffaire.getEnqueteurs());
+        }
+    }
+
+    private void afficherSuspects() {
+        suspectsList.clear();
+
+        if (currentAffaire != null) {
+            suspectsList.setAll(currentAffaire.getSuspects());
+        }
+    }
+
+    private void afficherPreuves() {
+        preuvesList.clear();
+
+        if (currentAffaire != null) {
+            preuvesList.setAll(currentAffaire.getPreuves());
+        }
+    }
+
+    private void afficherDescription() {
+        if (currentAffaire.getDescription() != null) {
+            detailDescription.setText(currentAffaire.getDescription());
         } else {
-            enqueteursList.clear();
-        }
-    }
-
-    private void afficherSuspects(Affaire affaire) {
-        if (affaire != null) {
-            suspectsList.setAll(affaire.getSuspects());
-        } else {
-            suspectsList.clear();
-        }
-    }
-
-    private void afficherPreuves(Affaire affaire) {
-        if (affaire != null) {
-            preuvesList.setAll(affaire.getPreuves());
-        } else {
-            preuvesList.clear();
-        }
-    }
-
-
-     private void afficherDetailsPersonne(Affaire affaire) { // afficher la desc écrite
-        currentAffaire = affaire;
-
-        if (affaire.getDescription() != null) {
-            detailDescription.setText(affaire.getDescription());
-        }
-        else {
             detailDescription.setText("");
             detailDescription.setPromptText("Aucune description disponible pour cette affaire.");
         }
-     }
+    }
 
-     private void afficherDetailsEtat(Affaire affaire) { // afficher etat dans la desc 
-        currentAffaire = affaire;
-
-        if (affaire.getStatus() != null) {
-            detailEtat.setText(affaire.getStatus().toString()); //"" obligé pour le type String
-        }
-        else {
+    private void afficherDetailsEtat() {
+        if (currentAffaire.getStatus() != null) {
+            detailEtat.setText(currentAffaire.getStatus().toString());
+        } else {
             detailEtat.setText("");
-            detailEtat.setPromptText("Aucun état n'est renseigné pour cette affaire. ");
+            detailEtat.setPromptText("Aucun état n'est renseigné pour cette affaire.");
         }
-     }
+    }
 
+    private void afficherTemoins(Map<Integer, List<Integer>> temoignages) {
+        temoinsList.clear();
+        
+        if (temoignages != null) {
+            for (Map.Entry<Integer, List<Integer>> entry : temoignages.entrySet()) {
+                Integer idTemoin = entry.getKey();
+                Personne temoin = trouverPersonneParId(idTemoin);
+
+                temoinsList.add(temoin);
+            }
+        } else {
+            System.out.println("Aucun témoignage disponible.");
+        }
+    }
+
+    private void afficherPersonneSuspectee(Personne temoin) {
+        suspecteesList.clear();
+
+        if (temoin != null) {
+            int temoinId = temoin.getId();
+            List<Integer> suspectsIds = currentTemoigagne.get(temoinId);
+
+            for (Integer suspectId : suspectsIds) {
+                Personne suspect = trouverPersonneParId(suspectId);
+                if (suspect != null) {
+                    suspecteesList.add(suspect);
+                }
+            }
+        }
+    }
+
+    //============================================
+    // Méthodes utilitaires
+    //============================================
+    private void sauvegarderDonnees() {
+        new Thread(() -> {
+            try {
+                JsonHandlerCase.writePersonsToJson(listeAffaires);
+            } catch (Exception e) {
+                Platform.runLater(() ->
+                        showAlert("Erreur", "Échec sauvegarde : " + e.getMessage())
+                );
+            }
+        }).start();
+    }
+
+    private void clearLists() {
+        enqueteursList.clear();
+        suspectsList.clear();
+        temoinsList.clear();
+        suspecteesList.clear();
+        preuvesList.clear();
+    }
+
+    private Personne trouverPersonneParId(int id) {
+        for (Personne p : personnesConnues) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+
+        return null;
+    }
+
+    private void showAlert(String titre, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    //============================================
+    // Méthodes d'action
+    //============================================
     public void supprimerAffaire(Affaire affaire) {
         if (affaire != null) {
             listeAffaires.remove(affaire);
@@ -272,7 +324,7 @@ public class Menu_Controlleur {
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
-            tableView.refresh(); // Rafraîchir le tableau
+            tableView.refresh();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -290,7 +342,6 @@ public class Menu_Controlleur {
                 PDPageContentStream contentStream = new PDPageContentStream(document, page);
                 contentStream.setFont(PDType1Font.HELVETICA_BOLD, 20);
 
-                // Position initiale
                 float margin = 50;
                 float yStart = 750;
                 float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
@@ -298,7 +349,6 @@ public class Menu_Controlleur {
                 float rowHeight = 20;
                 float colWidth = tableWidth / 4;
 
-                // Dessiner le titre
                 contentStream.beginText();
                 contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
                 contentStream.newLineAtOffset(margin + 100, yPosition);
@@ -306,7 +356,6 @@ public class Menu_Controlleur {
                 contentStream.endText();
                 yPosition -= 40;
 
-                // Colonnes
                 String[] headers = { "Date", "Lieu", "Type", "Statut" };
                 String[] values = {
                         affaireSelectionnee.getDate().toString(),
@@ -315,7 +364,6 @@ public class Menu_Controlleur {
                         affaireSelectionnee.getStatus().toString()
                 };
 
-                // Dessiner l'en-tête
                 contentStream.setLineWidth(1);
                 contentStream.moveTo(margin, yPosition);
                 contentStream.lineTo(margin + tableWidth, yPosition);
@@ -329,13 +377,11 @@ public class Menu_Controlleur {
                     contentStream.endText();
                 }
 
-                // Dessiner la ligne sous l'en-tête
                 contentStream.moveTo(margin, yPosition);
                 contentStream.lineTo(margin + tableWidth, yPosition);
                 contentStream.stroke();
                 yPosition -= rowHeight;
 
-                // Ajouter les valeurs
                 for (int i = 0; i < values.length; i++) {
                     contentStream.beginText();
                     contentStream.newLineAtOffset(margin + (i * colWidth) + 5, yPosition + 5);
@@ -343,14 +389,11 @@ public class Menu_Controlleur {
                     contentStream.endText();
                 }
 
-                // Dessiner la ligne sous la ligne de données
                 contentStream.moveTo(margin, yPosition);
                 contentStream.lineTo(margin + tableWidth, yPosition);
                 contentStream.stroke();
-
                 contentStream.close();
 
-                // Sauvegarde du PDF
                 String cheminSortie = "compte_rendu_affaire " + affaireSelectionnee.getDate() + ".pdf";
                 document.save(cheminSortie);
                 document.close();
@@ -366,14 +409,10 @@ public class Menu_Controlleur {
     }
 
     @FXML
-    private Button btnImprimer;
-
-    @FXML
     private void imprimerTable() {
         PrinterJob job = PrinterJob.createPrinterJob();
         if (job != null) {
-            boolean proceed = job.showPrintDialog(tableView.getScene().getWindow()); // Ouvre la boîte de dialogue
-                                                                                     // d'impression
+            boolean proceed = job.showPrintDialog(tableView.getScene().getWindow());
             if (proceed) {
                 boolean success = job.printPage(tableView);
                 if (success) {
@@ -388,28 +427,16 @@ public class Menu_Controlleur {
 
     @FXML
     public void genererGraphique() {
-        barChart.getData().clear(); // Nettoyer le graphique existant
-
-        // Création des données
+        barChart.getData().clear();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Affaires par type de crime");
 
-        // Ajouter des données fictives (remplace par des données de ta base)
         series.getData().add(new XYChart.Data<>("Vol", 10));
         series.getData().add(new XYChart.Data<>("Fraude", 7));
         series.getData().add(new XYChart.Data<>("Homicide", 4));
         series.getData().add(new XYChart.Data<>("Cybercrime", 6));
 
-        // Ajouter la série au graphique
         barChart.getData().add(series);
-    }
-
-    private void showAlert(String titre, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titre);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     public void ouvrirFenetreModification() {
@@ -436,6 +463,9 @@ public class Menu_Controlleur {
         }
     }
 
+    //============================================
+    // Méthodes de gestion des onglets
+    //============================================
     @FXML
     private void afficherTabPane() {
         tabPane.setManaged(true);
@@ -475,68 +505,6 @@ public class Menu_Controlleur {
             cacherTabPane();
         } else {
             afficherCollaboration();
-        }
-    }
-
-
-
-    private Personne trouverPersonneParId(int id) {
-        for (Personne p : personnesConnues) {
-            if (p.getId() == id) {
-                return p;
-            }
-        }
-        return null; // Retourne null si la personne n'est pas trouvée
-    }
-
-    private void afficherTemoignage(Map<Integer, List<Integer>> temoignages) {
-        temoinsList.clear(); // Nettoyer la liste avant d'ajouter de nouveaux éléments
-
-        // Vérifier si la map des témoignages existe
-        if (temoignages != null) {
-            for (Map.Entry<Integer, List<Integer>> entry : temoignages.entrySet()) {
-                Integer idPersonne = entry.getKey();
-                List<Integer> temoinsIds = entry.getValue();
-
-                // Chercher le nom de la personne qui a des témoins
-                Personne personneTemoignee = trouverPersonneParId(idPersonne);
-
-                temoinsList.add(personneTemoignee);
-//                labelSuspecteePar.setText(personneTemoignee)
-
-
-//                // Afficher chaque témoin lié
-//                for (Integer temoinsId : temoinsIds) {
-//                    Personne suspect = trouverPersonneParId(temoinsId, personnesConnues);
-//                    if (suspect != null) {
-//                        suspecteesList.add(suspect);
-//                    }
-//                }
-            }
-        }
-        else {
-            System.out.println("Aucun témoignage disponible.");
-        }
-    }
-
-    private void afficherPersonneSuspectee(Personne temoin) {
-        suspecteesList.clear();
-
-        if (temoin != null) {
-            int temoinId = temoin.getId();
-
-            List<Integer> suspectsIds = currentTemoigagne.get(temoinId);
-
-            System.out.println(suspectsIds);
-
-            // Afficher chaque témoin lié
-            for (Integer suspectId : suspectsIds) {
-                Personne suspect = trouverPersonneParId(suspectId);
-
-                if (suspect != null) {
-                    suspecteesList.add(suspect);
-                }
-            }
         }
     }
 }

@@ -2,12 +2,11 @@
   "date" : "2023-05-30",
   "lieu" : "22 Rue Mouffetard, Paris",
   "type" : "Escroquerie",
-  "status" : "INSTRUCTION_EN_COURS",
+  "status" : null,
   "gravite" : 8,
   "description" : "Une personne a été arrêtée pour avoir escroqué plusieurs personnes âgées en leur vendant de faux produits de santé.",
   "enqueteurs" : [ "Jean Dupont", "Marie Curie", "Laurent allen", "Barry white", "Baroze" ],
   "suspects" : [ "Claude Monet" ],
-  "temoins" : [ "Isabelle Roche", "Benjamin Dubois", "Jules Mercier", "David Lambert" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : {
     "1" : [ 2, 4, 6 ],
@@ -15,17 +14,18 @@
     "18" : [ 10 ]
   }
 }, {
-  "date" : "2023-06-18",
+  "date" : "2017-07-31",
   "lieu" : "30 Avenue de l'Opéra, Paris",
-  "type" : "Vol",
-  "status" : "RENVOYEE_DEVANT_TRIBUNAL",
-  "gravite" : 4,
+  "type" : "Meurtre serie",
+  "status" : "CLASSEE_SANS_SUITE",
+  "gravite" : 10,
   "description" : "Un vol de bijoux a eu lieu dans une bijouterie de luxe en plein jour. Test ",
   "enqueteurs" : [ "Paul Durand", "Sophie Martin" ],
   "suspects" : [ "Marie Curie" ],
-  "temoins" : [ "Emma Girard" ],
   "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
-  "temoignages" : null
+  "temoignages" : {
+    "40" : [ 22, 23, 24, 25, 26, 27 ]
+  }
 }, {
   "date" : "2023-07-09",
   "lieu" : "10 Rue de la Paix, Paris",
@@ -35,7 +35,6 @@
   "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus.\nLorem Ipsum Lorem IpsumLorem IpsumLorem Ipsum",
   "enqueteurs" : [ "Luc Morel", "Isabelle Bernard" ],
   "suspects" : [ "Marie Curie", "Sophie Germain" ],
-  "temoins" : [ "Karine Dupont", "Jules Mercier", "Emma Girard", "Louis Bertrand" ],
   "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
   "temoignages" : null
 }, {
@@ -47,7 +46,6 @@
   "description" : "Une fraude mineure a été découverte dans une petite entreprise locale.",
   "enqueteurs" : [ "Pierre Lefevre", "Elodie Garnier" ],
   "suspects" : [ "Albert Einstein", "Simone de Beauvoir" ],
-  "temoins" : [ "Hugo Fontaine" ],
   "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
   "temoignages" : null
 }, {
@@ -59,7 +57,6 @@
   "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves.",
   "enqueteurs" : [ "Nicolas Roux", "Julie Laurent" ],
   "suspects" : [ "Simone de Beauvoir", "Albert Einstein", "Louis Pasteur" ],
-  "temoins" : [ "Benjamin Dubois", "François Martin" ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
   "temoignages" : null
 }, {
@@ -68,10 +65,9 @@
   "type" : "Escroquerie",
   "status" : "NON_ENGAGEE",
   "gravite" : 3,
-  "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti.",
+  "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti. test",
   "enqueteurs" : [ "Alexandre Dubois", "Camille Petit" ],
   "suspects" : [ "Sophie Germain", "Blaise Pascal" ],
-  "temoins" : [ "François Martin" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : null
 }, {
@@ -83,7 +79,6 @@
   "description" : "Un vol de voiture a été signalé dans un parking souterrain.",
   "enqueteurs" : [ "Antoine Lambert", "Emma Richard" ],
   "suspects" : [ "Jean Dupont", "Louis Pasteur", "Blaise Pascal", "Claude Monet" ],
-  "temoins" : [ "Benjamin Dubois", "Alice Morel", "Gabrielle Leroy" ],
   "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
   "temoignages" : null
 }, {
@@ -95,7 +90,6 @@
   "description" : "Une altercation mineure entre deux individus a été classée sans suite.",
   "enqueteurs" : [ "Laurent Girard", "Manon Robert" ],
   "suspects" : [ "Blaise Pascal", "Victor Hugo" ],
-  "temoins" : [ "Emma Girard", "Alice Morel", "Louis Bertrand", "Jules Mercier" ],
   "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
   "temoignages" : null
 }, {
@@ -107,7 +101,6 @@
   "description" : "Une fraude à la carte bancaire a été détectée et transférée au parquet.",
   "enqueteurs" : [ "Vincent Moreau", "Charlotte David" ],
   "suspects" : [ "Jean Dupont", "Albert Einstein", "Sophie Germain" ],
-  "temoins" : [ "Hugo Fontaine", "Charlotte Lefevre" ],
   "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
   "temoignages" : null
 }, {
@@ -119,7 +112,6 @@
   "description" : "Un acte de violence a eu lieu dans un bar, l'instruction est en cours.",
   "enqueteurs" : [ "Benoît Leroy", "Clara Bertrand" ],
   "suspects" : [ "Simone de Beauvoir", "Marie Curie", "René Descartes" ],
-  "temoins" : [ "Karine Dupont", "Emma Girard", "Benjamin Dubois", "Jules Mercier" ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
   "temoignages" : null
 }, {
@@ -131,7 +123,6 @@
   "description" : "Une escroquerie immobilière a été renvoyée devant le tribunal.",
   "enqueteurs" : [ "Jean Dupont", "Marie Curie" ],
   "suspects" : [ "Claude Monet" ],
-  "temoins" : [ "Charlotte Lefevre", "Emma Girard", "Isabelle Roche" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : null
 }, {
@@ -143,7 +134,6 @@
   "description" : "Un vol de sac à main a été signalé mais l'enquête est suspendue.",
   "enqueteurs" : [ "Paul Durand", "Sophie Martin" ],
   "suspects" : [ "René Descartes" ],
-  "temoins" : [ "Louis Bertrand", "Jules Mercier" ],
   "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
   "temoignages" : null
 }, {
@@ -155,7 +145,6 @@
   "description" : "Une légère altercation a été rapidement résolue et classée.",
   "enqueteurs" : [ "Luc Morel", "Isabelle Bernard" ],
   "suspects" : [ "Claude Monet" ],
-  "temoins" : [ "Jules Mercier", "Karine Dupont", "Benjamin Dubois" ],
   "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
   "temoignages" : null
 }, {
@@ -167,7 +156,6 @@
   "description" : "Une fraude complexe impliquant plusieurs victimes a été rouverte.",
   "enqueteurs" : [ "Pierre Lefevre", "Elodie Garnier" ],
   "suspects" : [ "Simone de Beauvoir", "René Descartes", "Louis Pasteur", "Marie Curie" ],
-  "temoins" : [ "Isabelle Roche" ],
   "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
   "temoignages" : null
 }, {
@@ -179,7 +167,6 @@
   "description" : "Une plainte pour violence n'a pas été engagée faute de preuves.",
   "enqueteurs" : [ "Nicolas Roux", "Julie Laurent" ],
   "suspects" : [ "Victor Hugo", "René Descartes" ],
-  "temoins" : [ "David Lambert" ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
   "temoignages" : null
 }, {
@@ -191,7 +178,6 @@
   "description" : "Une escroquerie en ligne est actuellement en cours d'investigation.",
   "enqueteurs" : [ "Alexandre Dubois", "Camille Petit" ],
   "suspects" : [ "Sophie Germain", "Claude Monet", "Albert Einstein", "Victor Hugo" ],
-  "temoins" : [ "Charlotte Lefevre", "Isabelle Roche" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : null
 }, {
@@ -203,7 +189,6 @@
   "description" : "Un petit vol à l'étalage a été classé sans suite.",
   "enqueteurs" : [ "Antoine Lambert", "Emma Richard" ],
   "suspects" : [ "Blaise Pascal", "Louis Pasteur", "Victor Hugo", "Claude Monet" ],
-  "temoins" : [ "Benjamin Dubois", "Isabelle Roche" ],
   "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
   "temoignages" : null
 }, {
@@ -215,20 +200,7 @@
   "description" : "Une agression avec arme blanche a été transférée au parquet. ",
   "enqueteurs" : [ "Laurent Girard", "Manon Robert" ],
   "suspects" : [ "Jean Dupont", "Marie Curie", "René Descartes", "Claude Monet" ],
-  "temoins" : [ "Emma Girard", "François Martin", "Charlotte Lefevre" ],
   "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
-  "temoignages" : null
-}, {
-  "date" : "2022-11-11",
-  "lieu" : "Test",
-  "type" : "Fraude",
-  "status" : "EN_COURS",
-  "gravite" : 7,
-  "description" : "Une fraude à l'assurance est en cours d'enquête.",
-  "enqueteurs" : [ "Vincent Moreau", "Charlotte David" ],
-  "suspects" : [ "Blaise Pascal", "Jean Dupont" ],
-  "temoins" : [ "Hugo Fontaine" ],
-  "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
   "temoignages" : null
 }, {
   "date" : "2022-12-10",
@@ -239,7 +211,6 @@
   "description" : "Un acte de violence domestique a été renvoyé devant le tribunal.",
   "enqueteurs" : [ "Benoît Leroy", "Clara Bertrand" ],
   "suspects" : [ "Simone de Beauvoir", "Victor Hugo", "Jean Dupont" ],
-  "temoins" : [ "Karine Dupont", "Jules Mercier", "Emma Girard", "Hugo Fontaine" ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
   "temoignages" : null
 }, {
@@ -251,7 +222,6 @@
   "description" : "Une escroquerie par faux investissement a été suspendue.",
   "enqueteurs" : [ "Jean Dupont", "Marie Curie" ],
   "suspects" : [ "Simone de Beauvoir" ],
-  "temoins" : [ "Karine Dupont", "Gabrielle Leroy", "Alice Morel", "Benjamin Dubois" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : null
 }, {
@@ -263,7 +233,6 @@
   "description" : "Un vol de vélo a été rapidement résolu et classé.",
   "enqueteurs" : [ "Paul Durand", "Sophie Martin" ],
   "suspects" : [ "Claude Monet" ],
-  "temoins" : [ "Charlotte Lefevre", "Isabelle Roche", "Jules Mercier" ],
   "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
   "temoignages" : null
 }, {
@@ -275,7 +244,6 @@
   "description" : "Une agression grave a été rouverte pour de nouvelles investigations.",
   "enqueteurs" : [ "Luc Morel", "Isabelle Bernard" ],
   "suspects" : [ "Louis Pasteur", "Albert Einstein", "Blaise Pascal", "Claude Monet" ],
-  "temoins" : [ "Jules Mercier", "Benjamin Dubois", "Louis Bertrand", "Charlotte Lefevre" ],
   "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
   "temoignages" : null
 }, {
@@ -287,7 +255,6 @@
   "description" : "Une tentative de fraude n'a pas abouti et n'a pas été engagée.",
   "enqueteurs" : [ "Pierre Lefevre", "Elodie Garnier" ],
   "suspects" : [ "Jean Dupont" ],
-  "temoins" : [ "Jules Mercier", "Hugo Fontaine", "Louis Bertrand" ],
   "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
   "temoignages" : null
 }, {
@@ -299,7 +266,6 @@
   "description" : "Un acte de violence dans un restaurant est en cours d'enquête.",
   "enqueteurs" : [ "Nicolas Roux", "Julie Laurent" ],
   "suspects" : [ "Simone de Beauvoir" ],
-  "temoins" : [ "François Martin", "Jules Mercier", "Isabelle Roche" ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
   "temoignages" : null
 }, {
@@ -311,7 +277,6 @@
   "description" : "Une petite escroquerie a été classée sans suite.",
   "enqueteurs" : [ "Alexandre Dubois", "Camille Petit" ],
   "suspects" : [ "Victor Hugo", "René Descartes", "Claude Monet", "Blaise Pascal" ],
-  "temoins" : [ "Karine Dupont", "Gabrielle Leroy", "Benjamin Dubois", "David Lambert" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : null
 }, {
@@ -323,7 +288,6 @@
   "description" : "Une agression avec blessures graves est en cours d'instruction.",
   "enqueteurs" : [ "Antoine Lambert", "Emma Richard" ],
   "suspects" : [ "Claude Monet", "Albert Einstein" ],
-  "temoins" : [ "Jules Mercier", "David Lambert", "Alice Morel" ],
   "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
   "temoignages" : null
 }, {
@@ -335,7 +299,6 @@
   "description" : "Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsumfdfdfdfdfdffdfdfd\n\n\n",
   "enqueteurs" : [ "Laurent Girard", "Manon Robert" ],
   "suspects" : [ "Jean Dupont", "Simone de Beauvoir" ],
-  "temoins" : [ "David Lambert", "Charlotte Lefevre", "Gabrielle Leroy" ],
   "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
   "temoignages" : null
 }, {
@@ -347,7 +310,6 @@
   "description" : "Un acte de violence a été suspendu faute de témoins.",
   "enqueteurs" : [ "Vincent Moreau", "Charlotte David" ],
   "suspects" : [ "Sophie Germain", "Simone de Beauvoir", "Blaise Pascal" ],
-  "temoins" : [ "Emma Girard", "Benjamin Dubois", "Louis Bertrand", "Jules Mercier" ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
   "temoignages" : null
 }, {
@@ -359,7 +321,6 @@
   "description" : "Une petite escroquerie a été rapidement résolue et classée.",
   "enqueteurs" : [ "Benoît Leroy", "Clara Bertrand" ],
   "suspects" : [ "Simone de Beauvoir" ],
-  "temoins" : [ "Hugo Fontaine", "Alice Morel", "David Lambert", "Benjamin Dubois" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : null
 }, {
@@ -371,7 +332,6 @@
   "description" : "Un vol important a été rouvert pour de nouvelles investigations.",
   "enqueteurs" : [ "Jean Dupont", "Marie Curie" ],
   "suspects" : [ "Sophie Germain" ],
-  "temoins" : [ "David Lambert", "Alice Morel" ],
   "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
   "temoignages" : null
 }, {
@@ -383,7 +343,6 @@
   "description" : "",
   "enqueteurs" : [ "Paul Durand", "Sophie Martin" ],
   "suspects" : [ "Sophie Germain", "Blaise Pascal", "Jean Dupont" ],
-  "temoins" : [ "Jules Mercier" ],
   "preuves" : [ "Élément de preuve en attente d'analyse" ],
   "temoignages" : null
 }, {
@@ -395,7 +354,6 @@
   "description" : "Une fraude bancaire est actuellement en cours d'investigation.",
   "enqueteurs" : [ "Luc Morel", "Isabelle Bernard" ],
   "suspects" : [ "Victor Hugo", "Marie Curie", "Simone de Beauvoir" ],
-  "temoins" : [ "Isabelle Roche", "Jules Mercier", "Gabrielle Leroy" ],
   "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
   "temoignages" : null
 }, {
@@ -407,7 +365,6 @@
   "description" : "Une altercation mineure a été classée sans suite.",
   "enqueteurs" : [ "Pierre Lefevre", "Elodie Garnier" ],
   "suspects" : [ "Albert Einstein" ],
-  "temoins" : [ "Benjamin Dubois" ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
   "temoignages" : null
 }, {
@@ -419,7 +376,6 @@
   "description" : "Une escroquerie par faux documents a été transférée au parquet.",
   "enqueteurs" : [ "Nicolas Roux", "Julie Laurent" ],
   "suspects" : [ "Victor Hugo", "Louis Pasteur", "Marie Curie" ],
-  "temoins" : [ "Benjamin Dubois", "Charlotte Lefevre", "François Martin" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : null
 }, {
@@ -431,7 +387,6 @@
   "description" : "Un vol de bijoux est en cours d'instruction.",
   "enqueteurs" : [ "Alexandre Dubois", "Camille Petit" ],
   "suspects" : [ "Claude Monet", "René Descartes", "Victor Hugo", "Albert Einstein" ],
-  "temoins" : [ "Charlotte Lefevre", "Isabelle Roche", "Emma Girard" ],
   "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
   "temoignages" : null
 }, {
@@ -443,7 +398,6 @@
   "description" : "Une agression physique a été renvoyée devant le tribunal.",
   "enqueteurs" : [ "Antoine Lambert", "Emma Richard" ],
   "suspects" : [ "Blaise Pascal", "René Descartes", "Albert Einstein" ],
-  "temoins" : [ "Karine Dupont" ],
   "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
   "temoignages" : null
 }, {
@@ -455,7 +409,6 @@
   "description" : "Une fraude mineure a été classée sans suite.",
   "enqueteurs" : [ "Laurent Girard", "Manon Robert" ],
   "suspects" : [ "Jean Dupont", "Victor Hugo", "Albert Einstein" ],
-  "temoins" : [ "Charlotte Lefevre" ],
   "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
   "temoignages" : null
 }, {
@@ -467,7 +420,6 @@
   "description" : "Un acte de violence mineur a été rapidement résolu.",
   "enqueteurs" : [ "Vincent Moreau", "Charlotte David" ],
   "suspects" : [ "Blaise Pascal", "Simone de Beauvoir", "Marie Curie", "Jean Dupont" ],
-  "temoins" : [ "Isabelle Roche" ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
   "temoignages" : null
 }, {
@@ -479,7 +431,6 @@
   "description" : "Une escroquerie complexe a été rouverte pour de nouvelles investigations.",
   "enqueteurs" : [ "Benoît Leroy", "Clara Bertrand" ],
   "suspects" : [ "Albert Einstein", "Marie Curie", "Jean Dupont" ],
-  "temoins" : [ "Isabelle Roche", "Louis Bertrand", "Hugo Fontaine" ],
   "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
   "temoignages" : null
 }, {
@@ -491,7 +442,6 @@
   "description" : null,
   "enqueteurs" : [ "Jean Dupont", "Marie Curie" ],
   "suspects" : [ "Louis Pasteur", "Claude Monet", "Simone de Beauvoir" ],
-  "temoins" : [ "François Martin" ],
   "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
   "temoignages" : null
 } ]
