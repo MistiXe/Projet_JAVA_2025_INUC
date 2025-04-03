@@ -266,7 +266,8 @@
     -fx-border-radius: 10px;      /* Arrondi de la bordure */
     -fx-border-width: 5px;
     -fx-border-color: #e3e3e3;
-    -fx-min-height: 100px;
+    -fx-min-height: 150px;
+    -fx-min-width: 200px;
 }
 
 .list-cell {

@@ -1,7 +1,9 @@
 package com.example.demo.Controlleur;
 
+import com.example.demo.PDFJSON.JsonHandlerPreuve;
 import com.example.demo.Patrons.Affaire;
 import com.example.demo.Patrons.Personne;
+import com.example.demo.Patrons.Preuve;
 import com.example.demo.PDFJSON.JsonHandlerCase;
 import com.example.demo.PDFJSON.JsonHandlerPersonne;
 import javafx.application.Platform;
@@ -54,7 +56,7 @@ public class Menu_Controlleur {
     @FXML private ListView<Personne> detailSuspects;
     @FXML private ListView<Personne> detailTemoins;
     @FXML private ListView<Personne> detailPersonneSuspectees;
-    @FXML private ListView<String> detailPreuves;
+    @FXML private ListView<Preuve> detailPreuves;
 
     @FXML private MenuItem convertPDF;
     @FXML private MenuItem printTable;
@@ -79,12 +81,13 @@ public class Menu_Controlleur {
     private Map<Integer,List<Integer>> currentTemoigagne;
     private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
     private final List<Personne> listePersonnes = JsonHandlerPersonne.readPersonsFromJson();
+    private final List<Preuve> listePreuves = JsonHandlerPreuve.readPreuvesFromJson();
 
     @FXML private ObservableList<Personne> enqueteursList = FXCollections.observableArrayList();
     @FXML private ObservableList<Personne> suspectsList = FXCollections.observableArrayList();
     @FXML private ObservableList<Personne> temoinsList = FXCollections.observableArrayList();
     @FXML private ObservableList<Personne> suspecteesList = FXCollections.observableArrayList();
-    @FXML private ObservableList<String> preuvesList = FXCollections.observableArrayList();
+    @FXML private ObservableList<Preuve> preuvesList = FXCollections.observableArrayList();
 
     // Création des FilteredList pour chaque liste de personnes
     private FilteredList<Personne> filteredEnqueteurs = new FilteredList<>(enqueteursList, p -> true);
@@ -229,7 +232,9 @@ public class Menu_Controlleur {
         preuvesList.clear();
 
         if (currentAffaire != null) {
-            preuvesList.setAll(currentAffaire.getPreuves());
+            List<String> preuvesId = currentAffaire.getPreuves();
+            List<Preuve> preuves = listIDToListPreuve(preuvesId);
+            preuvesList.setAll(preuves);
         }
     }
 
@@ -317,6 +322,20 @@ public class Menu_Controlleur {
         return personnes;
     }
 
+    private List<Preuve> listIDToListPreuve(List<String> listId) {
+        List<Preuve> preuves = new ArrayList<>();
+
+        for (String preuveDescription : listId) {
+            Preuve preuve = trouverPreuveParDescription(preuveDescription);
+            if (preuve != null) {
+                preuves.add(preuve);
+            }
+        }
+
+        return preuves;
+    }
+
+
     private Personne trouverPersonneParId(int id) {
         for (Personne p : listePersonnes) {
             if (p.getId() == id) {
@@ -326,6 +345,16 @@ public class Menu_Controlleur {
 
         return null;
     }
+
+    private Preuve trouverPreuveParDescription(String description) {
+        for (Preuve p : listePreuves) {
+            if (p.getDescription().equalsIgnoreCase(description)) {
+                return p;
+            }
+        }
+        return null; // Retourne null si la preuve n'est pas trouvée
+    }
+
 
     private void showAlert(String titre, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -349,6 +378,8 @@ public class Menu_Controlleur {
             });
         });
     }
+
+
     //============================================
     // Méthodes d'action
     //============================================

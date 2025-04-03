@@ -1,0 +1,158 @@
+[
+  {
+    "description": "Empreintes digitales sur une arme",
+    "importance": 9
+  },
+  {
+    "description": "Vidéo de surveillance du crime",
+    "importance": 10
+  },
+  {
+    "description": "Témoignage sous serment d'un témoin clé",
+    "importance": 8
+  },
+  {
+    "description": "Résidus de poudre sur les vêtements du suspect",
+    "importance": 7
+  },
+  {
+    "description": "Relevés bancaires montrant des transactions suspectes",
+    "importance": 6
+  },
+  {
+    "description": "Analyse ADN correspondant au suspect",
+    "importance": 10
+  },
+  {
+    "description": "Appels téléphoniques enregistrés",
+    "importance": 7
+  },
+  {
+    "description": "Factures falsifiées",
+    "importance": 5
+  },
+  {
+    "description": "Emails échangés entre les suspects",
+    "importance": 6
+  },
+  {
+    "description": "Rapport médical détaillant les blessures de la victime",
+    "importance": 8
+  },
+  {
+    "description": "Caméras de surveillance du café",
+    "importance": 7
+  },
+  {
+    "description": "Témoignages des passants",
+    "importance": 5
+  },
+  {
+    "description": "Arme du crime retrouvée sur les lieux",
+    "importance": 10
+  },
+  {
+    "description": "Plaques d'immatriculation identifiées sur une caméra",
+    "importance": 6
+  },
+  {
+    "description": "Analyse toxicologique prouvant un empoisonnement",
+    "importance": 9
+  },
+  {
+    "description": "Inventaire de la bijouterie confirmant les objets volés",
+    "importance": 6
+  },
+  {
+    "description": "Clés retrouvées sur la scène du crime appartenant au suspect",
+    "importance": 5
+  },
+  {
+    "description": "Trace GPS du véhicule du suspect",
+    "importance": 7
+  },
+  {
+    "description": "Lettre de menace retrouvée chez la victime",
+    "importance": 6
+  },
+  {
+    "description": "Faux passeports saisis",
+    "importance": 8
+  },
+  {
+    "description": "Boîte noire du véhicule analysée",
+    "importance": 7
+  },
+  {
+    "description": "Messages suspects sur les réseaux sociaux",
+    "importance": 5
+  },
+  {
+    "description": "Preuves balistiques confirmant l'arme utilisée",
+    "importance": 9
+  },
+  {
+    "description": "Échantillons de terre prouvant un déplacement suspect",
+    "importance": 4
+  },
+  {
+    "description": "Résidus d'accélérant confirmant un incendie criminel",
+    "importance": 8
+  },
+  {
+    "description": "Enregistrements audio de conversations suspectes",
+    "importance": 7
+  },
+  {
+    "description": "Photographies de la scène du crime",
+    "importance": 8
+  },
+  {
+    "description": "Documents financiers falsifiés",
+    "importance": 6
+  },
+  {
+    "description": "Vêtements tachés de sang correspondant à la victime",
+    "importance": 9
+  },
+  {
+    "description": "Traces de peinture correspondant au véhicule du suspect",
+    "importance": 6
+  },
+  {
+    "description": "Enregistrements de caméras de sécurité montrant le suspect",
+    "importance": 8
+  },
+  {
+    "description": "Objets volés retrouvés en possession du suspect",
+    "importance": 9
+  },
+  {
+    "description": "Témoignages de voisins confirmant la présence du suspect",
+    "importance": 7
+  },
+  {
+    "description": "Analyse de fibres correspondant aux vêtements de la victime",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de localisation du téléphone du suspect",
+    "importance": 7
+  },
+  {
+    "description": "Enregistrements de drones montrant l'activité suspecte",
+    "importance": 6
+  },
+  {
+    "description": "Documents contrefaits saisis chez le suspect",
+    "importance": 7
+  },
+  {
+    "description": "Analyse de traces de pas correspondant au suspect",
+    "importance": 6
+  },
+  {
+    "description": "Preuves de transactions cryptographiques illégales",
+    "importance": 8
+  }
+]

@@ -1,456 +1,236 @@
 [ {
-  "date" : "2023-05-30",
-  "lieu" : "22 Rue Mouffetard, Paris",
+  "date" : "2023-07-15",
+  "lieu" : "15 Rue de Rivoli, Paris",
+  "type" : "Vol",
+  "status" : "EN_COURS",
+  "gravite" : 6,
+  "description" : "Un vol de bijoux a été signalé dans une bijouterie de luxe. Les suspects ont été identifiés grâce aux caméras de surveillance.",
+  "enqueteurs" : [ 5, 29, 33 ],
+  "suspects" : [ 47, 60 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés", "Analyse ADN correspondant au suspect", "Résidus de poudre sur les vêtements du suspect", "Relevés bancaires montrant des transactions suspectes", "Témoignages des passants", "Photographies de la scène du crime", "Traces de peinture correspondant au véhicule du suspect", "Enregistrements de caméras de sécurité montrant le suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "47" : [ 6 ],
+    "60" : [ 10 ]
+  }
+}, {
+  "date" : "2023-08-22",
+  "lieu" : "28 Avenue des Champs-Élysées, Paris",
   "type" : "Escroquerie",
   "status" : "INSTRUCTION_EN_COURS",
-  "gravite" : 8,
-  "description" : "Une personne a été arrêtée pour avoir escroqué plusieurs personnes âgées en leur vendant de faux produits de santé.",
-  "enqueteurs" : [ 12, 34, 45, 7, 23 ],
-  "suspects" : [ 19 ],
-  "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
+  "gravite" : 7,
+  "description" : "Une escroquerie immobilière a été découverte, impliquant plusieurs victimes qui ont investi dans des propriétés inexistantes.",
+  "enqueteurs" : [ 12, 34, 45 ],
+  "suspects" : [ 19, 50 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
   "temoignages" : {
     "1" : [ 2, 4, 6 ],
     "19" : [ 2 ],
-    "18" : [ 10 ]
+    "50" : [ 10 ]
   }
 }, {
-  "date" : "2023-06-18",
-  "lieu" : "30 Avenue de l'Opéra, Paris",
-  "type" : "Vol",
-  "status" : "RENVOYEE_DEVANT_TRIBUNAL",
-  "gravite" : 4,
-  "description" : "Un vol de bijoux a eu lieu dans une bijouterie de luxe en plein jour. Test ",
-  "enqueteurs" : [ 5, 29 ],
-  "suspects" : [ 34 ],
-  "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
-  "temoignages" : null
-}, {
-  "date" : "2023-07-09",
-  "lieu" : "10 Rue de la Paix, Paris",
+  "date" : "2023-09-30",
+  "lieu" : "3 Rue de la Paix, Paris",
   "type" : "Agression",
   "status" : "SUSPENDUE",
-  "gravite" : 6,
-  "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus.\nLorem Ipsum Lorem IpsumLorem IpsumLorem Ipsum",
-  "enqueteurs" : [ 8, 21 ],
+  "gravite" : 5,
+  "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus. Les enquêteurs recherchent des témoins supplémentaires.",
+  "enqueteurs" : [ 8, 21, 30 ],
   "suspects" : [ 34, 47 ],
-  "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
-  "temoignages" : null
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "34" : [ 6 ],
+    "47" : [ 10 ]
+  }
 }, {
-  "date" : "2023-08-25",
-  "lieu" : "17 Boulevard Haussmann, Paris",
+  "date" : "2023-10-10",
+  "lieu" : "45 Boulevard Saint-Germain, Paris",
   "type" : "Fraude",
   "status" : "CLOTUREE",
-  "gravite" : 1,
-  "description" : "Une fraude mineure a été découverte dans une petite entreprise locale.",
-  "enqueteurs" : [ 3, 26 ],
-  "suspects" : [ 1, 49 ],
-  "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
-  "temoignages" : null
+  "gravite" : 4,
+  "description" : "Une fraude à la carte bancaire a été détectée et résolue. Les suspects ont été arrêtés et les fonds récupérés.",
+  "enqueteurs" : [ 4, 13, 22 ],
+  "suspects" : [ 12, 1, 47 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2 ],
+    "47" : [ 10 ]
+  }
 }, {
-  "date" : "2023-09-14",
-  "lieu" : "25 Rue du Faubourg Saint-Honoré, Paris",
+  "date" : "2023-11-05",
+  "lieu" : "50 Rue de Rennes, Paris",
   "type" : "Violence",
   "status" : "REOUVERTE",
   "gravite" : 9,
-  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves.",
-  "enqueteurs" : [ 14, 31 ],
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves. L'enquête a été rouverte pour de nouvelles investigations.",
+  "enqueteurs" : [ 14, 31, 40 ],
   "suspects" : [ 49, 1, 33 ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
-  "temoignages" : null
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6 ],
+    "33" : [ 10 ]
+  }
 }, {
-  "date" : "2023-10-02",
-  "lieu" : "7 Rue de la Boétie, Paris",
+  "date" : "2023-12-01",
+  "lieu" : "12 Rue de la République, Paris",
   "type" : "Escroquerie",
   "status" : "NON_ENGAGEE",
   "gravite" : 3,
   "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti.",
-  "enqueteurs" : [ 2, 18 ],
-  "suspects" : [ 47, 6 ],
-  "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
-  "temoignages" : null
+  "enqueteurs" : [ 2, 18, 35 ],
+  "suspects" : [ 47, 60, 75 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Témoignages des passants", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6, 8 ],
+    "47" : [ 2, 10 ],
+    "60" : [ 10, 12 ],
+    "75" : [ 14 ]
+  }
 }, {
-  "date" : "2023-11-22",
-  "lieu" : "19 Rue de la Verrerie, Paris",
+  "date" : "2023-12-15",
+  "lieu" : "33 Avenue de la Grande Armée, Paris",
   "type" : "Vol",
   "status" : "EN_COURS",
   "gravite" : 7,
   "description" : "Un vol de voiture a été signalé dans un parking souterrain.",
-  "enqueteurs" : [ 9, 16 ],
-  "suspects" : [ 12, 33, 6, 19 ],
-  "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
-  "temoignages" : null
+  "enqueteurs" : [ 9, 16, 23 ],
+  "suspects" : [ 12, 33, 60, 19 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "12" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "60" : [ 14, 16 ],
+    "19" : [ 18 ]
+  }
 }, {
-  "date" : "2023-12-11",
-  "lieu" : "2 Rue des Francs Bourgeois, Paris",
+  "date" : "2023-12-20",
+  "lieu" : "44 Rue de la Fayette, Paris",
   "type" : "Agression",
   "status" : "CLASSEE_SANS_SUITE",
   "gravite" : 2,
   "description" : "Une altercation mineure entre deux individus a été classée sans suite.",
-  "enqueteurs" : [ 22, 38 ],
-  "suspects" : [ 6, 50 ],
-  "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
-  "temoignages" : null
+  "enqueteurs" : [ 22, 38, 41 ],
+  "suspects" : [ 6, 50, 70 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "6" : [ 4, 6 ],
+    "50" : [ 8, 10 ],
+    "70" : [ 12 ]
+  }
 }, {
-  "date" : "2022-01-07",
-  "lieu" : "14 Rue de Turenne, Paris",
+  "date" : "2023-12-25",
+  "lieu" : "55 Boulevard de Sébastopol, Paris",
   "type" : "Fraude",
   "status" : "TRANSFEREE_AU_PARQUET",
   "gravite" : 5,
   "description" : "Une fraude à la carte bancaire a été détectée et transférée au parquet.",
-  "enqueteurs" : [ 4, 13 ],
-  "suspects" : [ 12, 1, 47 ],
-  "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
-  "temoignages" : null
+  "enqueteurs" : [ 4, 13, 26 ],
+  "suspects" : [ 12, 1, 47, 80 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2, 8 ],
+    "47" : [ 10, 12 ],
+    "80" : [ 14 ]
+  }
 }, {
-  "date" : "2022-02-28",
-  "lieu" : "21 Rue de Bretagne, Paris",
+  "date" : "2023-12-30",
+  "lieu" : "66 Rue de la Verrerie, Paris",
   "type" : "Violence",
   "status" : "INSTRUCTION_EN_COURS",
-  "gravite" : 8,
-  "description" : "Un acte de violence a eu lieu dans un bar, l'instruction est en cours.",
-  "enqueteurs" : [ 35, 40 ],
-  "suspects" : [ 49, 34, 43 ],
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves.",
+  "enqueteurs" : [ 14, 31, 42 ],
+  "suspects" : [ 49, 1, 33, 90 ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
-  "temoignages" : null
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "90" : [ 14, 16 ]
+  }
 }, {
-  "date" : "2022-03-19",
-  "lieu" : "9 Rue Charlot, Paris",
+  "date" : "2024-01-05",
+  "lieu" : "77 Rue de la Roquette, Paris",
   "type" : "Escroquerie",
   "status" : "RENVOYEE_DEVANT_TRIBUNAL",
-  "gravite" : 4,
+  "gravite" : 8,
   "description" : "Une escroquerie immobilière a été renvoyée devant le tribunal.",
-  "enqueteurs" : [ 12, 34 ],
-  "suspects" : [ 19 ],
-  "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
-  "temoignages" : null
+  "enqueteurs" : [ 12, 34, 45 ],
+  "suspects" : [ 19, 50, 100 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2, 8 ],
+    "50" : [ 10, 12 ],
+    "100" : [ 14 ]
+  }
 }, {
-  "date" : "2022-04-08",
-  "lieu" : "16 Rue Vieille du Temple, Paris",
+  "date" : "2024-01-10",
+  "lieu" : "88 Rue de la Folie Méricourt, Paris",
   "type" : "Vol",
   "status" : "SUSPENDUE",
   "gravite" : 6,
   "description" : "Un vol de sac à main a été signalé mais l'enquête est suspendue.",
-  "enqueteurs" : [ 5, 29 ],
-  "suspects" : [ 43 ],
-  "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
-  "temoignages" : null
+  "enqueteurs" : [ 5, 29, 36 ],
+  "suspects" : [ 43, 110 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "43" : [ 6, 8 ],
+    "110" : [ 10, 12 ]
+  }
 }, {
-  "date" : "2022-05-29",
-  "lieu" : "3 Rue des Archives, Paris",
+  "date" : "2024-01-15",
+  "lieu" : "99 Rue de la République, Paris",
   "type" : "Agression",
   "status" : "CLOTUREE",
   "gravite" : 1,
   "description" : "Une légère altercation a été rapidement résolue et classée.",
-  "enqueteurs" : [ 8, 21 ],
-  "suspects" : [ 19 ],
-  "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
-  "temoignages" : null
+  "enqueteurs" : [ 8, 21, 37 ],
+  "suspects" : [ 19, 120 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "19" : [ 4, 6 ],
+    "120" : [ 8, 10 ]
+  }
 }, {
-  "date" : "2022-06-17",
-  "lieu" : "28 Rue du Temple, Paris",
+  "date" : "2024-01-20",
+  "lieu" : "110 Rue de la Verrerie, Paris",
   "type" : "Fraude",
   "status" : "REOUVERTE",
   "gravite" : 9,
   "description" : "Une fraude complexe impliquant plusieurs victimes a été rouverte.",
-  "enqueteurs" : [ 3, 26 ],
-  "suspects" : [ 49, 43, 33, 34 ],
-  "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
-  "temoignages" : null
+  "enqueteurs" : [ 3, 26, 39 ],
+  "suspects" : [ 49, 43, 33, 34, 130 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "49" : [ 2, 8 ],
+    "43" : [ 10, 12 ],
+    "33" : [ 14, 16 ],
+    "130" : [ 18 ]
+  }
 }, {
-  "date" : "2022-07-06",
-  "lieu" : "11 Rue de Turbigo, Paris",
+  "date" : "2024-01-25",
+  "lieu" : "121 Rue de la Folie Méricourt, Paris",
   "type" : "Violence",
   "status" : "NON_ENGAGEE",
   "gravite" : 3,
   "description" : "Une plainte pour violence n'a pas été engagée faute de preuves.",
-  "enqueteurs" : [ 14, 31 ],
-  "suspects" : [ 50, 43 ],
+  "enqueteurs" : [ 14, 31, 43 ],
+  "suspects" : [ 50, 43, 140 ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
-  "temoignages" : null
-}, {
-  "date" : "2022-08-24",
-  "lieu" : "18 Rue Étienne Marcel, Paris",
-  "type" : "Escroquerie",
-  "status" : "EN_COURS",
-  "gravite" : 7,
-  "description" : "Une escroquerie en ligne est actuellement en cours d'investigation.",
-  "enqueteurs" : [ 2, 18 ],
-  "suspects" : [ 47, 19, 1, 50 ],
-  "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
-  "temoignages" : null
-}, {
-  "date" : "2022-09-13",
-  "lieu" : "5 Rue Montorgueil, Paris",
-  "type" : "Vol",
-  "status" : "CLASSEE_SANS_SUITE",
-  "gravite" : 2,
-  "description" : "Un petit vol à l'étalage a été classé sans suite.",
-  "enqueteurs" : [ 9, 16 ],
-  "suspects" : [ 6, 33, 50, 19 ],
-  "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
-  "temoignages" : null
-}, {
-  "date" : "2022-10-01",
-  "lieu" : "23 Rue Réaumur, Paris",
-  "type" : "Agression",
-  "status" : "TRANSFEREE_AU_PARQUET",
-  "gravite" : 5,
-  "description" : "Une agression avec arme blanche a été transférée au parquet. ",
-  "enqueteurs" : [ 22, 38 ],
-  "suspects" : [ 12, 34, 43, 19 ],
-  "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
-  "temoignages" : null
-}, {
-  "date" : "2022-11-11",
-  "lieu" : "Test",
-  "type" : "Fraude",
-  "status" : "EN_COURS",
-  "gravite" : 7,
-  "description" : "Une fraude à l'assurance est en cours d'enquête.",
-  "enqueteurs" : [ 4, 13 ],
-  "suspects" : [ 6, 12 ],
-  "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
-  "temoignages" : null
-}, {
-  "date" : "2022-12-10",
-  "lieu" : "30 Rue Montmartre, Paris",
-  "type" : "Violence",
-  "status" : "RENVOYEE_DEVANT_TRIBUNAL",
-  "gravite" : 4,
-  "description" : "Un acte de violence domestique a été renvoyé devant le tribunal.",
-  "enqueteurs" : [ 35, 40 ],
-  "suspects" : [ 49, 50, 12 ],
-  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-01-29",
-  "lieu" : "17 Rue du Louvre, Paris",
-  "type" : "Escroquerie",
-  "status" : "SUSPENDUE",
-  "gravite" : 6,
-  "description" : "Une escroquerie par faux investissement a été suspendue.",
-  "enqueteurs" : [ 12, 34 ],
-  "suspects" : [ 49 ],
-  "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-02-18",
-  "lieu" : "8 Rue Coquillière, Paris",
-  "type" : "Vol",
-  "status" : "CLOTUREE",
-  "gravite" : 1,
-  "description" : "Un vol de vélo a été rapidement résolu et classé.",
-  "enqueteurs" : [ 5, 29 ],
-  "suspects" : [ 19 ],
-  "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-03-09",
-  "lieu" : "25 Rue du 4 Septembre, Paris",
-  "type" : "Agression",
-  "status" : "REOUVERTE",
-  "gravite" : 9,
-  "description" : "Une agression grave a été rouverte pour de nouvelles investigations.",
-  "enqueteurs" : [ 8, 21 ],
-  "suspects" : [ 33, 1, 6, 19 ],
-  "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-04-27",
-  "lieu" : "14 Rue des Pyramides, Paris",
-  "type" : "Fraude",
-  "status" : "NON_ENGAGEE",
-  "gravite" : 3,
-  "description" : "Une tentative de fraude n'a pas abouti et n'a pas été engagée.",
-  "enqueteurs" : [ 3, 26 ],
-  "suspects" : [ 12 ],
-  "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-05-16",
-  "lieu" : "21 Rue Sainte-Anne, Paris",
-  "type" : "Violence",
-  "status" : "EN_COURS",
-  "gravite" : 7,
-  "description" : "Un acte de violence dans un restaurant est en cours d'enquête.",
-  "enqueteurs" : [ 14, 31 ],
-  "suspects" : [ 49 ],
-  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-06-05",
-  "lieu" : "9 Rue de la Michodière, Paris",
-  "type" : "Escroquerie",
-  "status" : "CLASSEE_SANS_SUITE",
-  "gravite" : 2,
-  "description" : "Une petite escroquerie a été classée sans suite.",
-  "enqueteurs" : [ 2, 18 ],
-  "suspects" : [ 50, 43, 19, 6 ],
-  "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-08-14",
-  "lieu" : "3 Rue de la Chaussée d'Antin, Paris",
-  "type" : "Agression",
-  "status" : "INSTRUCTION_EN_COURS",
-  "gravite" : 8,
-  "description" : "Une agression avec blessures graves est en cours d'instruction.",
-  "enqueteurs" : [ 9, 16 ],
-  "suspects" : [ 19, 1 ],
-  "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-09-03",
-  "lieu" : "TESTfdsdsf",
-  "type" : "Vol",
-  "status" : "EN_COURS",
-  "gravite" : 7,
-  "description" : "Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsumfdfdfdfdfdffdfdfd\n\n\n",
-  "enqueteurs" : [ 22, 38 ],
-  "suspects" : [ 12, 49 ],
-  "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-10-22",
-  "lieu" : "11 Place de l'Opéra, Paris",
-  "type" : "Violence",
-  "status" : "SUSPENDUE",
-  "gravite" : 6,
-  "description" : "Un acte de violence a été suspendu faute de témoins.",
-  "enqueteurs" : [ 4, 13 ],
-  "suspects" : [ 47, 49, 6 ],
-  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-11-10",
-  "lieu" : "18 Rue Auber, Paris",
-  "type" : "Escroquerie",
-  "status" : "CLOTUREE",
-  "gravite" : 1,
-  "description" : "Une petite escroquerie a été rapidement résolue et classée.",
-  "enqueteurs" : [ 35, 40 ],
-  "suspects" : [ 49 ],
-  "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
-  "temoignages" : null
-}, {
-  "date" : "2021-12-30",
-  "lieu" : "5 Rue Scribe, Paris",
-  "type" : "Vol",
-  "status" : "REOUVERTE",
-  "gravite" : 9,
-  "description" : "Un vol important a été rouvert pour de nouvelles investigations.",
-  "enqueteurs" : [ 12, 34 ],
-  "suspects" : [ 47 ],
-  "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
-  "temoignages" : null
-}, {
-  "date" : "2015-12-31",
-  "lieu" : "23 Rue Caumartin, Marseille",
-  "type" : "Skibidi",
-  "status" : "EN_COURS",
-  "gravite" : 8,
-  "description" : "",
-  "enqueteurs" : [ 5, 29 ],
-  "suspects" : [ 47, 6, 12 ],
-  "preuves" : [ "Élément de preuve en attente d'analyse" ],
-  "temoignages" : null
-}, {
-  "date" : "2020-02-08",
-  "lieu" : "12 Rue de Provence, Paris",
-  "type" : "Fraude",
-  "status" : "EN_COURS",
-  "gravite" : 7,
-  "description" : "Une fraude bancaire est actuellement en cours d'investigation.",
-  "enqueteurs" : [ 8, 21 ],
-  "suspects" : [ 50, 34, 49 ],
-  "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
-  "temoignages" : null
-}, {
-  "date" : "2020-03-28",
-  "lieu" : "30 Rue La Fayette, Paris",
-  "type" : "Violence",
-  "status" : "CLASSEE_SANS_SUITE",
-  "gravite" : 2,
-  "description" : "Une altercation mineure a été classée sans suite.",
-  "enqueteurs" : [ 3, 26 ],
-  "suspects" : [ 1 ],
-  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
-  "temoignages" : null
-}, {
-  "date" : "2020-04-17",
-  "lieu" : "17 Rue du Havre, Paris",
-  "type" : "Escroquerie",
-  "status" : "TRANSFEREE_AU_PARQUET",
-  "gravite" : 5,
-  "description" : "Une escroquerie par faux documents a été transférée au parquet.",
-  "enqueteurs" : [ 14, 31 ],
-  "suspects" : [ 50, 33, 34 ],
-  "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
-  "temoignages" : null
-}, {
-  "date" : "2020-05-06",
-  "lieu" : "8 Rue Tronchet, Paris",
-  "type" : "Vol",
-  "status" : "INSTRUCTION_EN_COURS",
-  "gravite" : 8,
-  "description" : "Un vol de bijoux est en cours d'instruction.",
-  "enqueteurs" : [ 2, 18 ],
-  "suspects" : [ 19, 43, 50, 1 ],
-  "preuves" : [ "Vidéo de surveillance montrant le vol", "Empreintes digitales sur la vitrine", "Inventaire de la bijouterie confirmant les objets manquants" ],
-  "temoignages" : null
-}, {
-  "date" : "2020-06-26",
-  "lieu" : "25 Rue de la Pépinière, Paris",
-  "type" : "Agression",
-  "status" : "RENVOYEE_DEVANT_TRIBUNAL",
-  "gravite" : 4,
-  "description" : "Une agression physique a été renvoyée devant le tribunal.",
-  "enqueteurs" : [ 9, 16 ],
-  "suspects" : [ 6, 43, 1 ],
-  "preuves" : [ "Rapport médical des blessures", "Caméras de surveillance du café", "Témoignages des passants" ],
-  "temoignages" : null
-}, {
-  "date" : "2020-07-15",
-  "lieu" : "Test",
-  "type" : "Fraude",
-  "status" : "CLASSEE_SANS_SUITE",
-  "gravite" : 6,
-  "description" : "Une fraude mineure a été classée sans suite.",
-  "enqueteurs" : [ 22, 38 ],
-  "suspects" : [ 12, 50, 1 ],
-  "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
-  "temoignages" : null
-}, {
-  "date" : "2020-08-04",
-  "lieu" : "21 Rue de Londres, Paris",
-  "type" : "Violence",
-  "status" : "CLOTUREE",
-  "gravite" : 1,
-  "description" : "Un acte de violence mineur a été rapidement résolu.",
-  "enqueteurs" : [ 4, 13 ],
-  "suspects" : [ 6, 49, 34, 12 ],
-  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
-  "temoignages" : null
-}, {
-  "date" : "2020-09-23",
-  "lieu" : "9 Rue d'Amsterdam, Paris",
-  "type" : "Escroquerie",
-  "status" : "REOUVERTE",
-  "gravite" : 9,
-  "description" : "Une escroquerie complexe a été rouverte pour de nouvelles investigations.",
-  "enqueteurs" : [ 35, 40 ],
-  "suspects" : [ 1, 34, 12 ],
-  "preuves" : [ "Relevés bancaires suspects", "Témoignages des victimes", "Enregistrements de transactions frauduleuses" ],
-  "temoignages" : null
-}, {
-  "date" : "2025-03-15",
-  "lieu" : "Toulouse",
-  "type" : "Fraude",
-  "status" : "CLOTUREE",
-  "gravite" : 3,
-  "description" : "",
-  "enqueteurs" : [ 12, 34 ],
-  "suspects" : [ 33, 19, 49 ],
-  "preuves" : [ "Factures falsifiées", "Emails suspects échangés entre les parties", "Audits internes révélant des anomalies financières" ],
-  "temoignages" : null
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "50" : [ 6, 8 ],
+    "43" : [ 10, 12 ],
+    "140" : [ 14, 16 ]
+  }
 } ]
