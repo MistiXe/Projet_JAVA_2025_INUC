@@ -99,6 +99,8 @@
 }
 
 
+
+
 /* --------------------------------------------------- */
 /* ------------------- TABLE VIEW -------------------- */
 /* --------------------------------------------------- */
@@ -222,6 +224,99 @@
     -fx-background-color: transparent;
 }
 
+.detail-vboxTags-container {
+    -fx-max-width: 300;
+    -fx-spacing: 10;
+    -fx-padding: 0 0 20px 0;
+}
+
+.searchFieldDetailAffaire {
+    -fx-padding: 0 0 2px 0;
+    -fx-background-color: white;
+    -fx-effect: none;
+    -fx-border-width: 0 0 2px 0 ;
+    -fx-border-color: #000000;
+}
+
+#searchEnqueteurAffaire:focused {
+    -fx-border-color: #2ecc71;
+}
+
+#searchSuspectAffaire:focused {
+    -fx-border-color: #e74c3c;
+}
+
+#searchTemoinAffaire:focused {
+    -fx-border-color: #f39c12;
+}
+
+#searchPersonneSuspecteeAffaire:focused {
+    -fx-border-color: #e74c3c;
+}
+
+#searchPreuvesAffaire:focused {
+    -fx-border-color: #4a90e2;
+}
+
+
+
+.list-view {
+    -fx-background-color: #e3e3e3;
+    -fx-background-radius: 10px;  /* Arrondi des coins extérieurs */
+    -fx-border-radius: 10px;      /* Arrondi de la bordure */
+    -fx-border-width: 5px;
+    -fx-border-color: #e3e3e3;
+    -fx-min-height: 100px;
+}
+
+.list-cell {
+    -fx-background-insets: 0 0 5px 0; /* Espacement en bas */
+    -fx-background-radius: 10px;  /* Arrondi des coins extérieurs */
+    -fx-border-radius: 10px;
+    -fx-padding: 7px 10px 10px 10px;
+}
+
+.list-cell:empty {
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+}
+
+.list-cell:filled:selected, .list-cell:filled:selected:focused {
+    -fx-background-color: #d0d0d0;
+    -fx-text-fill: #333333;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+/* Scrollbar verticale */
+.list-view .scroll-bar:vertical {
+    -fx-pref-width: 8px;
+    -fx-background-color: transparent;
+}
+
+/* Scrollbar horizontale */
+.list-view .scroll-bar:horizontal {
+    -fx-pref-height: 8px;
+    -fx-background-color: transparent;
+}
+
+/* Le curseur de la scroll bar */
+.list-view .thumb {
+    -fx-background-color: #888;
+    -fx-background-radius: 4;
+}
+
+/* La piste sur laquelle glisse le curseur */
+.list-view .track {
+    -fx-background-color: #e3e3e3;
+}
+
+.list-view .corner {
+    -fx-background-color: #e3e3e3;
+}
 /* ------------------------------------------------------------- */
 /* ------------------------------------------------------------- */
 
@@ -304,6 +399,7 @@
     -fx-background-color: #c0392b;
 }
 
+/* Inutilisé je crois */
 .greyed-out-text {
     -fx-text-fill: #bababa;
 }
