@@ -33,7 +33,7 @@ public class Connexion_Controlleur {
 
         if (JsonHandlerUser.authenticate(username, password)) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Vues/hello-view.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Vues/main_view.fxml"));
                 Parent root = loader.load();
 
                 // Vérifier si le contrôleur est bien chargé
