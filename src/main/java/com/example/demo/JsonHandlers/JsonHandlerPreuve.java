@@ -1,4 +1,4 @@
-package com.example.demo.PDFJSON;
+package com.example.demo.JsonHandlers;
 
 import com.example.demo.Patrons.Preuve;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.List;
 
 public class JsonHandlerPreuve {
-    private static final String FILE_PATH = "/com/example/demo/liste_preuves.json"; // Chemin du fichier JSON
+    private static final String FILE_PATH = "/com/example/demo/BDD/liste_preuves.json"; // Chemin du fichier JSON
 
     // Lire les preuves depuis le JSON
     public static List<Preuve> readPreuvesFromJson() {

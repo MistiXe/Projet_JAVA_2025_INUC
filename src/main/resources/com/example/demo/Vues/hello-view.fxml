@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="759.0" prefWidth="1120.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controlleur.Menu_Controlleur">
+<BorderPane prefHeight="759.0" prefWidth="1120.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controleur.Menu_Controlleur">
     <top>
         <VBox id="header">
             <HBox alignment="CENTER_LEFT" style="-fx-padding: 10;">

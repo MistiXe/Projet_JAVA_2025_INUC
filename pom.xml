@@ -129,7 +129,7 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.demo.Modèle.MenuMain</mainClass>
+                            <mainClass>com.example.demo.Modele.MenuMain</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

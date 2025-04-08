@@ -1,7 +1,7 @@
-package com.example.demo.Controlleur;
+package com.example.demo.Controleur;
 
 import com.example.demo.Patrons.Affaire;
-import com.example.demo.PDFJSON.JsonHandlerCase;
+import com.example.demo.JsonHandlers.JsonHandlerCase;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
