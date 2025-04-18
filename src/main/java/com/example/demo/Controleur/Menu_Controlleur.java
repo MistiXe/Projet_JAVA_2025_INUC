@@ -33,8 +33,11 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Menu_Controlleur {
     //============================================
@@ -78,7 +81,7 @@ public class Menu_Controlleur {
     // Variables d'instance
     //============================================
     private Affaire currentAffaire;
-    private Map<Integer,List<Integer>> currentTemoigagne;
+    private Map<Personne, Set<Personne>> currentTemoignages = new HashMap<>();
     private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
     private final List<Personne> listePersonnes = JsonHandlerPersonne.readPersonsFromJson();
     private final List<Preuve> listePreuves = JsonHandlerPreuve.readPreuvesFromJson();
@@ -218,8 +221,9 @@ public class Menu_Controlleur {
             afficherSuspects();
             afficherPreuves();
 
-            currentTemoigagne = currentAffaire.getTemoignages();
-            afficherTemoins(currentTemoigagne);
+            convertirTemoignages(currentAffaire.getTemoignages());
+            afficherTemoins();
+
         });
     }
 
@@ -274,40 +278,46 @@ public class Menu_Controlleur {
         }
     }
 
-    private void afficherTemoins(Map<Integer, List<Integer>> temoignages) {
+    private void afficherTemoins() {
         temoinsList.clear();
-        
-        if (temoignages != null) {
-            for (Map.Entry<Integer, List<Integer>> entry : temoignages.entrySet()) {
-                Integer idTemoin = entry.getKey();
-                Personne temoin = trouverPersonneParId(idTemoin);
-
-                temoinsList.add(temoin);
-            }
-        } else {
-            System.out.println("Aucun témoignage disponible.");
-        }
+        temoinsList.addAll(currentTemoignages.keySet());
     }
+    
 
     private void afficherPersonneSuspectee(Personne temoin) {
         suspecteesList.clear();
-
+    
         if (temoin != null) {
-            int temoinId = temoin.getId();
-            List<Integer> suspectsIds = currentTemoigagne.get(temoinId);
-
-            for (Integer suspectId : suspectsIds) {
-                Personne suspect = trouverPersonneParId(suspectId);
-                if (suspect != null) {
-                    suspecteesList.add(suspect);
-                }
-            }
+            Set<Personne> suspects = currentTemoignages.getOrDefault(temoin, new HashSet<>());
+            suspecteesList.setAll(suspects);
         }
     }
+    
 
     //============================================
     // Méthodes utilitaires
     //============================================
+
+    private void convertirTemoignages(Map<Integer, List<Integer>> rawTemoignages) {
+    currentTemoignages.clear();
+
+    for (Map.Entry<Integer, List<Integer>> entry : rawTemoignages.entrySet()) {
+        Personne temoin = trouverPersonneParId(entry.getKey());
+        Set<Personne> suspects = new HashSet<>();
+
+        for (Integer idSuspect : entry.getValue()) {
+            Personne suspect = trouverPersonneParId(idSuspect);
+            if (suspect != null) suspects.add(suspect);
+        }
+
+        if (temoin != null) {
+            currentTemoignages.put(temoin, suspects);
+        }
+    }
+}
+
+
+
     private void sauvegarderDonnees() {
         new Thread(() -> {
             try {
