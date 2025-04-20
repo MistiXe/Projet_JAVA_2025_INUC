@@ -1,9 +1,7 @@
 package com.example.demo.Controleur;
 
 import com.example.demo.JsonHandlers.JsonHandlerPreuve;
-import com.example.demo.Patrons.Affaire;
-import com.example.demo.Patrons.Personne;
-import com.example.demo.Patrons.Preuve;
+import com.example.demo.Patrons.*;
 import com.example.demo.JsonHandlers.JsonHandlerCase;
 import com.example.demo.JsonHandlers.JsonHandlerPersonne;
 import javafx.application.Platform;
@@ -109,6 +107,12 @@ public class Menu_Controlleur {
     private FilteredList<Personne> filteredTemoins = new FilteredList<>(temoinsList, p -> true);
     private FilteredList<Personne> filteredPersonnesSuspectees = new FilteredList<>(suspecteesList, p -> true);
     private FilteredList<Preuve> filteredPreuves = new FilteredList<>(preuvesList, p -> true);
+
+
+    @FXML private ListView<Commentaire> commentsList;
+    @FXML private Button publishCommentButton;
+    @FXML private TextArea commentsArea;
+    private GestionnaireCommentaires gestionnaireCommentaires = new GestionnaireCommentaires();
 
     //============================================
     // Méthodes d'initialisation
