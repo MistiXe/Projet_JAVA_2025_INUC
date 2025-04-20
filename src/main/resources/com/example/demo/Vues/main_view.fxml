@@ -162,9 +162,10 @@
                 </VBox>
             </Tab>
             <Tab text="Collaboration">
-                <VBox spacing="10">
-                    <TextArea fx:id="commentsArea" promptText="Ajouter un commentaire..." />
-                    <Button fx:id="publishCommentButton" text="Publier" />
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <Text text="Collaborations entre affaires" style="-fx-font-size: 16; -fx-font-weight: bold;" />
+                    <ListView fx:id="collaborationList" prefHeight="200" />
+                    <Button fx:id="analyzeCollaborationButton" onAction="#analyserCollaborations" text="Analyser les collaborations" />
                 </VBox>
             </Tab>
         </TabPane>

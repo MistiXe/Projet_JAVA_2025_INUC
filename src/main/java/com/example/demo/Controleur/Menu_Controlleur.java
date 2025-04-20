@@ -36,6 +36,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Menu_Controlleur {
     //============================================
@@ -109,10 +110,9 @@ public class Menu_Controlleur {
     private FilteredList<Preuve> filteredPreuves = new FilteredList<>(preuvesList, p -> true);
 
 
-    @FXML private ListView<Commentaire> commentsList;
-    @FXML private Button publishCommentButton;
-    @FXML private TextArea commentsArea;
-    private GestionnaireCommentaires gestionnaireCommentaires = new GestionnaireCommentaires();
+    @FXML private ListView<String> collaborationList;
+    @FXML private Button analyzeCollaborationButton;
+
 
     //============================================
     // Méthodes d'initialisation
@@ -724,4 +724,57 @@ public class Menu_Controlleur {
             afficherCollaboration();
         }
     }
+
+    @FXML
+    private void analyserCollaborations() {
+        Map<Affaire, Set<Affaire>> collaborations = new HashMap<>();
+
+        for (Affaire a1 : listeAffaires) {
+            Set<Integer> a1Participants = new HashSet<>();
+            a1Participants.addAll(a1.getEnqueteurs());
+            a1Participants.addAll(a1.getSuspects());
+            a1Participants.addAll(a1.getTemoignages().keySet());
+            a1Participants.addAll(a1.getTemoignages().values()
+                    .stream()
+                    .flatMap(List::stream)
+                    .collect(Collectors.toSet()));
+
+            for (Affaire a2 : listeAffaires) {
+                if (!a1.equals(a2)) {
+                    Set<Integer> a2Participants = new HashSet<>();
+                    a2Participants.addAll(a2.getEnqueteurs());
+                    a2Participants.addAll(a2.getSuspects());
+                    a2Participants.addAll(a2.getTemoignages().keySet());
+                    a2Participants.addAll(a2.getTemoignages().values()
+                            .stream()
+                            .flatMap(List::stream)
+                            .collect(Collectors.toSet()));
+
+                    Set<Integer> intersection = new HashSet<>(a1Participants);
+                    intersection.retainAll(a2Participants);
+
+                    if (!intersection.isEmpty()) {
+                        collaborations.computeIfAbsent(a1, k -> new HashSet<>()).add(a2);
+                    }
+                }
+            }
+        }
+
+        ObservableList<String> collaborationResults = FXCollections.observableArrayList();
+        for (Map.Entry<Affaire, Set<Affaire>> entry : collaborations.entrySet()) {
+            String base = "Affaire au " + entry.getKey().getLieu() + " le " + entry.getKey().getDate() + " collabore avec : ";
+            String joined = entry.getValue().stream()
+                    .map(a -> a.getLieu() + " (" + a.getDate() + ")")
+                    .collect(Collectors.joining(", "));
+            collaborationResults.add(base + joined);
+        }
+
+        collaborationList.setItems(collaborationResults);
+    }
+
+
+
+
+
+
 }
