@@ -800,17 +800,21 @@
             Set<Integer> idsAjoutes = new HashSet<>();
 
             Map<Integer, List<Integer>> temoignages = affaire.getTemoignages();
+            List<Integer> suspects = affaire.getSuspects();
+            List<Integer> enqueteurs = affaire.getEnqueteurs();
 
             for (Map.Entry<Integer, List<Integer>> entry : temoignages.entrySet()) {
                 int idTemoin = entry.getKey();
-                if (!idsAjoutes.contains(idTemoin)) {
-                    nodes.add(Map.of("id", idTemoin, "label", "Témoin #" + idTemoin));
+                Personne temoin = getPersonneById(idTemoin);
+                if (temoin != null && !idsAjoutes.contains(idTemoin)) {
+                    nodes.add(createNode(temoin, "Témoin"));
                     idsAjoutes.add(idTemoin);
                 }
 
                 for (Integer idSuspect : entry.getValue()) {
-                    if (!idsAjoutes.contains(idSuspect)) {
-                        nodes.add(Map.of("id", idSuspect, "label", "Suspect #" + idSuspect));
+                    Personne suspect = getPersonneById(idSuspect);
+                    if (suspect != null && !idsAjoutes.contains(idSuspect)) {
+                        nodes.add(createNode(suspect, "Suspect"));
                         idsAjoutes.add(idSuspect);
                     }
 
@@ -818,8 +822,17 @@
                 }
             }
 
-            Map<String, Object> graph = Map.of("nodes", nodes, "edges", edges);
+            for (Integer idEnq : enqueteurs) {
+                if (!idsAjoutes.contains(idEnq)) {
+                    Personne enq = getPersonneById(idEnq);
+                    if (enq != null) {
+                        nodes.add(createNode(enq, "Enquêteur"));
+                        idsAjoutes.add(idEnq);
+                    }
+                }
+            }
 
+            Map<String, Object> graph = Map.of("nodes", nodes, "edges", edges);
             try {
                 ObjectMapper mapper = new ObjectMapper();
                 return mapper.writeValueAsString(graph);
@@ -828,16 +841,34 @@
                 return "{}";
             }
         }
-    
-    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        private Map<String, Object> createNode(Personne p, String role) {
+            String fullName = p.getPrenom() + " " + p.getNom();
+            return Map.of(
+                    "id", p.getId(),
+                    "label", fullName,
+                    "group", role.toLowerCase(),
+                    "title", "Nom : " + fullName + "\nRôle : " + role + "\nID : " + p.getId()
+            );
+        }
+
+        private Personne getPersonneById(int id) {
+            return listePersonnes.stream()
+                    .filter(p -> p.getId() == id)
+                    .findFirst()
+                    .orElse(null);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }

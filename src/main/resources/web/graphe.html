@@ -1,62 +1,249 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <title>Graphe des connexions</title>
-    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            height: 100%;
+        }
+
+        .legend {
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 14px;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         #network {
             width: 100%;
-            height: 500px; /* ← Ajoute une hauteur explicite */
+            max-width: 800px;
+            height: 500px;
             border: 1px solid lightgray;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .controls {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 6px 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
         }
     </style>
 </head>
 <body>
-<div id="network"></div>
+<div class="container">
+    <div class="legend">
+        <strong>Légende :</strong>
+        <span style="color: #f39c12;">★ Témoin</span> |
+        <span style="color: #e74c3c;">● Suspect</span> |
+        <span style="color: #3498db;">▲ Enquêteur</span>
+    </div>
+
+    <div id="network"></div>
+
+    <div class="controls">
+        <button onclick="centerGraph()">Recentrer</button>
+        <button onclick="zoomOut()">Zoomer</button>
+        <button onclick="zoomIn()">Dézoomer</button>
+    </div>
+</div>
 
 <script>
-    const container = document.getElementById("network");
+    // Variables globales pour accéder au réseau
+    let network;
+
+    // Données d'exemple que vous pourriez remplacer par les vôtres
+
 
     function drawGraph(data) {
-        console.log("📊 Données reçues pour le graphe :", data);
+        console.log("📊 Données reçues :", data);
 
-        const nodes = new vis.DataSet(data.nodes);
-        const edges = new vis.DataSet(data.edges);
+        // Utiliser les données d'exemple si aucune donnée n'est fournie
+        if (!data || !data.nodes || !data.edges) {
+            data = exampleData;
+        }
 
-        const options = {
-            nodes: {
+        const groupStyles = {
+            "temoin": {
+                shape: "star",
+                color: {
+                    border: "#e67e22", background: "#f39c12",
+                    highlight: { border: "#d35400", background: "#f1c40f" }
+                },
+                size: 25
+            },
+            "suspect": {
                 shape: "dot",
-                size: 16,
-                font: { size: 14, color: "#333" },
+                color: {
+                    border: "#c0392b", background: "#e74c3c",
+                    highlight: { border: "#922b21", background: "#f1948a" }
+                },
+                size: 20
             },
-            edges: {
-                arrows: { to: { enabled: true, scaleFactor: 0.5 } },
-                font: { align: "top" }
-            },
-            physics: {
-                stabilization: true
-            },
+            "enquêteur": {
+                shape: "triangle",
+                color: {
+                    border: "#2980b9", background: "#3498db",
+                    highlight: { border: "#21618c", background: "#85c1e9" }
+                },
+                size: 22
+            }
         };
 
-        const network = new vis.Network(container, { nodes, edges }, options);
+        const container = document.getElementById("network");
 
-        // 💥 Centrage automatique et ajustement du zoom
+        const styledNodes = data.nodes.map(node => {
+            const group = node.group || "autre";
+            const style = groupStyles[group] || {
+                shape: "ellipse", color: { background: "#bdc3c7" }
+            };
+
+            return {
+                ...node,
+                ...style,
+                font: { size: 14, color: "#2c3e50" }
+            };
+        });
+
+        const styledEdges = data.edges.map(edge => ({
+            ...edge,
+            arrows: "to",
+            color: { color: "#7f8c8d" },
+            font: {
+                align: "middle",
+                size: 12,
+                color: "#2c3e50",
+                strokeWidth: 2,
+                strokeColor: "#ffffff"
+            },
+            width: 1.5
+        }));
+
+        const nodes = new vis.DataSet(styledNodes);
+        const edges = new vis.DataSet(styledEdges);
+
+        const options = {
+            layout: {
+                randomSeed: 42, // Pour un positionnement cohérent
+                improvedLayout: true
+            },
+            physics: {
+                enabled: true,
+                stabilization: {
+                    iterations: 100,
+                    updateInterval: 10,
+                    fit: true
+                },
+                barnesHut: {
+                    gravitationalConstant: -1000, // Réduit pour rapprocher les nœuds
+                    springLength: 80, // Réduit pour diminuer l'espace entre les nœuds
+                    springConstant: 0.04,
+                    damping: 0.09,
+                    avoidOverlap: 0.5
+                },
+                solver: 'barnesHut'
+            },
+            interaction: {
+                hover: true,
+                navigationButtons: true,
+                keyboard: true
+            }
+        };
+
+        network = new vis.Network(container, { nodes, edges }, options);
+
+        // Centrage et zoom automatique après stabilisation
         network.once("stabilizationIterationsDone", function () {
             network.fit({
                 animation: {
-                    duration: 500,
-                    easingFunction: "easeInOutQuad"
+                    duration: 800,
+                    easingFunction: "easeOutQuint"
                 }
             });
+
+            // Zoom arrière automatique pour dézoomer la vue
+            setTimeout(() => {
+                network.moveTo({
+                    scale: 0.7, // Dézoom initial
+                    animation: {
+                        duration: 300,
+                        easingFunction: "easeOutCubic"
+                    }
+                });
+            }, 800);
         });
     }
 
+    // Fonction pour recentrer le graphe
+    function centerGraph() {
+        network.fit({
+            animation: {
+                duration: 800,
+                easingFunction: "easeOutQuint"
+            }
+        });
+    }
+
+    // Fonction pour zoomer
+    function zoomIn() {
+        const currentScale = network.getScale();
+        network.moveTo({
+            scale: currentScale * 1.3,
+            animation: {
+                duration: 300,
+                easingFunction: "easeOutCubic"
+            }
+        });
+    }
+
+    // Fonction pour dézoomer
+    function zoomOut() {
+        const currentScale = network.getScale();
+        network.moveTo({
+            scale: currentScale * 0.8,
+            animation: {
+                duration: 300,
+                easingFunction: "easeOutCubic"
+            }
+        });
+    }
+
+    // Démarrer le graphe avec les données d'exemple
+    document.addEventListener('DOMContentLoaded', function() {
+        drawGraph(exampleData);
+    });
+
+    // Conserver la fonction globale pour permettre l'appel externe
     window.drawGraph = drawGraph;
 </script>
 </body>
