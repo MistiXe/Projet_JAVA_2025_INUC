@@ -49,6 +49,8 @@
                 <Menu text="Fenêtre">
                     <MenuItem fx:id="generateGraph" onAction="#toggleGraphique" text="Graphe des connexions" />
                     <MenuItem fx:id="collab" onAction="#toggleCollaboration" text="Collaborations" />
+                    <MenuItem fx:id="predictSuspectAI" onAction="#predictSuspectIA" text="Prédire les coupables" />
+
                 </Menu>
                 <Menu text="Aide">
                     <MenuItem fx:id="aboutApp" text="À propos" />
@@ -161,6 +163,28 @@
             <Tab text="Connexions">
                 <WebView fx:id="webViewGraph" />
             </Tab>
+
+            <Tab text="IA - Prédiction">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Text text="Prédiction IA des suspects les plus probables" style="-fx-font-size: 16; -fx-font-weight: bold;" />
+                    <BarChart fx:id="barChartPrediction" title="Suspects et Scores"
+                              categoryGap="10" barGap="3"
+                              prefHeight="300.0" prefWidth="600.0">
+                        <xAxis>
+                            <CategoryAxis label="Suspect ID" />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Score (0 à 100%)" />
+                        </yAxis>
+                    </BarChart>
+                </VBox>
+            </Tab>
+
         </TabPane>
+
+
     </bottom>
 </BorderPane>

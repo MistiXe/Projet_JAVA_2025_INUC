@@ -73,8 +73,8 @@
 
     <div class="controls">
         <button onclick="centerGraph()">Recentrer</button>
-        <button onclick="zoomOut()">Zoomer</button>
-        <button onclick="zoomIn()">Dézoomer</button>
+        <button onclick="zoomIn()">Zoomer</button>
+        <button onclick="zoomOut()">Dézoomer</button>
     </div>
 </div>
 
@@ -82,7 +82,6 @@
     // Variables globales pour accéder au réseau
     let network;
 
-    // Données d'exemple que vous pourriez remplacer par les vôtres
 
 
     function drawGraph(data) {
@@ -160,23 +159,27 @@
             physics: {
                 enabled: true,
                 stabilization: {
-                    iterations: 100,
+                    iterations: 100, // Réduit pour stabilisation plus rapide
                     updateInterval: 10,
                     fit: true
                 },
                 barnesHut: {
-                    gravitationalConstant: -1000, // Réduit pour rapprocher les nœuds
-                    springLength: 80, // Réduit pour diminuer l'espace entre les nœuds
-                    springConstant: 0.04,
-                    damping: 0.09,
-                    avoidOverlap: 0.5
+                    gravitationalConstant: -3000, // Augmenté pour rapprocher davantage les nœuds
+                    springLength: 50, // Très réduit pour diminuer l'espace entre les nœuds
+                    springConstant: 0.08, // Augmenté pour des ressorts plus rigides
+                    damping: 0.2, // Augmenté pour réduire les oscillations
+                    avoidOverlap: 0.3 // Réduit pour permettre une densité plus élevée
                 },
                 solver: 'barnesHut'
             },
             interaction: {
                 hover: true,
                 navigationButtons: true,
-                keyboard: true
+                keyboard: true,
+                zoomView: true,
+                dragView: true,
+                dragNodes: true,
+                navigationSpeed: 0.8 // Vitesse de navigation réduite (plus lent = plus précis)
             }
         };
 
@@ -186,7 +189,7 @@
         network.once("stabilizationIterationsDone", function () {
             network.fit({
                 animation: {
-                    duration: 800,
+                    duration: 600, // Plus rapide
                     easingFunction: "easeOutQuint"
                 }
             });
@@ -196,11 +199,11 @@
                 network.moveTo({
                     scale: 0.7, // Dézoom initial
                     animation: {
-                        duration: 300,
+                        duration: 200, // Plus rapide
                         easingFunction: "easeOutCubic"
                     }
                 });
-            }, 800);
+            }, 600);
         });
     }
 
@@ -208,7 +211,7 @@
     function centerGraph() {
         network.fit({
             animation: {
-                duration: 800,
+                duration: 400, // Plus rapide
                 easingFunction: "easeOutQuint"
             }
         });
@@ -220,7 +223,7 @@
         network.moveTo({
             scale: currentScale * 1.3,
             animation: {
-                duration: 300,
+                duration: 200, // Plus rapide
                 easingFunction: "easeOutCubic"
             }
         });
@@ -230,9 +233,9 @@
     function zoomOut() {
         const currentScale = network.getScale();
         network.moveTo({
-            scale: currentScale * 0.8,
+            scale: currentScale * 0.7, // Dézoom plus important
             animation: {
-                duration: 300,
+                duration: 200, // Plus rapide
                 easingFunction: "easeOutCubic"
             }
         });

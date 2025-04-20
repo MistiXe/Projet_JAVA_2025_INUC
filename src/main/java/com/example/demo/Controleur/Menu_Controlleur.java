@@ -31,10 +31,15 @@
     import org.apache.pdfbox.pdmodel.font.PDType1Font;
     import javafx.scene.web.WebView;
     import javafx.scene.web.WebEngine;
+    import org.json.JSONArray;
+    import org.json.JSONObject;
 
 
     import javax.swing.*;
+    import java.io.BufferedReader;
+    import java.io.File;
     import java.io.IOException;
+    import java.io.InputStreamReader;
     import java.net.URL;
     import java.time.format.DateTimeFormatter;
     import java.util.ArrayList;
@@ -121,6 +126,9 @@
         @FXML private Button analyzeCollaborationButton;
         @FXML
         private WebView webViewGraph;
+        @FXML private MenuItem predictSuspectAI;
+        @FXML private BarChart<String, Number> barChartPrediction;
+
 
         private WebEngine engine;
 
@@ -858,6 +866,85 @@
                     .findFirst()
                     .orElse(null);
         }
+
+
+        @FXML
+        private void predictSuspectIA() {
+            if (currentAffaire == null) {
+                showAlert("Erreur", "Aucune affaire sélectionnée.");
+                return;
+            }
+
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                Map<String, Object> affaireData = new HashMap<>();
+                affaireData.put("lieu", currentAffaire.getLieu());
+                affaireData.put("type", currentAffaire.getType());
+                affaireData.put("gravite", currentAffaire.getGravite());
+                affaireData.put("suspects", currentAffaire.getSuspects());
+                affaireData.put("preuves", currentAffaire.getPreuves());
+                affaireData.put("temoignages", currentAffaire.getTemoignages());
+
+                File tempInput = File.createTempFile("affaire_", ".json");
+                mapper.writeValue(tempInput, affaireData);
+                String scriptPath = "C:\\Users\\hohom\\OneDrive\\Documents\\ptut_projetinuc\\Projet_JAV0A_2025_INUC\\src\\main\\java\\com\\example\\demo\\Controleur\\prediction.py";
+                ProcessBuilder pb = new ProcessBuilder("python", scriptPath, tempInput.getAbsolutePath());
+                pb.redirectErrorStream(true);
+                Process process = pb.start();
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                StringBuilder output = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    output.append(line);
+                }
+                reader.close();
+
+                System.out.println("==== JSON REÇU DU PYTHON ====");
+                System.out.println(output.toString());
+                System.out.println("================================");
+
+                JSONObject result = new JSONObject(output.toString());
+                JSONArray predictions = result.getJSONArray("predictions");
+
+
+
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < predictions.length(); i++) {
+                    JSONObject suspect = predictions.getJSONObject(i);
+                    sb.append("🕵️ Suspect ID ").append(suspect.getInt("id"))
+                            .append(" - Score: ").append(suspect.getDouble("score") * 100).append("%\n");
+                }
+
+                showAlert("Résultat de l'IA", sb.toString());
+
+                Platform.runLater(() -> {
+                    barChartPrediction.getData().clear();
+                    XYChart.Series<String, Number> series = new XYChart.Series<>();
+                    series.setName("Probabilité IA");
+
+                    for (int i = 0; i < predictions.length(); i++) {
+                        JSONObject suspect = predictions.getJSONObject(i);
+                        String id = String.valueOf(suspect.getInt("id"));
+                        double score = suspect.getDouble("score") * 100;
+                        series.getData().add(new XYChart.Data<>(id, score));
+                    }
+
+                    barChartPrediction.getData().add(series);
+                    tabPane.getSelectionModel().selectLast(); // basculer sur l'onglet IA
+                });
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                showAlert("Erreur", "Échec de la prédiction IA : " + e.getMessage());
+
+            }
+        }
+
+
+
 
 
 
