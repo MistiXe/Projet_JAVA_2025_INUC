@@ -1,7 +1,7 @@
-package com.example.demo.Controlleur;
+package com.example.demo.Controleur;
 
 
-import com.example.demo.PDFJSON.JsonHandlerUser;
+import com.example.demo.JsonHandlers.JsonHandlerUser;
 import com.gluonhq.charm.glisten.control.TextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +33,7 @@ public class Connexion_Controlleur {
 
         if (JsonHandlerUser.authenticate(username, password)) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/hello-view.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Vues/main_view.fxml"));
                 Parent root = loader.load();
 
                 // Vérifier si le contrôleur est bien chargé

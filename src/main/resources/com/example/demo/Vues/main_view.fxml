@@ -1,33 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="759.0" prefWidth="1120.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controlleur.Menu_Controlleur">
+<BorderPane prefHeight="759.0" prefWidth="1120.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controleur.Menu_Controlleur">
     <top>
         <VBox id="header">
             <HBox alignment="CENTER_LEFT" style="-fx-padding: 10;">
@@ -80,11 +59,16 @@
 
     <center>
         <VBox>
-            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 20px;">
-                <TextField fx:id="searchField" promptText="Rechercher une affaire..." HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" spacing="10" style="-fx-padding: 20px 20px 10px 20px;">
+                <TextField fx:id="searchLieu" promptText="Rechercher un lieu..." styleClass="searchField" HBox.hgrow="ALWAYS" />
                 <DatePicker fx:id="dateDebut" promptText="Date début" />
-                <DatePicker fx:id="dateFin1" promptText="Date fin" />
-                <Button fx:id="searchButton" text="Rechercher" />
+                <DatePicker fx:id="dateFin" promptText="Date fin" />
+
+            </HBox>
+            <HBox alignment="CENTER" spacing="10" style="-fx-padding: 10px 20px 20px 20px;">
+                <TextField fx:id="searchTypeCrime" promptText="Rechercher un type de crime..." styleClass="searchField" HBox.hgrow="ALWAYS" />
+                <ComboBox fx:id="searchStatusComboBox" prefWidth="200.0" promptText="Statut de l'affaire" />
+                <Spinner fx:id="searchGravitySpinner" editable="true" initialValue="1" max="10" min="1" prefWidth="100.0" />
             </HBox>
 
 
@@ -110,29 +94,51 @@
 
                 <!-- Détails des affaires -->
                 <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
-                    <VBox spacing="10" style="-fx-padding: 10px 20px 20px 10px;">
-                        <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />
+                    <VBox spacing="50" style="-fx-padding: 10px 20px 20px 10px;">
+                        <HBox alignment="CENTER" spacing="200.0">
+<!--                            <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />-->
+                            <VBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
+                                <Label styleClass="labelDetail, bleu-border" text="Description" />
+                                <TextArea fx:id="detailDescription" wrapText="true" prefHeight="63.0" styleClass="detail-text-zone" />
+                            </VBox>
 
-                        <Label styleClass="labelDetail, bleu" text="Description" />
-                        <TextArea fx:id="detailDescription" prefHeight="63.0" prefWidth="700.0" styleClass="detail-text-zone" wrapText="true" />
+                            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                                <Label styleClass="labelDetail, violet-border" text="État d’avancement" />
+                                <TextArea fx:id="detailEtat" editable="false" wrapText="true" prefHeight="54.0" styleClass="detail-text-zone" />
+                            </VBox>
+                        </HBox>
 
-                        <Label styleClass="labelDetail, violet" text="État d’avancement" />
-                        <TextArea fx:id="detailEtat" prefHeight="54.0" prefWidth="700.0" editable="false" styleClass="detail-text-zone" />
+                        <HBox alignment="CENTER" spacing="200.0">
+                            <VBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
+                                <Label styleClass="labelDetail, vert-border" text="Enquêteurs assignés" />
+                                <TextField fx:id="searchEnqueteurAffaire" promptText="Rechercher un enquêteur..." styleClass="searchFieldDetailAffaire" />
+                                <ListView fx:id="detailEnqueteurs" prefHeight="60" />
+                            </VBox>
+                            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                                <Label styleClass="labelDetail, rouge-border" text="Suspects associés" />
+                                <TextField fx:id="searchSuspectAffaire" promptText="Rechercher un suspect..." styleClass="searchFieldDetailAffaire" />
+                                <ListView fx:id="detailSuspects" prefHeight="60" />
+                            </VBox>
+                        </HBox>
 
-                        <Label styleClass="labelDetail, vert" text="Enquêteurs assignés" />
-                        <ListView fx:id="detailEnqueteurs" prefHeight="60" />
+                        <HBox alignment="CENTER" spacing="200.0">
+                            <VBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
+                                <Label styleClass="labelDetail, orange-border" text="Témoins associés" />
+                                <TextField fx:id="searchTemoinAffaire" promptText="Rechercher un témoin..." styleClass="searchFieldDetailAffaire" />
+                                <ListView fx:id="detailTemoins" prefHeight="60" />
+                            </VBox>
+                            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                                <Label fx:id="labelSuspecteePar" styleClass="labelDetail, rouge-border" text="Personnes suspectées" />
+                                <TextField fx:id="searchPersonneSuspecteeAffaire" promptText="Rechercher une personne suspectée..." styleClass="searchFieldDetailAffaire" />
+                                <ListView fx:id="detailPersonneSuspectees" prefHeight="60" />
+                            </VBox>
+                        </HBox>
 
-                        <Label styleClass="labelDetail, rouge" text="Suspects associés" />
-                        <ListView fx:id="detailSuspects" prefHeight="60" />
-
-                        <Label styleClass="labelDetail, orange" text="Témoins associés" />
-                        <ListView fx:id="detailTemoins" prefHeight="60" />
-
-                        <Label styleClass="labelDetail, bleu-clair" text="Preuves associées" />
-                        <ListView fx:id="detailPreuves" prefHeight="60" />
-
-                        <Label styleClass="labelDetail, rouge-fonce" text="Correspondance suspect/affaire" />
-                        <TextArea fx:id="detailCorrespondance" editable="false" styleClass="detail-text-zone" wrapText="true" />
+                        <VBox spacing="10">
+                            <Label styleClass="labelDetail, bleu-clair-border" text="Preuves associées" />
+                            <TextField fx:id="searchPreuvesAffaire" promptText="Rechercher une preuve..." styleClass="searchFieldDetailAffaire " />
+                            <ListView fx:id="detailPreuves" prefHeight="60" />
+                        </VBox>
                     </VBox>
                 </ScrollPane>
             </SplitPane>
