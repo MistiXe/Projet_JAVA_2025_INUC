@@ -4,6 +4,7 @@
     import com.example.demo.Patrons.*;
     import com.example.demo.JsonHandlers.JsonHandlerCase;
     import com.example.demo.JsonHandlers.JsonHandlerPersonne;
+    import com.fasterxml.jackson.databind.ObjectMapper;
     import javafx.application.Platform;
     import javafx.beans.property.SimpleStringProperty;
     import javafx.collections.FXCollections;
@@ -356,6 +357,17 @@
                     detailDescription.setText("");
                     detailEtat.setText("");
                 }
+
+
+                if (engine != null && currentAffaire != null) {
+                    String jsonGraph = genererJsonGraphPourAffaire(currentAffaire);
+                    System.out.println("✅ JSON Graph : " + jsonGraph); // pour debug
+
+                    Platform.runLater(() -> {
+                        engine.executeScript("drawGraph(" + jsonGraph + ")");
+                    });
+                }
+
             });
         }
     
@@ -779,6 +791,42 @@
             }
     
             collaborationList.setItems(collaborationResults);
+        }
+
+
+        private String genererJsonGraphPourAffaire(Affaire affaire) {
+            List<Map<String, Object>> nodes = new ArrayList<>();
+            List<Map<String, Object>> edges = new ArrayList<>();
+            Set<Integer> idsAjoutes = new HashSet<>();
+
+            Map<Integer, List<Integer>> temoignages = affaire.getTemoignages();
+
+            for (Map.Entry<Integer, List<Integer>> entry : temoignages.entrySet()) {
+                int idTemoin = entry.getKey();
+                if (!idsAjoutes.contains(idTemoin)) {
+                    nodes.add(Map.of("id", idTemoin, "label", "Témoin #" + idTemoin));
+                    idsAjoutes.add(idTemoin);
+                }
+
+                for (Integer idSuspect : entry.getValue()) {
+                    if (!idsAjoutes.contains(idSuspect)) {
+                        nodes.add(Map.of("id", idSuspect, "label", "Suspect #" + idSuspect));
+                        idsAjoutes.add(idSuspect);
+                    }
+
+                    edges.add(Map.of("from", idTemoin, "to", idSuspect, "label", "témoigne"));
+                }
+            }
+
+            Map<String, Object> graph = Map.of("nodes", nodes, "edges", edges);
+
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                return mapper.writeValueAsString(graph);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "{}";
+            }
         }
     
     

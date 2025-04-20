@@ -4,9 +4,15 @@
     <title>Graphe des connexions</title>
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         #network {
             width: 100%;
-            height: 100%;
+            height: 500px; /* ← Ajoute une hauteur explicite */
             border: 1px solid lightgray;
         }
     </style>
@@ -17,8 +23,9 @@
 <script>
     const container = document.getElementById("network");
 
-    function drawGraph(jsonData) {
-        const data = JSON.parse(jsonData);
+    function drawGraph(data) {
+        console.log("📊 Données reçues pour le graphe :", data);
+
         const nodes = new vis.DataSet(data.nodes);
         const edges = new vis.DataSet(data.edges);
 
@@ -32,10 +39,22 @@
                 arrows: { to: { enabled: true, scaleFactor: 0.5 } },
                 font: { align: "top" }
             },
-            physics: { stabilization: true },
+            physics: {
+                stabilization: true
+            },
         };
 
         const network = new vis.Network(container, { nodes, edges }, options);
+
+        // 💥 Centrage automatique et ajustement du zoom
+        network.once("stabilizationIterationsDone", function () {
+            network.fit({
+                animation: {
+                    duration: 500,
+                    easingFunction: "easeInOutQuad"
+                }
+            });
+        });
     }
 
     window.drawGraph = drawGraph;
