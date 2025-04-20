@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Graphe des connexions</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        #network {
+            width: 100%;
+            height: 100%;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<div id="network"></div>
+
+<script>
+    const container = document.getElementById("network");
+
+    function drawGraph(jsonData) {
+        const data = JSON.parse(jsonData);
+        const nodes = new vis.DataSet(data.nodes);
+        const edges = new vis.DataSet(data.edges);
+
+        const options = {
+            nodes: {
+                shape: "dot",
+                size: 16,
+                font: { size: 14, color: "#333" },
+            },
+            edges: {
+                arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+                font: { align: "top" }
+            },
+            physics: { stabilization: true },
+        };
+
+        const network = new vis.Network(container, { nodes, edges }, options);
+    }
+
+    window.drawGraph = drawGraph;
+</script>
+</body>
+</html>

@@ -3,6 +3,11 @@
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
       <option name="id" value="central" />
+      <option name="name" value="central" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
@@ -10,6 +15,11 @@
       <option name="id" value="gluon-releases" />
       <option name="name" value="gluon-releases" />
       <option name="url" value="https://nexus.gluonhq.com/nexus/content/repositories/releases/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="graphstream-repo" />
+      <option name="name" value="graphstream-repo" />
+      <option name="url" value="https://graphstream-project.org/maven/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
@@ -20,6 +30,11 @@
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="sonatype" />
+      <option name="name" value="sonatype" />
+      <option name="url" value="https://oss.sonatype.org/content/repositories/snapshots" />
     </remote-repository>
   </component>
 </project>
