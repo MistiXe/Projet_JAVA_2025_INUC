@@ -74,7 +74,7 @@
 
             <SplitPane dividerPositions="0.333">
                 <!-- Liste des affaires -->
-                <VBox VBox.vgrow="ALWAYS">
+                <VBox minWidth="350" maxWidth="750" VBox.vgrow="ALWAYS">
                     <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
                         <columns>
                             <TableColumn fx:id="columnDate" reorderable="false" text="Date" />

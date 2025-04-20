@@ -431,6 +431,33 @@
     -fx-border-color: #c0392b;
 }
 
+/* Couleur de fond des lignes sélectionnées */
+.table-row-cell:filled:selected,
+.table-cell:filled:selected {
+    -fx-background-color: #4a90e2; /* Remplace par la couleur que tu veux */
+    -fx-text-fill: #ffffff; /* Couleur du texte dans les cellules sélectionnées */
+}
+
+/* Optionnel : couleur au survol pour uniformiser */
+.table-row-cell:filled:hover {
+    -fx-background-color: #c3c3c3;
+}
+
+/* Optionnel : couleur au survol de la cellule sélectionné pour uniformiser */
+.table-row-cell:filled:selected:hover {
+    -fx-background-color: #4375ac;
+}
+
+.table-cell {
+    -fx-border-color: transparent transparent transparent #d0d0d0; /* couleur du bord gauche */
+    -fx-border-width: 0 0 0 1; /* bord uniquement à gauche */
+}
+
+.table-row-cell {
+    -fx-border-color: #d0d0d0; /* ligne de séparation horizontale */
+    -fx-border-width: 0 0 1 0; /* bord uniquement en bas */
+}
+
 
 /* Inutilisé je crois */
 .greyed-out-text {
