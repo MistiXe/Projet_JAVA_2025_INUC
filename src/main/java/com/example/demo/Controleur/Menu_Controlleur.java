@@ -77,6 +77,14 @@ public class Menu_Controlleur {
     @FXML private TextField searchPersonneSuspecteeAffaire;
     @FXML private TextField searchPreuvesAffaire;
 
+    // Nouvelles déclarations pour les éléments de recherche
+    @FXML private TextField searchLieu;
+    @FXML private TextField searchTypeCrime;
+    @FXML private DatePicker dateDebut;
+    @FXML private DatePicker dateFin;
+    @FXML private ComboBox<Affaire.Status> searchStatusComboBox;
+    @FXML private Spinner<Integer> searchGravitySpinner;
+
     //============================================
     // Variables d'instance
     //============================================
@@ -85,6 +93,9 @@ public class Menu_Controlleur {
     private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
     private final List<Personne> listePersonnes = JsonHandlerPersonne.readPersonsFromJson();
     private final List<Preuve> listePreuves = JsonHandlerPreuve.readPreuvesFromJson();
+
+    // Nouvelle variable pour la liste filtrée des affaires
+    private FilteredList<Affaire> filteredAffaires;
 
     @FXML private ObservableList<Personne> enqueteursList = FXCollections.observableArrayList();
     @FXML private ObservableList<Personne> suspectsList = FXCollections.observableArrayList();
@@ -108,6 +119,7 @@ public class Menu_Controlleur {
         configurerTableView();
         configurerEcouteurs();
         chargerDonnees();
+        configurerFiltresDeRecherche(); // Nouvelle méthode pour configurer les filtres
         configurerSelection();
     }
 
@@ -176,7 +188,88 @@ public class Menu_Controlleur {
                 return preuve.getDescription().toLowerCase().contains(lowerCaseFilter);
             });
         });
+    }
 
+    // Nouvelle méthode pour configurer les filtres de recherche
+    private void configurerFiltresDeRecherche() {
+        // Écouteur pour le champ de recherche de lieu
+        searchLieu.textProperty().addListener((observable, oldValue, newValue) -> {
+            mettreAJourFiltre();
+        });
+
+        // Écouteur pour le champ de recherche de type de crime
+        searchTypeCrime.textProperty().addListener((observable, oldValue, newValue) -> {
+            mettreAJourFiltre();
+        });
+
+        // Écouteurs pour les sélecteurs de date
+        dateDebut.valueProperty().addListener((observable, oldValue, newValue) -> {
+            mettreAJourFiltre();
+        });
+
+        dateFin.valueProperty().addListener((observable, oldValue, newValue) -> {
+            mettreAJourFiltre();
+        });
+
+        // Écouteur pour la ComboBox de statut
+        searchStatusComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+            mettreAJourFiltre();
+        });
+
+        // Écouteur pour le Spinner de gravité
+        searchGravitySpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+            mettreAJourFiltre();
+        });
+    }
+
+    // Nouvelle méthode pour mettre à jour le prédicat de filtrage
+    private void mettreAJourFiltre() {
+        filteredAffaires.setPredicate(affaire -> {
+            if (affaire == null) {
+                return false;
+            }
+
+            boolean correspond = true;
+
+            // Filtre par lieu
+            String filtreLieu = searchLieu.getText();
+            if (filtreLieu != null && !filtreLieu.isEmpty()) {
+                correspond = correspond && affaire.getLieu() != null &&
+                        affaire.getLieu().toLowerCase().contains(filtreLieu.toLowerCase());
+            }
+
+            // Filtre par type de crime
+            String filtreType = searchTypeCrime.getText();
+            if (filtreType != null && !filtreType.isEmpty()) {
+                correspond = correspond && affaire.getType() != null &&
+                        affaire.getType().toLowerCase().contains(filtreType.toLowerCase());
+            }
+
+            // Filtre par date de début
+            if (dateDebut.getValue() != null) {
+                correspond = correspond && affaire.getDate() != null &&
+                        !affaire.getDate().isBefore(dateDebut.getValue());
+            }
+
+            // Filtre par date de fin
+            if (dateFin.getValue() != null) {
+                correspond = correspond && affaire.getDate() != null &&
+                        !affaire.getDate().isAfter(dateFin.getValue());
+            }
+
+            // Filtre par statut
+            if (searchStatusComboBox.getValue() != null) {
+                correspond = correspond && affaire.getStatus() == searchStatusComboBox.getValue();
+            }
+
+            // Filtre par gravité
+            Integer valeurGravite = searchGravitySpinner.getValue();
+            if (valeurGravite != null) {
+                correspond = correspond && affaire.getGravite() >= valeurGravite;
+            }
+
+            return correspond;
+        });
     }
 
     private void chargerDonnees() {
@@ -184,7 +277,16 @@ public class Menu_Controlleur {
         if (affaires != null) {
             listeAffaires.addAll(affaires);
         }
-        tableView.setItems(listeAffaires);
+
+        // Créer la FilteredList à partir des affaires
+        filteredAffaires = new FilteredList<>(listeAffaires, p -> true);
+
+        // Utiliser la FilteredList comme source de données pour la table
+        tableView.setItems(filteredAffaires);
+
+        // Initialiser la ComboBox avec les valeurs d'énumération Status
+        searchStatusComboBox.getItems().addAll(Affaire.Status.values());
+        searchStatusComboBox.setPromptText("Statut de l'affaire");
     }
 
     private void configurerSelection() {
@@ -215,15 +317,20 @@ public class Menu_Controlleur {
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             currentAffaire = newSelection;
 
-            afficherDescription();
-            afficherDetailsEtat();
-            afficherEnqueteurs();
-            afficherSuspects();
-            afficherPreuves();
+            if (currentAffaire != null) {
+                afficherDescription();
+                afficherDetailsEtat();
+                afficherEnqueteurs();
+                afficherSuspects();
+                afficherPreuves();
 
-            convertirTemoignages(currentAffaire.getTemoignages());
-            afficherTemoins();
-
+                convertirTemoignages(currentAffaire.getTemoignages());
+                afficherTemoins();
+            } else {
+                clearLists();
+                detailDescription.setText("");
+                detailEtat.setText("");
+            }
         });
     }
 
@@ -282,41 +389,39 @@ public class Menu_Controlleur {
         temoinsList.clear();
         temoinsList.addAll(currentTemoignages.keySet());
     }
-    
+
 
     private void afficherPersonneSuspectee(Personne temoin) {
         suspecteesList.clear();
-    
+
         if (temoin != null) {
             Set<Personne> suspects = currentTemoignages.getOrDefault(temoin, new HashSet<>());
             suspecteesList.setAll(suspects);
         }
     }
-    
+
 
     //============================================
     // Méthodes utilitaires
     //============================================
 
     private void convertirTemoignages(Map<Integer, List<Integer>> rawTemoignages) {
-    currentTemoignages.clear();
+        currentTemoignages.clear();
 
-    for (Map.Entry<Integer, List<Integer>> entry : rawTemoignages.entrySet()) {
-        Personne temoin = trouverPersonneParId(entry.getKey());
-        Set<Personne> suspects = new HashSet<>();
+        for (Map.Entry<Integer, List<Integer>> entry : rawTemoignages.entrySet()) {
+            Personne temoin = trouverPersonneParId(entry.getKey());
+            Set<Personne> suspects = new HashSet<>();
 
-        for (Integer idSuspect : entry.getValue()) {
-            Personne suspect = trouverPersonneParId(idSuspect);
-            if (suspect != null) suspects.add(suspect);
-        }
+            for (Integer idSuspect : entry.getValue()) {
+                Personne suspect = trouverPersonneParId(idSuspect);
+                if (suspect != null) suspects.add(suspect);
+            }
 
-        if (temoin != null) {
-            currentTemoignages.put(temoin, suspects);
+            if (temoin != null) {
+                currentTemoignages.put(temoin, suspects);
+            }
         }
     }
-}
-
-
 
     private void sauvegarderDonnees() {
         new Thread(() -> {
