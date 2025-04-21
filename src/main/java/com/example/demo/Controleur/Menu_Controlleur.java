@@ -888,7 +888,7 @@
                 File tempInput = File.createTempFile("affaire_", ".json");
                 mapper.writeValue(tempInput, affaireData);
                 String scriptPath = "src/main/java/com/example/demo/Controleur/prediction.py";
-                ProcessBuilder pb = new ProcessBuilder("python3", scriptPath, tempInput.getAbsolutePath());
+                ProcessBuilder pb = new ProcessBuilder("python", scriptPath, tempInput.getAbsolutePath());
                 pb.redirectErrorStream(true);
                 Process process = pb.start();
 
@@ -932,7 +932,9 @@
                     }
 
                     barChartPrediction.getData().add(series);
-                    tabPane.getSelectionModel().selectLast(); // basculer sur l'onglet IA
+
+                    afficherTabPane(); // <-- Ajouté ici
+                    tabPane.getSelectionModel().selectLast(); // sélectionne l'onglet IA
                 });
 
 
