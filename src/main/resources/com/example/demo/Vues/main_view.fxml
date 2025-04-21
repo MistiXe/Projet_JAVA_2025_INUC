@@ -150,8 +150,8 @@
 
     <bottom>
     <TabPane fx:id="tabPane" maxHeight="300" maxWidth="1120" visible="true">
-        <!-- Tchat et Avis sous un seul Tab -->
-        <Tab text="💬 Tchat et Avis">
+        <!-- Tchat -->
+        <Tab text="💬 Tchat">
             <VBox spacing="10" style="-fx-padding: 10px;">
                 <!-- Section Tchat -->
                 <VBox spacing="10" style="-fx-padding: 10px;">
@@ -162,18 +162,6 @@
                         <Button text="Envoyer" onAction="#envoyerMessage" />
                     </HBox>
                     <Separator />
-                </VBox>
-
-                <!-- Section Avis -->
-                <VBox spacing="10" style="-fx-padding: 10px;">
-                    <Text text="⭐ Donnez votre avis sur l'affaire" style="-fx-font-size: 16; -fx-font-weight: bold;" />
-                    <HBox spacing="10">
-                        <Label text="Note (1-5)" />
-                        <Spinner fx:id="noteSpinner" prefWidth="80" editable="true" />
-                        <TextField fx:id="commentaireAvis" promptText="Votre commentaire..." HBox.hgrow="ALWAYS" />
-                        <Button text="Soumettre" onAction="#soumettreAvis" />
-                    </HBox>
-                    <ListView fx:id="avisListView" prefHeight="100" />
                 </VBox>
             </VBox>
         </Tab>
