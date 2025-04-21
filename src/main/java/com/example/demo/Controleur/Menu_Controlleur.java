@@ -887,8 +887,8 @@
 
                 File tempInput = File.createTempFile("affaire_", ".json");
                 mapper.writeValue(tempInput, affaireData);
-                String scriptPath = "C:\\Users\\hohom\\OneDrive\\Documents\\ptut_projetinuc\\Projet_JAV0A_2025_INUC\\src\\main\\java\\com\\example\\demo\\Controleur\\prediction.py";
-                ProcessBuilder pb = new ProcessBuilder("python", scriptPath, tempInput.getAbsolutePath());
+                String scriptPath = "src/main/java/com/example/demo/Controleur/prediction.py";
+                ProcessBuilder pb = new ProcessBuilder("python3", scriptPath, tempInput.getAbsolutePath());
                 pb.redirectErrorStream(true);
                 Process process = pb.start();
 
