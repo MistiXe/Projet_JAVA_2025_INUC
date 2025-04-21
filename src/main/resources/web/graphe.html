@@ -1,13 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Graphe des connexions</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            height: 100%;
+        }
+
+        .legend {
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 14px;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        #network {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            border: 1px solid lightgray;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .controls {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 6px 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="legend">
+        <strong>Légende :</strong>
+        <span style="color: #f39c12;">★ Témoin</span> |
+        <span style="color: #e74c3c;">● Suspect</span> |
+        <span style="color: #3498db;">▲ Enquêteur</span>
+    </div>
+
+    <div id="network"></div>
+
+    <div class="controls">
+        <button onclick="centerGraph()">Recentrer</button>
+        <button onclick="zoomIn()">Zoomer</button>
+        <button onclick="zoomOut()">Dézoomer</button>
+    </div>
+</div>
+
 <script>
-    // Variables globales pour accéder au réseau
     let network;
 
     function drawGraph(data) {
-        console.log("📊 Données reçues :", data);
-
-        // Utiliser les données d'exemple si aucune donnée n'est fournie
         if (!data || !data.nodes || !data.edges) {
-            data = exampleData;
+            console.warn("Données invalides ou absentes pour le graphe.");
+            return;
         }
 
         const groupStyles = {
@@ -37,8 +114,6 @@
             }
         };
 
-        const container = document.getElementById("network");
-
         const styledNodes = data.nodes.map(node => {
             const group = node.group || "autre";
             const style = groupStyles[group] || {
@@ -50,8 +125,8 @@
                 ...node,
                 ...style,
                 font: { size: 14, color: "#2c3e50" },
-                fixed: style.shape === "ellipse" ? { x: true, y: true } : false, // 🔒 Fixer les ellipses
-                physics: style.shape === "ellipse" ? false : true // désactiver la physique pour les ellipses
+                fixed: style.shape === "ellipse" ? { x: true, y: true } : false,
+                physics: style.shape === "ellipse" ? false : true
             };
         });
 
@@ -73,25 +148,17 @@
         const edges = new vis.DataSet(styledEdges);
 
         const options = {
-            layout: {
-                randomSeed: 42,
-                improvedLayout: true
-            },
+            layout: { randomSeed: 42, improvedLayout: true },
             physics: {
                 enabled: true,
-                stabilization: {
-                    iterations: 100,
-                    updateInterval: 10,
-                    fit: true
-                },
+                stabilization: { iterations: 100, updateInterval: 10, fit: true },
                 barnesHut: {
                     gravitationalConstant: -3000,
                     springLength: 50,
                     springConstant: 0.08,
                     damping: 0.2,
                     avoidOverlap: 0.3
-                },
-                solver: 'barnesHut'
+                }
             },
             interaction: {
                 hover: true,
@@ -104,23 +171,17 @@
             }
         };
 
+        const container = document.getElementById("network");
         network = new vis.Network(container, { nodes, edges }, options);
 
         network.once("stabilizationIterationsDone", function () {
             network.fit({
-                animation: {
-                    duration: 600,
-                    easingFunction: "easeOutQuint"
-                }
+                animation: { duration: 600, easingFunction: "easeOutQuint" }
             });
-
             setTimeout(() => {
                 network.moveTo({
                     scale: 0.7,
-                    animation: {
-                        duration: 200,
-                        easingFunction: "easeOutCubic"
-                    }
+                    animation: { duration: 200, easingFunction: "easeOutCubic" }
                 });
             }, 600);
         });
@@ -128,38 +189,41 @@
 
     function centerGraph() {
         network.fit({
-            animation: {
-                duration: 400,
-                easingFunction: "easeOutQuint"
-            }
+            animation: { duration: 400, easingFunction: "easeOutQuint" }
         });
     }
 
     function zoomIn() {
-        const currentScale = network.getScale();
+        const scale = network.getScale();
         network.moveTo({
-            scale: currentScale * 1.3,
-            animation: {
-                duration: 200,
-                easingFunction: "easeOutCubic"
-            }
+            scale: scale * 1.3,
+            animation: { duration: 200, easingFunction: "easeOutCubic" }
         });
     }
 
     function zoomOut() {
-        const currentScale = network.getScale();
+        const scale = network.getScale();
         network.moveTo({
-            scale: currentScale * 0.7,
-            animation: {
-                duration: 200,
-                easingFunction: "easeOutCubic"
-            }
+            scale: scale * 0.7,
+            animation: { duration: 200, easingFunction: "easeOutCubic" }
         });
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        drawGraph(exampleData);
+    // Appel automatique de Java une fois vis et le DOM prêts
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof vis !== "undefined" && typeof drawGraph !== "undefined") {
+            if (window.app && typeof window.app.onGraphReady === "function") {
+                window.app.onGraphReady();
+            } else {
+                console.warn("⚠️ Méthode Java 'onGraphReady' non trouvée côté WebView.");
+            }
+        } else {
+            console.error("❌ vis ou drawGraph non définis !");
+        }
     });
 
+    // Pour que Java puisse appeler cette fonction
     window.drawGraph = drawGraph;
 </script>
+</body>
+</html>
