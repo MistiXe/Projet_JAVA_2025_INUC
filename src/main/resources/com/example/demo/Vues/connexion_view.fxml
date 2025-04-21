@@ -1,27 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Avatar?>
-<?import com.gluonhq.charm.glisten.control.TextField?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controleur.Connexion_Controlleur">
-    <children>
-        <PasswordField fx:id="pass" layoutX="224.0" layoutY="192.0" promptText="Password" />
-        <TextField fx:id="user" floatText=" Username" layoutX="224.0" layoutY="145.0" prefHeight="27.0" prefWidth="151.0" />
-        <RadioButton layoutX="242.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Save Login" />
-        <Button fx:id="connexion" layoutX="261.0" layoutY="290.0" mnemonicParsing="false" text="Connexion" />
-        <Label  layoutX="226.0" layoutY="91.0" text="Se Connecter">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Label>
-        <Hyperlink layoutX="227.0" layoutY="218.0" text="Créer un compte" />
-    </children>
-</AnchorPane>
+<BorderPane prefHeight="450.0" prefWidth="700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controleur.Connexion_Controlleur">
+
+    <!-- Haut : Logo -->
+    <top>
+        <HBox alignment="CENTER" spacing="5" BorderPane.alignment="CENTER">
+            <Text id="logo" fill="#e74c3c" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
+                <font>
+                    <Font size="35.0" />
+                </font>
+            </Text>
+            <Text id="logo" strokeType="OUTSIDE" strokeWidth="0.0" text="inuc" textOrigin="CENTER">
+                <font>
+                    <Font size="18.0" />
+                </font>
+                <HBox.margin>
+                    <Insets top="15.0" />
+                </HBox.margin>
+            </Text>
+         <BorderPane.margin>
+            <Insets right="5.0" />
+         </BorderPane.margin>
+        </HBox>
+    </top>
+
+    <!-- Centre : Connexion -->
+    <center>
+        <VBox alignment="CENTER" spacing="20" BorderPane.alignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue">
+                <font><Font size="32.0" /></font>
+            </Text>
+            <Label style="-fx-text-fill: #666; -fx-font-size: 14px;" text="Connectez-vous à votre espace" />
+
+            <TextField fx:id="user" maxWidth="300" promptText="Nom d'utilisateur" styleClass="text-field-rect" />
+            <PasswordField fx:id="pass" maxWidth="300" promptText="Mot de passe" styleClass="text-field-rect" />
+            <Button fx:id="connexion" maxWidth="150" text="Se connecter">
+                <VBox.margin><Insets top="10.0" /></VBox.margin>
+            </Button>
+        </VBox>
+    </center>
+</BorderPane>

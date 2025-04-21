@@ -11,10 +11,10 @@
            <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="261.0"/>
 
            <Label text="Lieu de l'affaire :"/>
-           <TextField styleClass="ajouter-text-field" fx:id="lieuField" promptText="Entrez le lieu"/>
+           <TextField styleClass="text-field-rect" fx:id="lieuField" promptText="Entrez le lieu"/>
 
            <Label text="Type d'affaire :"/>
-           <TextField styleClass="ajouter-text-field" fx:id="typeField" promptText="Ex: Vol, Homicide, Fraude"/>
+           <TextField styleClass="text-field-rect" fx:id="typeField" promptText="Ex: Vol, Homicide, Fraude"/>
 
            <Label text="Statut de l'affaire :"/>
            <ComboBox fx:id="statusComboBox" prefHeight="33.0" prefWidth="264.0"/>
