@@ -149,42 +149,60 @@
     </center>
 
     <bottom>
-        <TabPane fx:id="tabPane" managed="false" maxHeight="400" visible="false">
-
-            <Tab text="Collaboration">
-                <VBox spacing="10" style="-fx-padding: 10;">
-                    <Text text="Collaborations entre affaires" style="-fx-font-size: 16; -fx-font-weight: bold;" />
-                    <ListView fx:id="collaborationList" prefHeight="200" />
-                    <Button fx:id="analyzeCollaborationButton" onAction="#analyserCollaborations" text="Analyser les collaborations" />
+    <TabPane fx:id="tabPane" maxHeight="300" maxWidth="1120" visible="true">
+        <!-- Tchat et Avis sous un seul Tab -->
+        <Tab text="💬 Tchat et Avis">
+            <VBox spacing="10" style="-fx-padding: 10px;">
+                <!-- Section Tchat -->
+                <VBox spacing="10" style="-fx-padding: 10px;">
+                    <Text text="💬 Tchat lié à l'affaire sélectionnée" style="-fx-font-size: 16; -fx-font-weight: bold;" />
+                    <ListView fx:id="messageListView" prefHeight="100" />
+                    <HBox spacing="10">
+                        <TextField fx:id="inputMessage" promptText="Écrire un message..." HBox.hgrow="ALWAYS" />
+                        <Button text="Envoyer" onAction="#envoyerMessage" />
+                    </HBox>
+                    <Separator />
                 </VBox>
-            </Tab>
 
-            <!-- 🔥 Nouveau Tab : Graphe de Connexions -->
-            <Tab text="Connexions">
-                <WebView fx:id="webViewGraph" />
-            </Tab>
-
-            <Tab text="IA - Prédiction">
-                <VBox spacing="10">
-                    <padding>
-                        <Insets top="10" right="10" bottom="10" left="10"/>
-                    </padding>
-                    <Text text="Prédiction IA des suspects les plus probables" style="-fx-font-size: 16; -fx-font-weight: bold;" />
-                    <BarChart fx:id="barChartPrediction" title="Suspects et Scores"
-                              categoryGap="10" barGap="3"
-                              prefHeight="300.0" prefWidth="600.0">
-                        <xAxis>
-                            <CategoryAxis label="Suspect ID" />
-                        </xAxis>
-                        <yAxis>
-                            <NumberAxis label="Score (0 à 100%)" />
-                        </yAxis>
-                    </BarChart>
+                <!-- Section Avis -->
+                <VBox spacing="10" style="-fx-padding: 10px;">
+                    <Text text="⭐ Donnez votre avis sur l'affaire" style="-fx-font-size: 16; -fx-font-weight: bold;" />
+                    <HBox spacing="10">
+                        <Label text="Note (1-5)" />
+                        <Spinner fx:id="noteSpinner" prefWidth="80" editable="true" />
+                        <TextField fx:id="commentaireAvis" promptText="Votre commentaire..." HBox.hgrow="ALWAYS" />
+                        <Button text="Soumettre" onAction="#soumettreAvis" />
+                    </HBox>
+                    <ListView fx:id="avisListView" prefHeight="100" />
                 </VBox>
-            </Tab>
+            </VBox>
+        </Tab>
 
-        </TabPane>
+        <!-- Autres Tabs -->
+        <Tab text="Connexions">
+            <WebView fx:id="webViewGraph" />
+        </Tab>
 
+        <Tab text="IA - Prédiction">
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Text text="Prédiction IA des suspects les plus probables" style="-fx-font-size: 16; -fx-font-weight: bold;" />
+                <BarChart fx:id="barChartPrediction" title="Suspects et Scores"
+                          categoryGap="10" barGap="3"
+                          prefHeight="300.0" prefWidth="600.0">
+                    <xAxis>
+                        <CategoryAxis label="Suspect ID" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Score (0 à 100%)" />
+                    </yAxis>
+                </BarChart>
+            </VBox>
+        </Tab>
 
-    </bottom>
+    </TabPane>
+</bottom>
+
 </BorderPane>

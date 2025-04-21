@@ -41,7 +41,8 @@
     import java.io.IOException;
     import java.io.InputStreamReader;
     import java.net.URL;
-    import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
     import java.util.ArrayList;
     import java.util.HashMap;
     import java.util.HashSet;
@@ -128,6 +129,13 @@
         private WebView webViewGraph;
         @FXML private MenuItem predictSuspectAI;
         @FXML private BarChart<String, Number> barChartPrediction;
+        @FXML private ListView<String> messageListView;
+        @FXML private TextField inputMessage;
+
+        @FXML private Spinner<Integer> noteSpinner;
+        @FXML private TextField commentaireAvis;
+        @FXML private ListView<String> avisListView;
+
 
 
         private WebEngine engine;
@@ -754,53 +762,6 @@
             }
         }
     
-        @FXML
-        private void analyserCollaborations() {
-            Map<Affaire, Set<Affaire>> collaborations = new HashMap<>();
-    
-            for (Affaire a1 : listeAffaires) {
-                Set<Integer> a1Participants = new HashSet<>();
-                a1Participants.addAll(a1.getEnqueteurs());
-                a1Participants.addAll(a1.getSuspects());
-                a1Participants.addAll(a1.getTemoignages().keySet());
-                a1Participants.addAll(a1.getTemoignages().values()
-                        .stream()
-                        .flatMap(List::stream)
-                        .collect(Collectors.toSet()));
-    
-                for (Affaire a2 : listeAffaires) {
-                    if (!a1.equals(a2)) {
-                        Set<Integer> a2Participants = new HashSet<>();
-                        a2Participants.addAll(a2.getEnqueteurs());
-                        a2Participants.addAll(a2.getSuspects());
-                        a2Participants.addAll(a2.getTemoignages().keySet());
-                        a2Participants.addAll(a2.getTemoignages().values()
-                                .stream()
-                                .flatMap(List::stream)
-                                .collect(Collectors.toSet()));
-    
-                        Set<Integer> intersection = new HashSet<>(a1Participants);
-                        intersection.retainAll(a2Participants);
-    
-                        if (!intersection.isEmpty()) {
-                            collaborations.computeIfAbsent(a1, k -> new HashSet<>()).add(a2);
-                        }
-                    }
-                }
-            }
-    
-            ObservableList<String> collaborationResults = FXCollections.observableArrayList();
-            for (Map.Entry<Affaire, Set<Affaire>> entry : collaborations.entrySet()) {
-                String base = "Affaire au " + entry.getKey().getLieu() + " le " + entry.getKey().getDate() + " collabore avec : ";
-                String joined = entry.getValue().stream()
-                        .map(a -> a.getLieu() + " (" + a.getDate() + ")")
-                        .collect(Collectors.joining(", "));
-                collaborationResults.add(base + joined);
-            }
-    
-            collaborationList.setItems(collaborationResults);
-        }
-
 
         private String genererJsonGraphPourAffaire(Affaire affaire) {
             List<Map<String, Object>> nodes = new ArrayList<>();
@@ -944,6 +905,50 @@
 
             }
         }
+
+
+        @FXML
+private void envoyerMessage() {
+    if (currentAffaire == null) return;
+    String contenu = inputMessage.getText();
+    if (contenu == null || contenu.isBlank()) return;
+
+    Message msg = new Message("Moi", contenu, LocalDateTime.now());
+    currentAffaire.getMessages().add(msg);
+    afficherMessages();
+    inputMessage.clear();
+    sauvegarderDonnees();
+}
+
+@FXML
+private void soumettreAvis() {
+    if (currentAffaire == null) return;
+    String commentaire = commentaireAvis.getText();
+    int note = noteSpinner.getValue();
+
+    Avis avis = new Avis("Moi", note, commentaire, LocalDateTime.now());
+    currentAffaire.getAvis().add(avis);
+    afficherAvis();
+    commentaireAvis.clear();
+    sauvegarderDonnees();
+}
+
+private void afficherMessages() {
+    if (currentAffaire == null) return;
+    messageListView.getItems().clear();
+    for (Message m : currentAffaire.getMessages()) {
+        messageListView.getItems().add("[" + m.getHorodatage() + "] " + m.getAuteur() + " : " + m.getContenu());
+    }
+}
+
+private void afficherAvis() {
+    if (currentAffaire == null) return;
+    avisListView.getItems().clear();
+    for (Avis a : currentAffaire.getAvis()) {
+        avisListView.getItems().add("⭐ " + a.getNote() + "/5 - " + a.getAuteur() + " : " + a.getCommentaire());
+    }
+}
+
 
 
 

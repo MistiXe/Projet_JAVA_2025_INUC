@@ -10,6 +10,9 @@ public class Affaire {
     private LocalDate date;
     private String lieu;
     private String type;
+    private List<Message> messages = new ArrayList<>();
+    private List<Avis> avis = new ArrayList<>();
+
     public enum Status {
         NON_ENGAGEE("Non engagée"),
         EN_COURS("En cours"),
@@ -125,4 +128,11 @@ public class Affaire {
         System.out.println("Validation des témoignages réussie !");
         return true;
     }
+
+
+    public List<Message> getMessages() { return messages; }
+    public List<Avis> getAvis() { return avis; }
+
+    public void setMessages(List<Message> messages) { this.messages = messages; }
+    public void setAvis(List<Avis> avis) { this.avis = avis; }
 }
