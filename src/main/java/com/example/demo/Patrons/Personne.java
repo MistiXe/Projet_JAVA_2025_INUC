@@ -24,18 +24,22 @@ public class Personne {
     // Constructeur vide requis par Jackson
     public Personne() {}
 
-    // Getters et setters
+    //============================================
+    // Getters
+    //============================================
     public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
     public String getNom() { return nom; }
-    public void setNom(String nom) { this.nom = nom; }
-
     public String getPrenom() { return prenom; }
-    public void setPrenom(String prenom) { this.prenom = prenom; }
-
     public int getAge() { return age; }
+
+    //============================================
+    // Setters
+    //============================================
+    public void setId(int id) { this.id = id; }
+    public void setNom(String nom) { this.nom = nom; }
+    public void setPrenom(String prenom) { this.prenom = prenom; }
     public void setAge(int age) { this.age = age; }
+
 
     @Override
     public String toString() {

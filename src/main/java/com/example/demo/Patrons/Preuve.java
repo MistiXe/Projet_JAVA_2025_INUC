@@ -12,10 +12,15 @@ public class Preuve {
         this.importance = importance;
     }
 
-    // Getters et Setters
+    //============================================
+    // Getters
+    //============================================
     public String getDescription() { return description; }
     public int getImportance() { return importance; }
 
+    //============================================
+    // Setters
+    //============================================
     public void setDescription(String description) { this.description = description; }
     public void setImportance(int importance) { this.importance = importance; }
 

@@ -167,16 +167,10 @@ public class Menu_Controlleur {
 
     private void initialiserIconesMenu() {
         ImageView pdfIcon = new ImageView(
-                new Image(getClass().getResourceAsStream("/com/example/demo/format-de-fichier-pdf.png")));
+                new Image(getClass().getResourceAsStream("/images/pdf.png")));
         pdfIcon.setFitWidth(16);
         pdfIcon.setFitHeight(16);
         convertPDF.setGraphic(pdfIcon);
-
-        ImageView printIcon = new ImageView(
-                new Image(getClass().getResourceAsStream("/com/example/demo/imprimante.png")));
-        printIcon.setFitWidth(16);
-        printIcon.setFitHeight(16);
-        printTable.setGraphic(printIcon);
     }
 
     private void configurerTableView() {

@@ -11,8 +11,6 @@ public class Affaire {
     private String lieu;
     private String type;
     private List<Message> messages = new ArrayList<>();
-    private List<Avis> avis = new ArrayList<>();
-
     public enum Status {
         NON_ENGAGEE("Non engagée"),
         EN_COURS("En cours"),
@@ -35,7 +33,6 @@ public class Affaire {
             return statusString;
         }
     }
-
     private Status status;
     private int gravite;
     private String description;
@@ -74,6 +71,7 @@ public class Affaire {
     public List<Integer> getSuspects() { return suspects; }
     public List<String> getPreuves() { return preuves; }
     public Map<Integer, List<Integer>> getTemoignages() { return temoignages; }
+    public List<Message> getMessages() { return messages; }
 
     //============================================
     // Setters
@@ -88,6 +86,7 @@ public class Affaire {
     public void setSuspects(List<Integer> suspects) { this.suspects = suspects; }
     public void setPreuves(List<String> preuves) { this.preuves = preuves; }
     public void setTemoignages(Map<Integer, List<Integer>> temoignages) { this.temoignages = temoignages; }
+    public void setMessages(List<Message> messages) { this.messages = messages; }
 
     //============================================
     // Méthodes d'ajout/suppression
@@ -128,11 +127,4 @@ public class Affaire {
         System.out.println("Validation des témoignages réussie !");
         return true;
     }
-
-
-    public List<Message> getMessages() { return messages; }
-    public List<Avis> getAvis() { return avis; }
-
-    public void setMessages(List<Message> messages) { this.messages = messages; }
-    public void setAvis(List<Avis> avis) { this.avis = avis; }
 }

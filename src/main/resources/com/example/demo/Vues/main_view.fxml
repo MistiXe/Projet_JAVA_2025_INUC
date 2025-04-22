@@ -43,7 +43,6 @@
                     <MenuItem fx:id="addCase" text="Ajouter" />
                     <MenuItem fx:id="editCase" text="Modifier" />
                     <MenuItem fx:id="deleteCase" text="Supprimer" />
-                    <MenuItem fx:id="printTable" onAction="#imprimerTable" text="Imprimer" />
                     <MenuItem fx:id="convertPDF" onAction="#convertirEnPDF" text="Convertir en PDF" />
                 </Menu>
                 <Menu text="Fenêtre">
