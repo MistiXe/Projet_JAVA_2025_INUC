@@ -97,6 +97,8 @@
                 <!-- Détails des affaires -->
                 <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
                     <VBox spacing="50" style="-fx-padding: 10px 20px 20px 10px;">
+                        <WebView fx:id="webViewGraph" />
+
                         <HBox alignment="CENTER" spacing="200.0">
 <!--                            <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />-->
                             <VBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
@@ -165,10 +167,6 @@
             </VBox>
         </Tab>
 
-        <!-- Autres Tabs -->
-        <Tab text="Connexions">
-            <WebView fx:id="webViewGraph" />
-        </Tab>
 
         <Tab text="IA - Prédiction">
             <VBox spacing="10">
