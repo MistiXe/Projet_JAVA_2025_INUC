@@ -21,7 +21,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -35,7 +34,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +47,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Menu_Controlleur {
     //============================================
@@ -260,56 +257,30 @@ public class Menu_Controlleur {
 
     // Nouvelle méthode pour mettre à jour le prédicat de filtrage
     private void mettreAJourFiltre() {
-        filteredAffaires.setPredicate(affaire -> {
-            if (affaire == null) {
-                return false;
-            }
+        String lieuTexte = searchLieu.getText();
+        String typeTexte = searchTypeCrime.getText();
+        Affaire.Status statutRecherche = searchStatusComboBox.getValue();
+        Integer graviteRecherchee = searchGravitySpinner.getValue();
 
-            boolean correspond = true;
+        // (Optionnel : dates de début/fin, pas inclus ici mais facile à rajouter)
+        List<Affaire> affairesFiltres = GestionnaireAffaires.rechercherAffairesFiltres(
+                lieuTexte,
+                typeTexte,
+                statutRecherche,
+                graviteRecherchee, graviteRecherchee // min et max égaux => gravité exacte
+        );
 
-            // Filtre par lieu
-            String filtreLieu = searchLieu.getText();
-            if (filtreLieu != null && !filtreLieu.isEmpty()) {
-                correspond = correspond && affaire.getLieu() != null &&
-                        affaire.getLieu().toLowerCase().contains(filtreLieu.toLowerCase());
-            }
-
-            // Filtre par type de crime
-            String filtreType = searchTypeCrime.getText();
-            if (filtreType != null && !filtreType.isEmpty()) {
-                correspond = correspond && affaire.getType() != null &&
-                        affaire.getType().toLowerCase().contains(filtreType.toLowerCase());
-            }
-
-            // Filtre par date de début
-            if (dateDebut.getValue() != null) {
-                correspond = correspond && affaire.getDate() != null &&
-                        !affaire.getDate().isBefore(dateDebut.getValue());
-            }
-
-            // Filtre par date de fin
-            if (dateFin.getValue() != null) {
-                correspond = correspond && affaire.getDate() != null &&
-                        !affaire.getDate().isAfter(dateFin.getValue());
-            }
-
-            // Filtre par statut
-            if (searchStatusComboBox.getValue() != null) {
-                correspond = correspond && affaire.getStatus() == searchStatusComboBox.getValue();
-            }
-
-            // Filtre par gravité
-            Integer valeurGravite = searchGravitySpinner.getValue();
-            if (valeurGravite != null) {
-                correspond = correspond && affaire.getGravite() >= valeurGravite;
-            }
-
-            return correspond;
-        });
+        tableView.setItems(FXCollections.observableArrayList(affairesFiltres));
     }
+
 
     private void chargerDonnees() {
         List<Affaire> affaires = JsonHandlerCase.readCasesFromJson();
+
+        // Sert à indexer toutes les affaires dans leur SDD respective pour chaque catégorie (lieu, type, gravité...)
+        // Cela avantage fortement la recherche
+        GestionnaireAffaires.chargerAffaires(affaires);
+
         if (affaires != null) {
             listeAffaires.addAll(affaires);
         }
