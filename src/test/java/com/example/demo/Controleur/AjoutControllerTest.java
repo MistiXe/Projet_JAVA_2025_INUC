@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Controleur;
 
 import com.example.demo.Controleur.Ajouter_Controlleur;
 import com.example.demo.Patrons.Affaire;

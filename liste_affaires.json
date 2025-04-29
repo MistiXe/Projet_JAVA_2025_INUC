@@ -26,7 +26,11 @@
   "date" : "2023-08-22",
   "lieu" : "28 Avenue des Champs-Élysées, Paris",
   "type" : "Escroquerie",
-  "messages" : [ ],
+  "messages" : [ {
+    "auteur" : "Moi",
+    "contenu" : "efreferf",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
   "status" : "INSTRUCTION_EN_COURS",
   "gravite" : 7,
   "description" : "Une escroquerie immobilière a été découverte, impliquant plusieurs victimes qui ont investi dans des propriétés inexistantes.",
