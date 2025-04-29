@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="600.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controleur.Menu_Controlleur">
+    <children>
+        <!-- Grille principale -->
+        <GridPane layoutX="20.0" layoutY="20.0" vgap="10.0" hgap="10.0" padding="20.0">
+            <!-- Nom -->
+            <Label text="Nom :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtNom" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <!-- Prénom -->
+            <Label text="Prénom :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtPrenom" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <!-- Âge -->
+            <Label text="Age :" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtAge" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <!-- Email -->
+            <Label text="Email :" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEmail" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <!-- Téléphone -->
+            <Label text="Téléphone :" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtTelephone" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <!-- Date de naissance -->
+            <Label text="Date de naissance :" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtDateNaissance" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <!-- Lieu de naissance -->
+            <Label text="Lieu de naissance :" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtLieuNaissance" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+            <!-- Genre -->
+            <Label text="Genre :" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtGenre" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+            <!-- Nationalité -->
+            <Label text="Nationalité :" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtNationalite" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+            <!-- Casier judiciaire -->
+            <Label text="Casier judiciaire :" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtCasierJudiciaire" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+
+            <!-- Statut légal -->
+            <Label text="Statut légal :" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="comboStatutLegal" GridPane.rowIndex="10" GridPane.columnIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <Personne.StatutLegal>EN_LIBERTE</Personne.StatutLegal>
+                        <Personne.StatutLegal>EN_PRISON</Personne.StatutLegal>
+                        <Personne.StatutLegal>EN_FUITE</Personne.StatutLegal>
+                        <Personne.StatutLegal>EN_PROBATION</Personne.StatutLegal>
+                        <Personne.StatutLegal>SOUS_SURVEILLANCE</Personne.StatutLegal>
+                        <Personne.StatutLegal>SUSPECT</Personne.StatutLegal>
+                        <Personne.StatutLegal>TEMOIN</Personne.StatutLegal>
+                        <Personne.StatutLegal>VICTIME</Personne.StatutLegal>
+                        <Personne.StatutLegal>COMPLICE</Personne.StatutLegal>
+                        <Personne.StatutLegal>INTERDIT_DE_SEJOUR</Personne.StatutLegal>
+                        <Personne.StatutLegal>INTERDIT_DE_QUITTER_LE_TERRITOIRE</Personne.StatutLegal>
+                        <Personne.StatutLegal>SOUS_CONTROLE_JUDICIAIRE</Personne.StatutLegal>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Adresses -->
+            <Label text="Adresses :" GridPane.rowIndex="11" GridPane.columnIndex="0"/>
+            <TextArea fx:id="txtAdresses" GridPane.rowIndex="11" GridPane.columnIndex="1" prefRowCount="3"/>
+
+            <!-- Boutons de gestion -->
+            <Button text="Editer" fx:id="btnEdit" GridPane.rowIndex="12" GridPane.columnIndex="0"/>
+            <Button text="Sauvegarder" fx:id="btnSave" GridPane.rowIndex="12" GridPane.columnIndex="1"/>
+            <Button text="Supprimer" fx:id="btnDelete" GridPane.rowIndex="12" GridPane.columnIndex="2"/>
+        </GridPane>
+    </children>
+</AnchorPane>

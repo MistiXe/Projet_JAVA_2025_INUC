@@ -196,6 +196,7 @@ public class Menu_Controlleur {
                 // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
                 if (selectedItem != null) {
                     System.out.println("Double-clic détecté sur : " + selectedItem);
+                    System.out.println(selectedItem.getAdresses());
                 }
             }
         });
