@@ -1,5 +1,6 @@
 package com.example.demo.Controleur;
 
+
 import com.example.demo.Patrons.Affaire;
 import com.example.demo.JsonHandlers.JsonHandlerCase;
 import javafx.fxml.FXML;
@@ -10,16 +11,23 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Ajouter_Controlleur {
-    @FXML private Button btnAjouter;
-    @FXML private Label ajouterViewTitle;
+    @FXML
+    public Button btnAjouter;
+    @FXML
+    public Label ajouterViewTitle;
 
-    @FXML private DatePicker datePicker;
-    @FXML private TextField lieuField;
-    @FXML private TextField typeField;
-    @FXML private ComboBox<Affaire.Status> statusComboBox;
-    @FXML private Spinner<Integer> graviteSpinner;
+    @FXML
+    public DatePicker datePicker;
+    @FXML
+    public TextField lieuField;
+    @FXML
+    public TextField typeField;
+    @FXML
+    public ComboBox<Affaire.Status> statusComboBox;
+    @FXML
+    public Spinner<Integer> graviteSpinner;
 
-    private List<Affaire> listeAffaire;
+    public List<Affaire> listeAffaire;
     private Affaire affaireAModifier;
 
 
