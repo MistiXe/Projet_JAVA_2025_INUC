@@ -195,8 +195,7 @@ public class Menu_Controlleur {
             if (event.getClickCount() == 2) {
                 // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
                 if (selectedItem != null) {
-                    System.out.println("Double-clic détecté sur : " + selectedItem);
-                    System.out.println(selectedItem.getAdresses());
+                    ouvrirFenetreProfilPersonne(selectedItem);
                 }
             }
         });
@@ -704,6 +703,37 @@ public class Menu_Controlleur {
         }
     }
 
+    public void ouvrirFenetreProfilPersonne(Personne selectedPersonne) {
+        // Vérifier qu'une personne a bien été sélectionnée
+        if (selectedPersonne != null) {
+            try {
+                // Charger le fichier FXML de la fenêtre de profil
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Vues/profil_personne.fxml"));
+                Parent root = loader.load();
+    
+                // Récupérer le contrôleur de la fenêtre de profil
+                ProfilPersonneController controller = loader.getController();
+                
+                // Passer l'objet Personne au contrôleur
+                controller.setPersonne(selectedPersonne);
+                controller.initialize();
+    
+                // Créer une nouvelle fenêtre modale (Stage)
+                Stage stage = new Stage();
+                stage.setTitle("Profil de " + selectedPersonne.getPrenom() + " " + selectedPersonne.getNom());
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+    
+                // Actualiser la TableView (si nécessaire)
+                tableView.refresh();
+    
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
     //============================================
     // Méthodes de gestion des onglets
     //============================================

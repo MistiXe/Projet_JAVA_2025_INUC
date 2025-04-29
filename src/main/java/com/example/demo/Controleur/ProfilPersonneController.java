@@ -1,70 +1,67 @@
-// package com.example.demo;
+package com.example.demo.Controleur;
 
-// import com.example.demo.Patrons.Personne;
-// import javafx.fxml.FXML;
-// import javafx.scene.control.*;
+import com.example.demo.Patrons.Personne;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
-// public class ProfilPersonneController {
+import java.util.HashSet;
 
-//     @FXML private TextField txtNom;
-//     @FXML private TextField txtPrenom;
-//     @FXML private TextField txtAge;
-//     @FXML private TextField txtEmail;
-//     @FXML private TextField txtTelephone;
-//     @FXML private TextField txtDateNaissance;
-//     @FXML private TextField txtLieuNaissance;
-//     @FXML private TextField txtGenre;
-//     @FXML private TextField txtNationalite;
-//     @FXML private TextField txtCasierJudiciaire;
-//     @FXML private ComboBox<Personne.StatutLegal> comboStatutLegal;
-//     @FXML private TextArea txtAdresses;
-    
-//     @FXML private Button btnEdit;
-//     @FXML private Button btnSave;
-//     @FXML private Button btnDelete;
+public class ProfilPersonneController {
 
-//     private Personne personne;
+    // Déclaration des éléments FXML
+    @FXML private Label idLabel;
+    @FXML private Label prenomLabel;
+    @FXML private Label nomLabel;
+    @FXML private Label adressesLabel;
+    @FXML private Label emailLabel;
+    @FXML private Label telephoneLabel;
+    @FXML private Label lieuNaissanceLabel;
+    @FXML private Label genreLabel;
+    @FXML private Label nationaliteLabel;
+    @FXML private Label casierJudiciaireLabel;
+    @FXML private Label statutLegalLabel;
+    @FXML private Label pseudonymesLabel;
+    @FXML private Label descriptionPhysiqueLabel;
+    @FXML private Label photoUrlLabel;
+    @FXML private Label derniereLocalisationLabel;
+    @FXML private Label notesLabel;
 
-//     // Cette méthode est appelée après que le fichier FXML soit chargé
-//     public void initialize() {
-//         // Initialisation avec un exemple de Personne
-//         personne = new Personne(1, "John", "Doe", "123 Rue Exemple", "john.doe@mail.com", 1234567890L,
-//                 java.time.LocalDate.of(1990, 5, 15), "Paris", "Homme", "Française");
-        
-//         // Remplir les champs avec les informations de la personne
-//         txtNom.setText(personne.getNom());
-//         txtPrenom.setText(personne.getPrenom());
-//         txtAge.setText(String.valueOf(personne.getAge()));
-//         txtEmail.setText(personne.getEmail());
-//         txtTelephone.setText(String.valueOf(personne.getTelephone()));
-//         txtDateNaissance.setText(personne.getDateNaissance().toString());
-//         txtLieuNaissance.setText(personne.getLieuNaissance());
-//         txtGenre.setText(personne.getGenre());
-//         txtNationalite.setText(personne.getNationalite());
-//         txtCasierJudiciaire.setText(personne.isCasierJudiciaire() ? "Oui" : "Non");
-//         comboStatutLegal.setValue(personne.getStatutLegal());
-//         txtAdresses.setText(String.join("\n", personne.getAdresses()));
-//     }
+    // Attribut Personne qui contiendra les données à afficher
+    private Personne personne;
 
-//     // Gestion des actions des boutons
-//     @FXML
-//     private void handleEdit() {
-//         txtNom.setEditable(true);
-//         txtPrenom.setEditable(true);
-//         // Autres champs à rendre éditables...
-//     }
+    // Cette méthode est appelée après que le fichier FXML soit chargé
+    public void initialize() {
+        if (personne != null) {
+            System.out.println(personne.getId() + personne.getPrenom() + personne.getNom());
+            // Remplir les labels avec les informations de la personne
+            idLabel.setText(String.valueOf(personne.getId()));
+            prenomLabel.setText(personne.getPrenom());
+            nomLabel.setText(personne.getNom());
+            adressesLabel.setText(String.join("\n", personne.getAdresses()));
+            emailLabel.setText(personne.getEmail());
+            telephoneLabel.setText(String.valueOf(personne.getTelephone()));
+            lieuNaissanceLabel.setText(personne.getLieuNaissance());
+            genreLabel.setText(personne.getGenre());
+            nationaliteLabel.setText(personne.getNationalite());
+            casierJudiciaireLabel.setText(personne.isCasierJudiciaire() ? "Oui" : "Non");
+            statutLegalLabel.setText(personne.getStatutLegal().toString());
+            pseudonymesLabel.setText(String.join("\n", personne.getPseudonymes()));
+            descriptionPhysiqueLabel.setText(personne.getDescriptionPhysique());
+            photoUrlLabel.setText(personne.getPhotoUrl());
+            derniereLocalisationLabel.setText(personne.getDerniereLocalisation());
+            notesLabel.setText(personne.getNotes());
+        }
+    }
 
-//     @FXML
-//     private void handleSave() {
-//         // Sauvegarde des modifications
-//         personne.setNom(txtNom.getText());
-//         personne.setPrenom(txtPrenom.getText());
-//         // Sauvegarder les autres champs...
-//     }
+    // Méthode pour définir la personne à afficher
+    public void setPersonne(Personne personne) {
+        this.personne = personne;
+    }
 
-//     @FXML
-//     private void handleDelete() {
-//         // Action de suppression de la personne
-//         System.out.println("Personne supprimée");
-//     }
-// }
+    // Action pour revenir à la vue précédente
+    @FXML
+    private void handleRetourAction() {
+        // Logique pour revenir à la vue précédente
+        System.out.println("Retour à la vue précédente");
+    }
+}
