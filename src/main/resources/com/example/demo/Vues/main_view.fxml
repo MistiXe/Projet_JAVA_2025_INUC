@@ -97,7 +97,7 @@
                 <!-- Détails des affaires -->
                 <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
                     <VBox spacing="50" style="-fx-padding: 10px 20px 20px 10px;">
-                        <WebView fx:id="webViewGraph" />
+                        <WebView fx:id="webViewGraph"/>
 
                         <HBox alignment="CENTER" spacing="200.0">
 <!--                            <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />-->
@@ -150,10 +150,10 @@
     </center>
 
     <bottom>
-    <TabPane fx:id="tabPane" maxHeight="300" maxWidth="1120" visible="true">
+    <TabPane fx:id="tabPane" maxHeight="300" visible="true">
         <!-- Tchat -->
         <Tab fx:id="tabChat" text="💬 Tchat">
-            <VBox spacing="10" style="-fx-padding: 10px;">
+            <VBox spacing="10" style="-fx-padding: 10px;" alignment="center">
                 <!-- Section Tchat -->
                 <VBox spacing="10" style="-fx-padding: 10px;">
                     <Text text="💬 Tchat lié à l'affaire sélectionnée" style="-fx-font-size: 16; -fx-font-weight: bold;" />
@@ -169,7 +169,7 @@
 
 
         <Tab fx:id="tabPrediction" text="IA - Prédiction">
-            <VBox spacing="10">
+            <VBox spacing="10" alignment="center">
                 <padding>
                     <Insets top="10" right="10" bottom="10" left="10"/>
                 </padding>
@@ -186,6 +186,21 @@
                 </BarChart>
             </VBox>
         </Tab>
+
+<!--        <Tab text="Analyse des affaires">-->
+<!--            <VBox spacing="10">-->
+<!--                <Text text="Graphe" />-->
+<!--                <Button fx:id="generateGraphButton" onAction="#genererGraphique" text="Générer le graphe" />-->
+<!--                <BarChart fx:id="barChart" prefHeight="400" prefWidth="500" title="Répartition des affaires">-->
+<!--                    <xAxis>-->
+<!--                        <CategoryAxis label="Types de crimes" />-->
+<!--                    </xAxis>-->
+<!--                    <yAxis>-->
+<!--                        <NumberAxis label="Nombre d'affaires" />-->
+<!--                    </yAxis>-->
+<!--                </BarChart>-->
+<!--            </VBox>-->
+<!--        </Tab>-->
 
     </TabPane>
 </bottom>

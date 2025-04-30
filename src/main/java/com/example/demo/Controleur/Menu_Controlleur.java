@@ -160,6 +160,10 @@ public class Menu_Controlleur {
         } else {
             System.err.println("❌ Erreur : fichier HTML non trouvé !");
         }
+
+        // Cache par défaut les Tabs
+        tabPane.getTabs().remove(tabChat);
+        tabPane.getTabs().remove(tabPrediction);
     }
 
     private void initialiserIconesMenu() {
@@ -199,6 +203,40 @@ public class Menu_Controlleur {
                 }
             }
         });
+
+        detailEnqueteurs.setOnMouseClicked(event -> {
+            Personne selectedItem = detailTemoins.getSelectionModel().getSelectedItem();
+
+            if (event.getClickCount() == 2) {
+                // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
+                if (selectedItem != null) {
+                    ouvrirFenetreProfilPersonne(selectedItem);
+                }
+            }
+        });
+
+        detailSuspects.setOnMouseClicked(event -> {
+            Personne selectedItem = detailTemoins.getSelectionModel().getSelectedItem();
+
+            if (event.getClickCount() == 2) {
+                // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
+                if (selectedItem != null) {
+                    ouvrirFenetreProfilPersonne(selectedItem);
+                }
+            }
+        });
+
+        detailPersonneSuspectees.setOnMouseClicked(event -> {
+            Personne selectedItem = detailTemoins.getSelectionModel().getSelectedItem();
+
+            if (event.getClickCount() == 2) {
+                // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
+                if (selectedItem != null) {
+                    ouvrirFenetreProfilPersonne(selectedItem);
+                }
+            }
+        });
+
 
         // Écouteurs pour les champs de recherche dans le détail d'une affaire (suspects, témoins, enquêteurs...)
         setupSearchFilter(searchEnqueteurAffaire, filteredEnqueteurs);
@@ -798,6 +836,23 @@ public class Menu_Controlleur {
         tabPane.getSelectionModel().select(tabPrediction); // Sélectionne l'onglet collaboration
     }
 
+    @FXML
+    public void genererGraphique() {
+        barChart.getData().clear(); // Nettoyer le graphique existant
+
+        // Création des données
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Affaires par type de crime");
+
+        // Ajouter des données fictives (remplace par des données de ta base)
+        series.getData().add(new XYChart.Data<>("Vol", 10));
+        series.getData().add(new XYChart.Data<>("Fraude", 7));
+        series.getData().add(new XYChart.Data<>("Homicide", 4));
+        series.getData().add(new XYChart.Data<>("Cybercrime", 6));
+
+        // Ajouter la série au graphique
+        barChart.getData().add(series);
+    }
 
 
 
