@@ -257,29 +257,57 @@ public class Menu_Controlleur {
 
     // Nouvelle méthode pour mettre à jour le prédicat de filtrage
     private void mettreAJourFiltre() {
-        String lieuTexte = searchLieu.getText();
-        String typeTexte = searchTypeCrime.getText();
-        Affaire.Status statutRecherche = searchStatusComboBox.getValue();
-        Integer graviteRecherchee = searchGravitySpinner.getValue();
+        filteredAffaires.setPredicate(affaire -> {
+            if (affaire == null) {
+                return false;
+            }
 
-        // (Optionnel : dates de début/fin, pas inclus ici mais facile à rajouter)
-        List<Affaire> affairesFiltres = GestionnaireAffaires.rechercherAffairesFiltres(
-                lieuTexte,
-                typeTexte,
-                statutRecherche,
-                graviteRecherchee, graviteRecherchee // min et max égaux => gravité exacte
-        );
+            boolean correspond = true;
 
-        tableView.setItems(FXCollections.observableArrayList(affairesFiltres));
+            // Filtre par lieu
+            String filtreLieu = searchLieu.getText();
+            if (filtreLieu != null && !filtreLieu.isEmpty()) {
+                correspond = correspond && affaire.getLieu() != null &&
+                        affaire.getLieu().toLowerCase().contains(filtreLieu.toLowerCase());
+            }
+
+            // Filtre par type de crime
+            String filtreType = searchTypeCrime.getText();
+            if (filtreType != null && !filtreType.isEmpty()) {
+                correspond = correspond && affaire.getType() != null &&
+                        affaire.getType().toLowerCase().contains(filtreType.toLowerCase());
+            }
+
+            // Filtre par date de début
+            if (dateDebut.getValue() != null) {
+                correspond = correspond && affaire.getDate() != null &&
+                        !affaire.getDate().isBefore(dateDebut.getValue());
+            }
+
+            // Filtre par date de fin
+            if (dateFin.getValue() != null) {
+                correspond = correspond && affaire.getDate() != null &&
+                        !affaire.getDate().isAfter(dateFin.getValue());
+            }
+
+            // Filtre par statut
+            if (searchStatusComboBox.getValue() != null) {
+                correspond = correspond && affaire.getStatus() == searchStatusComboBox.getValue();
+            }
+
+            // Filtre par gravité
+            Integer valeurGravite = searchGravitySpinner.getValue();
+            if (valeurGravite != null) {
+                correspond = correspond && affaire.getGravite() >= valeurGravite;
+            }
+
+            return correspond;
+        });
     }
 
 
     private void chargerDonnees() {
         List<Affaire> affaires = JsonHandlerCase.readCasesFromJson();
-
-        // Sert à indexer toutes les affaires dans leur SDD respective pour chaque catégorie (lieu, type, gravité...)
-        // Cela avantage fortement la recherche
-        GestionnaireAffaires.chargerAffaires(affaires);
 
         if (affaires != null) {
             listeAffaires.addAll(affaires);
