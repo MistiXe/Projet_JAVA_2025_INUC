@@ -74,7 +74,7 @@
             </HBox>
 
 
-            <SplitPane dividerPositions="0.333">
+            <SplitPane dividerPositions="0.465">
                 <!-- Liste des affaires -->
                 <VBox minWidth="350" maxWidth="750" VBox.vgrow="ALWAYS">
                     <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
