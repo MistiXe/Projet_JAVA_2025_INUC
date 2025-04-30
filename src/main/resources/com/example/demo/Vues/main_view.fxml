@@ -46,9 +46,9 @@
                     <MenuItem fx:id="convertPDF" onAction="#convertirEnPDF" text="Convertir en PDF" />
                 </Menu>
                 <Menu text="Fenêtre">
-                    <MenuItem fx:id="generateGraph" onAction="#toggleGraphique" text="Graphe des connexions" />
-                    <MenuItem fx:id="collab" onAction="#toggleCollaboration" text="Collaborations" />
-                    <MenuItem fx:id="predictSuspectAI" onAction="#predictSuspectIA" text="Prédire les coupables" />
+                    <MenuItem fx:id="generateGraph" onAction="#afficherTchat" text="Tchat" />
+                    <MenuItem fx:id="collab" onAction="#afficherPrediction" text="Prédiction des coupables" />
+<!--                    <MenuItem fx:id="predictSuspectAI" onAction="#predictSuspectIA" text="Prédire les coupables" />-->
 
                 </Menu>
                 <Menu text="Aide">
@@ -152,7 +152,7 @@
     <bottom>
     <TabPane fx:id="tabPane" maxHeight="300" maxWidth="1120" visible="true">
         <!-- Tchat -->
-        <Tab text="💬 Tchat">
+        <Tab fx:id="tabChat" text="💬 Tchat">
             <VBox spacing="10" style="-fx-padding: 10px;">
                 <!-- Section Tchat -->
                 <VBox spacing="10" style="-fx-padding: 10px;">
@@ -168,7 +168,7 @@
         </Tab>
 
 
-        <Tab text="IA - Prédiction">
+        <Tab fx:id="tabPrediction" text="IA - Prédiction">
             <VBox spacing="10">
                 <padding>
                     <Insets top="10" right="10" bottom="10" left="10"/>

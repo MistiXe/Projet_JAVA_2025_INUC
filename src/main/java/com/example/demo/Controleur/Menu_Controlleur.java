@@ -77,8 +77,8 @@ public class Menu_Controlleur {
     @FXML private Button btnImprimer;
 
     @FXML private TabPane tabPane;
-    @FXML private Tab tabGraph;
-    @FXML private Tab tabCollab;
+    @FXML private Tab tabChat;
+    @FXML private Tab tabPrediction;
 
     @FXML private TextField searchEnqueteurAffaire;
     @FXML private TextField searchSuspectAffaire;
@@ -775,37 +775,30 @@ public class Menu_Controlleur {
     private void cacherTabPane() {
         tabPane.setManaged(false);
         tabPane.setVisible(false);
+        tabPane.getSelectionModel().clearSelection(); // Remettre à zéro la sélection
     }
 
     @FXML
-    private void afficherGraphique() {
+    private void afficherTchat() {
         afficherTabPane();
-        tabPane.getSelectionModel().select(0);
+
+        if (!tabPane.getTabs().contains(tabChat)) {
+            tabPane.getTabs().add(tabChat);
+        }
+        tabPane.getSelectionModel().select(tabChat); // Sélectionne l'onglet graphique
     }
 
     @FXML
-    private void afficherCollaboration() {
+    private void afficherPrediction() {
         afficherTabPane();
-        tabPane.getSelectionModel().select(1);
+
+        if (!tabPane.getTabs().contains(tabPrediction)) {
+            tabPane.getTabs().add(tabPrediction);
+        }
+        tabPane.getSelectionModel().select(tabPrediction); // Sélectionne l'onglet collaboration
     }
 
-    @FXML
-    private void toggleGraphique() {
-        if (tabPane.isVisible() && tabPane.getSelectionModel().getSelectedItem() == tabGraph) {
-            cacherTabPane();
-        } else {
-            afficherGraphique();
-        }
-    }
 
-    @FXML
-    private void toggleCollaboration() {
-        if (tabPane.isVisible() && tabPane.getSelectionModel().getSelectedItem() == tabCollab) {
-            cacherTabPane();
-        } else {
-            afficherCollaboration();
-        }
-    }
 
 
     private String genererJsonGraphPourAffaire(Affaire affaire) {
