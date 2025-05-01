@@ -5,8 +5,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 
-<?import javafx.scene.web.WebView?>
 <BorderPane prefHeight="759.0" prefWidth="1120.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controleur.Menu_Controlleur">
     <top>
         <VBox id="header">
@@ -76,7 +76,7 @@
 
             <SplitPane dividerPositions="0.465">
                 <!-- Liste des affaires -->
-                <VBox minWidth="350" maxWidth="705" VBox.vgrow="ALWAYS">
+                <VBox maxWidth="705" minWidth="350" VBox.vgrow="ALWAYS">
                     <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
                         <columns>
                             <TableColumn fx:id="columnDate" reorderable="false" text="Date" />
@@ -97,18 +97,39 @@
                 <!-- Détails des affaires -->
                 <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
                     <VBox spacing="50" style="-fx-padding: 10px 20px 20px 10px;">
-                        <WebView fx:id="webViewGraph"/>
+                          <VBox>
+                              <HBox alignment="CENTER" spacing="5">
+                                  <!-- Témoin -->
+                                  <HBox alignment="CENTER">
+                                      <Label style="-fx-text-fill: #f39c12; -fx-font-size: 16px;" text="★" />
+                                      <Label style="-fx-text-fill: #333333; -fx-font-size: 14px;" text="Témoin" />
+                                  </HBox>
+
+                                  <!-- Suspect -->
+                                  <HBox alignment="CENTER" >
+                                      <Label style="-fx-text-fill: #e74c3c; -fx-font-size: 16px;" text="●" />
+                                      <Label style="-fx-text-fill: #333333; -fx-font-size: 14px;" text="Suspect" />
+                                  </HBox>
+
+                                  <!-- Enquêteur -->
+                                  <HBox alignment="CENTER">
+                                      <Label style="-fx-text-fill: #3498db; -fx-font-size: 16px;" text="▲" />
+                                      <Label style="-fx-text-fill: #333333; -fx-font-size: 14px;" text="Enquêteur" />
+                                  </HBox>
+                              </HBox>
+                              <WebView fx:id="webViewGraph" maxHeight="325" prefHeight="325" />
+                          </VBox>
 
                         <HBox alignment="CENTER" spacing="200.0">
 <!--                            <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />-->
                             <VBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
                                 <Label styleClass="labelDetail, bleu-border" text="Description" />
-                                <TextArea fx:id="detailDescription" wrapText="true" prefHeight="63.0" styleClass="detail-text-zone" />
+                                <TextArea fx:id="detailDescription" prefHeight="63.0" styleClass="detail-text-zone" wrapText="true" />
                             </VBox>
 
                             <VBox spacing="10" HBox.hgrow="ALWAYS">
                                 <Label styleClass="labelDetail, violet-border" text="État d’avancement" />
-                                <TextArea fx:id="detailEtat" editable="false" wrapText="true" prefHeight="54.0" styleClass="detail-text-zone" />
+                                <TextArea fx:id="detailEtat" editable="false" prefHeight="54.0" styleClass="detail-text-zone" wrapText="true" />
                             </VBox>
                         </HBox>
 
@@ -153,14 +174,14 @@
     <TabPane fx:id="tabPane" maxHeight="300" visible="true">
         <!-- Tchat -->
         <Tab fx:id="tabChat" text="💬 Tchat">
-            <VBox spacing="10" style="-fx-padding: 10px;" alignment="center">
+            <VBox alignment="center" spacing="10" style="-fx-padding: 10px;">
                 <!-- Section Tchat -->
                 <VBox spacing="10" style="-fx-padding: 10px;">
-                    <Text text="💬 Tchat lié à l'affaire sélectionnée" style="-fx-font-size: 16; -fx-font-weight: bold;" />
+                    <Text style="-fx-font-size: 16; -fx-font-weight: bold;" text="💬 Tchat lié à l'affaire sélectionnée" />
                     <ListView fx:id="messageListView" prefHeight="100" />
                     <HBox spacing="10">
                         <TextField fx:id="inputMessage" promptText="Écrire un message..." HBox.hgrow="ALWAYS" />
-                        <Button text="Envoyer" onAction="#envoyerMessage" />
+                        <Button onAction="#envoyerMessage" text="Envoyer" />
                     </HBox>
                     <Separator />
                 </VBox>
@@ -169,14 +190,12 @@
 
 
         <Tab fx:id="tabPrediction" text="IA - Prédiction">
-            <VBox spacing="10" alignment="center">
+            <VBox alignment="center" spacing="10">
                 <padding>
-                    <Insets top="10" right="10" bottom="10" left="10"/>
+                    <Insets bottom="10" left="10" right="10" top="10" />
                 </padding>
-                <Text text="Prédiction IA des suspects les plus probables" style="-fx-font-size: 16; -fx-font-weight: bold;" />
-                <BarChart fx:id="barChartPrediction" title="Suspects et Scores"
-                          categoryGap="10" barGap="3"
-                          prefHeight="300.0" prefWidth="600.0">
+                <Text style="-fx-font-size: 16; -fx-font-weight: bold;" text="Prédiction IA des suspects les plus probables" />
+                <BarChart fx:id="barChartPrediction" barGap="3" categoryGap="10" prefHeight="300.0" prefWidth="600.0" title="Suspects et Scores">
                     <xAxis>
                         <CategoryAxis label="Suspect ID" />
                     </xAxis>
