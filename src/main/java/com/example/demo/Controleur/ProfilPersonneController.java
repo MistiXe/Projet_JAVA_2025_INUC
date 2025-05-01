@@ -28,6 +28,7 @@ public class ProfilPersonneController {
     @FXML private Label derniereLocalisationLabel;
     @FXML private Label notesLabel;
     @FXML private Button closeWindow;
+    @FXML private Label profilDeTitle;
 
     // Attribut Personne qui contiendra les données à afficher
     private Personne personne;
@@ -36,6 +37,7 @@ public class ProfilPersonneController {
     public void initialize() {
         if (personne != null) {
             System.out.println(personne.getId() + personne.getPrenom() + personne.getNom());
+            profilDeTitle.setText("Profil de " + personne.getNom() + " " + personne.getPrenom());
             // Remplir les labels avec les informations de la personne
             idLabel.setText(String.valueOf(personne.getId()));
             prenomLabel.setText(personne.getPrenom());

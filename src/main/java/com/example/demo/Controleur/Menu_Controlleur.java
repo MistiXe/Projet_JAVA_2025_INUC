@@ -757,7 +757,7 @@ public class Menu_Controlleur {
                 controller.setAffaireAModifier(selectedAffaire);
 
                 Stage stage = new Stage();
-                stage.setTitle("Modification - affaire " + selectedAffaire.getDate().toString());
+                stage.setTitle("Affaire du " + selectedAffaire.getDate().toString());
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
@@ -786,7 +786,7 @@ public class Menu_Controlleur {
     
                 // Créer une nouvelle fenêtre modale (Stage)
                 Stage stage = new Stage();
-                stage.setTitle("Profil de " + selectedPersonne.getPrenom() + " " + selectedPersonne.getNom());
+                stage.setTitle("Profil");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root));
                 stage.showAndWait();

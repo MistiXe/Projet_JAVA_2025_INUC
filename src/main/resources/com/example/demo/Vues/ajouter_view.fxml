@@ -6,15 +6,15 @@
 
 <BorderPane prefHeight="443.0" prefWidth="299.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controleur.Ajouter_Controlleur">
    <center>
-       <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
            <Label text="Date de l'affaire :"/>
            <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="261.0"/>
 
            <Label text="Lieu de l'affaire :"/>
-           <TextField styleClass="text-field-rect" fx:id="lieuField" promptText="Entrez le lieu"/>
+           <TextField styleClass="text-field-rect" fx:id="lieuField" promptText="Entrez le lieu" maxHeight="26.0" maxWidth="261.0"/>
 
            <Label text="Type d'affaire :"/>
-           <TextField styleClass="text-field-rect" fx:id="typeField" promptText="Ex: Vol, Homicide, Fraude"/>
+           <TextField styleClass="text-field-rect" fx:id="typeField" promptText="Ex: Vol, Homicide, Fraude" maxHeight="26.0" maxWidth="261.0"/>
 
            <Label text="Statut de l'affaire :"/>
            <ComboBox fx:id="statusComboBox" prefHeight="33.0" prefWidth="264.0"/>

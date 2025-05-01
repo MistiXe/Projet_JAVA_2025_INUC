@@ -9,16 +9,15 @@
 
     <!-- Haut : Logo -->
     <top>
-        <HBox alignment="CENTER" spacing="5" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" spacing="5" style="-fx-padding: 10;" BorderPane.alignment="CENTER">
             <Text id="logo" fill="#e74c3c" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
-                <font>
-                    <Font size="35.0" />
-                </font>
+                <font><Font size="35.0" /></font>
+                <HBox.margin>
+                    <Insets left="5.0" />
+                </HBox.margin>
             </Text>
             <Text id="logo" strokeType="OUTSIDE" strokeWidth="0.0" text="inuc" textOrigin="CENTER">
-                <font>
-                    <Font size="18.0" />
-                </font>
+                <font><Font size="18.0" /></font>
                 <HBox.margin>
                     <Insets top="15.0" />
                 </HBox.margin>

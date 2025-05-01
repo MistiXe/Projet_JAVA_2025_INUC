@@ -52,7 +52,7 @@ public class Ajouter_Controlleur {
         graviteSpinner.getValueFactory().setValue(affaire.getGravite());
         btnAjouter.setText("Modifier");  // Change le bouton pour indiquer modification
         btnAjouter.getStyleClass().clear();
-        ajouterViewTitle.setText("Modifier une affaire");
+        ajouterViewTitle.setText("Modification d'une affaire");
     }
 
     @FXML
