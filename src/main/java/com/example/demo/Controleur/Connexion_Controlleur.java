@@ -54,6 +54,8 @@ public class Connexion_Controlleur {
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
+                // Maximiser la fenêtre
+                stage.setMaximized(true);
                 stage.setTitle("Crim'INUC");
                 stage.show();
 

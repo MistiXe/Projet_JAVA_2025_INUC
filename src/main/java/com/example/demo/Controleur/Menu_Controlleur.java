@@ -220,7 +220,7 @@ public class Menu_Controlleur {
         });
 
         detailEnqueteurs.setOnMouseClicked(event -> {
-            Personne selectedItem = detailTemoins.getSelectionModel().getSelectedItem();
+            Personne selectedItem = detailEnqueteurs.getSelectionModel().getSelectedItem();
 
             if (event.getClickCount() == 2) {
                 // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
@@ -231,7 +231,7 @@ public class Menu_Controlleur {
         });
 
         detailSuspects.setOnMouseClicked(event -> {
-            Personne selectedItem = detailTemoins.getSelectionModel().getSelectedItem();
+            Personne selectedItem = detailSuspects.getSelectionModel().getSelectedItem();
 
             if (event.getClickCount() == 2) {
                 // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
@@ -242,7 +242,7 @@ public class Menu_Controlleur {
         });
 
         detailPersonneSuspectees.setOnMouseClicked(event -> {
-            Personne selectedItem = detailTemoins.getSelectionModel().getSelectedItem();
+            Personne selectedItem = detailPersonneSuspectees.getSelectionModel().getSelectedItem();
 
             if (event.getClickCount() == 2) {
                 // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
