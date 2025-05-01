@@ -10,6 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.PrinterJob;
@@ -39,6 +40,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -54,7 +56,7 @@ public class Menu_Controlleur {
     //============================================
     @FXML private BarChart<String, Number> barChart;
     @FXML private TableView<Affaire> tableView;
-    @FXML private TableColumn<Affaire, String> columnDate;
+    @FXML private TableColumn<Affaire, LocalDate> columnDate;
     @FXML private TableColumn<Affaire, String> columnLieu;
     @FXML private TableColumn<Affaire, String> columnType;
     @FXML private TableColumn<Affaire, Boolean> columnStatus;
@@ -179,9 +181,22 @@ public class Menu_Controlleur {
         columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
         columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         columnGravite.setCellValueFactory(new PropertyValueFactory<>("gravite"));
-        columnDate.setCellValueFactory(param -> {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            return new SimpleStringProperty(param.getValue().getDate().format(formatter));
+        // Dans ton contrôleur
+        columnDate.setCellValueFactory(new PropertyValueFactory<>("date")); // nom exact du champ "date"
+
+        // Pour l'affichage formaté sans perdre le tri
+        columnDate.setCellFactory(column -> new TableCell<Affaire, LocalDate>() {
+            private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            @Override
+            protected void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(formatter.format(item));
+                }
+            }
         });
     }
 
@@ -296,52 +311,55 @@ public class Menu_Controlleur {
     // Nouvelle méthode pour mettre à jour le prédicat de filtrage
     private void mettreAJourFiltre() {
         filteredAffaires.setPredicate(affaire -> {
-            if (affaire == null) {
-                return false;
-            }
+            if (affaire == null) return false;
 
             boolean correspond = true;
 
             // Filtre par lieu
             String filtreLieu = searchLieu.getText();
             if (filtreLieu != null && !filtreLieu.isEmpty()) {
-                correspond = correspond && affaire.getLieu() != null &&
+                correspond &= affaire.getLieu() != null &&
                         affaire.getLieu().toLowerCase().contains(filtreLieu.toLowerCase());
             }
 
             // Filtre par type de crime
             String filtreType = searchTypeCrime.getText();
             if (filtreType != null && !filtreType.isEmpty()) {
-                correspond = correspond && affaire.getType() != null &&
+                correspond &= affaire.getType() != null &&
                         affaire.getType().toLowerCase().contains(filtreType.toLowerCase());
             }
 
-            // Filtre par date de début
-            if (dateDebut.getValue() != null) {
-                correspond = correspond && affaire.getDate() != null &&
-                        !affaire.getDate().isBefore(dateDebut.getValue());
-            }
+            // Filtre par date (début et/ou fin)
+            LocalDate dateAffaire = affaire.getDate();
+            LocalDate debut = dateDebut.getValue();
+            LocalDate fin = dateFin.getValue();
 
-            // Filtre par date de fin
-            if (dateFin.getValue() != null) {
-                correspond = correspond && affaire.getDate() != null &&
-                        !affaire.getDate().isAfter(dateFin.getValue());
+            if (debut != null && fin != null) {
+                correspond &= dateAffaire != null &&
+                        (!dateAffaire.isBefore(debut) && !dateAffaire.isAfter(fin));
+            } else if (debut != null) {
+                correspond &= dateAffaire != null &&
+                        !dateAffaire.isBefore(debut);
+            } else if (fin != null) {
+                correspond &= dateAffaire != null &&
+                        !dateAffaire.isAfter(fin);
             }
 
             // Filtre par statut
             if (searchStatusComboBox.getValue() != null) {
-                correspond = correspond && affaire.getStatus() == searchStatusComboBox.getValue();
+                correspond &= affaire.getStatus() == searchStatusComboBox.getValue();
             }
 
-            // Filtre par gravité
-            Integer valeurGravite = searchGravitySpinner.getValue();
-            if (valeurGravite != null) {
-                correspond = correspond && affaire.getGravite() >= valeurGravite;
+            // Filtre par gravité minimale
+            Integer graviteMin = searchGravitySpinner.getValue();
+            if (graviteMin != null) {
+                correspond &= affaire.getGravite() >= graviteMin;
             }
 
             return correspond;
         });
     }
+
 
 
     private void chargerDonnees() {
@@ -354,8 +372,15 @@ public class Menu_Controlleur {
         // Créer la FilteredList à partir des affaires
         filteredAffaires = new FilteredList<>(listeAffaires, p -> true);
 
+        // Supposons que filteredAffaires est déjà initialisée et utilisée
+        SortedList<Affaire> sortedAffaires = new SortedList<>(filteredAffaires);
+
+        // Lier le comparator de la TableView avec celui de la SortedList
+        sortedAffaires.comparatorProperty().bind(tableView.comparatorProperty());
+
         // Utiliser la FilteredList comme source de données pour la table
-        tableView.setItems(filteredAffaires);
+        tableView.setItems(sortedAffaires);
+
 
         // Initialiser la ComboBox avec les valeurs d'énumération Status
         searchStatusComboBox.getItems().addAll(Affaire.Status.values());
