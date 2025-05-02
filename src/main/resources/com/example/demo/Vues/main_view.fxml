@@ -40,8 +40,8 @@
                     <MenuItem fx:id="exitApp" text="Quitter" />
                 </Menu>
                 <Menu text="Affaires">
-                    <MenuItem fx:id="addCase" text="Ajouter" />
-                    <MenuItem fx:id="editCase" text="Modifier" />
+                    <MenuItem fx:id="addCase" onAction="#ajouterFenetre" text="Ajouter" />
+                    <MenuItem fx:id="editCase" onAction="#ouvrirFenetreModification" text="Modifier" />
                     <MenuItem fx:id="deleteCase" text="Supprimer" />
                     <MenuItem fx:id="convertPDF" onAction="#convertirEnPDF" text="Convertir en PDF" />
                 </Menu>
@@ -52,7 +52,7 @@
 
                 </Menu>
                 <Menu text="Aide">
-                    <MenuItem fx:id="aboutApp" text="À propos" />
+                    <MenuItem fx:id="aboutApp" onAction="#ouvrirFenetreAPropos" text="À propos" />
                     <MenuItem fx:id="helpSupport" text="Support" />
                 </Menu>
             </MenuBar>

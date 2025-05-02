@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.PrinterJob;
@@ -54,6 +55,9 @@ public class Menu_Controlleur {
     //============================================
     // Déclarations FXML
     //============================================
+    @FXML private MenuItem deleteCase;
+    @FXML private MenuItem aboutApp;
+
     @FXML private BarChart<String, Number> barChart;
     @FXML private TableView<Affaire> tableView;
     @FXML private TableColumn<Affaire, LocalDate> columnDate;
@@ -401,6 +405,7 @@ public class Menu_Controlleur {
         // Permet de supprimer une affaire de la liste des affaires
         if (!listeAffaires.isEmpty()) {
             btnSupprimer.setOnAction(e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
+            deleteCase.setOnAction(e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
         }
 
 
@@ -824,6 +829,28 @@ public class Menu_Controlleur {
             }
         }
     }
+
+    public void ouvrirFenetreAPropos(ActionEvent actionEvent) {
+        // Vérifier qu'une personne a bien été sélectionnée
+        try {
+            // Charger le fichier FXML de la fenêtre de profil
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Vues/apropos_view.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle fenêtre modale (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("À propos");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
+            // Actualiser la TableView (si nécessaire)
+            tableView.refresh();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     //============================================
     // Méthodes de gestion des onglets
@@ -1023,4 +1050,6 @@ public class Menu_Controlleur {
 
         }
     }
+
+
 }

@@ -1,28 +1,4 @@
 [ {
-  "date" : "2023-07-15",
-  "lieu" : "15 Rue de Rivoli, Paris",
-  "type" : "Vol",
-  "messages" : [ {
-    "auteur" : "Moi",
-    "contenu" : "Bonjour",
-    "horodatage" : "2025-04-21T18:22:38.611333"
-  }, {
-    "auteur" : "Moi",
-    "contenu" : "Lorem ipsum de bz",
-    "horodatage" : "2025-04-21T19:27:46.999988"
-  } ],
-  "status" : "EN_COURS",
-  "gravite" : 6,
-  "description" : "Un vol de bijoux a été signalé dans une bijouterie de luxe. Les suspects ont été identifiés grâce aux caméras de surveillance.",
-  "enqueteurs" : [ 5, 29, 33 ],
-  "suspects" : [ 47, 60 ],
-  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés", "Analyse ADN correspondant au suspect", "Résidus de poudre sur les vêtements du suspect", "Relevés bancaires montrant des transactions suspectes", "Témoignages des passants", "Photographies de la scène du crime", "Traces de peinture correspondant au véhicule du suspect", "Enregistrements de caméras de sécurité montrant le suspect" ],
-  "temoignages" : {
-    "1" : [ 2, 4 ],
-    "47" : [ 6 ],
-    "60" : [ 10 ]
-  }
-}, {
   "date" : "2023-08-22",
   "lieu" : "28 Avenue des Champs-Élysées, Paris",
   "type" : "Escroquerie",
@@ -61,7 +37,7 @@
 }, {
   "date" : "2023-10-10",
   "lieu" : "45 Boulevard Saint-Germain, Paris",
-  "type" : "Fraude",
+  "type" : "Fra",
   "messages" : [ ],
   "status" : "CLOTUREE",
   "gravite" : 4,

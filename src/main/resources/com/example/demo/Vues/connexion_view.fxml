@@ -9,7 +9,7 @@
 
     <!-- Haut : Logo -->
     <top>
-        <HBox alignment="CENTER" spacing="5" style="-fx-padding: 10;" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" style="-fx-padding: 10;">
             <Text id="logo" fill="#e74c3c" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
                 <font><Font size="35.0" /></font>
                 <HBox.margin>
@@ -22,9 +22,6 @@
                     <Insets top="15.0" />
                 </HBox.margin>
             </Text>
-         <BorderPane.margin>
-            <Insets right="5.0" />
-         </BorderPane.margin>
         </HBox>
     </top>
 

@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import java.util.HashSet;
 
 public class ProfilPersonneController {
-
     // Déclaration des éléments FXML
     @FXML private Label idLabel;
     @FXML private Label prenomLabel;

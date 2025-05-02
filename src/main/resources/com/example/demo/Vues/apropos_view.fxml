@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:id="aboutRoot" prefWidth="600" prefHeight="400"
+            style="-fx-background-color: #f4f4f4; -fx-padding: 20;" stylesheets="@../styles.css" fx:controller="com.example.demo.Controleur.Apropos_Controlleur">
+
+    <VBox spacing="20" alignment="TOP_CENTER" prefWidth="600"
+          AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          AnchorPane.bottomAnchor="0">
+
+        <HBox alignment="CENTER" style="-fx-padding: 10;">
+            <Text id="logo" fill="#e74c3c" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
+                <font><Font size="35.0" /></font>
+                <HBox.margin>
+                    <Insets left="5.0" />
+                </HBox.margin>
+            </Text>
+            <Text id="logo" strokeType="OUTSIDE" strokeWidth="0.0" text="inuc" textOrigin="CENTER">
+                <font><Font size="18.0" /></font>
+                <HBox.margin>
+                    <Insets top="15.0" />
+                </HBox.margin>
+            </Text>
+        </HBox>
+
+        <!-- Description -->
+        <Label wrapText="true" textAlignment="CENTER" maxWidth="500"
+               style="-fx-font-size: 14px; -fx-font-family: 'Poppins'; -fx-text-fill: #2c3e50;">
+            Cette application permet de gérer des affaires criminelles, de consulter les détails des enquêtes, de visualiser les connexions entre suspects, témoins et enquêteurs, et d'analyser efficacement les informations.
+        </Label>
+
+        <Separator prefWidth="400" />
+
+        <!-- Informations -->
+        <VBox spacing="8" alignment="CENTER">
+            <Label text="Version : 1.0.0" style="-fx-font-family: 'Poppins'; -fx-text-fill: #34495e;" />
+            <Label text="© 2025 Tous droits réservés" style="-fx-font-family: 'Poppins'; -fx-text-fill: #7f8c8d;" />
+        </VBox>
+
+        <!-- Espace extensible pour pousser le bouton en bas -->
+        <Region VBox.vgrow="ALWAYS" />
+
+        <!-- Bouton de fermeture -->
+        <Button fx:id="closeWindow" text="Fermer" onAction="#handleRetourAction"
+                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-family: 'Poppins'; -fx-padding: 6 14; -fx-background-radius: 5;" />
+    </VBox>
+</AnchorPane>
