@@ -68,7 +68,9 @@
             <HBox alignment="CENTER" spacing="10" style="-fx-padding: 10px 20px 20px 20px;">
                 <TextField fx:id="searchTypeCrime" promptText="Rechercher un type de crime..." styleClass="searchField" HBox.hgrow="ALWAYS" />
                 <ComboBox fx:id="searchStatusComboBox" prefWidth="200.0" promptText="Statut de l'affaire" />
-                <Spinner fx:id="searchGravitySpinner" editable="true" initialValue="0" max="10" min="0" prefWidth="100.0" />
+<!--                <Spinner fx:id="searchGravitySpinner" editable="true" initialValue="0" max="10" min="0" prefWidth="100.0" />-->
+                <Spinner fx:id="graviteMinSpinner" editable="true" max="10" min="0" prefWidth="200.0" promptText="Gravité minimum"/>
+                <Spinner fx:id="graviteMaxSpinner" editable="true" max="10" min="0" prefWidth="200.0" promptText="Gravité maximum"/>
             </HBox>
 
 

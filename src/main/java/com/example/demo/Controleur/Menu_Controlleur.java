@@ -106,7 +106,8 @@ public class Menu_Controlleur {
     @FXML private DatePicker dateDebut;
     @FXML private DatePicker dateFin;
     @FXML private ComboBox<Affaire.Status> searchStatusComboBox;
-    @FXML private Spinner<Integer> searchGravitySpinner;
+    @FXML private Spinner<Integer> graviteMinSpinner;
+    @FXML private Spinner<Integer> graviteMaxSpinner;
 
     //============================================
     // Variables d'instance
@@ -178,7 +179,73 @@ public class Menu_Controlleur {
         // Cache par défaut les Tabs
         tabPane.getTabs().remove(tabChat);
         tabPane.getTabs().remove(tabPrediction);
+
+
+        // Spinner gravité minimale
+        SpinnerValueFactory<Integer> minFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
+        graviteMinSpinner.setValueFactory(minFactory);
+        graviteMinSpinner.setEditable(true);
+        graviteMinSpinner.getEditor().setText(""); // Efface le champ pour afficher le promptText
+
+        // Même chose pour le spinner max
+        SpinnerValueFactory<Integer> maxFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
+        graviteMaxSpinner.setValueFactory(maxFactory);
+        graviteMaxSpinner.setEditable(true);
+        graviteMaxSpinner.getEditor().setText("");
+
+        configurerSpinnerAvecValeurParDefaut(graviteMinSpinner);
+        configurerSpinnerAvecValeurParDefaut(graviteMaxSpinner);
     }
+
+    private void configurerSpinnerAvecValeurParDefaut(Spinner<Integer> spinner) {
+        SpinnerValueFactory<Integer> factory = spinner.getValueFactory();
+
+        spinner.setEditable(true);
+        spinner.getEditor().setText(""); // Laisse vide pour afficher le promptText
+
+        if (spinner.getValueFactory().getValue() == null) {
+            spinner.getValueFactory().setValue(0);
+        }
+
+        spinner.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_PRESSED, e -> {
+            // Si aucune valeur n’est définie, définir à 0 pour éviter NullPointerException
+            if (spinner.getValue() == null) {
+                spinner.getValueFactory().setValue(0);
+            }
+        });
+
+        // Corrige le comportement lors du clic sur les flèches alors que l'éditeur est vide
+        spinner.getEditor().textProperty().addListener((obs, oldText, newText) -> {
+            if (newText.isBlank()) return;
+            try {
+                Integer.parseInt(newText);
+            } catch (NumberFormatException e) {
+                factory.setValue(0); // Force à 0 si texte invalide
+            }
+        });
+
+        // Ce listener corrige le cas où l’utilisateur clique sur les flèches avec champ vide
+        spinner.getEditor().focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal && spinner.getEditor().getText().isBlank()) {
+                spinner.getEditor().setText("");
+            }
+        });
+
+        // Clique sur les flèches : si vide, force à 0 avant d’incrémenter ou décrémenter
+        spinner.getEditor().setOnKeyPressed(e -> {
+            if (spinner.getEditor().getText().isBlank()) {
+                factory.setValue(0);
+            }
+        });
+
+        // Mouse clicks sur les flèches (haut/bas)
+        spinner.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_PRESSED, e -> {
+            if (spinner.getEditor().getText().isBlank()) {
+                factory.setValue(0);
+            }
+        });
+    }
+
 
     private void initialiserIconesMenu() {
         ImageView pdfIcon = new ImageView(
@@ -315,12 +382,15 @@ public class Menu_Controlleur {
         });
 
         // Écouteur pour le Spinner de gravité
-        searchGravitySpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+        graviteMinSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+            mettreAJourFiltre();
+        });
+        // Écouteur pour le Spinner de gravité
+        graviteMaxSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
             mettreAJourFiltre();
         });
     }
 
-    // Nouvelle méthode pour mettre à jour le prédicat de filtrage
     private void mettreAJourFiltre() {
         filteredAffaires.setPredicate(affaire -> {
             if (affaire == null) return false;
@@ -341,7 +411,7 @@ public class Menu_Controlleur {
                         affaire.getType().toLowerCase().contains(filtreType.toLowerCase());
             }
 
-            // Filtre par date (début et/ou fin)
+            // Filtre par date
             LocalDate dateAffaire = affaire.getDate();
             LocalDate debut = dateDebut.getValue();
             LocalDate fin = dateFin.getValue();
@@ -358,19 +428,37 @@ public class Menu_Controlleur {
             }
 
             // Filtre par statut
-            if (searchStatusComboBox.getValue() != null) {
+            if (searchStatusComboBox.getValue() != null && searchStatusComboBox.getValue() != Affaire.Status.AUCUN) {
                 correspond &= affaire.getStatus() == searchStatusComboBox.getValue();
             }
 
-            // Filtre par gravité minimale
-            Integer graviteMin = searchGravitySpinner.getValue();
-            if (graviteMin != null) {
-                correspond &= affaire.getGravite() >= graviteMin;
+            // 🔎 Filtre par gravité
+            String graviteMinTexte = graviteMinSpinner.getEditor().getText();
+            String graviteMaxTexte = graviteMaxSpinner.getEditor().getText();
+
+            try {
+                if (!graviteMinTexte.isBlank()) {
+                    int graviteMin = Integer.parseInt(graviteMinTexte);
+                    if (graviteMin > 0) {
+                        correspond &= affaire.getGravite() >= graviteMin;
+                    }
+                }
+
+                if (!graviteMaxTexte.isBlank()) {
+                    int graviteMax = Integer.parseInt(graviteMaxTexte);
+                    if (graviteMax > 0) {
+                        correspond &= affaire.getGravite() <= graviteMax;
+                    }
+                }
+            } catch (NumberFormatException e) {
+                // Ignore les erreurs de parsing (champ invalide)
             }
 
             return correspond;
         });
     }
+
+
 
 
 
@@ -919,7 +1007,7 @@ public class Menu_Controlleur {
 
     @FXML
     private void sauvegardeEffectue() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Sauvegarde réussie");
         alert.setHeaderText(null);
         alert.setContentText("Les affaires ont été sauvegardées avec succès.");

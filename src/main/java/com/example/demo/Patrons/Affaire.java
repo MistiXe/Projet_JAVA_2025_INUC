@@ -12,6 +12,7 @@ public class Affaire {
     private String type;
     private List<Message> messages = new ArrayList<>();
     public enum Status {
+        AUCUN("Aucun"),
         NON_ENGAGEE("Non engagée"),
         EN_COURS("En cours"),
         CLASSEE_SANS_SUITE("Classée sans suite"),
