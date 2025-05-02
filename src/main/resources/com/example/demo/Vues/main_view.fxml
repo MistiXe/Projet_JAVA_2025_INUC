@@ -46,7 +46,7 @@
                 </Menu>
                 <Menu text="Fenêtre">
                     <MenuItem fx:id="generateGraph" onAction="#afficherTchat" text="Tchat" />
-                    <MenuItem fx:id="collab" onAction="#afficherPrediction" text="Prédiction des coupables" />
+<!--                    <MenuItem fx:id="collab" onAction="#afficherPrediction" text="Prédiction des coupables" />-->
                     <MenuItem fx:id="predictSuspectAI" onAction="#predictSuspectIA" text="Prédire les coupables" />
 
                 </Menu>
@@ -189,22 +189,22 @@
         </Tab>
 
 
-        <Tab fx:id="tabPrediction" text="IA - Prédiction">
-            <VBox alignment="center" spacing="10">
-                <padding>
-                    <Insets bottom="10" left="10" right="10" top="10" />
-                </padding>
-                <Text style="-fx-font-size: 16; -fx-font-weight: bold;" text="Prédiction IA des suspects les plus probables" />
-                <BarChart fx:id="barChartPrediction" barGap="3" categoryGap="10" prefHeight="300.0" prefWidth="600.0" title="Suspects et Scores">
-                    <xAxis>
-                        <CategoryAxis label="Suspect ID" />
-                    </xAxis>
-                    <yAxis>
-                        <NumberAxis label="Score (0 à 100%)" />
-                    </yAxis>
-                </BarChart>
-            </VBox>
-        </Tab>
+<!--        <Tab fx:id="tabPrediction" text="IA - Prédiction">-->
+<!--            <VBox alignment="center" spacing="10">-->
+<!--                <padding>-->
+<!--                    <Insets bottom="10" left="10" right="10" top="10" />-->
+<!--                </padding>-->
+<!--                <Text style="-fx-font-size: 16; -fx-font-weight: bold;" text="Prédiction IA des suspects les plus probables" />-->
+<!--                <BarChart fx:id="barChartPrediction" barGap="3" categoryGap="10" prefHeight="300.0" prefWidth="600.0" title="Suspects et Scores">-->
+<!--                    <xAxis>-->
+<!--                        <CategoryAxis label="Suspect ID" />-->
+<!--                    </xAxis>-->
+<!--                    <yAxis>-->
+<!--                        <NumberAxis label="Score (0 à 100%)" />-->
+<!--                    </yAxis>-->
+<!--                </BarChart>-->
+<!--            </VBox>-->
+<!--        </Tab>-->
 
 <!--        <Tab text="Analyse des affaires">-->
 <!--            <VBox spacing="10">-->

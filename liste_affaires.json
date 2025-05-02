@@ -1,16 +1,32 @@
 [ {
-  "date" : "2023-08-22",
-  "lieu" : "28 Avenue des Champs-Élysées, Paris",
+  "date" : "2020-05-15",
+  "lieu" : "12 Rue de la Paix, Lyon",
   "type" : "Escroquerie",
   "messages" : [ {
-    "auteur" : "Moi",
-    "contenu" : "efreferf",
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
     "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des relevés bancaires.",
+    "horodatage" : "2025-05-01T14:30:00"
+  }, {
+    "auteur" : "Enquêteur 4",
+    "contenu" : "Vérification des empreintes digitales.",
+    "horodatage" : "2025-05-02T09:45:00"
+  }, {
+    "auteur" : "Enquêteur 5",
+    "contenu" : "Rapport final des preuves.",
+    "horodatage" : "2025-05-03T16:00:00"
   } ],
   "status" : "INSTRUCTION_EN_COURS",
   "gravite" : 7,
   "description" : "Une escroquerie immobilière a été découverte, impliquant plusieurs victimes qui ont investi dans des propriétés inexistantes.",
-  "enqueteurs" : [ 12, 34, 45 ],
+  "enqueteurs" : [ 2, 65, 4 ],
   "suspects" : [ 19, 50 ],
   "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
   "temoignages" : {
@@ -19,152 +35,22 @@
     "50" : [ 10 ]
   }
 }, {
-  "date" : "2023-09-30",
-  "lieu" : "3 Rue de la Paix, Paris",
-  "type" : "Agression",
-  "messages" : [ ],
-  "status" : "SUSPENDUE",
-  "gravite" : 5,
-  "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus. Les enquêteurs recherchent des témoins supplémentaires.",
-  "enqueteurs" : [ 8, 21, 30 ],
-  "suspects" : [ 34, 47 ],
-  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
-  "temoignages" : {
-    "1" : [ 2, 4 ],
-    "34" : [ 6 ],
-    "47" : [ 10 ]
-  }
-}, {
-  "date" : "2023-10-10",
-  "lieu" : "45 Boulevard Saint-Germain, Paris",
-  "type" : "Fra",
-  "messages" : [ ],
-  "status" : "CLOTUREE",
-  "gravite" : 4,
-  "description" : "Une fraude à la carte bancaire a été détectée et résolue. Les suspects ont été arrêtés et les fonds récupérés.",
-  "enqueteurs" : [ 4, 13, 22 ],
-  "suspects" : [ 12, 1, 47 ],
-  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
-  "temoignages" : {
-    "1" : [ 2, 4, 6 ],
-    "12" : [ 2 ],
-    "47" : [ 10 ]
-  }
-}, {
-  "date" : "2023-11-05",
-  "lieu" : "50 Rue de Rennes, Paris",
-  "type" : "Violence",
-  "messages" : [ ],
-  "status" : "REOUVERTE",
-  "gravite" : 9,
-  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves. L'enquête a été rouverte pour de nouvelles investigations.",
-  "enqueteurs" : [ 14, 31, 40 ],
-  "suspects" : [ 49, 1, 33 ],
-  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
-  "temoignages" : {
-    "1" : [ 2, 4 ],
-    "49" : [ 6 ],
-    "33" : [ 10 ]
-  }
-}, {
-  "date" : "2023-12-01",
-  "lieu" : "12 Rue de la République, Paris",
-  "type" : "Escroquerie",
-  "messages" : [ ],
-  "status" : "NON_ENGAGEE",
-  "gravite" : 3,
-  "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti.",
-  "enqueteurs" : [ 2, 18, 35 ],
-  "suspects" : [ 47, 60, 75 ],
-  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Témoignages des passants", "Emails échangés entre les suspects" ],
-  "temoignages" : {
-    "1" : [ 2, 4, 6, 8 ],
-    "47" : [ 2, 10 ],
-    "60" : [ 10, 12 ],
-    "75" : [ 14 ]
-  }
-}, {
-  "date" : "2023-12-15",
-  "lieu" : "33 Avenue de la Grande Armée, Paris",
-  "type" : "Vol",
-  "messages" : [ ],
-  "status" : "EN_COURS",
-  "gravite" : 7,
-  "description" : "Un vol de voiture a été signalé dans un parking souterrain.",
-  "enqueteurs" : [ 9, 16, 23 ],
-  "suspects" : [ 12, 33, 60, 19 ],
-  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
-  "temoignages" : {
-    "1" : [ 2, 4 ],
-    "12" : [ 6, 8 ],
-    "33" : [ 10, 12 ],
-    "60" : [ 14, 16 ],
-    "19" : [ 18 ]
-  }
-}, {
-  "date" : "2023-12-20",
-  "lieu" : "44 Rue de la Fayette, Paris",
-  "type" : "Agression",
-  "messages" : [ ],
-  "status" : "CLASSEE_SANS_SUITE",
-  "gravite" : 2,
-  "description" : "Une altercation mineure entre deux individus a été classée sans suite.",
-  "enqueteurs" : [ 22, 38, 41 ],
-  "suspects" : [ 6, 50, 70 ],
-  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
-  "temoignages" : {
-    "1" : [ 2 ],
-    "6" : [ 4, 6 ],
-    "50" : [ 8, 10 ],
-    "70" : [ 12 ]
-  }
-}, {
-  "date" : "2023-12-25",
-  "lieu" : "55 Boulevard de Sébastopol, Paris",
-  "type" : "Fraude",
-  "messages" : [ ],
-  "status" : "TRANSFEREE_AU_PARQUET",
-  "gravite" : 5,
-  "description" : "Une fraude à la carte bancaire a été détectée et transférée au parquet.",
-  "enqueteurs" : [ 4, 13, 26 ],
-  "suspects" : [ 12, 1, 47, 80 ],
-  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
-  "temoignages" : {
-    "1" : [ 2, 4, 6 ],
-    "12" : [ 2, 8 ],
-    "47" : [ 10, 12 ],
-    "80" : [ 14 ]
-  }
-}, {
-  "date" : "2023-12-30",
-  "lieu" : "66 Rue de la Verrerie, Paris",
-  "type" : "Violence",
-  "messages" : [ ],
-  "status" : "INSTRUCTION_EN_COURS",
-  "gravite" : 9,
-  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves.",
-  "enqueteurs" : [ 14, 31, 42 ],
-  "suspects" : [ 49, 1, 33, 90 ],
-  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
-  "temoignages" : {
-    "1" : [ 2, 4 ],
-    "49" : [ 6, 8 ],
-    "33" : [ 10, 12 ],
-    "90" : [ 14, 16 ]
-  }
-}, {
   "date" : "2024-01-05",
-  "lieu" : "77 Rue de la Roquette, Paris",
+  "lieu" : "77 Rue de la Roquette, Rennes",
   "type" : "Escroquerie",
   "messages" : [ {
-    "auteur" : "Moi",
-    "contenu" : "Test",
-    "horodatage" : "2025-04-21T18:22:30.476236"
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
   } ],
   "status" : "RENVOYEE_DEVANT_TRIBUNAL",
   "gravite" : 8,
   "description" : "Une escroquerie immobilière a été renvoyée devant le tribunal.",
-  "enqueteurs" : [ 12, 34, 45 ],
+  "enqueteurs" : [ 4, 9, 29 ],
   "suspects" : [ 19, 50, 100 ],
   "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
   "temoignages" : {
@@ -175,9 +61,13 @@
   }
 }, {
   "date" : "2024-01-10",
-  "lieu" : "88 Rue de la Folie Méricourt, Paris",
+  "lieu" : "88 Rue de la Folie Méricourt, Grenoble",
   "type" : "Vol",
-  "messages" : [ ],
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
   "status" : "SUSPENDUE",
   "gravite" : 6,
   "description" : "Un vol de sac à main a été signalé mais l'enquête est suspendue.",
@@ -191,9 +81,13 @@
   }
 }, {
   "date" : "2024-01-15",
-  "lieu" : "99 Rue de la République, Paris",
+  "lieu" : "99 Rue de la République, Toulon",
   "type" : "Agression",
-  "messages" : [ ],
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
   "status" : "CLOTUREE",
   "gravite" : 1,
   "description" : "Une légère altercation a été rapidement résolue et classée.",
@@ -207,9 +101,13 @@
   }
 }, {
   "date" : "2024-01-20",
-  "lieu" : "110 Rue de la Verrerie, Paris",
+  "lieu" : "110 Rue de la Verrerie, Dijon",
   "type" : "Fraude",
-  "messages" : [ ],
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
   "status" : "REOUVERTE",
   "gravite" : 9,
   "description" : "Une fraude complexe impliquant plusieurs victimes a été rouverte.",
@@ -225,13 +123,17 @@
   }
 }, {
   "date" : "2024-01-25",
-  "lieu" : "121 Rue de la Folie Méricourt, Paris",
+  "lieu" : "121 Rue de la Folie Méricourt, Reims",
   "type" : "Violence",
-  "messages" : [ ],
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
   "status" : "NON_ENGAGEE",
   "gravite" : 3,
   "description" : "Une plainte pour violence n'a pas été engagée faute de preuves.",
-  "enqueteurs" : [ 14, 31, 43 ],
+  "enqueteurs" : [ 96, 31, 43 ],
   "suspects" : [ 50, 43, 140 ],
   "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
   "temoignages" : {
@@ -239,5 +141,2187 @@
     "50" : [ 6, 8 ],
     "43" : [ 10, 12 ],
     "140" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2020-06-20",
+  "lieu" : "13 Rue de la Paix, Lyon",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 7,
+  "description" : "Une escroquerie immobilière a été découverte, impliquant plusieurs victimes qui ont investi dans des propriétés inexistantes.",
+  "enqueteurs" : [ 2, 65, 4 ],
+  "suspects" : [ 19, 50 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2 ],
+    "50" : [ 10 ]
+  }
+}, {
+  "date" : "2021-08-25",
+  "lieu" : "14 Rue de la Liberté, Marseille",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des témoignages.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport médical de la victime.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-01T14:30:00"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 5,
+  "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus. Les enquêteurs recherchent des témoins supplémentaires.",
+  "enqueteurs" : [ 7, 29, 96 ],
+  "suspects" : [ 34, 47 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "34" : [ 6 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2022-10-30",
+  "lieu" : "15 Boulevard Saint-Germain, Toulouse",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 4,
+  "description" : "Une fraude à la carte bancaire a été détectée et résolue. Les suspects ont été arrêtés et les fonds récupérés.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 12, 1, 47 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2023-12-05",
+  "lieu" : "16 Rue de Rennes, Bordeaux",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves. L'enquête a été rouverte pour de nouvelles investigations.",
+  "enqueteurs" : [ 96, 31, 40 ],
+  "suspects" : [ 49, 1, 33 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6 ],
+    "33" : [ 10 ]
+  }
+}, {
+  "date" : "2025-06-05",
+  "lieu" : "22 Rue de la Roquette, Rennes",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "RENVOYEE_DEVANT_TRIBUNAL",
+  "gravite" : 8,
+  "description" : "Une escroquerie immobilière a été renvoyée devant le tribunal.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 19, 50, 100 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2, 8 ],
+    "50" : [ 10, 12 ],
+    "100" : [ 14 ]
+  }
+}, {
+  "date" : "2026-01-10",
+  "lieu" : "23 Rue de la Folie Méricourt, Grenoble",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 6,
+  "description" : "Un vol de sac à main a été signalé mais l'enquête est suspendue.",
+  "enqueteurs" : [ 5, 29, 36 ],
+  "suspects" : [ 43, 110 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "43" : [ 6, 8 ],
+    "110" : [ 10, 12 ]
+  }
+}, {
+  "date" : "2027-01-15",
+  "lieu" : "24 Rue de la République, Toulon",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 1,
+  "description" : "Une légère altercation a été rapidement résolue et classée.",
+  "enqueteurs" : [ 8, 21, 37 ],
+  "suspects" : [ 19, 120 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "19" : [ 4, 6 ],
+    "120" : [ 8, 10 ]
+  }
+}, {
+  "date" : "2028-01-20",
+  "lieu" : "25 Rue de la Verrerie, Dijon",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Une fraude complexe impliquant plusieurs victimes a été rouverte.",
+  "enqueteurs" : [ 3, 26, 39 ],
+  "suspects" : [ 49, 43, 33, 34, 130 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "49" : [ 2, 8 ],
+    "43" : [ 10, 12 ],
+    "33" : [ 14, 16 ],
+    "130" : [ 18 ]
+  }
+}, {
+  "date" : "2029-01-25",
+  "lieu" : "26 Rue de la Folie Méricourt, Reims",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une plainte pour violence n'a pas été engagée faute de preuves.",
+  "enqueteurs" : [ 96, 31, 43 ],
+  "suspects" : [ 50, 43, 140 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "50" : [ 6, 8 ],
+    "43" : [ 10, 12 ],
+    "140" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2020-07-10",
+  "lieu" : "27 Rue de la Paix, Lyon",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 7,
+  "description" : "Une escroquerie immobilière a été découverte, impliquant plusieurs victimes qui ont investi dans des propriétés inexistantes.",
+  "enqueteurs" : [ 2, 65, 4 ],
+  "suspects" : [ 19, 50 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2 ],
+    "50" : [ 10 ]
+  }
+}, {
+  "date" : "2021-08-15",
+  "lieu" : "28 Rue de la Liberté, Marseille",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des témoignages.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport médical de la victime.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-01T14:30:00"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 5,
+  "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus. Les enquêteurs recherchent des témoins supplémentaires.",
+  "enqueteurs" : [ 7, 29, 96 ],
+  "suspects" : [ 34, 47 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "34" : [ 6 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2022-09-20",
+  "lieu" : "29 Boulevard Saint-Germain, Toulouse",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 4,
+  "description" : "Une fraude à la carte bancaire a été détectée et résolue. Les suspects ont été arrêtés et les fonds récupérés.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 12, 1, 47 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2023-10-05",
+  "lieu" : "30 Rue de Rennes, Bordeaux",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves. L'enquête a été rouverte pour de nouvelles investigations.",
+  "enqueteurs" : [ 96, 31, 40 ],
+  "suspects" : [ 49, 1, 33 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6 ],
+    "33" : [ 10 ]
+  }
+}, {
+  "date" : "2020-11-01",
+  "lieu" : "31 Rue de la République, Nice",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti.",
+  "enqueteurs" : [ 2, 4, 7 ],
+  "suspects" : [ 47, 60, 75 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Témoignages des passants", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6, 8 ],
+    "47" : [ 2, 10 ],
+    "60" : [ 10, 12 ],
+    "75" : [ 14 ]
+  }
+}, {
+  "date" : "2021-12-10",
+  "lieu" : "32 Avenue de la Grande Armée, Lille",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "EN_COURS",
+  "gravite" : 7,
+  "description" : "Un vol de voiture a été signalé dans un parking souterrain.",
+  "enqueteurs" : [ 9, 29, 36 ],
+  "suspects" : [ 12, 33, 60, 19 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "12" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "60" : [ 14, 16 ],
+    "19" : [ 18 ]
+  }
+}, {
+  "date" : "2022-12-15",
+  "lieu" : "33 Rue de la Fayette, Strasbourg",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLASSEE_SANS_SUITE",
+  "gravite" : 2,
+  "description" : "Une altercation mineure entre deux individus a été classée sans suite.",
+  "enqueteurs" : [ 22, 38, 41 ],
+  "suspects" : [ 6, 50, 70 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "6" : [ 4, 6 ],
+    "50" : [ 8, 10 ],
+    "70" : [ 12 ]
+  }
+}, {
+  "date" : "2023-12-20",
+  "lieu" : "34 Boulevard de Sébastopol, Montpellier",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "TRANSFEREE_AU_PARQUET",
+  "gravite" : 5,
+  "description" : "Une fraude à la carte bancaire a été détectée et transférée au parquet.",
+  "enqueteurs" : [ 4, 9, 26 ],
+  "suspects" : [ 12, 1, 47, 80 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2, 8 ],
+    "47" : [ 10, 12 ],
+    "80" : [ 14 ]
+  }
+}, {
+  "date" : "2024-12-25",
+  "lieu" : "35 Rue de la Verrerie, Nantes",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves.",
+  "enqueteurs" : [ 96, 31, 42 ],
+  "suspects" : [ 49, 1, 33, 90 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "90" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2025-01-05",
+  "lieu" : "36 Rue de la Roquette, Rennes",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "RENVOYEE_DEVANT_TRIBUNAL",
+  "gravite" : 8,
+  "description" : "Une escroquerie immobilière a été renvoyée devant le tribunal.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 19, 50, 100 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2, 8 ],
+    "50" : [ 10, 12 ],
+    "100" : [ 14 ]
+  }
+}, {
+  "date" : "2026-01-10",
+  "lieu" : "37 Rue de la Folie Méricourt, Grenoble",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 6,
+  "description" : "Un vol de sac à main a été signalé mais l'enquête est suspendue.",
+  "enqueteurs" : [ 5, 29, 36 ],
+  "suspects" : [ 43, 110 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "43" : [ 6, 8 ],
+    "110" : [ 10, 12 ]
+  }
+}, {
+  "date" : "2027-01-15",
+  "lieu" : "38 Rue de la République, Toulon",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 1,
+  "description" : "Une légère altercation a été rapidement résolue et classée.",
+  "enqueteurs" : [ 8, 21, 37 ],
+  "suspects" : [ 19, 120 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "19" : [ 4, 6 ],
+    "120" : [ 8, 10 ]
+  }
+}, {
+  "date" : "2028-01-20",
+  "lieu" : "39 Rue de la Verrerie, Dijon",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Une fraude complexe impliquant plusieurs victimes a été rouverte.",
+  "enqueteurs" : [ 3, 26, 39 ],
+  "suspects" : [ 49, 43, 33, 34, 130 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "49" : [ 2, 8 ],
+    "43" : [ 10, 12 ],
+    "33" : [ 14, 16 ],
+    "130" : [ 18 ]
+  }
+}, {
+  "date" : "2029-01-25",
+  "lieu" : "40 Rue de la Folie Méricourt, Reims",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une plainte pour violence n'a pas été engagée faute de preuves.",
+  "enqueteurs" : [ 96, 31, 43 ],
+  "suspects" : [ 50, 43, 140 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "50" : [ 6, 8 ],
+    "43" : [ 10, 12 ],
+    "140" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2020-08-10",
+  "lieu" : "41 Rue de la Paix, Lyon",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 7,
+  "description" : "Une escroquerie immobilière a été découverte, impliquant plusieurs victimes qui ont investi dans des propriétés inexistantes.",
+  "enqueteurs" : [ 2, 65, 4 ],
+  "suspects" : [ 19, 50 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2 ],
+    "50" : [ 10 ]
+  }
+}, {
+  "date" : "2021-09-15",
+  "lieu" : "42 Rue de la Liberté, Marseille",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des témoignages.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport médical de la victime.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-01T14:30:00"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 5,
+  "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus. Les enquêteurs recherchent des témoins supplémentaires.",
+  "enqueteurs" : [ 7, 29, 96 ],
+  "suspects" : [ 34, 47 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "34" : [ 6 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2022-10-20",
+  "lieu" : "43 Boulevard Saint-Germain, Toulouse",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 4,
+  "description" : "Une fraude à la carte bancaire a été détectée et résolue. Les suspects ont été arrêtés et les fonds récupérés.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 12, 1, 47 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2023-11-05",
+  "lieu" : "44 Rue de Rennes, Bordeaux",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves. L'enquête a été rouverte pour de nouvelles investigations.",
+  "enqueteurs" : [ 96, 31, 40 ],
+  "suspects" : [ 49, 1, 33 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6 ],
+    "33" : [ 10 ]
+  }
+}, {
+  "date" : "2020-12-01",
+  "lieu" : "45 Rue de la République, Nice",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti.",
+  "enqueteurs" : [ 2, 4, 7 ],
+  "suspects" : [ 47, 60, 75 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Témoignages des passants", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6, 8 ],
+    "47" : [ 2, 10 ],
+    "60" : [ 10, 12 ],
+    "75" : [ 14 ]
+  }
+}, {
+  "date" : "2021-12-10",
+  "lieu" : "46 Avenue de la Grande Armée, Lille",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "EN_COURS",
+  "gravite" : 7,
+  "description" : "Un vol de voiture a été signalé dans un parking souterrain.",
+  "enqueteurs" : [ 9, 29, 36 ],
+  "suspects" : [ 12, 33, 60, 19 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "12" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "60" : [ 14, 16 ],
+    "19" : [ 18 ]
+  }
+}, {
+  "date" : "2022-12-15",
+  "lieu" : "47 Rue de la Fayette, Strasbourg",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLASSEE_SANS_SUITE",
+  "gravite" : 2,
+  "description" : "Une altercation mineure entre deux individus a été classée sans suite.",
+  "enqueteurs" : [ 22, 38, 41 ],
+  "suspects" : [ 6, 50, 70 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "6" : [ 4, 6 ],
+    "50" : [ 8, 10 ],
+    "70" : [ 12 ]
+  }
+}, {
+  "date" : "2023-12-20",
+  "lieu" : "48 Boulevard de Sébastopol, Montpellier",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "TRANSFEREE_AU_PARQUET",
+  "gravite" : 5,
+  "description" : "Une fraude à la carte bancaire a été détectée et transférée au parquet.",
+  "enqueteurs" : [ 4, 9, 26 ],
+  "suspects" : [ 12, 1, 47, 80 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2, 8 ],
+    "47" : [ 10, 12 ],
+    "80" : [ 14 ]
+  }
+}, {
+  "date" : "2024-12-25",
+  "lieu" : "49 Rue de la Verrerie, Nantes",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves.",
+  "enqueteurs" : [ 96, 31, 42 ],
+  "suspects" : [ 49, 1, 33, 90 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "90" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2025-01-05",
+  "lieu" : "50 Rue de la Roquette, Rennes",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "RENVOYEE_DEVANT_TRIBUNAL",
+  "gravite" : 8,
+  "description" : "Une escroquerie immobilière a été renvoyée devant le tribunal.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 19, 50, 100 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2, 8 ],
+    "50" : [ 10, 12 ],
+    "100" : [ 14 ]
+  }
+}, {
+  "date" : "2026-01-10",
+  "lieu" : "51 Rue de la Folie Méricourt, Grenoble",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 6,
+  "description" : "Un vol de sac à main a été signalé mais l'enquête est suspendue.",
+  "enqueteurs" : [ 5, 29, 36 ],
+  "suspects" : [ 43, 110 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "43" : [ 6, 8 ],
+    "110" : [ 10, 12 ]
+  }
+}, {
+  "date" : "2027-01-15",
+  "lieu" : "52 Rue de la République, Toulon",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 1,
+  "description" : "Une légère altercation a été rapidement résolue et classée.",
+  "enqueteurs" : [ 8, 21, 37 ],
+  "suspects" : [ 19, 120 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "19" : [ 4, 6 ],
+    "120" : [ 8, 10 ]
+  }
+}, {
+  "date" : "2028-01-20",
+  "lieu" : "53 Rue de la Verrerie, Dijon",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Une fraude complexe impliquant plusieurs victimes a été rouverte.",
+  "enqueteurs" : [ 3, 26, 39 ],
+  "suspects" : [ 49, 43, 33, 34, 130 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "49" : [ 2, 8 ],
+    "43" : [ 10, 12 ],
+    "33" : [ 14, 16 ],
+    "130" : [ 18 ]
+  }
+}, {
+  "date" : "2029-01-25",
+  "lieu" : "54 Rue de la Folie Méricourt, Reims",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une plainte pour violence n'a pas été engagée faute de preuves.",
+  "enqueteurs" : [ 96, 31, 43 ],
+  "suspects" : [ 50, 43, 140 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "50" : [ 6, 8 ],
+    "43" : [ 10, 12 ],
+    "140" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2020-09-10",
+  "lieu" : "55 Rue de la Paix, Lyon",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 7,
+  "description" : "Une escroquerie immobilière a été découverte, impliquant plusieurs victimes qui ont investi dans des propriétés inexistantes.",
+  "enqueteurs" : [ 2, 65, 4 ],
+  "suspects" : [ 19, 50 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2 ],
+    "50" : [ 10 ]
+  }
+}, {
+  "date" : "2021-10-15",
+  "lieu" : "56 Rue de la Liberté, Marseille",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des témoignages.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport médical de la victime.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-01T14:30:00"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 5,
+  "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus. Les enquêteurs recherchent des témoins supplémentaires.",
+  "enqueteurs" : [ 7, 29, 96 ],
+  "suspects" : [ 34, 47 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "34" : [ 6 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2022-11-20",
+  "lieu" : "57 Boulevard Saint-Germain, Toulouse",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 4,
+  "description" : "Une fraude à la carte bancaire a été détectée et résolue. Les suspects ont été arrêtés et les fonds récupérés.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 12, 1, 47 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2023-12-05",
+  "lieu" : "58 Rue de Rennes, Bordeaux",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves. L'enquête a été rouverte pour de nouvelles investigations.",
+  "enqueteurs" : [ 96, 31, 40 ],
+  "suspects" : [ 49, 1, 33 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6 ],
+    "33" : [ 10 ]
+  }
+}, {
+  "date" : "2020-12-01",
+  "lieu" : "59 Rue de la République, Nice",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti.",
+  "enqueteurs" : [ 2, 4, 7 ],
+  "suspects" : [ 47, 60, 75 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Témoignages des passants", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6, 8 ],
+    "47" : [ 2, 10 ],
+    "60" : [ 10, 12 ],
+    "75" : [ 14 ]
+  }
+}, {
+  "date" : "2021-12-10",
+  "lieu" : "60 Avenue de la Grande Armée, Lille",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "EN_COURS",
+  "gravite" : 7,
+  "description" : "Un vol de voiture a été signalé dans un parking souterrain.",
+  "enqueteurs" : [ 9, 29, 36 ],
+  "suspects" : [ 12, 33, 60, 19 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "12" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "60" : [ 14, 16 ],
+    "19" : [ 18 ]
+  }
+}, {
+  "date" : "2022-12-15",
+  "lieu" : "61 Rue de la Fayette, Strasbourg",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLASSEE_SANS_SUITE",
+  "gravite" : 2,
+  "description" : "Une altercation mineure entre deux individus a été classée sans suite.",
+  "enqueteurs" : [ 22, 38, 41 ],
+  "suspects" : [ 6, 50, 70 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "6" : [ 4, 6 ],
+    "50" : [ 8, 10 ],
+    "70" : [ 12 ]
+  }
+}, {
+  "date" : "2023-12-20",
+  "lieu" : "62 Boulevard de Sébastopol, Montpellier",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "TRANSFEREE_AU_PARQUET",
+  "gravite" : 5,
+  "description" : "Une fraude à la carte bancaire a été détectée et transférée au parquet.",
+  "enqueteurs" : [ 4, 9, 26 ],
+  "suspects" : [ 12, 1, 47, 80 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2, 8 ],
+    "47" : [ 10, 12 ],
+    "80" : [ 14 ]
+  }
+}, {
+  "date" : "2024-12-25",
+  "lieu" : "63 Rue de la Verrerie, Nantes",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves.",
+  "enqueteurs" : [ 96, 31, 42 ],
+  "suspects" : [ 49, 1, 33, 90 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "90" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2025-01-05",
+  "lieu" : "64 Rue de la Roquette, Rennes",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "RENVOYEE_DEVANT_TRIBUNAL",
+  "gravite" : 8,
+  "description" : "Une escroquerie immobilière a été renvoyée devant le tribunal.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 19, 50, 100 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2, 8 ],
+    "50" : [ 10, 12 ],
+    "100" : [ 14 ]
+  }
+}, {
+  "date" : "2026-01-10",
+  "lieu" : "65 Rue de la Folie Méricourt, Grenoble",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 6,
+  "description" : "Un vol de sac à main a été signalé mais l'enquête est suspendue.",
+  "enqueteurs" : [ 5, 29, 36 ],
+  "suspects" : [ 43, 110 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "43" : [ 6, 8 ],
+    "110" : [ 10, 12 ]
+  }
+}, {
+  "date" : "2027-01-15",
+  "lieu" : "66 Rue de la République, Toulon",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 1,
+  "description" : "Une légère altercation a été rapidement résolue et classée.",
+  "enqueteurs" : [ 8, 21, 37 ],
+  "suspects" : [ 19, 120 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "19" : [ 4, 6 ],
+    "120" : [ 8, 10 ]
+  }
+}, {
+  "date" : "2028-01-20",
+  "lieu" : "67 Rue de la Verrerie, Dijon",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Une fraude complexe impliquant plusieurs victimes a été rouverte.",
+  "enqueteurs" : [ 3, 26, 39 ],
+  "suspects" : [ 49, 43, 33, 34, 130 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "49" : [ 2, 8 ],
+    "43" : [ 10, 12 ],
+    "33" : [ 14, 16 ],
+    "130" : [ 18 ]
+  }
+}, {
+  "date" : "2029-01-25",
+  "lieu" : "68 Rue de la Folie Méricourt, Reims",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une plainte pour violence n'a pas été engagée faute de preuves.",
+  "enqueteurs" : [ 96, 31, 43 ],
+  "suspects" : [ 50, 43, 140 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "50" : [ 6, 8 ],
+    "43" : [ 10, 12 ],
+    "140" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2020-10-10",
+  "lieu" : "69 Rue de la Paix, Lyon",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 7,
+  "description" : "Une escroquerie immobilière a été découverte, impliquant plusieurs victimes qui ont investi dans des propriétés inexistantes.",
+  "enqueteurs" : [ 2, 65, 4 ],
+  "suspects" : [ 19, 50 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2 ],
+    "50" : [ 10 ]
+  }
+}, {
+  "date" : "2021-11-15",
+  "lieu" : "70 Rue de la Liberté, Marseille",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des témoignages.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport médical de la victime.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-01T14:30:00"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 5,
+  "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus. Les enquêteurs recherchent des témoins supplémentaires.",
+  "enqueteurs" : [ 7, 29, 96 ],
+  "suspects" : [ 34, 47 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "34" : [ 6 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2022-12-20",
+  "lieu" : "71 Boulevard Saint-Germain, Toulouse",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 4,
+  "description" : "Une fraude à la carte bancaire a été détectée et résolue. Les suspects ont été arrêtés et les fonds récupérés.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 12, 1, 47 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2023-01-05",
+  "lieu" : "72 Rue de Rennes, Bordeaux",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves. L'enquête a été rouverte pour de nouvelles investigations.",
+  "enqueteurs" : [ 96, 31, 40 ],
+  "suspects" : [ 49, 1, 33 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6 ],
+    "33" : [ 10 ]
+  }
+}, {
+  "date" : "2020-12-01",
+  "lieu" : "73 Rue de la République, Nice",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti.",
+  "enqueteurs" : [ 2, 4, 7 ],
+  "suspects" : [ 47, 60, 75 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Témoignages des passants", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6, 8 ],
+    "47" : [ 2, 10 ],
+    "60" : [ 10, 12 ],
+    "75" : [ 14 ]
+  }
+}, {
+  "date" : "2021-12-10",
+  "lieu" : "74 Avenue de la Grande Armée, Lille",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "EN_COURS",
+  "gravite" : 7,
+  "description" : "Un vol de voiture a été signalé dans un parking souterrain.",
+  "enqueteurs" : [ 9, 29, 36 ],
+  "suspects" : [ 12, 33, 60, 19 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "12" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "60" : [ 14, 16 ],
+    "19" : [ 18 ]
+  }
+}, {
+  "date" : "2022-12-15",
+  "lieu" : "75 Rue de la Fayette, Strasbourg",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLASSEE_SANS_SUITE",
+  "gravite" : 2,
+  "description" : "Une altercation mineure entre deux individus a été classée sans suite.",
+  "enqueteurs" : [ 22, 38, 41 ],
+  "suspects" : [ 6, 50, 70 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "6" : [ 4, 6 ],
+    "50" : [ 8, 10 ],
+    "70" : [ 12 ]
+  }
+}, {
+  "date" : "2023-12-20",
+  "lieu" : "76 Boulevard de Sébastopol, Montpellier",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "TRANSFEREE_AU_PARQUET",
+  "gravite" : 5,
+  "description" : "Une fraude à la carte bancaire a été détectée et transférée au parquet.",
+  "enqueteurs" : [ 4, 9, 26 ],
+  "suspects" : [ 12, 1, 47, 80 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2, 8 ],
+    "47" : [ 10, 12 ],
+    "80" : [ 14 ]
+  }
+}, {
+  "date" : "2024-12-25",
+  "lieu" : "77 Rue de la Verrerie, Nantes",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves.",
+  "enqueteurs" : [ 96, 31, 42 ],
+  "suspects" : [ 49, 1, 33, 90 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "90" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2025-01-05",
+  "lieu" : "78 Rue de la Roquette, Rennes",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "RENVOYEE_DEVANT_TRIBUNAL",
+  "gravite" : 8,
+  "description" : "Une escroquerie immobilière a été renvoyée devant le tribunal.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 19, 50, 100 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2, 8 ],
+    "50" : [ 10, 12 ],
+    "100" : [ 14 ]
+  }
+}, {
+  "date" : "2026-01-10",
+  "lieu" : "79 Rue de la Folie Méricourt, Grenoble",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 6,
+  "description" : "Un vol de sac à main a été signalé mais l'enquête est suspendue.",
+  "enqueteurs" : [ 5, 29, 36 ],
+  "suspects" : [ 43, 110 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "43" : [ 6, 8 ],
+    "110" : [ 10, 12 ]
+  }
+}, {
+  "date" : "2027-01-15",
+  "lieu" : "80 Rue de la République, Toulon",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 1,
+  "description" : "Une légère altercation a été rapidement résolue et classée.",
+  "enqueteurs" : [ 8, 21, 37 ],
+  "suspects" : [ 19, 120 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "19" : [ 4, 6 ],
+    "120" : [ 8, 10 ]
+  }
+}, {
+  "date" : "2028-01-20",
+  "lieu" : "81 Rue de la Verrerie, Dijon",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Une fraude complexe impliquant plusieurs victimes a été rouverte.",
+  "enqueteurs" : [ 3, 26, 39 ],
+  "suspects" : [ 49, 43, 33, 34, 130 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "49" : [ 2, 8 ],
+    "43" : [ 10, 12 ],
+    "33" : [ 14, 16 ],
+    "130" : [ 18 ]
+  }
+}, {
+  "date" : "2029-01-25",
+  "lieu" : "82 Rue de la Folie Méricourt, Reims",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une plainte pour violence n'a pas été engagée faute de preuves.",
+  "enqueteurs" : [ 96, 31, 43 ],
+  "suspects" : [ 50, 43, 140 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "50" : [ 6, 8 ],
+    "43" : [ 10, 12 ],
+    "140" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2020-11-10",
+  "lieu" : "83 Rue de la Paix, Lyon",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 7,
+  "description" : "Une escroquerie immobilière a été découverte, impliquant plusieurs victimes qui ont investi dans des propriétés inexistantes.",
+  "enqueteurs" : [ 2, 65, 4 ],
+  "suspects" : [ 19, 50 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2 ],
+    "50" : [ 10 ]
+  }
+}, {
+  "date" : "2021-12-15",
+  "lieu" : "84 Rue de la Liberté, Marseille",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des témoignages.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport médical de la victime.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-01T14:30:00"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 5,
+  "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus. Les enquêteurs recherchent des témoins supplémentaires.",
+  "enqueteurs" : [ 7, 29, 96 ],
+  "suspects" : [ 34, 47 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "34" : [ 6 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2022-01-20",
+  "lieu" : "85 Boulevard Saint-Germain, Toulouse",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 4,
+  "description" : "Une fraude à la carte bancaire a été détectée et résolue. Les suspects ont été arrêtés et les fonds récupérés.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 12, 1, 47 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2023-02-05",
+  "lieu" : "86 Rue de Rennes, Bordeaux",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves. L'enquête a été rouverte pour de nouvelles investigations.",
+  "enqueteurs" : [ 96, 31, 40 ],
+  "suspects" : [ 49, 1, 33 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6 ],
+    "33" : [ 10 ]
+  }
+}, {
+  "date" : "2020-12-01",
+  "lieu" : "87 Rue de la République, Nice",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti.",
+  "enqueteurs" : [ 2, 4, 7 ],
+  "suspects" : [ 47, 60, 75 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Témoignages des passants", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6, 8 ],
+    "47" : [ 2, 10 ],
+    "60" : [ 10, 12 ],
+    "75" : [ 14 ]
+  }
+}, {
+  "date" : "2021-12-10",
+  "lieu" : "88 Avenue de la Grande Armée, Lille",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "EN_COURS",
+  "gravite" : 7,
+  "description" : "Un vol de voiture a été signalé dans un parking souterrain.",
+  "enqueteurs" : [ 9, 29, 36 ],
+  "suspects" : [ 12, 33, 60, 19 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "12" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "60" : [ 14, 16 ],
+    "19" : [ 18 ]
+  }
+}, {
+  "date" : "2022-12-15",
+  "lieu" : "89 Rue de la Fayette, Strasbourg",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLASSEE_SANS_SUITE",
+  "gravite" : 2,
+  "description" : "Une altercation mineure entre deux individus a été classée sans suite.",
+  "enqueteurs" : [ 22, 38, 41 ],
+  "suspects" : [ 6, 50, 70 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "6" : [ 4, 6 ],
+    "50" : [ 8, 10 ],
+    "70" : [ 12 ]
+  }
+}, {
+  "date" : "2023-12-20",
+  "lieu" : "90 Boulevard de Sébastopol, Montpellier",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "TRANSFEREE_AU_PARQUET",
+  "gravite" : 5,
+  "description" : "Une fraude à la carte bancaire a été détectée et transférée au parquet.",
+  "enqueteurs" : [ 4, 9, 26 ],
+  "suspects" : [ 12, 1, 47, 80 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2, 8 ],
+    "47" : [ 10, 12 ],
+    "80" : [ 14 ]
+  }
+}, {
+  "date" : "2024-12-25",
+  "lieu" : "91 Rue de la Verrerie, Nantes",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves.",
+  "enqueteurs" : [ 96, 31, 42 ],
+  "suspects" : [ 49, 1, 33, 90 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6, 8 ],
+    "33" : [ 10, 12 ],
+    "90" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2025-01-05",
+  "lieu" : "92 Rue de la Roquette, Rennes",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "RENVOYEE_DEVANT_TRIBUNAL",
+  "gravite" : 8,
+  "description" : "Une escroquerie immobilière a été renvoyée devant le tribunal.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 19, 50, 100 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2, 8 ],
+    "50" : [ 10, 12 ],
+    "100" : [ 14 ]
+  }
+}, {
+  "date" : "2026-01-10",
+  "lieu" : "93 Rue de la Folie Méricourt, Grenoble",
+  "type" : "Vol",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 6,
+  "description" : "Un vol de sac à main a été signalé mais l'enquête est suspendue.",
+  "enqueteurs" : [ 5, 29, 36 ],
+  "suspects" : [ 43, 110 ],
+  "preuves" : [ "Vidéo de surveillance du crime", "Empreintes digitales sur une arme", "Inventaire de la bijouterie confirmant les objets volés" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "43" : [ 6, 8 ],
+    "110" : [ 10, 12 ]
+  }
+}, {
+  "date" : "2027-01-15",
+  "lieu" : "94 Rue de la République, Toulon",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 1,
+  "description" : "Une légère altercation a été rapidement résolue et classée.",
+  "enqueteurs" : [ 8, 21, 37 ],
+  "suspects" : [ 19, 120 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2 ],
+    "19" : [ 4, 6 ],
+    "120" : [ 8, 10 ]
+  }
+}, {
+  "date" : "2028-01-20",
+  "lieu" : "95 Rue de la Verrerie, Dijon",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Une fraude complexe impliquant plusieurs victimes a été rouverte.",
+  "enqueteurs" : [ 3, 26, 39 ],
+  "suspects" : [ 49, 43, 33, 34, 130 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "49" : [ 2, 8 ],
+    "43" : [ 10, 12 ],
+    "33" : [ 14, 16 ],
+    "130" : [ 18 ]
+  }
+}, {
+  "date" : "2029-01-25",
+  "lieu" : "96 Rue de la Folie Méricourt, Reims",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une plainte pour violence n'a pas été engagée faute de preuves.",
+  "enqueteurs" : [ 96, 31, 43 ],
+  "suspects" : [ 50, 43, 140 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "50" : [ 6, 8 ],
+    "43" : [ 10, 12 ],
+    "140" : [ 14, 16 ]
+  }
+}, {
+  "date" : "2020-12-10",
+  "lieu" : "97 Rue de la Paix, Lyon",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 7,
+  "description" : "Une escroquerie immobilière a été découverte, impliquant plusieurs victimes qui ont investi dans des propriétés inexistantes.",
+  "enqueteurs" : [ 2, 65, 4 ],
+  "suspects" : [ 19, 50 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Factures falsifiées", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "19" : [ 2 ],
+    "50" : [ 10 ]
+  }
+}, {
+  "date" : "2021-01-15",
+  "lieu" : "98 Rue de la Liberté, Marseille",
+  "type" : "Agression",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des témoignages.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport médical de la victime.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-01T14:30:00"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 5,
+  "description" : "Une agression physique a eu lieu devant un café, impliquant plusieurs individus. Les enquêteurs recherchent des témoins supplémentaires.",
+  "enqueteurs" : [ 7, 29, 96 ],
+  "suspects" : [ 34, 47 ],
+  "preuves" : [ "Rapport médical détaillant les blessures de la victime", "Caméras de surveillance du café", "Témoignages des passants" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "34" : [ 6 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2022-02-20",
+  "lieu" : "99 Boulevard Saint-Germain, Toulouse",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 4,
+  "description" : "Une fraude à la carte bancaire a été détectée et résolue. Les suspects ont été arrêtés et les fonds récupérés.",
+  "enqueteurs" : [ 4, 9, 29 ],
+  "suspects" : [ 12, 1, 47 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Analyse ADN correspondant au suspect" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6 ],
+    "12" : [ 2 ],
+    "47" : [ 10 ]
+  }
+}, {
+  "date" : "2023-03-05",
+  "lieu" : "100 Rue de Rennes, Bordeaux",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 9,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves. L'enquête a été rouverte pour de nouvelles investigations.",
+  "enqueteurs" : [ 96, 31, 40 ],
+  "suspects" : [ 49, 1, 33 ],
+  "preuves" : [ "Rapports de police de la manifestation", "Vidéos amateurs diffusées sur les réseaux sociaux", "Expertise médico-légale des blessures" ],
+  "temoignages" : {
+    "1" : [ 2, 4 ],
+    "49" : [ 6 ],
+    "33" : [ 10 ]
+  }
+}, {
+  "date" : "2020-01-01",
+  "lieu" : "101 Rue de la République, Nice",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 3,
+  "description" : "Une tentative d'escroquerie par téléphone a été signalée mais n'a pas abouti.",
+  "enqueteurs" : [ 2, 4, 7 ],
+  "suspects" : [ 47, 60, 75 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Témoignages des passants", "Emails échangés entre les suspects" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6, 8 ],
+    "47" : [ 2, 10 ],
+    "60" : [ 10, 12 ],
+    "75" : [ 14 ]
+  }
+}, {
+  "date" : "2020-05-15",
+  "lieu" : "12 Rue de la Paix, Lyon",
+  "type" : "Attentat",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des relevés bancaires.",
+    "horodatage" : "2025-05-01T14:30:00"
+  }, {
+    "auteur" : "Enquêteur 4",
+    "contenu" : "Vérification des empreintes digitales.",
+    "horodatage" : "2025-05-02T09:45:00"
+  }, {
+    "auteur" : "Enquêteur 5",
+    "contenu" : "Rapport final des preuves.",
+    "horodatage" : "2025-05-03T16:00:00"
+  }, {
+    "auteur" : "Enquêteur 6",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-04T10:30:00"
+  }, {
+    "auteur" : "Enquêteur 7",
+    "contenu" : "Rapport médical détaillant les blessures des victimes.",
+    "horodatage" : "2025-05-05T11:45:00"
+  }, {
+    "auteur" : "Enquêteur 8",
+    "contenu" : "Analyse des communications téléphoniques.",
+    "horodatage" : "2025-05-06T13:00:00"
+  }, {
+    "auteur" : "Enquêteur 9",
+    "contenu" : "Rapport sur les preuves balistiques.",
+    "horodatage" : "2025-05-07T14:15:00"
+  }, {
+    "auteur" : "Enquêteur 10",
+    "contenu" : "Analyse des documents financiers.",
+    "horodatage" : "2025-05-08T15:30:00"
+  } ],
+  "status" : "INSTRUCTION_EN_COURS",
+  "gravite" : 10,
+  "description" : "Un attentat à la bombe a eu lieu dans un centre commercial bondé, faisant plusieurs victimes et causant des dégâts matériels importants. Les enquêteurs ont découvert des indices suggérant une planification minutieuse et des connexions avec des groupes terroristes internationaux. Les preuves incluent des résidus d'explosifs, des vidéos de surveillance, des communications téléphoniques et des documents financiers.",
+  "enqueteurs" : [ 2, 65, 4, 7, 96, 9, 29 ],
+  "suspects" : [ 19, 50, 34, 47, 12, 1, 49, 33 ],
+  "preuves" : [ "Résidus d'explosifs", "Vidéos de surveillance du crime", "Appels téléphoniques enregistrés", "Factures falsifiées", "Emails échangés entre les suspects", "Rapport médical détaillant les blessures des victimes", "Caméras de surveillance du café", "Témoignages des passants", "Arme du crime retrouvée sur les lieux", "Plaques d'immatriculation identifiées sur une caméra", "Analyse toxicologique prouvant un empoisonnement", "Inventaire de la bijouterie confirmant les objets volés", "Clés retrouvées sur la scène du crime appartenant au suspect", "Trace GPS du véhicule du suspect", "Lettre de menace retrouvée chez la victime", "Faux passeports saisis", "Boîte noire du véhicule analysée", "Messages suspects sur les réseaux sociaux", "Preuves balistiques confirmant l'arme utilisée", "Échantillons de terre prouvant un déplacement suspect", "Résidus d'accélérant confirmant un incendie criminel", "Enregistrements audio de conversations suspectes", "Photographies de la scène du crime", "Documents financiers falsifiés", "Vêtements tachés de sang correspondant à la victime", "Traces de peinture correspondant au véhicule du suspect", "Enregistrements de caméras de sécurité montrant le suspect", "Objets volés retrouvés en possession du suspect", "Témoignages de voisins confirmant la présence du suspect", "Analyse de fibres correspondant aux vêtements de la victime", "Preuves de localisation du téléphone du suspect", "Enregistrements de drones montrant l'activité suspecte", "Documents contrefaits saisis chez le suspect", "Analyse de traces de pas correspondant au suspect", "Preuves de transactions cryptographiques illégales" ],
+  "temoignages" : {
+    "1" : [ 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 ]
+  }
+}, {
+  "date" : "2021-07-22",
+  "lieu" : "3 Rue de la Liberté, Marseille",
+  "type" : "Attentat",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des témoignages.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport médical de la victime.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-01T14:30:00"
+  }, {
+    "auteur" : "Enquêteur 4",
+    "contenu" : "Rapport préliminaire des preuves.",
+    "horodatage" : "2025-05-02T09:45:00"
+  }, {
+    "auteur" : "Enquêteur 5",
+    "contenu" : "Analyse des communications téléphoniques.",
+    "horodatage" : "2025-05-03T11:00:00"
+  }, {
+    "auteur" : "Enquêteur 6",
+    "contenu" : "Rapport sur les preuves balistiques.",
+    "horodatage" : "2025-05-04T12:15:00"
+  }, {
+    "auteur" : "Enquêteur 7",
+    "contenu" : "Analyse des documents financiers.",
+    "horodatage" : "2025-05-05T13:30:00"
+  }, {
+    "auteur" : "Enquêteur 8",
+    "contenu" : "Rapport final des témoignages.",
+    "horodatage" : "2025-05-06T14:45:00"
+  }, {
+    "auteur" : "Enquêteur 9",
+    "contenu" : "Analyse des empreintes digitales.",
+    "horodatage" : "2025-05-07T16:00:00"
+  }, {
+    "auteur" : "Enquêteur 10",
+    "contenu" : "Rapport sur les résidus d'explosifs.",
+    "horodatage" : "2025-05-08T17:15:00"
+  } ],
+  "status" : "SUSPENDUE",
+  "gravite" : 10,
+  "description" : "Un attentat à la bombe a eu lieu dans un marché public, causant de nombreuses victimes et des dégâts matériels importants. Les enquêteurs ont découvert des indices suggérant une planification minutieuse et des connexions avec des groupes terroristes internationaux. Les preuves incluent des résidus d'explosifs, des vidéos de surveillance, des communications téléphoniques et des documents financiers.",
+  "enqueteurs" : [ 2, 65, 4, 7, 96, 9, 29 ],
+  "suspects" : [ 34, 47, 12, 1, 49, 33, 19, 50 ],
+  "preuves" : [ "Résidus d'explosifs", "Vidéos de surveillance du crime", "Appels téléphoniques enregistrés", "Factures falsifiées", "Emails échangés entre les suspects", "Rapport médical détaillant les blessures des victimes", "Caméras de surveillance du café", "Témoignages des passants", "Arme du crime retrouvée sur les lieux", "Plaques d'immatriculation identifiées sur une caméra", "Analyse toxicologique prouvant un empoisonnement", "Inventaire de la bijouterie confirmant les objets volés", "Clés retrouvées sur la scène du crime appartenant au suspect", "Trace GPS du véhicule du suspect", "Lettre de menace retrouvée chez la victime", "Faux passeports saisis", "Boîte noire du véhicule analysée", "Messages suspects sur les réseaux sociaux", "Preuves balistiques confirmant l'arme utilisée", "Échantillons de terre prouvant un déplacement suspect", "Résidus d'accélérant confirmant un incendie criminel", "Enregistrements audio de conversations suspectes", "Photographies de la scène du crime", "Documents financiers falsifiés", "Vêtements tachés de sang correspondant à la victime", "Traces de peinture correspondant au véhicule du suspect", "Enregistrements de caméras de sécurité montrant le suspect", "Objets volés retrouvés en possession du suspect", "Témoignages de voisins confirmant la présence du suspect", "Analyse de fibres correspondant aux vêtements de la victime", "Preuves de localisation du téléphone du suspect", "Enregistrements de drones montrant l'activité suspecte", "Documents contrefaits saisis chez le suspect", "Analyse de traces de pas correspondant au suspect", "Preuves de transactions cryptographiques illégales" ],
+  "temoignages" : {
+    "7" : [ 3, 9, 15, 21, 27, 33, 39, 45, 51, 57 ],
+    "25" : [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 ],
+    "42" : [ 11, 22, 33, 44, 55, 66, 77, 88, 99, 110 ],
+    "18" : [ 17, 19, 23, 29, 31, 37, 41, 43, 47, 53 ],
+    "61" : [ 6, 12, 18, 24, 30, 36, 42, 48, 54, 60 ],
+    "39" : [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 ],
+    "87" : [ 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 ],
+    "55" : [ 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 ]
+  }
+}, {
+  "date" : "2022-09-30",
+  "lieu" : "45 Boulevard Saint-Germain, Toulouse",
+  "type" : "Fraude",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des relevés bancaires.",
+    "horodatage" : "2025-05-01T14:30:00"
+  }, {
+    "auteur" : "Enquêteur 4",
+    "contenu" : "Vérification des empreintes digitales.",
+    "horodatage" : "2025-05-02T09:45:00"
+  }, {
+    "auteur" : "Enquêteur 5",
+    "contenu" : "Rapport final des preuves.",
+    "horodatage" : "2025-05-03T16:00:00"
+  }, {
+    "auteur" : "Enquêteur 6",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-04T10:30:00"
+  }, {
+    "auteur" : "Enquêteur 7",
+    "contenu" : "Rapport médical détaillant les blessures des victimes.",
+    "horodatage" : "2025-05-05T11:45:00"
+  }, {
+    "auteur" : "Enquêteur 8",
+    "contenu" : "Analyse des communications téléphoniques.",
+    "horodatage" : "2025-05-06T13:00:00"
+  }, {
+    "auteur" : "Enquêteur 9",
+    "contenu" : "Rapport sur les preuves balistiques.",
+    "horodatage" : "2025-05-07T14:15:00"
+  }, {
+    "auteur" : "Enquêteur 10",
+    "contenu" : "Analyse des documents financiers.",
+    "horodatage" : "2025-05-08T15:30:00"
+  } ],
+  "status" : "CLOTUREE",
+  "gravite" : 9,
+  "description" : "Une fraude à la carte bancaire complexe a été détectée et résolue. Les suspects ont été arrêtés et les fonds récupérés grâce à une enquête approfondie. Les preuves incluent des factures falsifiées, des relevés bancaires montrant des transactions suspectes, des empreintes digitales sur une arme, des vidéos de surveillance, des communications téléphoniques et des documents financiers.",
+  "enqueteurs" : [ 2, 65, 4, 7, 96, 9, 29 ],
+  "suspects" : [ 12, 1, 47, 80, 49, 43, 33, 34, 130 ],
+  "preuves" : [ "Factures falsifiées", "Relevés bancaires montrant des transactions suspectes", "Empreintes digitales sur une arme", "Vidéos de surveillance du crime", "Appels téléphoniques enregistrés", "Rapport médical détaillant les blessures des victimes", "Caméras de surveillance du café", "Témoignages des passants", "Arme du crime retrouvée sur les lieux", "Plaques d'immatriculation identifiées sur une caméra", "Analyse toxicologique prouvant un empoisonnement", "Inventaire de la bijouterie confirmant les objets volés", "Clés retrouvées sur la scène du crime appartenant au suspect", "Trace GPS du véhicule du suspect", "Lettre de menace retrouvée chez la victime", "Faux passeports saisis", "Boîte noire du véhicule analysée", "Messages suspects sur les réseaux sociaux", "Preuves balistiques confirmant l'arme utilisée", "Échantillons de terre prouvant un déplacement suspect", "Résidus d'accélérant confirmant un incendie criminel", "Enregistrements audio de conversations suspectes", "Photographies de la scène du crime", "Documents financiers falsifiés", "Vêtements tachés de sang correspondant à la victime", "Traces de peinture correspondant au véhicule du suspect", "Enregistrements de caméras de sécurité montrant le suspect", "Objets volés retrouvés en possession du suspect", "Témoignages de voisins confirmant la présence du suspect", "Analyse de fibres correspondant aux vêtements de la victime", "Preuves de localisation du téléphone du suspect", "Enregistrements de drones montrant l'activité suspecte", "Documents contrefaits saisis chez le suspect", "Analyse de traces de pas correspondant au suspect", "Preuves de transactions cryptographiques illégales" ],
+  "temoignages" : {
+    "7" : [ 13, 26, 37, 48, 59, 70, 81, 92, 103, 114 ],
+    "25" : [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 ],
+    "42" : [ 11, 22, 33, 44, 55, 66, 77, 88, 99, 110 ],
+    "12" : [ 17, 19, 23, 29, 31, 37, 41, 43, 47, 53 ],
+    "120" : [ 6, 12, 18, 24, 30, 36, 42, 48, 54, 60 ],
+    "33" : [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 ],
+    "87" : [ 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 ],
+    "55" : [ 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 ],
+    "91" : [ 13, 26 ],
+    "92" : [ 14, 28 ],
+    "2" : [ 16, 32 ],
+    "140" : [ 22, 44 ]
+  }
+}, {
+  "date" : "2023-11-05",
+  "lieu" : "50 Rue de Rennes, Bordeaux",
+  "type" : "Violence",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des relevés bancaires.",
+    "horodatage" : "2025-05-01T14:30:00"
+  }, {
+    "auteur" : "Enquêteur 4",
+    "contenu" : "Vérification des empreintes digitales.",
+    "horodatage" : "2025-05-02T09:45:00"
+  }, {
+    "auteur" : "Enquêteur 5",
+    "contenu" : "Rapport final des preuves.",
+    "horodatage" : "2025-05-03T16:00:00"
+  }, {
+    "auteur" : "Enquêteur 6",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-04T10:30:00"
+  }, {
+    "auteur" : "Enquêteur 7",
+    "contenu" : "Rapport médical détaillant les blessures des victimes.",
+    "horodatage" : "2025-05-05T11:45:00"
+  }, {
+    "auteur" : "Enquêteur 8",
+    "contenu" : "Analyse des communications téléphoniques.",
+    "horodatage" : "2025-05-06T13:00:00"
+  }, {
+    "auteur" : "Enquêteur 9",
+    "contenu" : "Rapport sur les preuves balistiques.",
+    "horodatage" : "2025-05-07T14:15:00"
+  }, {
+    "auteur" : "Enquêteur 10",
+    "contenu" : "Analyse des documents financiers.",
+    "horodatage" : "2025-05-08T15:30:00"
+  } ],
+  "status" : "REOUVERTE",
+  "gravite" : 10,
+  "description" : "Un incident violent a eu lieu lors d'une manifestation, impliquant des blessures graves et des dégâts matériels importants. Les enquêteurs ont découvert des indices suggérant une planification minutieuse et des connexions avec des groupes terroristes internationaux. Les preuves incluent des résidus d'explosifs, des vidéos de surveillance, des communications téléphoniques et des documents financiers.",
+  "enqueteurs" : [ 2, 65, 4, 7, 96, 9, 29 ],
+  "suspects" : [ 49, 1, 33, 90, 19, 50, 34, 47, 12 ],
+  "preuves" : [ "Résidus d'explosifs", "Vidéos de surveillance du crime", "Appels téléphoniques enregistrés", "Factures falsifiées", "Emails échangés entre les suspects", "Rapport médical détaillant les blessures des victimes", "Caméras de surveillance du café", "Témoignages des passants", "Arme du crime retrouvée sur les lieux", "Plaques d'immatriculation identifiées sur une caméra", "Analyse toxicologique prouvant un empoisonnement", "Inventaire de la bijouterie confirmant les objets volés", "Clés retrouvées sur la scène du crime appartenant au suspect", "Trace GPS du véhicule du suspect", "Lettre de menace retrouvée chez la victime", "Faux passeports saisis", "Boîte noire du véhicule analysée", "Messages suspects sur les réseaux sociaux", "Preuves balistiques confirmant l'arme utilisée", "Échantillons de terre prouvant un déplacement suspect", "Résidus d'accélérant confirmant un incendie criminel", "Enregistrements audio de conversations suspectes", "Photographies de la scène du crime", "Documents financiers falsifiés", "Vêtements tachés de sang correspondant à la victime", "Traces de peinture correspondant au véhicule du suspect", "Enregistrements de caméras de sécurité montrant le suspect", "Objets volés retrouvés en possession du suspect", "Témoignages de voisins confirmant la présence du suspect", "Analyse de fibres correspondant aux vêtements de la victime", "Preuves de localisation du téléphone du suspect", "Enregistrements de drones montrant l'activité suspecte", "Documents contrefaits saisis chez le suspect", "Analyse de traces de pas correspondant au suspect", "Preuves de transactions cryptographiques illégales" ],
+  "temoignages" : {
+    "49" : [ 16, 18, 20 ],
+    "1" : [ 2, 6, 18, 20 ],
+    "33" : [ 12, 14, 16, 18, 20 ],
+    "90" : [ 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 ],
+    "50" : [ 16 ],
+    "16" : [ 50 ],
+    "100" : [ 2 ]
+  }
+}, {
+  "date" : "2020-12-01",
+  "lieu" : "12 Rue de la République, Nice",
+  "type" : "Escroquerie",
+  "messages" : [ {
+    "auteur" : "Enquêteur 1",
+    "contenu" : "Première analyse des preuves.",
+    "horodatage" : "2025-04-29T15:22:19.1939491"
+  }, {
+    "auteur" : "Enquêteur 2",
+    "contenu" : "Rapport préliminaire des témoignages.",
+    "horodatage" : "2025-04-30T10:15:00"
+  }, {
+    "auteur" : "Enquêteur 3",
+    "contenu" : "Analyse des relevés bancaires.",
+    "horodatage" : "2025-05-01T14:30:00"
+  }, {
+    "auteur" : "Enquêteur 4",
+    "contenu" : "Vérification des empreintes digitales.",
+    "horodatage" : "2025-05-02T09:45:00"
+  }, {
+    "auteur" : "Enquêteur 5",
+    "contenu" : "Rapport final des preuves.",
+    "horodatage" : "2025-05-03T16:00:00"
+  }, {
+    "auteur" : "Enquêteur 6",
+    "contenu" : "Analyse des vidéos de surveillance.",
+    "horodatage" : "2025-05-04T10:30:00"
+  }, {
+    "auteur" : "Enquêteur 7",
+    "contenu" : "Rapport médical détaillant les blessures des victimes.",
+    "horodatage" : "2025-05-05T11:45:00"
+  }, {
+    "auteur" : "Enquêteur 8",
+    "contenu" : "Analyse des communications téléphoniques.",
+    "horodatage" : "2025-05-06T13:00:00"
+  }, {
+    "auteur" : "Enquêteur 9",
+    "contenu" : "Rapport sur les preuves balistiques.",
+    "horodatage" : "2025-05-07T14:15:00"
+  }, {
+    "auteur" : "Enquêteur 10",
+    "contenu" : "Analyse des documents financiers.",
+    "horodatage" : "2025-05-08T15:30:00"
+  } ],
+  "status" : "NON_ENGAGEE",
+  "gravite" : 8,
+  "description" : "Une tentative d'escroquerie par téléphone sophistiquée a été signalée mais n'a pas abouti grâce à la vigilance des victimes potentielles. Les enquêteurs ont découvert des indices suggérant une planification minutieuse et des connexions avec des groupes criminels internationaux. Les preuves incluent des relevés bancaires montrant des transactions suspectes, des vidéos de surveillance, des communications téléphoniques et des documents financiers.",
+  "enqueteurs" : [ 2, 65, 4, 7, 96, 9, 29 ],
+  "suspects" : [ 47, 60, 75, 19, 50, 34, 49, 33, 12 ],
+  "preuves" : [ "Relevés bancaires montrant des transactions suspectes", "Vidéos de surveillance du crime", "Appels téléphoniques enregistrés", "Factures falsifiées", "Emails échangés entre les suspects", "Rapport médical détaillant les blessures des victimes", "Caméras de surveillance du café", "Témoignages des passants", "Arme du crime retrouvée sur les lieux", "Plaques d'immatriculation identifiées sur une caméra", "Analyse toxicologique prouvant un empoisonnement", "Inventaire de la bijouterie confirmant les objets volés", "Clés retrouvées sur la scène du crime appartenant au suspect", "Trace GPS du véhicule du suspect", "Lettre de menace retrouvée chez la victime", "Faux passeports saisis", "Boîte noire du véhicule analysée", "Messages suspects sur les réseaux sociaux", "Preuves balistiques confirmant l'arme utilisée", "Échantillons de terre prouvant un déplacement suspect", "Résidus d'accélérant confirmant un incendie criminel", "Enregistrements audio de conversations suspectes", "Photographies de la scène du crime", "Documents financiers falsifiés", "Vêtements tachés de sang correspondant à la victime", "Traces de peinture correspondant au véhicule du suspect", "Enregistrements de caméras de sécurité montrant le suspect", "Objets volés retrouvés en possession du suspect", "Témoignages de voisins confirmant la présence du suspect", "Analyse de fibres correspondant aux vêtements de la victime", "Preuves de localisation du téléphone du suspect", "Enregistrements de drones montrant l'activité suspecte", "Documents contrefaits saisis chez le suspect", "Analyse de traces de pas correspondant au suspect", "Preuves de transactions cryptographiques illégales" ],
+  "temoignages" : {
+    "7" : [ 3, 9, 15, 21, 27, 33, 39, 45, 51, 57 ],
+    "25" : [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 ],
+    "42" : [ 11, 22, 33, 44, 55, 66, 77, 88, 99, 110 ],
+    "12" : [ 17, 19, 23, 29, 31, 37, 41, 43, 47, 53 ],
+    "49" : [ 6, 12, 18, 24, 30, 36, 42, 48, 54, 60 ],
+    "33" : [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 ],
+    "87" : [ 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 ],
+    "55" : [ 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 ],
+    "91" : [ 13, 26 ],
+    "92" : [ 14, 28 ],
+    "93" : [ 15, 30 ],
+    "94" : [ 16, 32 ],
+    "95" : [ 17, 34 ],
+    "96" : [ 18, 36 ],
+    "97" : [ 19, 38 ],
+    "98" : [ 20, 40 ],
+    "99" : [ 21, 42 ],
+    "100" : [ 22, 44 ]
   }
 } ]

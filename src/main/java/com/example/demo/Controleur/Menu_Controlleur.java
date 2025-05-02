@@ -536,7 +536,7 @@ public class Menu_Controlleur {
 
             if (engine != null && currentAffaire != null) {
                 String jsonGraph = genererJsonGraphPourAffaire(currentAffaire);
-                System.out.println("✅ JSON Graph : " + jsonGraph); // pour debug
+//                System.out.println("✅ JSON Graph : " + jsonGraph); // pour debug
 
                 Platform.runLater(() -> {
                     engine.executeScript("drawGraph(" + jsonGraph + ")");
@@ -580,7 +580,7 @@ public class Menu_Controlleur {
     }
 
     private void afficherDescription() {
-        if (currentAffaire.getDescription() != null) {
+        if (!(currentAffaire.getDescription().isEmpty() || currentAffaire.getDescription() == null)) {
             detailDescription.setText(currentAffaire.getDescription());
         } else {
             detailDescription.setText("");

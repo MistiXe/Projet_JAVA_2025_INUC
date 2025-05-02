@@ -154,5 +154,257 @@
   {
     "description": "Preuves de transactions cryptographiques illégales",
     "importance": 8
+  },
+  {
+    "description": "Enregistrements de conversations téléphoniques",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de localisation GPS du suspect",
+    "importance": 8
+  },
+  {
+    "description": "Documents de voyage falsifiés",
+    "importance": 6
+  },
+  {
+    "description": "Preuves de transfert de fonds illégaux",
+    "importance": 8
+  },
+  {
+    "description": "Enregistrements de caméras de surveillance montrant le suspect",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de communication entre les suspects",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de manipulation de preuves",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de destruction de preuves",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de falsification de documents",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de blanchiment d'argent",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de trafic de drogue",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de trafic d'armes",
+    "importance": 10
+  },
+  {
+    "description": "Preuves de trafic humain",
+    "importance": 10
+  },
+  {
+    "description": "Preuves de cybercriminalité",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de piratage informatique",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de fraude fiscale",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de corruption",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de détournement de fonds",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de contrefaçon",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de vol d'identité",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de harcèlement",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de stalking",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence domestique",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence sexuelle",
+    "importance": 10
+  },
+  {
+    "description": "Preuves de violence psychologique",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence physique",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence verbale",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de violence économique",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence institutionnelle",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence symbolique",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de violence structurelle",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence systémique",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence culturelle",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de violence raciale",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence religieuse",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence de genre",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence politique",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence environnementale",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de violence économique",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence sociale",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence communautaire",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de violence familiale",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence conjugale",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence entre pairs",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de violence en milieu scolaire",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence en milieu professionnel",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence en milieu carcéral",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence en milieu hospitalier",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence en milieu sportif",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de violence en milieu artistique",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence en milieu religieux",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence en milieu politique",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence en milieu médiatique",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de violence en milieu judiciaire",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence en milieu policier",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence en milieu militaire",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence en milieu diplomatique",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de violence en milieu économique",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence en milieu financier",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence en milieu technologique",
+    "importance": 7
+  },
+  {
+    "description": "Preuves de violence en milieu scientifique",
+    "importance": 8
+  },
+  {
+    "description": "Preuves de violence en milieu académique",
+    "importance": 9
+  },
+  {
+    "description": "Preuves de violence en milieu médical",
+    "importance": 8
   }
 ]
