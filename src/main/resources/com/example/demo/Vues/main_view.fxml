@@ -47,7 +47,7 @@
                 <Menu text="Fenêtre">
                     <MenuItem fx:id="generateGraph" onAction="#afficherTchat" text="Tchat" />
                     <MenuItem fx:id="collab" onAction="#afficherPrediction" text="Prédiction des coupables" />
-<!--                    <MenuItem fx:id="predictSuspectAI" onAction="#predictSuspectIA" text="Prédire les coupables" />-->
+                    <MenuItem fx:id="predictSuspectAI" onAction="#predictSuspectIA" text="Prédire les coupables" />
 
                 </Menu>
                 <Menu text="Aide">

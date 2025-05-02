@@ -559,7 +559,7 @@ public class Menu_Controlleur {
                 JsonHandlerCase.writePersonsToJson(listeAffaires);
             } catch (Exception e) {
                 Platform.runLater(() ->
-                        showAlert("Erreur", "Échec sauvegarde : " + e.getMessage())
+                        showAlert(Alert.AlertType.ERROR, "Erreur", "Échec sauvegarde : " + e.getMessage())
                 );
             }
         }).start();
@@ -619,13 +619,14 @@ public class Menu_Controlleur {
     }
 
 
-    private void showAlert(String titre, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    private void showAlert(Alert.AlertType type, String titre, String message) {
+        Alert alert = new Alert(type);
         alert.setTitle(titre);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 
     private void setupSearchFilter(TextField searchField, FilteredList<Personne> filteredList) {
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -690,7 +691,7 @@ public class Menu_Controlleur {
     private void convertirEnPDF() {
         Affaire affaire = tableView.getSelectionModel().getSelectedItem();
         if (affaire == null) {
-            showAlert("Alerte", "Veuillez sélectionner une affaire avant de générer un PDF.");
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez sélectionner une affaire avant de générer un PDF.");
             return;
         }
 
@@ -748,10 +749,10 @@ public class Menu_Controlleur {
 
             String nomFichier = "affaire_" + affaire.getDate() + "_" + affaire.getLieu().replace(" ", "_") + ".pdf";
             doc.save(nomFichier);
-            showAlert("Succès", "Le PDF a été généré avec succès : " + nomFichier);
+            showAlert(Alert.AlertType.CONFIRMATION, "Succès", "Le PDF a été généré avec succès : " + nomFichier);
         } catch (IOException e) {
             e.printStackTrace();
-            showAlert("Erreur", "Erreur lors de la génération du PDF.");
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de la génération du PDF.");
         }
     }
 
@@ -787,9 +788,9 @@ public class Menu_Controlleur {
                 boolean success = job.printPage(tableView);
                 if (success) {
                     job.endJob();
-                    showAlert("Succès", "Impression terminée avec succès !");
+                    showAlert(Alert.AlertType.CONFIRMATION, "Succès", "Impression terminée avec succès !");
                 } else {
-                    showAlert("Erreur", "Erreur lors de l'impression.");
+                    showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'impression.");
                 }
             }
         }
@@ -1014,7 +1015,7 @@ public class Menu_Controlleur {
     @FXML
     private void predictSuspectIA() {
         if (currentAffaire == null) {
-            showAlert("Erreur", "Aucune affaire sélectionnée.");
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez sélectionner une affaire.");
             return;
         }
 
@@ -1031,7 +1032,7 @@ public class Menu_Controlleur {
             File tempInput = File.createTempFile("affaire_", ".json");
             mapper.writeValue(tempInput, affaireData);
             String scriptPath = "src/main/java/com/example/demo/Controleur/prediction.py";
-            ProcessBuilder pb = new ProcessBuilder("python", scriptPath, tempInput.getAbsolutePath());
+            ProcessBuilder pb = new ProcessBuilder("python3", scriptPath, tempInput.getAbsolutePath());
             pb.redirectErrorStream(true);
             Process process = pb.start();
 
@@ -1060,7 +1061,7 @@ public class Menu_Controlleur {
                         .append(" - Score: ").append(suspect.getDouble("score") * 100).append("%\n");
             }
 
-            showAlert("Résultat de l'IA", sb.toString());
+            showAlert(Alert.AlertType.INFORMATION, "Résultat de l'IA", sb.toString());
 
             Platform.runLater(() -> {
                 barChartPrediction.getData().clear();
@@ -1083,7 +1084,7 @@ public class Menu_Controlleur {
 
         } catch (Exception e) {
             e.printStackTrace();
-            showAlert("Erreur", "Échec de la prédiction IA : " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de la prédiction IA : " + e.getMessage());
 
         }
     }
