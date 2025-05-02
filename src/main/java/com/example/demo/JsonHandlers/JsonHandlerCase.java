@@ -12,8 +12,9 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class JsonHandlerCase {
-    private static final String RESOURCE_PATH = "/com/example/demo/liste_affaires.json"; // Lecture depuis les ressources
-    private static final String OUTPUT_FILE = "liste_affaires.json"; // Fichier pour sauvegarde
+    private static final String RESOURCE_PATH = "/com/example/demo/BDD/liste_affaires.json";
+    // Lecture depuis les ressources
+    private static final String OUTPUT_FILE = "BDD/liste_affaires.json"; // Fichier pour sauvegarde
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     static {
