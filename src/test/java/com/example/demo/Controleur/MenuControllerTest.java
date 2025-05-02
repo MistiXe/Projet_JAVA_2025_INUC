@@ -4,7 +4,9 @@ import com.example.demo.Patrons.Affaire;
 import com.example.demo.Patrons.Personne;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeAll;
@@ -30,6 +32,10 @@ class MenuControllerTest {
     void setUp() {
         // Utilise le constructeur de test (à ajouter dans Menu_Controlleur)
         menuController = new Menu_Controlleur(true);
+
+        // Initialisation manuelle des composants requis
+        menuController.tableView = new TableView<>();
+        menuController.dateDebut = new DatePicker(); // pour éviter l'erreur dans fermerApplication
     }
 
     /**

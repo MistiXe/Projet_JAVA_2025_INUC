@@ -68,7 +68,8 @@ public class Menu_Controlleur {
     @FXML private MenuItem aboutApp;
 
     @FXML private BarChart<String, Number> barChart;
-    @FXML private TableView<Affaire> tableView;
+    @FXML
+    TableView<Affaire> tableView;
     @FXML private TableColumn<Affaire, LocalDate> columnDate;
     @FXML private TableColumn<Affaire, String> columnLieu;
     @FXML private TableColumn<Affaire, String> columnType;
@@ -104,7 +105,8 @@ public class Menu_Controlleur {
     // Nouvelles déclarations pour les éléments de recherche
     @FXML private TextField searchLieu;
     @FXML private TextField searchTypeCrime;
-    @FXML private DatePicker dateDebut;
+    @FXML
+    DatePicker dateDebut;
     @FXML private DatePicker dateFin;
     @FXML private ComboBox<Affaire.Status> searchStatusComboBox;
     @FXML private Spinner<Integer> graviteMinSpinner;
@@ -1009,11 +1011,19 @@ public class Menu_Controlleur {
     @FXML
     void fermerApplication() {
         System.out.println("fermerApplication");
-        Stage stage = (Stage) dateDebut.getScene().getWindow();
-        stage.close();
 
-        stage.close();
+        try {
+            if (dateDebut != null && dateDebut.getScene() != null && dateDebut.getScene().getWindow() instanceof Stage stage) {
+                stage.close();
+            } else {
+                System.out.println("⚠️ Impossible de fermer la fenêtre : scène ou fenêtre non disponible (test ?)");
+            }
+        } catch (Exception e) {
+            System.err.println("Erreur lors de la fermeture : " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
 
     @FXML
     private void sauvegardeEffectue() {
