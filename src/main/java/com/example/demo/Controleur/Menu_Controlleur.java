@@ -10,6 +10,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.PrinterJob;
@@ -18,6 +20,11 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +34,8 @@ import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
@@ -34,11 +43,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -52,9 +63,12 @@ public class Menu_Controlleur {
     //============================================
     // Déclarations FXML
     //============================================
+    @FXML private MenuItem deleteCase;
+    @FXML private MenuItem aboutApp;
+
     @FXML private BarChart<String, Number> barChart;
     @FXML private TableView<Affaire> tableView;
-    @FXML private TableColumn<Affaire, String> columnDate;
+    @FXML private TableColumn<Affaire, LocalDate> columnDate;
     @FXML private TableColumn<Affaire, String> columnLieu;
     @FXML private TableColumn<Affaire, String> columnType;
     @FXML private TableColumn<Affaire, Boolean> columnStatus;
@@ -77,8 +91,8 @@ public class Menu_Controlleur {
     @FXML private Button btnImprimer;
 
     @FXML private TabPane tabPane;
-    @FXML private Tab tabGraph;
-    @FXML private Tab tabCollab;
+    @FXML private Tab tabChat;
+    @FXML private Tab tabPrediction;
 
     @FXML private TextField searchEnqueteurAffaire;
     @FXML private TextField searchSuspectAffaire;
@@ -160,6 +174,10 @@ public class Menu_Controlleur {
         } else {
             System.err.println("❌ Erreur : fichier HTML non trouvé !");
         }
+
+        // Cache par défaut les Tabs
+        tabPane.getTabs().remove(tabChat);
+        tabPane.getTabs().remove(tabPrediction);
     }
 
     private void initialiserIconesMenu() {
@@ -175,9 +193,22 @@ public class Menu_Controlleur {
         columnType.setCellValueFactory(new PropertyValueFactory<>("type"));
         columnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         columnGravite.setCellValueFactory(new PropertyValueFactory<>("gravite"));
-        columnDate.setCellValueFactory(param -> {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            return new SimpleStringProperty(param.getValue().getDate().format(formatter));
+        // Dans ton contrôleur
+        columnDate.setCellValueFactory(new PropertyValueFactory<>("date")); // nom exact du champ "date"
+
+        // Pour l'affichage formaté sans perdre le tri
+        columnDate.setCellFactory(column -> new TableCell<Affaire, LocalDate>() {
+            private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            @Override
+            protected void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(formatter.format(item));
+                }
+            }
         });
     }
 
@@ -199,6 +230,40 @@ public class Menu_Controlleur {
                 }
             }
         });
+
+        detailEnqueteurs.setOnMouseClicked(event -> {
+            Personne selectedItem = detailEnqueteurs.getSelectionModel().getSelectedItem();
+
+            if (event.getClickCount() == 2) {
+                // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
+                if (selectedItem != null) {
+                    ouvrirFenetreProfilPersonne(selectedItem);
+                }
+            }
+        });
+
+        detailSuspects.setOnMouseClicked(event -> {
+            Personne selectedItem = detailSuspects.getSelectionModel().getSelectedItem();
+
+            if (event.getClickCount() == 2) {
+                // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
+                if (selectedItem != null) {
+                    ouvrirFenetreProfilPersonne(selectedItem);
+                }
+            }
+        });
+
+        detailPersonneSuspectees.setOnMouseClicked(event -> {
+            Personne selectedItem = detailPersonneSuspectees.getSelectionModel().getSelectedItem();
+
+            if (event.getClickCount() == 2) {
+                // Permet d'afficher la vue d'une carte d'une personne seulement si la personne existe (aucun double clique dans une listview vide pris en compte)
+                if (selectedItem != null) {
+                    ouvrirFenetreProfilPersonne(selectedItem);
+                }
+            }
+        });
+
 
         // Écouteurs pour les champs de recherche dans le détail d'une affaire (suspects, témoins, enquêteurs...)
         setupSearchFilter(searchEnqueteurAffaire, filteredEnqueteurs);
@@ -258,52 +323,55 @@ public class Menu_Controlleur {
     // Nouvelle méthode pour mettre à jour le prédicat de filtrage
     private void mettreAJourFiltre() {
         filteredAffaires.setPredicate(affaire -> {
-            if (affaire == null) {
-                return false;
-            }
+            if (affaire == null) return false;
 
             boolean correspond = true;
 
             // Filtre par lieu
             String filtreLieu = searchLieu.getText();
             if (filtreLieu != null && !filtreLieu.isEmpty()) {
-                correspond = correspond && affaire.getLieu() != null &&
+                correspond &= affaire.getLieu() != null &&
                         affaire.getLieu().toLowerCase().contains(filtreLieu.toLowerCase());
             }
 
             // Filtre par type de crime
             String filtreType = searchTypeCrime.getText();
             if (filtreType != null && !filtreType.isEmpty()) {
-                correspond = correspond && affaire.getType() != null &&
+                correspond &= affaire.getType() != null &&
                         affaire.getType().toLowerCase().contains(filtreType.toLowerCase());
             }
 
-            // Filtre par date de début
-            if (dateDebut.getValue() != null) {
-                correspond = correspond && affaire.getDate() != null &&
-                        !affaire.getDate().isBefore(dateDebut.getValue());
-            }
+            // Filtre par date (début et/ou fin)
+            LocalDate dateAffaire = affaire.getDate();
+            LocalDate debut = dateDebut.getValue();
+            LocalDate fin = dateFin.getValue();
 
-            // Filtre par date de fin
-            if (dateFin.getValue() != null) {
-                correspond = correspond && affaire.getDate() != null &&
-                        !affaire.getDate().isAfter(dateFin.getValue());
+            if (debut != null && fin != null) {
+                correspond &= dateAffaire != null &&
+                        (!dateAffaire.isBefore(debut) && !dateAffaire.isAfter(fin));
+            } else if (debut != null) {
+                correspond &= dateAffaire != null &&
+                        !dateAffaire.isBefore(debut);
+            } else if (fin != null) {
+                correspond &= dateAffaire != null &&
+                        !dateAffaire.isAfter(fin);
             }
 
             // Filtre par statut
             if (searchStatusComboBox.getValue() != null) {
-                correspond = correspond && affaire.getStatus() == searchStatusComboBox.getValue();
+                correspond &= affaire.getStatus() == searchStatusComboBox.getValue();
             }
 
-            // Filtre par gravité
-            Integer valeurGravite = searchGravitySpinner.getValue();
-            if (valeurGravite != null) {
-                correspond = correspond && affaire.getGravite() >= valeurGravite;
+            // Filtre par gravité minimale
+            Integer graviteMin = searchGravitySpinner.getValue();
+            if (graviteMin != null) {
+                correspond &= affaire.getGravite() >= graviteMin;
             }
 
             return correspond;
         });
     }
+
 
 
     private void chargerDonnees() {
@@ -316,8 +384,15 @@ public class Menu_Controlleur {
         // Créer la FilteredList à partir des affaires
         filteredAffaires = new FilteredList<>(listeAffaires, p -> true);
 
+        // Supposons que filteredAffaires est déjà initialisée et utilisée
+        SortedList<Affaire> sortedAffaires = new SortedList<>(filteredAffaires);
+
+        // Lier le comparator de la TableView avec celui de la SortedList
+        sortedAffaires.comparatorProperty().bind(tableView.comparatorProperty());
+
         // Utiliser la FilteredList comme source de données pour la table
-        tableView.setItems(filteredAffaires);
+        tableView.setItems(sortedAffaires);
+
 
         // Initialiser la ComboBox avec les valeurs d'énumération Status
         searchStatusComboBox.getItems().addAll(Affaire.Status.values());
@@ -338,6 +413,7 @@ public class Menu_Controlleur {
         // Permet de supprimer une affaire de la liste des affaires
         if (!listeAffaires.isEmpty()) {
             btnSupprimer.setOnAction(e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
+            deleteCase.setOnAction(e -> supprimerAffaire(listeAffaires.get(tableView.getSelectionModel().getSelectedIndex())));
         }
 
 
@@ -483,7 +559,7 @@ public class Menu_Controlleur {
                 JsonHandlerCase.writePersonsToJson(listeAffaires);
             } catch (Exception e) {
                 Platform.runLater(() ->
-                        showAlert("Erreur", "Échec sauvegarde : " + e.getMessage())
+                        showAlert(Alert.AlertType.ERROR, "Erreur", "Échec sauvegarde : " + e.getMessage())
                 );
             }
         }).start();
@@ -543,13 +619,14 @@ public class Menu_Controlleur {
     }
 
 
-    private void showAlert(String titre, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    private void showAlert(Alert.AlertType type, String titre, String message) {
+        Alert alert = new Alert(type);
         alert.setTitle(titre);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 
     private void setupSearchFilter(TextField searchField, FilteredList<Personne> filteredList) {
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -612,81 +689,95 @@ public class Menu_Controlleur {
 
     @FXML
     private void convertirEnPDF() {
-        Affaire affaireSelectionnee = tableView.getSelectionModel().getSelectedItem();
-        if (affaireSelectionnee != null) {
-            try {
-                PDDocument document = new PDDocument();
-                PDPage page = new PDPage();
-                document.addPage(page);
+        Affaire affaire = tableView.getSelectionModel().getSelectedItem();
+        if (affaire == null) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez sélectionner une affaire avant de générer un PDF.");
+            return;
+        }
 
-                PDPageContentStream contentStream = new PDPageContentStream(document, page);
-                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 20);
+        try (PDDocument doc = new PDDocument()) {
+            PDPage page = new PDPage(PDRectangle.A4);
+            doc.addPage(page);
 
-                float margin = 50;
-                float yStart = 750;
-                float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
-                float yPosition = yStart;
-                float rowHeight = 20;
-                float colWidth = tableWidth / 4;
+            PDPageContentStream cs = new PDPageContentStream(doc, page);
+            cs.setFont(PDType1Font.HELVETICA_BOLD, 16);
+            cs.beginText();
+            cs.newLineAtOffset(50, 770);
+            cs.showText("Compte Rendu de l'Affaire Judiciaire");
+            cs.endText();
 
-                contentStream.beginText();
-                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
-                contentStream.newLineAtOffset(margin + 100, yPosition);
-                contentStream.showText("Compte Rendu de l'Affaire Judiciaire");
-                contentStream.endText();
-                yPosition -= 40;
+            cs.setFont(PDType1Font.HELVETICA, 12);
+            float y = 740;
+            float leading = 18;
+            float maxWidth = 500;
 
-                String[] headers = { "Date", "Lieu", "Type", "Statut" };
-                String[] values = {
-                        affaireSelectionnee.getDate().toString(),
-                        affaireSelectionnee.getLieu(),
-                        affaireSelectionnee.getType(),
-                        affaireSelectionnee.getStatus().toString()
-                };
+            List<String> lignes = new ArrayList<>(List.of(
+                    "Date : " + affaire.getDate(),
+                    "Lieu : " + affaire.getLieu(),
+                    "Type : " + affaire.getType(),
+                    "Statut : " + affaire.getStatus(),
+                    "Gravité : " + affaire.getGravite(),
+                    ""
+            ));
 
-                contentStream.setLineWidth(1);
-                contentStream.moveTo(margin, yPosition);
-                contentStream.lineTo(margin + tableWidth, yPosition);
-                contentStream.stroke();
-                yPosition -= rowHeight;
+            // Description
+            String description = affaire.getDescription() != null ? affaire.getDescription() : "Non renseignée";
+            lignes.add("Description :");
 
-                for (int i = 0; i < headers.length; i++) {
-                    contentStream.beginText();
-                    contentStream.newLineAtOffset(margin + (i * colWidth) + 5, yPosition + 5);
-                    contentStream.showText(headers[i]);
-                    contentStream.endText();
-                }
+            List<String> lignesDescription = couperTexte(description, PDType1Font.HELVETICA, 12, maxWidth);
+            lignes.addAll(lignesDescription);
+            lignes.add("");
 
-                contentStream.moveTo(margin, yPosition);
-                contentStream.lineTo(margin + tableWidth, yPosition);
-                contentStream.stroke();
-                yPosition -= rowHeight;
+            lignes.addAll(List.of(
+                    "Nombre d'enquêteurs : " + affaire.getEnqueteurs().size(),
+                    "Nombre de suspects : " + affaire.getSuspects().size(),
+                    "Nombre de preuves : " + affaire.getPreuves().size(),
+                    "Nombre de témoignages : " + affaire.getTemoignages().size(),
+                    "Nombre de messages : " + affaire.getMessages().size()
+            ));
 
-                for (int i = 0; i < values.length; i++) {
-                    contentStream.beginText();
-                    contentStream.newLineAtOffset(margin + (i * colWidth) + 5, yPosition + 5);
-                    contentStream.showText(values[i]);
-                    contentStream.endText();
-                }
-
-                contentStream.moveTo(margin, yPosition);
-                contentStream.lineTo(margin + tableWidth, yPosition);
-                contentStream.stroke();
-                contentStream.close();
-
-                String cheminSortie = "compte_rendu_affaire " + affaireSelectionnee.getDate() + ".pdf";
-                document.save(cheminSortie);
-                document.close();
-
-                showAlert("Succès", "Le PDF de l'affaire sélectionnée a été généré avec succès !");
-            } catch (IOException e) {
-                e.printStackTrace();
-                showAlert("Erreur", "Une erreur est survenue lors de la génération du PDF.");
+            for (String ligne : lignes) {
+                if (y < 50) break; // éviter de dépasser la page
+                cs.beginText();
+                cs.newLineAtOffset(50, y);
+                cs.showText(ligne);
+                cs.endText();
+                y -= leading;
             }
-        } else {
-            showAlert("Alerte", "Veuillez sélectionner une affaire avant de convertir en PDF.");
+
+            cs.close();
+
+            String nomFichier = "affaire_" + affaire.getDate() + "_" + affaire.getLieu().replace(" ", "_") + ".pdf";
+            doc.save(nomFichier);
+            showAlert(Alert.AlertType.CONFIRMATION, "Succès", "Le PDF a été généré avec succès : " + nomFichier);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de la génération du PDF.");
         }
     }
+
+    private List<String> couperTexte(String texte, PDFont font, int fontSize, float maxWidth) throws IOException {
+        List<String> lignes = new ArrayList<>();
+        String[] mots = texte.split(" ");
+        StringBuilder ligne = new StringBuilder();
+
+        for (String mot : mots) {
+            String testLigne = ligne + (ligne.length() > 0 ? " " : "") + mot;
+            float largeur = font.getStringWidth(testLigne) / 1000 * fontSize;
+            if (largeur > maxWidth) {
+                lignes.add(ligne.toString());
+                ligne = new StringBuilder(mot);
+            } else {
+                if (ligne.length() > 0) ligne.append(" ");
+                ligne.append(mot);
+            }
+        }
+        if (ligne.length() > 0) {
+            lignes.add(ligne.toString());
+        }
+        return lignes;
+    }
+
 
     @FXML
     private void imprimerTable() {
@@ -697,9 +788,9 @@ public class Menu_Controlleur {
                 boolean success = job.printPage(tableView);
                 if (success) {
                     job.endJob();
-                    showAlert("Succès", "Impression terminée avec succès !");
+                    showAlert(Alert.AlertType.CONFIRMATION, "Succès", "Impression terminée avec succès !");
                 } else {
-                    showAlert("Erreur", "Erreur lors de l'impression.");
+                    showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'impression.");
                 }
             }
         }
@@ -719,7 +810,7 @@ public class Menu_Controlleur {
                 controller.setAffaireAModifier(selectedAffaire);
 
                 Stage stage = new Stage();
-                stage.setTitle("Modification - affaire " + selectedAffaire.getDate().toString());
+                stage.setTitle("Affaire du " + selectedAffaire.getDate().toString());
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
@@ -748,7 +839,7 @@ public class Menu_Controlleur {
     
                 // Créer une nouvelle fenêtre modale (Stage)
                 Stage stage = new Stage();
-                stage.setTitle("Profil de " + selectedPersonne.getPrenom() + " " + selectedPersonne.getNom());
+                stage.setTitle("Profil");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
@@ -759,6 +850,28 @@ public class Menu_Controlleur {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void ouvrirFenetreAPropos(ActionEvent actionEvent) {
+        // Vérifier qu'une personne a bien été sélectionnée
+        try {
+            // Charger le fichier FXML de la fenêtre de profil
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Vues/apropos_view.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle fenêtre modale (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("À propos");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
+            // Actualiser la TableView (si nécessaire)
+            tableView.refresh();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     
@@ -775,37 +888,62 @@ public class Menu_Controlleur {
     private void cacherTabPane() {
         tabPane.setManaged(false);
         tabPane.setVisible(false);
+        tabPane.getSelectionModel().clearSelection(); // Remettre à zéro la sélection
     }
 
     @FXML
-    private void afficherGraphique() {
+    private void afficherTchat() {
         afficherTabPane();
-        tabPane.getSelectionModel().select(0);
+
+        if (!tabPane.getTabs().contains(tabChat)) {
+            tabPane.getTabs().add(tabChat);
+        }
+        tabPane.getSelectionModel().select(tabChat); // Sélectionne l'onglet graphique
     }
 
     @FXML
-    private void afficherCollaboration() {
+    private void afficherPrediction() {
         afficherTabPane();
-        tabPane.getSelectionModel().select(1);
+
+        if (!tabPane.getTabs().contains(tabPrediction)) {
+            tabPane.getTabs().add(tabPrediction);
+        }
+        tabPane.getSelectionModel().select(tabPrediction); // Sélectionne l'onglet collaboration
     }
 
     @FXML
-    private void toggleGraphique() {
-        if (tabPane.isVisible() && tabPane.getSelectionModel().getSelectedItem() == tabGraph) {
-            cacherTabPane();
-        } else {
-            afficherGraphique();
-        }
+    private void fermerApplication() {
+        Stage stage = (Stage) searchLieu.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
-    private void toggleCollaboration() {
-        if (tabPane.isVisible() && tabPane.getSelectionModel().getSelectedItem() == tabCollab) {
-            cacherTabPane();
-        } else {
-            afficherCollaboration();
-        }
+    private void sauvegardeEffectue() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sauvegarde réussie");
+        alert.setHeaderText(null);
+        alert.setContentText("Les affaires ont été sauvegardées avec succès.");
+        alert.showAndWait();
     }
+
+    @FXML
+    public void genererGraphique() {
+        barChart.getData().clear(); // Nettoyer le graphique existant
+
+        // Création des données
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Affaires par type de crime");
+
+        // Ajouter des données fictives (remplace par des données de ta base)
+        series.getData().add(new XYChart.Data<>("Vol", 10));
+        series.getData().add(new XYChart.Data<>("Fraude", 7));
+        series.getData().add(new XYChart.Data<>("Homicide", 4));
+        series.getData().add(new XYChart.Data<>("Cybercrime", 6));
+
+        // Ajouter la série au graphique
+        barChart.getData().add(series);
+    }
+
 
 
     private String genererJsonGraphPourAffaire(Affaire affaire) {
@@ -877,7 +1015,7 @@ public class Menu_Controlleur {
     @FXML
     private void predictSuspectIA() {
         if (currentAffaire == null) {
-            showAlert("Erreur", "Aucune affaire sélectionnée.");
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez sélectionner une affaire.");
             return;
         }
 
@@ -894,7 +1032,7 @@ public class Menu_Controlleur {
             File tempInput = File.createTempFile("affaire_", ".json");
             mapper.writeValue(tempInput, affaireData);
             String scriptPath = "src/main/java/com/example/demo/Controleur/prediction.py";
-            ProcessBuilder pb = new ProcessBuilder("python", scriptPath, tempInput.getAbsolutePath());
+            ProcessBuilder pb = new ProcessBuilder("python3", scriptPath, tempInput.getAbsolutePath());
             pb.redirectErrorStream(true);
             Process process = pb.start();
 
@@ -923,7 +1061,7 @@ public class Menu_Controlleur {
                         .append(" - Score: ").append(suspect.getDouble("score") * 100).append("%\n");
             }
 
-            showAlert("Résultat de l'IA", sb.toString());
+            showAlert(Alert.AlertType.INFORMATION, "Résultat de l'IA", sb.toString());
 
             Platform.runLater(() -> {
                 barChartPrediction.getData().clear();
@@ -946,8 +1084,10 @@ public class Menu_Controlleur {
 
         } catch (Exception e) {
             e.printStackTrace();
-            showAlert("Erreur", "Échec de la prédiction IA : " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de la prédiction IA : " + e.getMessage());
 
         }
     }
+
+
 }

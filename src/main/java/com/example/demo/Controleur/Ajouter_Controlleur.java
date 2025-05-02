@@ -34,6 +34,30 @@ public class Ajouter_Controlleur {
     @FXML
     public void initialize() {
         statusComboBox.getItems().setAll(Affaire.Status.values());
+
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 5);
+        graviteSpinner.setValueFactory(valueFactory);
+
+        // Gestion manuelle de la validation de l'entrée utilisateur
+        TextField editor = graviteSpinner.getEditor();
+
+        editor.textProperty().addListener((obs, oldValue, newValue) -> {
+            if (newValue == null || newValue.isEmpty()) {
+                return; // Laisser vide temporairement
+            }
+
+            try {
+                int value = Integer.parseInt(newValue);
+                // Vérifie que la valeur est dans la plage autorisée
+                if (value >= 1 && value <= 10) {
+                    graviteSpinner.getValueFactory().setValue(value);
+                } else {
+                    editor.setText(oldValue); // Restaure si hors limites
+                }
+            } catch (NumberFormatException e) {
+                editor.setText(oldValue); // Restaure si non numérique
+            }
+        });
     }
 
     // Définir la liste des affaires
@@ -52,7 +76,7 @@ public class Ajouter_Controlleur {
         graviteSpinner.getValueFactory().setValue(affaire.getGravite());
         btnAjouter.setText("Modifier");  // Change le bouton pour indiquer modification
         btnAjouter.getStyleClass().clear();
-        ajouterViewTitle.setText("Modifier une affaire");
+        ajouterViewTitle.setText("Modification d'une affaire");
     }
 
     @FXML
@@ -60,7 +84,6 @@ public class Ajouter_Controlleur {
         String lieu = lieuField.getText().trim();
         if (lieu.isEmpty()) {
             showAlert("Erreur de champ", "Le champ 'lieu' ne peut pas être vide !");
-
             return;
         }
 
@@ -71,13 +94,21 @@ public class Ajouter_Controlleur {
         }
 
         Affaire.Status status = statusComboBox.getValue();
-        int gravite = graviteSpinner.getValue();
+        int gravite = 0;
+        if (graviteSpinner.getValue() == null) {
+            showAlert("Erreur de gravité", "Aucune gravité sélectionné");
+            return;
+        }
+        else {
+            gravite = graviteSpinner.getValue();
+        }
 
         LocalDate date = datePicker.getValue();
         if (date != null) {
             System.out.println("Date sélectionnée : " + date);
         } else {
             showAlert("Erreur de date", "Aucune date sélectionné");
+            return;
         }
 
         if (affaireAModifier == null) {

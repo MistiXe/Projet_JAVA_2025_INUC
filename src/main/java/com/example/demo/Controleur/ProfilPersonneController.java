@@ -2,12 +2,13 @@ package com.example.demo.Controleur;
 
 import com.example.demo.Patrons.Personne;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.util.HashSet;
 
 public class ProfilPersonneController {
-
     // Déclaration des éléments FXML
     @FXML private Label idLabel;
     @FXML private Label prenomLabel;
@@ -25,6 +26,8 @@ public class ProfilPersonneController {
     @FXML private Label photoUrlLabel;
     @FXML private Label derniereLocalisationLabel;
     @FXML private Label notesLabel;
+    @FXML private Button closeWindow;
+    @FXML private Label profilDeTitle;
 
     // Attribut Personne qui contiendra les données à afficher
     private Personne personne;
@@ -33,6 +36,7 @@ public class ProfilPersonneController {
     public void initialize() {
         if (personne != null) {
             System.out.println(personne.getId() + personne.getPrenom() + personne.getNom());
+            profilDeTitle.setText("Profil de " + personne.getNom() + " " + personne.getPrenom());
             // Remplir les labels avec les informations de la personne
             idLabel.setText(String.valueOf(personne.getId()));
             prenomLabel.setText(personne.getPrenom());
@@ -58,10 +62,11 @@ public class ProfilPersonneController {
         this.personne = personne;
     }
 
+
     // Action pour revenir à la vue précédente
     @FXML
     private void handleRetourAction() {
-        // Logique pour revenir à la vue précédente
-        System.out.println("Retour à la vue précédente");
+        Stage stage = (Stage) closeWindow.getScene().getWindow();
+        stage.close();
     }
 }

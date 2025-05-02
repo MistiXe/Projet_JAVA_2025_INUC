@@ -512,11 +512,14 @@ Button {
 /* Style de base du ComboBox (transparent, sans bordure) */
 .combo-box {
     -fx-background-color: white;
-    -fx-border-color: transparent; /* Désactive toute bordure */
-    -fx-background-radius: 20px;
-    -fx-padding: 5px;
-    -fx-text-fill: white; /* Couleur du texte */
-    -fx-font-size: 14px;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-size: 13px;
 }
 
 /* Style au survol (léger surlignage gris) */
@@ -542,7 +545,7 @@ Button {
 .combo-box-popup .list-cell {
     -fx-background-color: transparent;
     -fx-text-fill: #000000;
-    -fx-padding: 5px;
+    -fx-padding: 2px 7px 7px 7px;
 }
 
 /* Style au survol d'un élément (surlignage discret) */
