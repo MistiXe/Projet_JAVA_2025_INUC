@@ -202,6 +202,18 @@ public class Menu_Controlleur {
         graviteMaxSpinner.setEditable(true);
         graviteMaxSpinner.getEditor().setText("");
 
+        graviteMinSpinner.valueProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null && graviteMaxSpinner.getValue() != null && newVal > graviteMaxSpinner.getValue()) {
+                graviteMaxSpinner.getValueFactory().setValue(newVal);
+            }
+        });
+
+        graviteMaxSpinner.valueProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null && graviteMinSpinner.getValue() != null && newVal < graviteMinSpinner.getValue()) {
+                graviteMinSpinner.getValueFactory().setValue(newVal);
+            }
+        });
+
         configurerSpinnerAvecValeurParDefaut(graviteMinSpinner);
         configurerSpinnerAvecValeurParDefaut(graviteMaxSpinner);
     }
