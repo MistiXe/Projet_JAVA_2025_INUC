@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--<?import javafx.scene.layout.Separator?>-->
+
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 30;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controleur.ProfilPersonneController">
+
+
+    <!-- Titre -->
+    <Label fx:id="profilDeTitle" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Profil" />
+
+    <Separator prefWidth="400" />
+
+    <GridPane alignment="CENTER" hgap="20" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints minWidth="150" />
+            <ColumnConstraints minWidth="250" />
+        </columnConstraints>
+
+        <!-- ID -->
+        <Label style="-fx-font-weight: bold;" text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Label fx:id="idLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <!-- Prénom -->
+        <Label style="-fx-font-weight: bold;" text="Prénom:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label fx:id="prenomLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <!-- Nom -->
+        <Label style="-fx-font-weight: bold;" text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label fx:id="nomLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <!-- Adresses -->
+        <Label style="-fx-font-weight: bold;" text="Adresses:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label fx:id="adressesLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <!-- Email -->
+        <Label style="-fx-font-weight: bold;" text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Label fx:id="emailLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <!-- Téléphone -->
+        <Label style="-fx-font-weight: bold;" text="Téléphone:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <Label fx:id="telephoneLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+        <!-- Lieu de Naissance -->
+        <Label style="-fx-font-weight: bold;" text="Lieu de Naissance:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <Label fx:id="lieuNaissanceLabel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+        <!-- Genre -->
+        <Label style="-fx-font-weight: bold;" text="Genre:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+        <Label fx:id="genreLabel" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+        <!-- Nationalité -->
+        <Label style="-fx-font-weight: bold;" text="Nationalité:" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+        <Label fx:id="nationaliteLabel" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+
+        <!-- Casier Judiciaire -->
+        <Label style="-fx-font-weight: bold;" text="Casier Judiciaire:" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+        <Label fx:id="casierJudiciaireLabel" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+
+        <!-- Statut Légal -->
+        <Label style="-fx-font-weight: bold;" text="Statut Légal:" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+        <Label fx:id="statutLegalLabel" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+
+        <!-- Pseudonymes -->
+        <Label style="-fx-font-weight: bold;" text="Pseudonymes:" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+        <Label fx:id="pseudonymesLabel" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+
+        <!-- Description Physique -->
+        <Label style="-fx-font-weight: bold;" text="Description Physique:" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+        <Label fx:id="descriptionPhysiqueLabel" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+
+        <!-- URL Photo -->
+        <Label style="-fx-font-weight: bold;" text="URL Photo:" GridPane.columnIndex="0" GridPane.rowIndex="13" />
+        <Label fx:id="photoUrlLabel" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+
+        <!-- Dernière Localisation -->
+        <Label style="-fx-font-weight: bold;" text="Dernière Localisation:" GridPane.columnIndex="0" GridPane.rowIndex="14" />
+        <Label fx:id="derniereLocalisationLabel" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+
+        <!-- Notes -->
+        <Label style="-fx-font-weight: bold;" text="Notes:" GridPane.columnIndex="0" GridPane.rowIndex="15" />
+        <Label fx:id="notesLabel" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
+
+    </GridPane>
+
+    <Separator prefWidth="400" />
+
+    <!-- Bouton Retour -->
+    <Button fx:id="closeWindow" onAction="#handleRetourAction" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 20;" text="Retour" />
+
+</VBox>

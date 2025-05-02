@@ -1,4 +1,4 @@
-    package com.example.demo.PDFJSON;
+    package com.example.demo.JsonHandlers;
 
     import com.example.demo.Patrons.Utilisateur;
     import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,7 +9,7 @@
 
     public class JsonHandlerUser {
 
-        private static final String FILE_PATH = "/com/example/demo/liste_users.json";
+        private static final String FILE_PATH = "/com/example/demo/BDD/liste_users.json";
 
         public static List<Utilisateur> loadUsers() {
             ObjectMapper objectMapper = new ObjectMapper();

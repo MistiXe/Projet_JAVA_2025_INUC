@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="450.0" prefWidth="700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controleur.Connexion_Controlleur">
+
+    <!-- Haut : Logo -->
+    <top>
+        <HBox alignment="CENTER" style="-fx-padding: 10;">
+            <Text id="logo" fill="#e74c3c" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
+                <font><Font size="35.0" /></font>
+                <HBox.margin>
+                    <Insets left="5.0" />
+                </HBox.margin>
+            </Text>
+            <Text id="logo" strokeType="OUTSIDE" strokeWidth="0.0" text="inuc" textOrigin="CENTER">
+                <font><Font size="18.0" /></font>
+                <HBox.margin>
+                    <Insets top="15.0" />
+                </HBox.margin>
+            </Text>
+        </HBox>
+    </top>
+
+    <!-- Centre : Connexion -->
+    <center>
+        <VBox alignment="CENTER" spacing="20" BorderPane.alignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue">
+                <font><Font size="32.0" /></font>
+            </Text>
+            <Label style="-fx-text-fill: #666; -fx-font-size: 14px;" text="Connectez-vous à votre espace" />
+
+            <TextField fx:id="user" maxWidth="300" promptText="Nom d'utilisateur" styleClass="text-field-rect" />
+            <PasswordField fx:id="pass" maxWidth="300" promptText="Mot de passe" styleClass="text-field-rect" />
+            <Button fx:id="connexion" maxWidth="150" text="Se connecter">
+                <VBox.margin><Insets top="10.0" /></VBox.margin>
+            </Button>
+        </VBox>
+    </center>
+</BorderPane>

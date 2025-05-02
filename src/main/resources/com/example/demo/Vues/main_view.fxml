@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+
+<BorderPane prefHeight="759.0" prefWidth="1120.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controleur.Menu_Controlleur">
+    <top>
+        <VBox id="header">
+            <HBox alignment="CENTER_LEFT" style="-fx-padding: 10;">
+                <Text id="logo" fill="#e74c3c" strokeType="OUTSIDE" strokeWidth="0.0" text="C">
+                    <font><Font size="35.0" /></font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+                </Text>
+                <Text id="logo" strokeType="OUTSIDE" strokeWidth="0.0" text="inuc" textOrigin="CENTER">
+                    <font><Font size="18.0" /></font>
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+                </Text>
+                <Pane HBox.hgrow="ALWAYS" />
+                <Text fill="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="v1.0.0">
+                    <font><Font size="13.0" /></font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+                </Text>
+            </HBox>
+
+            <MenuBar>
+                <Menu text="Fichier">
+                    <MenuItem fx:id="saveFile" onAction="#sauvegardeEffectue" text="Enregistrer" />
+                    <SeparatorMenuItem />
+                    <MenuItem fx:id="exitApp" onAction="#fermerApplication" text="Quitter" />
+                </Menu>
+                <Menu text="Affaires">
+                    <MenuItem fx:id="addCase" onAction="#ajouterFenetre" text="Ajouter" />
+                    <MenuItem fx:id="editCase" onAction="#ouvrirFenetreModification" text="Modifier" />
+                    <MenuItem fx:id="deleteCase" text="Supprimer" />
+                    <MenuItem fx:id="convertPDF" onAction="#convertirEnPDF" text="Convertir en PDF" />
+                </Menu>
+                <Menu text="Fenêtre">
+                    <MenuItem fx:id="generateGraph" onAction="#afficherTchat" text="Tchat" />
+<!--                    <MenuItem fx:id="collab" onAction="#afficherPrediction" text="Prédiction des coupables" />-->
+                    <MenuItem fx:id="predictSuspectAI" onAction="#predictSuspectIA" text="Prédire les coupables" />
+
+                </Menu>
+                <Menu text="Aide">
+                    <MenuItem fx:id="aboutApp" onAction="#ouvrirFenetreAPropos" text="À propos" />
+                </Menu>
+            </MenuBar>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox>
+            <HBox alignment="CENTER" spacing="10" style="-fx-padding: 20px 20px 10px 20px;">
+                <TextField fx:id="searchLieu" promptText="Rechercher un lieu..." styleClass="searchField" HBox.hgrow="ALWAYS" />
+                <DatePicker fx:id="dateDebut" promptText="Date début" />
+                <DatePicker fx:id="dateFin" promptText="Date fin" />
+
+            </HBox>
+            <HBox alignment="CENTER" spacing="10" style="-fx-padding: 10px 20px 20px 20px;">
+                <TextField fx:id="searchTypeCrime" promptText="Rechercher un type de crime..." styleClass="searchField" HBox.hgrow="ALWAYS" />
+                <ComboBox fx:id="searchStatusComboBox" prefWidth="200.0" promptText="Statut de l'affaire" />
+<!--                <Spinner fx:id="searchGravitySpinner" editable="true" initialValue="0" max="10" min="0" prefWidth="100.0" />-->
+                <Spinner fx:id="graviteMinSpinner" editable="true" max="10" min="0" prefWidth="200.0" promptText="Gravité minimum"/>
+                <Spinner fx:id="graviteMaxSpinner" editable="true" max="10" min="0" prefWidth="200.0" promptText="Gravité maximum"/>
+            </HBox>
+
+
+            <SplitPane dividerPositions="0.333">
+                <!-- Liste des affaires -->
+                <VBox maxWidth="728" minWidth="350" VBox.vgrow="ALWAYS">
+                    <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="columnDate" reorderable="false" text="Date" />
+                            <TableColumn fx:id="columnLieu" reorderable="false" text="Lieu" />
+                            <TableColumn fx:id="columnType" reorderable="false" text="Type de Crime" />
+                            <TableColumn fx:id="columnStatus" reorderable="false" text="Statut" />
+                            <TableColumn fx:id="columnGravite" reorderable="false" text="Gravité" />
+                        </columns>
+                    </TableView>
+
+                    <HBox alignment="CENTER" spacing="10" style="-fx-padding: 5px 10px 10px 10px; -fx-background-color: #e3e3e3;">
+                        <Button fx:id="btnAjouter" onAction="#ajouterFenetre" styleClass="vert" text="Ajouter" />
+                        <Button fx:id="btnModifier" onAction="#ouvrirFenetreModification" text="Modifier" />
+                        <Button fx:id="btnSupprimer" styleClass="rouge" text="Supprimer" />
+                    </HBox>
+                </VBox>
+
+                <!-- Détails des affaires -->
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
+                    <VBox spacing="50" style="-fx-padding: 10px 20px 20px 10px;">
+                          <VBox>
+                              <HBox alignment="CENTER" spacing="5">
+                                  <!-- Témoin -->
+                                  <HBox alignment="CENTER">
+                                      <Label style="-fx-text-fill: #f39c12; -fx-font-size: 16px;" text="★" />
+                                      <Label style="-fx-text-fill: #333333; -fx-font-size: 14px;" text="Témoin" />
+                                  </HBox>
+
+                                  <!-- Suspect -->
+                                  <HBox alignment="CENTER" >
+                                      <Label style="-fx-text-fill: #e74c3c; -fx-font-size: 16px;" text="●" />
+                                      <Label style="-fx-text-fill: #333333; -fx-font-size: 14px;" text="Suspect" />
+                                  </HBox>
+
+                                  <!-- Enquêteur -->
+                                  <HBox alignment="CENTER">
+                                      <Label style="-fx-text-fill: #3498db; -fx-font-size: 16px;" text="▲" />
+                                      <Label style="-fx-text-fill: #333333; -fx-font-size: 14px;" text="Enquêteur" />
+                                  </HBox>
+                              </HBox>
+                              <WebView fx:id="webViewGraph" maxHeight="325" prefHeight="325" />
+                          </VBox>
+
+                        <HBox alignment="CENTER" spacing="200.0">
+<!--                            <Label fx:id="affaireTitreDetail" text="Détails de l'affaire sélectionnée" />-->
+                            <VBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
+                                <Label styleClass="labelDetail, bleu-border" text="Description" />
+                                <TextArea fx:id="detailDescription" prefHeight="63.0" styleClass="detail-text-zone" wrapText="true" />
+                            </VBox>
+
+                            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                                <Label styleClass="labelDetail, violet-border" text="État d’avancement" />
+                                <TextArea fx:id="detailEtat" editable="false" prefHeight="54.0" styleClass="detail-text-zone" wrapText="true" />
+                            </VBox>
+                        </HBox>
+
+                        <HBox alignment="CENTER" spacing="200.0">
+                            <VBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
+                                <Label styleClass="labelDetail, vert-border" text="Enquêteurs assignés" />
+                                <TextField fx:id="searchEnqueteurAffaire" promptText="Rechercher un enquêteur..." styleClass="searchFieldDetailAffaire" />
+                                <ListView fx:id="detailEnqueteurs" prefHeight="60" />
+                            </VBox>
+                            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                                <Label styleClass="labelDetail, rouge-border" text="Suspects associés" />
+                                <TextField fx:id="searchSuspectAffaire" promptText="Rechercher un suspect..." styleClass="searchFieldDetailAffaire" />
+                                <ListView fx:id="detailSuspects" prefHeight="60" />
+                            </VBox>
+                        </HBox>
+
+                        <HBox alignment="CENTER" spacing="200.0">
+                            <VBox alignment="CENTER_LEFT" spacing="10" HBox.hgrow="ALWAYS">
+                                <Label styleClass="labelDetail, orange-border" text="Témoins associés" />
+                                <TextField fx:id="searchTemoinAffaire" promptText="Rechercher un témoin..." styleClass="searchFieldDetailAffaire" />
+                                <ListView fx:id="detailTemoins" prefHeight="60" />
+                            </VBox>
+                            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                                <Label fx:id="labelSuspecteePar" styleClass="labelDetail, rouge-border" text="Personnes suspectées" />
+                                <TextField fx:id="searchPersonneSuspecteeAffaire" promptText="Rechercher une personne suspectée..." styleClass="searchFieldDetailAffaire" />
+                                <ListView fx:id="detailPersonneSuspectees" prefHeight="60" />
+                            </VBox>
+                        </HBox>
+
+                        <VBox spacing="10">
+                            <Label styleClass="labelDetail, bleu-clair-border" text="Preuves associées" />
+                            <TextField fx:id="searchPreuvesAffaire" promptText="Rechercher une preuve..." styleClass="searchFieldDetailAffaire " />
+                            <ListView fx:id="detailPreuves" prefHeight="60" />
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+            </SplitPane>
+        </VBox>
+    </center>
+
+    <bottom>
+    <TabPane fx:id="tabPane" maxHeight="300" visible="true">
+        <!-- Tchat -->
+        <Tab fx:id="tabChat" text="💬 Tchat">
+            <VBox alignment="center" spacing="10" style="-fx-padding: 10px;">
+                <!-- Section Tchat -->
+                <VBox spacing="10" style="-fx-padding: 10px;">
+                    <Text style="-fx-font-size: 16; -fx-font-weight: bold;" text="💬 Tchat lié à l'affaire sélectionnée" />
+                    <ListView fx:id="messageListView" prefHeight="100" />
+                    <HBox spacing="10">
+                        <TextField fx:id="inputMessage" promptText="Écrire un message..." HBox.hgrow="ALWAYS" />
+                        <Button onAction="#envoyerMessage" text="Envoyer" />
+                    </HBox>
+                    <Separator />
+                </VBox>
+            </VBox>
+        </Tab>
+
+
+<!--        <Tab fx:id="tabPrediction" text="IA - Prédiction">-->
+<!--            <VBox alignment="center" spacing="10">-->
+<!--                <padding>-->
+<!--                    <Insets bottom="10" left="10" right="10" top="10" />-->
+<!--                </padding>-->
+<!--                <Text style="-fx-font-size: 16; -fx-font-weight: bold;" text="Prédiction IA des suspects les plus probables" />-->
+<!--                <BarChart fx:id="barChartPrediction" barGap="3" categoryGap="10" prefHeight="300.0" prefWidth="600.0" title="Suspects et Scores">-->
+<!--                    <xAxis>-->
+<!--                        <CategoryAxis label="Suspect ID" />-->
+<!--                    </xAxis>-->
+<!--                    <yAxis>-->
+<!--                        <NumberAxis label="Score (0 à 100%)" />-->
+<!--                    </yAxis>-->
+<!--                </BarChart>-->
+<!--            </VBox>-->
+<!--        </Tab>-->
+
+<!--        <Tab text="Analyse des affaires">-->
+<!--            <VBox spacing="10">-->
+<!--                <Text text="Graphe" />-->
+<!--                <Button fx:id="generateGraphButton" onAction="#genererGraphique" text="Générer le graphe" />-->
+<!--                <BarChart fx:id="barChart" prefHeight="400" prefWidth="500" title="Répartition des affaires">-->
+<!--                    <xAxis>-->
+<!--                        <CategoryAxis label="Types de crimes" />-->
+<!--                    </xAxis>-->
+<!--                    <yAxis>-->
+<!--                        <NumberAxis label="Nombre d'affaires" />-->
+<!--                    </yAxis>-->
+<!--                </BarChart>-->
+<!--            </VBox>-->
+<!--        </Tab>-->
+
+    </TabPane>
+</bottom>
+
+</BorderPane>

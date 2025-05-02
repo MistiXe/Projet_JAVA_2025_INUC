@@ -82,7 +82,7 @@
 /* ---------------------------------------------- */
 /* ---------------------------------------------- */
 
-#searchField {
+.searchField {
     -fx-padding: 10px 10px 10px 20px;
     -fx-background-color: white;
     -fx-background-radius: 20px;
@@ -93,10 +93,12 @@
     -fx-border-color: #ffffff;
 }
 
-#searchField:focused {
+.searchField:focused {
     -fx-border-width: 4px;
     -fx-border-color: #4a60ff;
 }
+
+
 
 
 /* --------------------------------------------------- */
@@ -197,7 +199,9 @@
 .labelDetail {
     -fx-font-family: 'Poppins Bold';
     -fx-padding: 10px;
-    -fx-background-radius: 10px;
+    -fx-background-radius: 0px 10px 10px 0px;
+    -fx-background-color: #ededed;
+    -fx-border-width: 0 0 0 5px;
 }
 
 
@@ -222,6 +226,95 @@
     -fx-background-color: transparent;
 }
 
+
+.searchFieldDetailAffaire {
+    -fx-padding: 0 0 2px 0;
+    -fx-background-color: white;
+    -fx-effect: none;
+    -fx-border-width: 0 0 2px 0 ;
+    -fx-border-color: #000000;
+}
+
+#searchEnqueteurAffaire:focused {
+    -fx-border-color: #2ecc71;
+}
+
+#searchSuspectAffaire:focused {
+    -fx-border-color: #e74c3c;
+}
+
+#searchTemoinAffaire:focused {
+    -fx-border-color: #f39c12;
+}
+
+#searchPersonneSuspecteeAffaire:focused {
+    -fx-border-color: #e74c3c;
+}
+
+#searchPreuvesAffaire:focused {
+    -fx-border-color: #4a90e2;
+}
+
+
+
+.list-view {
+    -fx-background-color: #e3e3e3;
+    -fx-background-radius: 10px;  /* Arrondi des coins extérieurs */
+    -fx-border-radius: 10px;      /* Arrondi de la bordure */
+    -fx-border-width: 5px;
+    -fx-border-color: #e3e3e3;
+    -fx-min-height: 150px;
+    -fx-min-width: 250px;
+}
+
+.list-cell {
+    -fx-background-insets: 0 0 5px 0; /* Espacement en bas */
+    -fx-background-radius: 10px;  /* Arrondi des coins extérieurs */
+    -fx-border-radius: 10px;
+    -fx-padding: 7px 10px 10px 10px;
+}
+
+.list-cell:empty {
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+}
+
+.list-cell:filled:selected, .list-cell:filled:selected:focused {
+    -fx-background-color: #d0d0d0;
+    -fx-text-fill: #333333;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+/* Scrollbar verticale */
+.list-view .scroll-bar:vertical {
+    -fx-pref-width: 8px;
+    -fx-background-color: transparent;
+}
+
+/* Scrollbar horizontale */
+.list-view .scroll-bar:horizontal {
+    -fx-pref-height: 8px;
+    -fx-background-color: transparent;
+}
+
+/* Le curseur de la scroll bar */
+.list-view .thumb {
+    -fx-background-color: #888;
+    -fx-background-radius: 4;
+}
+
+/* La piste sur laquelle glisse le curseur */
+.list-view .track {
+    -fx-background-color: #e3e3e3;
+}
+
+.list-view .corner {
+    -fx-background-color: #e3e3e3;
+}
 /* ------------------------------------------------------------- */
 /* ------------------------------------------------------------- */
 
@@ -247,7 +340,7 @@
 /* -------------------------------------------------- */
 /* ------------------ AJOUTER_VIEW ------------------ */
 /* -------------------------------------------------- */
-.ajouter-text-field {
+.text-field-rect {
     -fx-padding: 10px;
     -fx-background-color: white;
     -fx-background-radius: 10px;
@@ -258,7 +351,7 @@
     -fx-border-color: transparent;
 }
 
-.ajouter-text-field:focused {
+.text-field-rect:focused {
     -fx-border-width: 4px;
     -fx-border-color: #000000;
 }
@@ -266,7 +359,13 @@
 /* -------------------------------------------------- */
 
 
+/* -------------------------------------------------- */
+/* ------------------- LOGIN PAGE ------------------- */
+/* -------------------------------------------------- */
 
+
+/* -------------------------------------------------- */
+/* -------------------------------------------------- */
 
 
 
@@ -304,6 +403,63 @@
     -fx-background-color: #c0392b;
 }
 
+.bleu-border {
+    -fx-border-color: #4a90e2;
+}
+
+.violet-border {
+    -fx-border-color: #9b59b6;
+}
+
+.vert-border {
+    -fx-border-color: #2ecc71;
+}
+
+.rouge-border {
+    -fx-border-color: #e74c3c;
+}
+
+.orange-border {
+    -fx-border-color: #f39c12;
+}
+
+.bleu-clair-border {
+    -fx-border-color: #3498db;
+}
+
+.rouge-fonce-border {
+    -fx-border-color: #c0392b;
+}
+
+/* Couleur de fond des lignes sélectionnées */
+.table-row-cell:filled:selected,
+.table-cell:filled:selected {
+    -fx-background-color: #4a90e2; /* Remplace par la couleur que tu veux */
+    -fx-text-fill: #ffffff; /* Couleur du texte dans les cellules sélectionnées */
+}
+
+/* Optionnel : couleur au survol pour uniformiser */
+.table-row-cell:filled:hover {
+    -fx-background-color: #c3c3c3;
+}
+
+/* Optionnel : couleur au survol de la cellule sélectionné pour uniformiser */
+.table-row-cell:filled:selected:hover {
+    -fx-background-color: #4375ac;
+}
+
+.table-cell {
+    -fx-border-color: transparent transparent transparent #d0d0d0; /* couleur du bord gauche */
+    -fx-border-width: 0 0 0 1; /* bord uniquement à gauche */
+}
+
+.table-row-cell {
+    -fx-border-color: #d0d0d0; /* ligne de séparation horizontale */
+    -fx-border-width: 0 0 1 0; /* bord uniquement en bas */
+}
+
+
+/* Inutilisé je crois */
 .greyed-out-text {
     -fx-text-fill: #bababa;
 }
@@ -354,22 +510,25 @@ Button {
 
 
 /* Style de base du ComboBox (transparent, sans bordure) */
-#statusComboBox {
+.combo-box {
     -fx-background-color: white;
-    -fx-border-color: transparent; /* Désactive toute bordure */
-    -fx-background-radius: 20px;
-    -fx-padding: 5px;
-    -fx-text-fill: white; /* Couleur du texte */
-    -fx-font-size: 14px;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-size: 13px;
 }
 
 /* Style au survol (léger surlignage gris) */
-#statusComboBox:hover {
+.combo-box:hover {
     -fx-background-color: #d3d3d3;
 }
 
 /* Style quand ouvert (transparent) */
-#statusComboBox:pressed, #statusComboBox:showing {
+.combo-box:pressed, .combo-box:showing {
     -fx-background-color: #bcbcbc;
     -fx-background-radius: 20px 20px 0 0;
 }
@@ -386,7 +545,7 @@ Button {
 .combo-box-popup .list-cell {
     -fx-background-color: transparent;
     -fx-text-fill: #000000;
-    -fx-padding: 5px;
+    -fx-padding: 2px 7px 7px 7px;
 }
 
 /* Style au survol d'un élément (surlignage discret) */
@@ -407,7 +566,7 @@ Button {
 
 
 /* Style de base du Spinner - Fond clair */
-#graviteSpinner {
+.spinner {
     -fx-background-color: #f5f5f5; /* Fond gris clair */
     -fx-border-color: transparent;
     -fx-background-radius: 20px;
@@ -416,7 +575,7 @@ Button {
 }
 
 /* Champ texte éditable */
-#graviteSpinner .text-field {
+.spinner .text-field {
     -fx-background-color: #f5f5f5;
     -fx-border-color: transparent;
     -fx-padding: 5px 10px;
@@ -424,34 +583,34 @@ Button {
 }
 
 /* Boutons flèches */
-#graviteSpinner .increment-arrow-button,
-#graviteSpinner .decrement-arrow-button {
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-padding: 5px;
 }
 
 /* Flèches (sombre pour contraste) */
-#graviteSpinner .increment-arrow,
-#graviteSpinner .decrement-arrow {
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
     -fx-background-color: #333333;
     -fx-shape: "M 0 -3.5 v 7 l 4 -3.5 z";
 }
 
 /* Effets d'interaction */
-#graviteSpinner .increment-arrow-button:hover,
-#graviteSpinner .decrement-arrow-button:hover {
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
     -fx-background-color: rgba(0, 0, 0, 0.1); /* Survol gris très léger */
     -fx-background-radius: 13px;
 }
 
-#graviteSpinner .increment-arrow-button:pressed,
-#graviteSpinner .decrement-arrow-button:pressed {
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
     -fx-background-color: rgba(0, 0, 0, 0.2); /* Appui plus visible */
 }
 
 /* Pour le focus (optionnel) */
-#graviteSpinner:focused {
+.spinner:focused {
     -fx-background-color: #e0e0e0; /* Légère variation quand focus */
 }
 
