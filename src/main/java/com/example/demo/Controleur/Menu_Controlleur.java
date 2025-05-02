@@ -5,6 +5,7 @@ import com.example.demo.Patrons.*;
 import com.example.demo.JsonHandlers.JsonHandlerCase;
 import com.example.demo.JsonHandlers.JsonHandlerPersonne;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -59,7 +60,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Menu_Controlleur {
+public class Menu_Controlleur extends Application {
     //============================================
     // Déclarations FXML
     //============================================
@@ -113,7 +114,7 @@ public class Menu_Controlleur {
     //============================================
     private Affaire currentAffaire;
     private Map<Personne, Set<Personne>> currentTemoignages = new HashMap<>();
-    private final ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
+    ObservableList<Affaire> listeAffaires = FXCollections.observableArrayList();
     private final List<Personne> listePersonnes = JsonHandlerPersonne.readPersonsFromJson();
     private final List<Preuve> listePreuves = JsonHandlerPreuve.readPreuvesFromJson();
 
@@ -150,6 +151,9 @@ public class Menu_Controlleur {
 
 
     private WebEngine engine;
+    
+    
+    private Stage stage;
 
 
 
@@ -912,9 +916,12 @@ public class Menu_Controlleur {
     }
 
     @FXML
-    private void fermerApplication() {
-        Stage stage = (Stage) searchLieu.getScene().getWindow();
-        stage.close();
+    void fermerApplication() {
+        if (stage != null) {
+            stage.close();
+        } else {
+            System.err.println("⚠️ Le stage n'a pas été initialisé.");
+        }
     }
 
     @FXML
@@ -1090,4 +1097,24 @@ public class Menu_Controlleur {
     }
 
 
+    public ObservableList<Affaire> getListeAffaires() {
+        return listeAffaires;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Vues/main_view.fxml"));
+        Parent root = loader.load();
+
+        Menu_Controlleur controller = loader.getController();
+        controller.setStage(primaryStage); // Passez le Stage principal au contrôleur
+
+        primaryStage.setTitle("Application");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
 }
