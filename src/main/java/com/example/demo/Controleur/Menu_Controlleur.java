@@ -162,6 +162,9 @@ public class Menu_Controlleur {
     //============================================
     // Méthodes d'initialisation
     //============================================
+    public Menu_Controlleur() {
+        // Constructeur vide requis pour FXMLLoader
+    }
     @FXML
     private void initialize() {
         initialiserIconesMenu();
@@ -1005,11 +1008,11 @@ public class Menu_Controlleur {
 
     @FXML
     void fermerApplication() {
-        if (stage != null) {
-            stage.close();
-        } else {
-            System.err.println("⚠️ Le stage n'a pas été initialisé.");
-        }
+        System.out.println("fermerApplication");
+        Stage stage = (Stage) dateDebut.getScene().getWindow();
+        stage.close();
+
+        stage.close();
     }
 
     @FXML
