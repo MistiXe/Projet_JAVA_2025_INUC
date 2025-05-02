@@ -20,6 +20,11 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,6 +34,8 @@ import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
@@ -36,6 +43,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -680,81 +688,95 @@ public class Menu_Controlleur {
 
     @FXML
     private void convertirEnPDF() {
-        Affaire affaireSelectionnee = tableView.getSelectionModel().getSelectedItem();
-        if (affaireSelectionnee != null) {
-            try {
-                PDDocument document = new PDDocument();
-                PDPage page = new PDPage();
-                document.addPage(page);
+        Affaire affaire = tableView.getSelectionModel().getSelectedItem();
+        if (affaire == null) {
+            showAlert("Alerte", "Veuillez sélectionner une affaire avant de générer un PDF.");
+            return;
+        }
 
-                PDPageContentStream contentStream = new PDPageContentStream(document, page);
-                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 20);
+        try (PDDocument doc = new PDDocument()) {
+            PDPage page = new PDPage(PDRectangle.A4);
+            doc.addPage(page);
 
-                float margin = 50;
-                float yStart = 750;
-                float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
-                float yPosition = yStart;
-                float rowHeight = 20;
-                float colWidth = tableWidth / 4;
+            PDPageContentStream cs = new PDPageContentStream(doc, page);
+            cs.setFont(PDType1Font.HELVETICA_BOLD, 16);
+            cs.beginText();
+            cs.newLineAtOffset(50, 770);
+            cs.showText("Compte Rendu de l'Affaire Judiciaire");
+            cs.endText();
 
-                contentStream.beginText();
-                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
-                contentStream.newLineAtOffset(margin + 100, yPosition);
-                contentStream.showText("Compte Rendu de l'Affaire Judiciaire");
-                contentStream.endText();
-                yPosition -= 40;
+            cs.setFont(PDType1Font.HELVETICA, 12);
+            float y = 740;
+            float leading = 18;
+            float maxWidth = 500;
 
-                String[] headers = { "Date", "Lieu", "Type", "Statut" };
-                String[] values = {
-                        affaireSelectionnee.getDate().toString(),
-                        affaireSelectionnee.getLieu(),
-                        affaireSelectionnee.getType(),
-                        affaireSelectionnee.getStatus().toString()
-                };
+            List<String> lignes = new ArrayList<>(List.of(
+                    "Date : " + affaire.getDate(),
+                    "Lieu : " + affaire.getLieu(),
+                    "Type : " + affaire.getType(),
+                    "Statut : " + affaire.getStatus(),
+                    "Gravité : " + affaire.getGravite(),
+                    ""
+            ));
 
-                contentStream.setLineWidth(1);
-                contentStream.moveTo(margin, yPosition);
-                contentStream.lineTo(margin + tableWidth, yPosition);
-                contentStream.stroke();
-                yPosition -= rowHeight;
+            // Description
+            String description = affaire.getDescription() != null ? affaire.getDescription() : "Non renseignée";
+            lignes.add("Description :");
 
-                for (int i = 0; i < headers.length; i++) {
-                    contentStream.beginText();
-                    contentStream.newLineAtOffset(margin + (i * colWidth) + 5, yPosition + 5);
-                    contentStream.showText(headers[i]);
-                    contentStream.endText();
-                }
+            List<String> lignesDescription = couperTexte(description, PDType1Font.HELVETICA, 12, maxWidth);
+            lignes.addAll(lignesDescription);
+            lignes.add("");
 
-                contentStream.moveTo(margin, yPosition);
-                contentStream.lineTo(margin + tableWidth, yPosition);
-                contentStream.stroke();
-                yPosition -= rowHeight;
+            lignes.addAll(List.of(
+                    "Nombre d'enquêteurs : " + affaire.getEnqueteurs().size(),
+                    "Nombre de suspects : " + affaire.getSuspects().size(),
+                    "Nombre de preuves : " + affaire.getPreuves().size(),
+                    "Nombre de témoignages : " + affaire.getTemoignages().size(),
+                    "Nombre de messages : " + affaire.getMessages().size()
+            ));
 
-                for (int i = 0; i < values.length; i++) {
-                    contentStream.beginText();
-                    contentStream.newLineAtOffset(margin + (i * colWidth) + 5, yPosition + 5);
-                    contentStream.showText(values[i]);
-                    contentStream.endText();
-                }
-
-                contentStream.moveTo(margin, yPosition);
-                contentStream.lineTo(margin + tableWidth, yPosition);
-                contentStream.stroke();
-                contentStream.close();
-
-                String cheminSortie = "compte_rendu_affaire " + affaireSelectionnee.getDate() + ".pdf";
-                document.save(cheminSortie);
-                document.close();
-
-                showAlert("Succès", "Le PDF de l'affaire sélectionnée a été généré avec succès !");
-            } catch (IOException e) {
-                e.printStackTrace();
-                showAlert("Erreur", "Une erreur est survenue lors de la génération du PDF.");
+            for (String ligne : lignes) {
+                if (y < 50) break; // éviter de dépasser la page
+                cs.beginText();
+                cs.newLineAtOffset(50, y);
+                cs.showText(ligne);
+                cs.endText();
+                y -= leading;
             }
-        } else {
-            showAlert("Alerte", "Veuillez sélectionner une affaire avant de convertir en PDF.");
+
+            cs.close();
+
+            String nomFichier = "affaire_" + affaire.getDate() + "_" + affaire.getLieu().replace(" ", "_") + ".pdf";
+            doc.save(nomFichier);
+            showAlert("Succès", "Le PDF a été généré avec succès : " + nomFichier);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Erreur lors de la génération du PDF.");
         }
     }
+
+    private List<String> couperTexte(String texte, PDFont font, int fontSize, float maxWidth) throws IOException {
+        List<String> lignes = new ArrayList<>();
+        String[] mots = texte.split(" ");
+        StringBuilder ligne = new StringBuilder();
+
+        for (String mot : mots) {
+            String testLigne = ligne + (ligne.length() > 0 ? " " : "") + mot;
+            float largeur = font.getStringWidth(testLigne) / 1000 * fontSize;
+            if (largeur > maxWidth) {
+                lignes.add(ligne.toString());
+                ligne = new StringBuilder(mot);
+            } else {
+                if (ligne.length() > 0) ligne.append(" ");
+                ligne.append(mot);
+            }
+        }
+        if (ligne.length() > 0) {
+            lignes.add(ligne.toString());
+        }
+        return lignes;
+    }
+
 
     @FXML
     private void imprimerTable() {
@@ -886,6 +908,21 @@ public class Menu_Controlleur {
             tabPane.getTabs().add(tabPrediction);
         }
         tabPane.getSelectionModel().select(tabPrediction); // Sélectionne l'onglet collaboration
+    }
+
+    @FXML
+    private void fermerApplication() {
+        Stage stage = (Stage) searchLieu.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void sauvegardeEffectue() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sauvegarde réussie");
+        alert.setHeaderText(null);
+        alert.setContentText("Les affaires ont été sauvegardées avec succès.");
+        alert.showAndWait();
     }
 
     @FXML

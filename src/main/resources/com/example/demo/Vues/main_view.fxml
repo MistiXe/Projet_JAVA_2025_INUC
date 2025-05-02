@@ -24,7 +24,7 @@
                </HBox.margin>
                 </Text>
                 <Pane HBox.hgrow="ALWAYS" />
-                <Text fill="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="v0.2.1">
+                <Text fill="#6b6b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="v1.0.0">
                     <font><Font size="13.0" /></font>
                <HBox.margin>
                   <Insets right="5.0" />
@@ -34,10 +34,9 @@
 
             <MenuBar>
                 <Menu text="Fichier">
-                    <MenuItem fx:id="openFile" text="Ouvrir" />
-                    <MenuItem fx:id="saveFile" text="Enregistrer" />
+                    <MenuItem fx:id="saveFile" onAction="#sauvegardeEffectue" text="Enregistrer" />
                     <SeparatorMenuItem />
-                    <MenuItem fx:id="exitApp" text="Quitter" />
+                    <MenuItem fx:id="exitApp" onAction="#fermerApplication" text="Quitter" />
                 </Menu>
                 <Menu text="Affaires">
                     <MenuItem fx:id="addCase" onAction="#ajouterFenetre" text="Ajouter" />
@@ -53,7 +52,6 @@
                 </Menu>
                 <Menu text="Aide">
                     <MenuItem fx:id="aboutApp" onAction="#ouvrirFenetreAPropos" text="À propos" />
-                    <MenuItem fx:id="helpSupport" text="Support" />
                 </Menu>
             </MenuBar>
         </VBox>
