@@ -60,7 +60,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Menu_Controlleur extends Application {
+public class Menu_Controlleur {
     //============================================
     // Déclarations FXML
     //============================================
@@ -1105,16 +1105,12 @@ public class Menu_Controlleur extends Application {
         this.stage = stage;
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/Vues/main_view.fxml"));
-        Parent root = loader.load();
+   
 
-        Menu_Controlleur controller = loader.getController();
-        controller.setStage(primaryStage); // Passez le Stage principal au contrôleur
-
-        primaryStage.setTitle("Application");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+    public Menu_Controlleur(boolean forTest) {
+        // N’instancie aucun composant FXML ici
+        listeAffaires = FXCollections.observableArrayList();
     }
+    
+    
 }
