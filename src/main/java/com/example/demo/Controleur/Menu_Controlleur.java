@@ -1119,7 +1119,7 @@ public class Menu_Controlleur {
 
             File tempInput = File.createTempFile("affaire_", ".json");
             mapper.writeValue(tempInput, affaireData);
-            String scriptPath = "src/main/java/com/example/demo/Controleur/prediction.py";
+            String scriptPath = "src/main/resources/com/example/demo/scripts/prediction.py";
             ProcessBuilder pb = new ProcessBuilder("python3", scriptPath, tempInput.getAbsolutePath());
             pb.redirectErrorStream(true);
             Process process = pb.start();
