@@ -1039,7 +1039,7 @@ public class Menu_Controlleur {
 
     @FXML
     private void sauvegardeEffectue() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Sauvegarde réussie");
         alert.setHeaderText(null);
         alert.setContentText("Les affaires ont été sauvegardées avec succès.");

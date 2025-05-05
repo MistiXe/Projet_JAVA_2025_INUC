@@ -83,20 +83,20 @@ public class Ajouter_Controlleur {
     private void ajouterPersonne() {
         String lieu = lieuField.getText().trim();
         if (lieu.isEmpty()) {
-            showAlert("Erreur de champ", "Le champ 'lieu' ne peut pas être vide !");
+            showAlert("Erreur de champ", "Le champ 'Lieu de l'affaire' ne peut pas être vide !");
             return;
         }
 
         String type = typeField.getText().trim();
         if (type.isEmpty()) {
-            showAlert("Erreur de champ", "Le champ 'type' ne peut pas être vide !");
+            showAlert("Erreur de champ", "Le champ 'Type d'affaire' ne peut pas être vide !");
             return;
         }
 
         Affaire.Status status = statusComboBox.getValue();
         int gravite = 0;
         if (graviteSpinner.getValue() == null) {
-            showAlert("Erreur de gravité", "Aucune gravité sélectionné");
+            showAlert("Erreur de gravité", "Le champ 'Gravité de l'affaire' ne peut pas être vide !");
             return;
         }
         else {
@@ -107,7 +107,7 @@ public class Ajouter_Controlleur {
         if (date != null) {
             System.out.println("Date sélectionnée : " + date);
         } else {
-            showAlert("Erreur de date", "Aucune date sélectionné");
+            showAlert("Erreur de date", "Le champ 'Date de l'affaire' ne peut pas être vide !");
             return;
         }
 
